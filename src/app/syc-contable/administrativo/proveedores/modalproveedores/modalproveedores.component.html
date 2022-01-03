@@ -1,0 +1,49 @@
+<div class="container">
+    <mat-toolbar>
+        <span mat-dialog-title>Crear Proveedor</span>
+    </mat-toolbar>
+    <mat-card>
+        <form *ngIf="form" [formGroup]="form" >
+                <mat-grid-list cols="2" rowHeight="70px">
+                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                        <mat-form-field class="ancho" >
+                            <mat-label>TIPO DE IDENTIFICACION  </mat-label>
+                            <input matInput autocomplete="off" formControlName="identification_type_id">
+                          </mat-form-field>
+                    </mat-grid-tile>
+            
+                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                        <mat-form-field class="ancho" >
+                            <mat-label>NUMERO DE IDENTIFICACION</mat-label>
+                            <input matInput autocomplete="off" formControlName="identification_number">
+                          </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                        <mat-form-field class="ancho" >
+                            <mat-label>NOMBRE</mat-label>
+                            <input matInput autocomplete="off" formControlName="name">
+                          </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                        <mat-form-field class="ancho" >
+                            <mat-label>DIRECCION</mat-label>
+                            <input matInput autocomplete="off" formControlName="address">
+                          </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                        <mat-form-field class="ancho" >
+                            <mat-label>TELEFONO</mat-label>
+                            <input matInput autocomplete="off" formControlName="phone">
+                          </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                        <button mat-raised-button mat-dialog-close style="margin-right: 20px;">Volver</button>
+                        <button type="submit" [disabled]="form.invalid" mat-raised-button color="primary">Aceptar</button>
+                    </mat-grid-tile>
+
+                </mat-grid-list>
+        </form>
+
+    </mat-card>
+
+</div>

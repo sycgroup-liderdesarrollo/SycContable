@@ -1,0 +1,68 @@
+
+.title-sidenav{
+    padding-left: 10%;
+    color: #3f51b5;
+    font-weight: 500;
+   
+}
+
+.title-divider{
+    margin: auto;
+    width: 60%;
+}
+
+.items-sidenav{
+    font-size: 0.9rem;
+    margin-top: 10px;
+    font-family: "Open Sans";
+    font-weight: bold;
+    color: rgb(100, 101, 102);
+}
+
+.div-content-item .mat-icon{
+    margin-right: 5px;
+    margin: 10px;
+    color: rgb(100, 101, 102);
+    
+}
+.div-group-item{
+    margin-top: 60px;
+}
+.img {
+    width: 60px;
+    height: 60px;
+    box-shadow: 5px 5px 9px ;
+    border-radius: 50px;
+    
+}
+ .h1{
+     font-size: 1.5rem;
+     margin-top: 10px;
+     font-size: 2rem;
+    font-family:"algerian" ;
+    font-weight: bold;
+    color: rgb(100, 101, 102);
+    margin-top: 20px;
+ }
+
+
+  h1{
+    box-sizing:border-box;
+    color:rgb(100, 101, 102);
+    display:block;
+    font-family:"algerian";
+    font-size:20px;
+    font-weight:600;
+    height:20px;
+    text-align:left;
+    margin-top: 20px;
+    
+  }
+  .contenido{
+    font-family:"Open Sans", sans-serif;
+    font-size:13px;
+    font-weight:500;
+    color:rgb(136, 152, 170);
+  }
+
+

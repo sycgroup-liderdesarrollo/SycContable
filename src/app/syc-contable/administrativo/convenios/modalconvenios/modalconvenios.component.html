@@ -1,0 +1,73 @@
+<div class="container">
+    <mat-toolbar>
+        <span mat-dialog-title>Crear Convenio</span>
+    </mat-toolbar>
+    <mat-card>
+        <form *ngIf="form" [formGroup]="form" >
+                <mat-grid-list cols="2" rowHeight="70px">
+                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                        <mat-form-field class="ancho" >
+                            <mat-label>NOMBRE</mat-label>
+                            <input matInput autocomplete="off" formControlName="name" [readonly]="!isEdit">
+                          </mat-form-field>
+                    </mat-grid-tile>
+                   
+                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                        <mat-form-field class="ancho" >
+                            <mat-label>CONVENIO</mat-label>
+                            <mat-select formControlName="covenant_type_id" name="convenio" [disabled]="!isEdit">
+                                <mat-option *ngFor="let convenio of convenants" [value]="convenio.id">
+                                  {{convenio.name}}
+                                </mat-option>
+                              </mat-select>
+                          </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                        <mat-form-field class="ancho" >
+                            <mat-label>TIPO DE PERIODICIDAD</mat-label>
+                            <mat-select formControlName="periodicity_type_id" name="periodicidad" [disabled]="!isEdit">
+                                <mat-option *ngFor="let periodicity of periodicidad" [value]="periodicity.id">
+                                  {{periodicity.name}}
+                                </mat-option>
+                              </mat-select>
+                          </mat-form-field>
+                    </mat-grid-tile>
+                    
+                    <mat-grid-tile *ngIf="!isEdit" [colspan]="1" [rowspan]="1" >
+                        <mat-form-field class="ancho" >
+                            <mat-label>ESTADO</mat-label>
+                            <mat-select formControlName="active" name="active" [disabled]="!isEdit">
+                                <mat-option *ngFor="let active of actives" [value]="active.value">
+                                  {{active.name}}
+                                </mat-option>
+                              </mat-select>
+                          </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                        <mat-form-field class="ancho" >
+                            <mat-label>VALOR</mat-label>
+                            <input matInput autocomplete="off" formControlName="value" [readonly]="!isEdit">
+                          </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                       <mat-form-field class="ancho" >
+                            <mat-label>CONCEPTO</mat-label>
+                            <input matInput autocomplete="off" formControlName="concept_name" [readonly]="!isEdit">
+                          </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile [colspan]="2" [rowspan]="1" >
+                        <button mat-raised-button mat-dialog-close style="margin-right: 20px;">Volver</button>
+                        <button *ngIf="!id" type="submit" [disabled]="form.invalid" mat-raised-button color="primary" (click)=" crearConvenio(form.value)">Aceptar</button>
+                        <button *ngIf="id && isEdit" type="submit" [disabled]="form.invalid" mat-raised-button color="primary" (click)=" updateConvenio(form.value)" >update</button>
+                    </mat-grid-tile>
+
+                </mat-grid-list>
+        </form>
+
+    </mat-card>
+
+</div>

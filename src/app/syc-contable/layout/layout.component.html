@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="div-navbar col-12">
+        <app-navbar [sidebar]='drawer'></app-navbar>
+    </div>
+    
+    <mat-drawer-container class = "example-container"> 
+        <mat-drawer #drawer mode = "side">
+            <app-sidebar [sidebar]='drawer'></app-sidebar>
+        </mat-drawer> 
+        
+        <mat-drawer-content class="col-12">
+            <router-outlet></router-outlet>
+        </mat-drawer-content > 
+        
+    </mat-drawer-container>
+    
+</div>
