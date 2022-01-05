@@ -1,0 +1,37 @@
+div{
+    width: 90vw;
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+.mat-icon{
+    font-size: 1.3rem;
+    color: black;
+}
+.label{
+    font-size: 1rem;
+    font-family:'Times New Roman', Times, serif;
+
+}
+.buscar{
+    width: 100vh;
+}
+table {
+    width: 90%;
+    font-family:'Times New Roman', Times, serif;
+  }
+
+  .mat-card{
+    margin-top: 1%;
+    width: 92vw;
+  }
+  
+  .mat-table{
+    width: 100%;
+  }
+  .opciones{
+    border: solid none;
+  }
+  input{
+      font-size: 14px;
+      font-family:'Times New Roman', Times, serif;
+  }

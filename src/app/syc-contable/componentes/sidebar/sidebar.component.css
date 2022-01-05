@@ -16,7 +16,7 @@
     margin-top: 10px;
     font-family: "Open Sans";
     font-weight: bold;
-    color: rgb(100, 101, 102);
+    color: rgb(126, 127, 129);
 }
 
 .div-content-item .mat-icon{
@@ -41,14 +41,14 @@
      font-size: 2rem;
     font-family:"algerian" ;
     font-weight: bold;
-    color: rgb(100, 101, 102);
+    color: rgb(145, 146, 146);
     margin-top: 20px;
  }
 
 
   h1{
     box-sizing:border-box;
-    color:rgb(100, 101, 102);
+    color:rgb(121, 122, 122);
     display:block;
     font-family:"algerian";
     font-size:20px;

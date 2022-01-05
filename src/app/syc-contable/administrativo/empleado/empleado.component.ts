@@ -1,8 +1,9 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { ConfirmacionComponent } from 'src/app/share/confirmacion/confirmacion.component';
 import { EmployeeService } from '../services/empleados/employee.service';
 import { ModalempleadoComponent } from './modalempleado/modalempleado.component';
 
@@ -67,11 +68,19 @@ export class EmpleadoComponent implements AfterViewInit,OnInit {
     });
   }
 
-  deleteEmployee(id :any){
-     this.serviceEmployer.deleteEmployee(id).subscribe(res => {
-       this.getEmployee();  
-     });
+  openConfirmation(id?: any): void{
+    const ConfirmationRef = this.dialog.open(ConfirmacionComponent);
+
+    ConfirmationRef.afterClosed().subscribe(resp => {
+      resp ? this.deleteEmployee(id): '';
+    });
   }
+
+  deleteEmployee(id :any){
+    this.serviceEmployer.deleteEmployee(id).subscribe(res => {
+      this.getEmployee();  
+    });
+ }
   
 }
 

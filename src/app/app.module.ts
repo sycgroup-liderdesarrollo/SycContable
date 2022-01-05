@@ -33,6 +33,7 @@ import { ShareModule } from './share/share.module';
     ReactiveFormsModule,
     MatIconModule,
     ShareModule,
+ 
   ],
 
   providers: [],

@@ -11,8 +11,12 @@ export class EmployeeService {
     private http: HttpClient
     ){ }
 
-  getEmployed() :Observable<any> {
+  getEmployed(filterValue?:any) :Observable<any> {
+    if( filterValue){
+      return this.http.get<any>('http://192.168.10.138:8090/api/user',{params:{'filter':  filterValue }});
+    }
     return this.http.get<any>('http://192.168.10.138:8090/api/user');
+      
   }
   postEmployed(formdata : any) :Observable<any> {
     return this.http.post<any>('http://192.168.10.138:8090/api/user',formdata);

@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { ConfirmacionComponent } from 'src/app/share/confirmacion/confirmacion.component';
 import { ConvenantService } from '../services/convenios/convenant.service';
 import { ModalconveniosComponent } from './modalconvenios/modalconvenios.component';
 
@@ -64,6 +65,13 @@ export class ConveniosComponent implements OnInit,AfterViewInit {
       this.getConvenant(); 
     });
   };
+  openConfirmation(id?: any): void{
+    const ConfirmationRef = this.dialog.open(ConfirmacionComponent);
+
+    ConfirmationRef.afterClosed().subscribe(resp => {
+      resp ? this.deleteConvenant(id): '';
+    });
+  }
 
   deleteConvenant(id :any){
     this.serviceConvenant.deleteConvenant(id).subscribe(res => {

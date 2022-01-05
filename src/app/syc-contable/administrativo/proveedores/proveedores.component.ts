@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { ConfirmacionComponent } from 'src/app/share/confirmacion/confirmacion.component';
 import { ServicioProveedoresService } from '../services/proveedores/servicio-proveedores.service';
 import { ModalproveedoresComponent } from './modalproveedores/modalproveedores.component';
 
@@ -21,11 +23,10 @@ export class ProveedoresComponent implements OnInit {
   paginator!: MatPaginator;
   @ViewChild(MatSort)
   sort!: MatSort;
-  dialogRef:any
-  dialog: any;
+  dialogRef:any;
 
   constructor(
-    public dialogProveedor: MatDialog,
+    public dialog: MatDialog,
     private serviceproviders: ServicioProveedoresService
     ) { 
     this.dataSource = new MatTableDataSource();
@@ -33,6 +34,7 @@ export class ProveedoresComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getProvider();
   }
 
   getProvider() {
@@ -67,6 +69,21 @@ export class ProveedoresComponent implements OnInit {
     });
   };
 
+  openConfirmation(id?: any): void{
+    const ConfirmationRef = this.dialog.open(ConfirmacionComponent);
+
+    ConfirmationRef.afterClosed().subscribe(resp => {
+      resp ? this.deleteProvider(id): '';
+    });
+  }
+  deleteProvider(id :any){
+    this.serviceproviders.deleteProvider(id).subscribe(res => {
+      this.getProvider();  
+
+    });
+
+  }
+  
 }
 
   

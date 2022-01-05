@@ -8,37 +8,42 @@
                     <mat-grid-tile [colspan]="1" [rowspan]="1" >
                         <mat-form-field class="ancho" >
                             <mat-label>TIPO DE IDENTIFICACION  </mat-label>
-                            <input matInput autocomplete="off" formControlName="identification_type_id">
+                            <mat-select formControlName="identification_type_id" name="tipoIdentificacion"  [disabled]="!isEdit">
+                                <mat-option *ngFor="let identificationtype of TipoIdentificacion " [value]="identificationtype.id">
+                                  {{identificationtype.name}}
+                                </mat-option>
+                              </mat-select>
                           </mat-form-field>
                     </mat-grid-tile>
             
                     <mat-grid-tile [colspan]="1" [rowspan]="1" >
                         <mat-form-field class="ancho" >
                             <mat-label>NUMERO DE IDENTIFICACION</mat-label>
-                            <input matInput autocomplete="off" formControlName="identification_number">
+                            <input matInput autocomplete="off" formControlName="identification_number" [readonly]="!isEdit">
                           </mat-form-field>
                     </mat-grid-tile>
                     <mat-grid-tile [colspan]="1" [rowspan]="1" >
                         <mat-form-field class="ancho" >
                             <mat-label>NOMBRE</mat-label>
-                            <input matInput autocomplete="off" formControlName="name">
+                            <input matInput autocomplete="off" formControlName="name" [readonly]="!isEdit">
                           </mat-form-field>
                     </mat-grid-tile>
                     <mat-grid-tile [colspan]="1" [rowspan]="1" >
                         <mat-form-field class="ancho" >
                             <mat-label>DIRECCION</mat-label>
-                            <input matInput autocomplete="off" formControlName="address">
+                            <input matInput autocomplete="off" formControlName="address" [readonly]="!isEdit">
                           </mat-form-field>
                     </mat-grid-tile>
                     <mat-grid-tile [colspan]="1" [rowspan]="1" >
                         <mat-form-field class="ancho" >
                             <mat-label>TELEFONO</mat-label>
-                            <input matInput autocomplete="off" formControlName="phone">
+                            <input matInput autocomplete="off" formControlName="phone" [readonly]="!isEdit">
                           </mat-form-field>
                     </mat-grid-tile>
-                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                    <mat-grid-tile [colspan]="2" [rowspan]="1" >
                         <button mat-raised-button mat-dialog-close style="margin-right: 20px;">Volver</button>
-                        <button type="submit" [disabled]="form.invalid" mat-raised-button color="primary">Aceptar</button>
+                        <button *ngIf="!id" type="submit" [disabled]="form.invalid" mat-raised-button color="primary" (click)=" crearProvider(form.value)">Aceptar</button>
+                        <button *ngIf="id && isEdit" type="submit" [disabled]="form.invalid" mat-raised-button color="primary" (click)=" updateProvider(form.value)" >update</button>
                     </mat-grid-tile>
 
                 </mat-grid-list>

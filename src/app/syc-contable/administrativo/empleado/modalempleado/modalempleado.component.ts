@@ -85,11 +85,11 @@ export class ModalempleadoComponent implements OnInit {
   createForm(dataEmployee?:any){
     this.form = this.fb.group({
       identification_number: [dataEmployee?.identification_number ?? '', Validators.required],
-      name: [ dataEmployee?.name ?? '', Validators.required],
+      name:[ dataEmployee?.name ?? '', Validators.required],
       last_name: [dataEmployee?.last_name ?? '', Validators.required],
       position_id:[dataEmployee?.position_id ?? '', Validators.required],
-      email: [dataEmployee?.email ?? '', Validators.required],
-      password: ['12345678', Validators.required],
+      email:[dataEmployee?.email ?? '', Validators.required],
+      password:['12345678', Validators.required],
       admission_date:[dataEmployee?.admission_date ?? '', Validators.required],
       base_salary:[dataEmployee?.base_salary ?? '', Validators.required],
       headquarter_id:[dataEmployee?.headquarter_id ?? '', Validators.required],

@@ -15,7 +15,12 @@ const routes: Routes = [
       {
         path:'seguridad',
         loadChildren: () => import('./seguridad/seguridad.module').then(module => module.SeguridadModule)
-      }
+      },
+      {
+        path:'nomina',
+        loadChildren: () => import('./nomina/nomina.module').then(module => module.NominaModule)
+      },
+      
     ]
   }
 ];
