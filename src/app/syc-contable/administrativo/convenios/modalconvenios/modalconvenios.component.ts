@@ -22,7 +22,7 @@ export class ModalconveniosComponent implements OnInit {
   form!: FormGroup;
   periodicidad:any;
   convenants:any;
-  concepto:any;
+  conceptType:any;
   name:any;
   value:any;
   respuesta:any;
@@ -52,8 +52,8 @@ export class ModalconveniosComponent implements OnInit {
   this.servicesTipoConvenio.getConvenant().subscribe(rest => {
     this.convenants = rest.data
   });
-  this.servicesTipoConcepto.getconcept().subscribe(rest => [
-    this.concepto = rest.data
+  this.servicesTipoConcepto.getconceptType().subscribe(rest => [
+    this.conceptType = rest.data
   ])
   }
 

@@ -2,47 +2,52 @@
     <mat-toolbar>
         <span mat-dialog-title>CARGAR CONCEPTOS</span>
     </mat-toolbar>
-    <mat-card>
-        <form *ngIf="Select" [formGroup]="Select" >
-                <mat-grid-list cols="2" rowHeight="70px">
-                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                        <mat-form-field class="ancho" >
-                            <mat-label>TIPO DE CONCEPTO  </mat-label>
-                            <mat-select formControlName="TipoConcepto">
-                              </mat-select>
-                          </mat-form-field>
-                    </mat-grid-tile>
+        <mat-card>
+            <form *ngIf="Select" [formGroup]="Select" >
+                    <mat-grid-list cols="2" rowHeight="70px">
+                        <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                            <mat-form-field class="ancho">
+                                <mat-label>TIPO DE CONCEPTO  </mat-label>
+                                <mat-select formControlName="conceptType" (ngchange)="conceptoconTipo($event)">
+                                    <mat-option  *ngFor="let concept_id of conceptType" [value]="concept_id.id">
+                                        {{concept_id.name}}
+                                      </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </mat-grid-tile>
 
-                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                        <mat-form-field class="ancho" >
-                            <mat-label> CONCEPTOS  </mat-label>
-                            <mat-select formControlName="Conceptos">
-                              </mat-select>
-                          </mat-form-field>
-                    </mat-grid-tile>
-            
-                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                        <mat-form-field class="ancho" >
-                            <mat-label>CANTIDAD</mat-label>
-                            <input matInput autocomplete="off" formControlName="Cantidad">
-                          </mat-form-field>
-                    </mat-grid-tile>
-
-                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                        <mat-form-field class="ancho" >
-                            <mat-label>VALOR</mat-label>
-                            <input matInput autocomplete="off" formControlName="Valor">
-                          </mat-form-field>
-                    </mat-grid-tile>
+                        <mat-grid-tile [colspan]="1" [rowspan]="1">
+                            <mat-form-field class="ancho">
+                                <mat-label> CONCEPTOS  </mat-label>
+                                <mat-select formControlName="concept" >
+                                    <mat-option *ngFor="let concept of concepts" [value]="concept.id">
+                                        {{concept.name}}
+                                      </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </mat-grid-tile>
                 
-                    <mat-grid-tile [colspan]="2" [rowspan]="1" >
-                        <button mat-raised-button type="submit" color="primary" mat-dialog-close style="margin-right: 20px;">Agregar</button>
-                        
-                    </mat-grid-tile>
+                        <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                            <mat-form-field class="ancho" >
+                                <mat-label>CANTIDAD</mat-label>
+                                <input matInput autocomplete="off" formControlName="count" >
+                            </mat-form-field>
+                        </mat-grid-tile>
 
-                </mat-grid-list>
-        </form>
+                        <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                            <mat-form-field class="ancho" >
+                                <mat-label>VALOR</mat-label>
+                                <input matInput autocomplete="off" formControlName="unit_value" >
+                            </mat-form-field>
+                        </mat-grid-tile>
+                    
+                        <mat-grid-tile [colspan]="2" [rowspan]="1" >
+                            <button  mat-raised-button [disabled]="Select.invalid" type="submit" color="primary" mat-dialog-close style="margin-right: 20px;" >Agregar</button>
+                        </mat-grid-tile>
 
-    </mat-card>
+                    </mat-grid-list>
+            </form>
+
+        </mat-card>
 
 </div>
