@@ -22,11 +22,10 @@ export class ConceptService {
   }
 
   addConcepts(formdata:any, id:any) :Observable<any> {
-
-    return this.http.post<any>(`${environment.API_Url}payrollConcept/`+ id +'/' + formdata.concept ,formdata);
+    return this.http.post<any>(`${environment.API_Url}payrollConcept/${id}` ,formdata);
   }
 
-  removeConcept(){
-    
+  removeConcept(id:any){
+    return this.http.delete<any>(`${environment.API_Url}payroll/`+ id);
   }
 }

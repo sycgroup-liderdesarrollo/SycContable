@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { EmployeeService } from '../../administrativo/services/empleados/employee.service';
+import { ConceptService } from '../../administrativo/services/nomina/concept.service';
 import { ServicioNominaService } from '../../administrativo/services/nomina/servicio-nomina.service';
 import { ModalSeleccionarComponent } from '../modal-seleccionar/modal-seleccionar.component';
 
@@ -39,6 +40,7 @@ export class CargarDeduccionesComponent implements OnInit,AfterViewInit {
     private ServiceNomina: ServicioNominaService,
     private serviceEmployer: EmployeeService,
     public dialog: MatDialog,
+    private serviceconcept: ConceptService
   ) {
      this.dataSource = new MatTableDataSource();
      this.DataNomina = new MatTableDataSource();
@@ -94,4 +96,10 @@ export class CargarDeduccionesComponent implements OnInit,AfterViewInit {
         this.dataPayroll.validador = true;
     })
   }
+
+  deleteNomina(id :any){
+    this.serviceconcept.removeConcept(id).subscribe(res => {
+      this.openNomina(id);  
+    });
+ }
 }

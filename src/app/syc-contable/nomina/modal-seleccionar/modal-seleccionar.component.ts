@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ConceptConvenioService } from '../../administrativo/services/convenios/concept-convenio.service';
 import { ConceptService } from '../../administrativo/services/nomina/concept.service';
 import { MatDialogRef } from '@angular/material/dialog';
+import { ServicioNominaService } from '../../administrativo/services/nomina/servicio-nomina.service';
 
 @Component({
   selector: 'app-modal-seleccionar',
@@ -25,6 +26,7 @@ export class ModalSeleccionarComponent implements OnInit {
     private servicesTipoConcepto:ConceptConvenioService,
     private serviceConcept: ConceptService,
     private dialog: MatDialogRef<ModalSeleccionarComponent>,
+    private getNominaservice:ServicioNominaService,
   ) { }
 
   ngOnInit(): void {
@@ -37,7 +39,7 @@ export class ModalSeleccionarComponent implements OnInit {
   crearform(dataConcept?:any){
     this.Select = this.fb.group({
       conceptType: [dataConcept?.concept_id  ?? '', Validators.required],
-      concept: [dataConcept?.concept ?? '', Validators.required],
+      concept_id: [dataConcept?.concept ?? '', Validators.required],
       count: [dataConcept?.count ?? '', Validators.required],
       unit_value: [dataConcept?.unit_value ?? '', Validators.required],
     });
