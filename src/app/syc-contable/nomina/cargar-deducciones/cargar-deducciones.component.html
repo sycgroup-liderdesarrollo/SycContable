@@ -2,62 +2,62 @@
       <mat-card class="card">
           <mat-form-field class="col-12" appearance="legacy">
               <mat-icon matSuffix>search</mat-icon>
-              <mat-label class="label" >Buscar Empleado</mat-label> 
+              <mat-label class="label" >Buscar Empleado</mat-label>
               <input matInput autocomplete="off" (keyup)="onKeyUp($event)" placeholder="Empleado" #input>
           </mat-form-field>
 
         <div class="div">
             <table mat-table [dataSource]="dataSource" matSort>
-    
+
               <ng-container matColumnDef="identification_number">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> CC </th>
               <td mat-cell *matCellDef="let row"> {{row.identification_number}} </td>
               </ng-container>
-        
+
               <ng-container matColumnDef="name">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
               <td mat-cell *matCellDef="let row"> {{row.name}}</td>
               </ng-container>
-        
+
               <ng-container matColumnDef="last_name">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Primer Apellido </th>
               <td mat-cell *matCellDef="let row"> {{row.last_name}} </td>
               </ng-container>
-        
+
               <ng-container matColumnDef="position">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Cargo </th>
               <td mat-cell *matCellDef="let row"> {{row.position.name}} </td>
               </ng-container>
-        
+
               <ng-container matColumnDef="email">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
                   <td mat-cell *matCellDef="let row"> {{row.email}} </td>
               </ng-container>
-      
+
               <ng-container matColumnDef="base_salary">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Salario Basico </th>
                 <td mat-cell *matCellDef="let row"> {{row.base_salary}} </td>
               </ng-container>
-        
+
               <ng-container matColumnDef="options">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header> Opciones </th>
                   <td mat-cell *matCellDef="let row">
                     <button mat-stroked-button color="primary" (click)="openNomina(row.id)">
                       Seleccionar
-                    </button> 
+                    </button>
                   </td>
               </ng-container>
-        
+
               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        
+
               <tr class="mat-row" *matNoDataRow>
               <td class="mat-cell" colspan="4">No se encuentran coincidencias con "{{input.value}}"</td>
               </tr>
           </table>
-        
+
           <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-        </div>   
+        </div>
       </mat-card>
 </div>
 
@@ -75,27 +75,35 @@
                 <th mat-header-cell *matHeaderCellDef> Codigo </th>
                 <td mat-cell *matCellDef="let element"> {{element.id}} </td>
               </ng-container>
-          
+
               <ng-container matColumnDef="concept_name">
                 <th mat-header-cell *matHeaderCellDef> Concepto </th>
                 <td mat-cell *matCellDef="let element"> {{element.name}} </td>
               </ng-container>
-          
+
+              <ng-container matColumnDef="concept_type">
+                <th mat-header-cell *matHeaderCellDef> Tipo de Concepto </th>
+                <td mat-cell *matCellDef="let element">
+                  <p *ngIf="element.concept_type_id == 1">Devengado <mat-icon style="color:green; margin-left: 10px">trending_up</mat-icon></p>
+                  <p *ngIf="element.concept_type_id == 2">Deducido <mat-icon style="color:red; margin-left: 10px">trending_down</mat-icon></p>
+                </td>
+              </ng-container>
+
               <ng-container matColumnDef="count">
                 <th mat-header-cell *matHeaderCellDef> Cantidad </th>
                 <td mat-cell *matCellDef="let element"> {{element.pivot.count}} </td>
               </ng-container>
-              
+
               <ng-container matColumnDef="unit_value">
                 <th mat-header-cell *matHeaderCellDef> Valor Unitario </th>
                 <td mat-cell *matCellDef="let element"> {{element.pivot.unit_value}} </td>
               </ng-container>
-              
+
               <ng-container matColumnDef="total_value">
                 <th mat-header-cell *matHeaderCellDef> Valor Total </th>
                 <td mat-cell *matCellDef="let element"> {{element.pivot.total_value}} </td>
               </ng-container>
-              
+
               <ng-container matColumnDef="options">
                 <th mat-header-cell *matHeaderCellDef > Opciones </th>
                 <td mat-cell *matCellDef="let element">
@@ -110,13 +118,13 @@
                     </mat-menu>
                 </td>
             </ng-container>
-            
+
               <tr mat-header-row *matHeaderRowDef="columna"></tr>
               <tr mat-row *matRowDef="let element; columns: columna;"></tr>
             </table>
 
         </div>
-        
+
     </mat-card>
 
 </div>
