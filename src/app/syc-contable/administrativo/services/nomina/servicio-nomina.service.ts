@@ -16,15 +16,7 @@ export class ServicioNominaService {
   getNomina(employeeId:number) :Observable<any> {
     return this.http.get<number>(`${environment.API_Url}payroll/user/${employeeId}`);
   }
-  postNomina(formdata : any) :Observable<any> {
-    return this.http.post<any>(`${environment.API_Url}payroll`,formdata);
-  }
   putNomina(id:any): Observable<any>{
-   
     return  this.http.get<any>(`${environment.API_Url}payroll/`+ id);
-  }
-  updateNomina(formdata:any, id:any): Observable<any>{
-    
-    return  this.http.put<any>(`${environment.API_Url}payroll/` + id,formdata);
   }
 }

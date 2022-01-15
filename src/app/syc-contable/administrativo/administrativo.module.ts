@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { AdministrativoRoutingModule } from './administrativo-routing.module';
 import { EmpleadoComponent } from './empleado/empleado.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -32,6 +31,7 @@ import { ShareModule } from 'src/app/share/share.module';
     ConveniosComponent,
     ModalproveedoresComponent,
   ],
+
   imports: [
     CommonModule,
     AdministrativoRoutingModule,
@@ -51,4 +51,5 @@ import { ShareModule } from 'src/app/share/share.module';
     ShareModule
   ]
 })
+
 export class AdministrativoModule { }

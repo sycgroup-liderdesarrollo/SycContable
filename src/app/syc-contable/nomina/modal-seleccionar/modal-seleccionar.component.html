@@ -8,7 +8,7 @@
                         <mat-grid-tile [colspan]="1" [rowspan]="1" >
                             <mat-form-field class="ancho">
                                 <mat-label>TIPO DE CONCEPTO  </mat-label>
-                                <mat-select formControlName="conceptType" (ngchange)="conceptoconTipo($event)">
+                                <mat-select id="concept" formControlName="conceptType" (selectionChange)="conceptoconTipo($event.value)">
                                     <mat-option  *ngFor="let concept_id of conceptType" [value]="concept_id.id">
                                         {{concept_id.name}}
                                       </mat-option>
@@ -19,7 +19,7 @@
                         <mat-grid-tile [colspan]="1" [rowspan]="1">
                             <mat-form-field class="ancho">
                                 <mat-label> CONCEPTOS  </mat-label>
-                                <mat-select formControlName="concept" >
+                                <mat-select  formControlName="concept" >
                                     <mat-option *ngFor="let concept of concepts" [value]="concept.id">
                                         {{concept.name}}
                                       </mat-option>
@@ -42,7 +42,8 @@
                         </mat-grid-tile>
                     
                         <mat-grid-tile [colspan]="2" [rowspan]="1" >
-                            <button  mat-raised-button [disabled]="Select.invalid" type="submit" color="primary" mat-dialog-close style="margin-right: 20px;" >Agregar</button>
+                            <button  mat-raised-button mat-dialog-close [disabled]="Select.invalid" type="submit" color="primary" mat-dialog-close style="margin-right: 20px;" (click)="createPayroll(Select.value,id)" >Agregar</button>
+
                         </mat-grid-tile>
 
                     </mat-grid-list>

@@ -1,4 +1,3 @@
-
 <div class="col-12 employees">
       <mat-card class="card">
           <mat-form-field class="col-12" appearance="legacy">
@@ -65,10 +64,10 @@
 <div class="col-12 payroll">
     <mat-card class="card">
         <div class="div">
-            <div class="flex col-12">
-              <h1 class="col-5">Nómina Enero I</h1>
-              <h1 class="col-5">Nombre</h1>
-              <button  mat-stroked-button color="primary" class="col-2" (click)="openDialogAgregar()">AGREGAR</button>
+            <div *ngIf="dataPayroll.validador" class="flex col-12">
+              <h1 class="col-5">{{ dataPayroll.created_at| date:'fullDate'}}</h1>
+              <h1 class="col-5">{{dataPayroll.name}}</h1>
+              <button   mat-stroked-button color="primary" class="col-2" (click)="openDialogAgregar(dataPayroll.id)">AGREGAR</button>
             </div>
             <table mat-table [dataSource]="DataNomina" class="mat-elevation-z8"  >
 

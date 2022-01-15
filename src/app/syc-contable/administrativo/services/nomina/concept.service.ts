@@ -16,16 +16,14 @@ export class ConceptService {
   });
 
 
-  getConcepts( filterType?:any){
-      console.log('Entre al servicio');
-      console.log(filterType);
-      
+  getConcepts( typeId: number){
       return this.http
-        .get<any>(`${environment.API_Url}concept`,{headers: this.headers, params: {'type': filterType}});
+        .get<any>(`${environment.API_Url}concept`,{headers: this.headers, params: {'type': typeId}});
   }
 
-  addConcept(){
+  addConcepts(formdata:any, id:any) :Observable<any> {
 
+    return this.http.post<any>(`${environment.API_Url}payrollConcept/`+ id +'/' + formdata.concept ,formdata);
   }
 
   removeConcept(){

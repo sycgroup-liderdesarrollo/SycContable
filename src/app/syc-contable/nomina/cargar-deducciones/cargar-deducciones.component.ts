@@ -4,7 +4,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { EmployeeService } from '../../administrativo/services/empleados/employee.service';
-import { ConceptService } from '../../administrativo/services/nomina/concept.service';
 import { ServicioNominaService } from '../../administrativo/services/nomina/servicio-nomina.service';
 import { ModalSeleccionarComponent } from '../modal-seleccionar/modal-seleccionar.component';
 
@@ -15,40 +14,37 @@ import { ModalSeleccionarComponent } from '../modal-seleccionar/modal-selecciona
 })
 export class CargarDeduccionesComponent implements OnInit,AfterViewInit {
 
-  DataNomina: MatTableDataSource<any>;
-  dataSource : MatTableDataSource<any>;
-  displayedColumns: string[] =['identification_number','name','last_name','position','email','options'];
-  columna: string[] =['concept_id','concept_name','count','unit_value','total_value','options'];
-  // userTest = [
-  //   {
-  //     LineaNegocio:'Syc Group',
-  //     Cargo:'Aprendiz',
-  //     NombreCompleto:'Victor Manuel Holguin Marin',
-  //     CC:'1193099811',
-  //   },
-  // ]
-
+  id:any;
+  name:any;
+  created_at:any;
   @ViewChild(MatTable) tabla1!: MatTable<any>;
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
   @ViewChild(MatSort)
   sort!: MatSort;
   selectRef: any;
-  
+  DataNomina: MatTableDataSource<any>;
+  dataSource : MatTableDataSource<any>;
+  displayedColumns: string[] =['identification_number','name','last_name','position','email','options'];
+  columna: string[] =['concept_id','concept_name','count','unit_value','total_value','options'];
+  //  .........................................................................      
+  dataPayroll = {
+    created_at: '',
+    name:'',
+    id: 0,
+    validador: false,
+  }
+       
   constructor(
     private ServiceNomina: ServicioNominaService,
     private serviceEmployer: EmployeeService,
-    private serviceConcept:ConceptService,
     public dialog: MatDialog,
-    
   ) {
      this.dataSource = new MatTableDataSource();
      this.DataNomina = new MatTableDataSource();
-    //  this.DataNomina.data = this.userTest;
   } 
 
   ngOnInit(): void {
-    // this.getEmployee();
   }
 
   getEmployee() {
@@ -58,15 +54,6 @@ export class CargarDeduccionesComponent implements OnInit,AfterViewInit {
     });
   }
 
-  // getConcept( filterType:any){
-  //   this.serviceConcept.getConcepts( filterType).subscribe(
-  //     resp =>{
-  //       this.DataNomina.data = resp.data
-  //     })
-  //     console.log(this.DataNomina);
-      
-  // }
-
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
@@ -74,10 +61,12 @@ export class CargarDeduccionesComponent implements OnInit,AfterViewInit {
 
   onKeyUp(event: Event) { 
     const filterValue = (event.target as HTMLInputElement).value;
-    this.serviceEmployer.getEmployed(filterValue).subscribe(
-      resp =>{
-      this.dataSource.data = resp.data
-    });
+    if (filterValue != ''){
+      this.serviceEmployer.getEmployed(filterValue).subscribe(
+        resp =>{
+        this.dataSource.data = resp.data
+      });
+    }
 
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
@@ -90,19 +79,19 @@ export class CargarDeduccionesComponent implements OnInit,AfterViewInit {
     selectRef.componentInstance;
     selectRef.afterClosed().subscribe(result => {
       this.getEmployee(); 
+      this.openNomina(id);
+      
     });
   }
 
   openNomina(id:number){
     this.ServiceNomina.getNomina(id).subscribe(
-      resp=>{
-        console.log(resp);
-        
-        this.DataNomina.data = resp.data.concepts
+      resp => {
+        this.DataNomina.data = resp.data.concepts;
+        this.dataPayroll.created_at = resp.data.created_at;
+        this.dataPayroll.name = resp.data.user.name;
+        this.dataPayroll.id = id;
+        this.dataPayroll.validador = true;
     })
   }
-
-  
- 
 }
-
