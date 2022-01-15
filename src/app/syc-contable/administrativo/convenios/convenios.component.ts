@@ -76,9 +76,9 @@ export class ConveniosComponent implements OnInit,AfterViewInit {
   deleteConvenant(id :any){
     this.serviceConvenant.deleteConvenant(id).subscribe(res => {
       this.getConvenant();  
-
     });
  }
+ 
 
 
 

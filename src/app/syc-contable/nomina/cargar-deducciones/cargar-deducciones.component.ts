@@ -1,8 +1,9 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { ConfirmacionComponent } from 'src/app/share/confirmacion/confirmacion.component';
 import { EmployeeService } from '../../administrativo/services/empleados/employee.service';
 import { ConceptService } from '../../administrativo/services/nomina/concept.service';
 import { ServicioNominaService } from '../../administrativo/services/nomina/servicio-nomina.service';
@@ -15,13 +16,14 @@ import { ModalSeleccionarComponent } from '../modal-seleccionar/modal-selecciona
 })
 export class CargarDeduccionesComponent implements OnInit,AfterViewInit {
 
-  id:any;
-  name:any;
-  created_at:any;
-  @ViewChild(MatTable) tabla1!: MatTable<any>;
+  @Input() id?: any;
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
+  @ViewChild(MatTable) tabla1!: MatTable<any>;
   @ViewChild(MatSort)
+  conceptId:any;
+  created_at:any;
+  name:any;
   sort!: MatSort;
   selectRef: any;
   DataNomina: MatTableDataSource<any>;
@@ -97,9 +99,17 @@ export class CargarDeduccionesComponent implements OnInit,AfterViewInit {
     })
   }
 
-  deleteNomina(id :any){
-    this.serviceconcept.removeConcept(id).subscribe(res => {
-      this.openNomina(id);  
+  openConfirmation(conceptId?: any): void{
+    const ConfirmationRef = this.dialog.open(ConfirmacionComponent);
+
+    ConfirmationRef.afterClosed().subscribe(resp => {
+      resp ? this.deleteNomina(this.conceptId): '';
+    });
+  }
+
+  deleteNomina(conceptId :any){
+    this.serviceconcept.removeConcept(conceptId).subscribe(res => {
+     this.openNomina(conceptId)
     });
  }
 }

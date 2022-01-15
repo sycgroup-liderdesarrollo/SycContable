@@ -24,8 +24,6 @@ import { MatDialogModule } from '@angular/material/dialog';
   declarations: [
     CargarDeduccionesComponent,
     ModalSeleccionarComponent,
-    
-    
   ],
 
   imports: [

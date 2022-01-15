@@ -25,7 +25,7 @@ export class ConceptService {
     return this.http.post<any>(`${environment.API_Url}payrollConcept/${id}` ,formdata);
   }
 
-  removeConcept(id:any){
-    return this.http.delete<any>(`${environment.API_Url}payroll/`+ id);
+  removeConcept(conceptId:any){
+    return this.http.delete<any>(`${environment.API_Url}concept/${conceptId}`);
   }
 }
