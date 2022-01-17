@@ -28,15 +28,15 @@ export class CargarDeduccionesComponent implements OnInit,AfterViewInit {
   DataNomina: MatTableDataSource<any>;
   dataSource : MatTableDataSource<any>;
   displayedColumns: string[] =['identification_number','name','last_name','position','email','options'];
-  columna: string[] =['concept_id','concept_name','count','unit_value','total_value','options'];
-  //  .........................................................................      
+  columna: string[] = ['concept_id', 'concept_name', 'concept_type','count','unit_value','total_value','options'];
+  //  .........................................................................
   dataPayroll = {
     created_at: 'short',
     name:'',
     id: 0,
     validador: false,
   }
-       
+
   constructor(
     private ServiceNomina: ServicioNominaService,
     private serviceEmployer: EmployeeService,
@@ -46,7 +46,7 @@ export class CargarDeduccionesComponent implements OnInit,AfterViewInit {
   ) {
      this.dataSource = new MatTableDataSource();
      this.DataNomina = new MatTableDataSource();
-  } 
+  }
 
   ngOnInit(): void {
   }
@@ -63,7 +63,7 @@ export class CargarDeduccionesComponent implements OnInit,AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
-  onKeyUp(event: Event) { 
+  onKeyUp(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     if (filterValue != ''){
       this.serviceEmployer.getEmployed(filterValue).subscribe(
@@ -82,9 +82,9 @@ export class CargarDeduccionesComponent implements OnInit,AfterViewInit {
     id? selectRef.componentInstance.id = id : null;
     selectRef.componentInstance;
     selectRef.afterClosed().subscribe(result => {
-      this.getEmployee(); 
+      this.getEmployee();
       this.openNomina(id);
-      
+
     });
   }
 
