@@ -11,6 +11,8 @@ export class ConceptService {
     private http:HttpClient,
   ) { }
 
+  
+
   headers : HttpHeaders = new HttpHeaders({
     'Content-Type': 'application/json'
   });
@@ -25,7 +27,7 @@ export class ConceptService {
     return this.http.post<any>(`${environment.API_Url}payrollConcept/${id}` ,formdata);
   }
 
-  removeConcept(conceptId:any){
-    return this.http.delete<any>(`${environment.API_Url}concept/${conceptId}`);
+  removeConcept(payrollId:any,conceptPivotId:any){
+    return this.http.delete<any>(`${environment.API_Url}payrollDeleteConcept/${payrollId}`,{headers: this.headers, params:{ 'conceptPivotId': conceptPivotId}});
   }
 }

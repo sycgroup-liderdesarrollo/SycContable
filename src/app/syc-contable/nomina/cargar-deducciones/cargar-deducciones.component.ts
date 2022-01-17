@@ -21,7 +21,6 @@ export class CargarDeduccionesComponent implements OnInit,AfterViewInit {
   paginator!: MatPaginator;
   @ViewChild(MatTable) tabla1!: MatTable<any>;
   @ViewChild(MatSort)
-  conceptId:any;
   created_at:any;
   name:any;
   sort!: MatSort;
@@ -32,7 +31,7 @@ export class CargarDeduccionesComponent implements OnInit,AfterViewInit {
   columna: string[] =['concept_id','concept_name','count','unit_value','total_value','options'];
   //  .........................................................................      
   dataPayroll = {
-    created_at: '',
+    created_at: 'short',
     name:'',
     id: 0,
     validador: false,
@@ -42,7 +41,8 @@ export class CargarDeduccionesComponent implements OnInit,AfterViewInit {
     private ServiceNomina: ServicioNominaService,
     private serviceEmployer: EmployeeService,
     public dialog: MatDialog,
-    private serviceconcept: ConceptService
+    private serviceconcept: ConceptService,
+    
   ) {
      this.dataSource = new MatTableDataSource();
      this.DataNomina = new MatTableDataSource();
@@ -88,28 +88,30 @@ export class CargarDeduccionesComponent implements OnInit,AfterViewInit {
     });
   }
 
-  openNomina(id:number){
-    this.ServiceNomina.getNomina(id).subscribe(
+  openNomina(PayrollId:number){
+    this.ServiceNomina.getNomina(PayrollId).subscribe(
       resp => {
         this.DataNomina.data = resp.data.concepts;
         this.dataPayroll.created_at = resp.data.created_at;
         this.dataPayroll.name = resp.data.user.name;
-        this.dataPayroll.id = id;
+        this.dataPayroll.id = PayrollId;
         this.dataPayroll.validador = true;
     })
   }
 
-  openConfirmation(conceptId?: any): void{
+  openConfirmation(payrollId:any,conceptPivotId:any): void{
     const ConfirmationRef = this.dialog.open(ConfirmacionComponent);
-
     ConfirmationRef.afterClosed().subscribe(resp => {
-      resp ? this.deleteNomina(this.conceptId): '';
+      resp ? this.deleteConceptPayroll(payrollId,conceptPivotId): '';
+      
     });
   }
 
-  deleteNomina(conceptId :any){
-    this.serviceconcept.removeConcept(conceptId).subscribe(res => {
-     this.openNomina(conceptId)
+  deleteConceptPayroll(PayrollId:any, conceptPivotId:any){
+    this.serviceconcept.removeConcept(PayrollId,conceptPivotId).subscribe(res => {
+     this.openNomina(PayrollId);
+     
     });
+    
  }
 }
