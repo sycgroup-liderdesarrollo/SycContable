@@ -1,47 +1,44 @@
-<mat-nav-list role="list">
-    <div class="container" style="text-align: center;">
-        <img class="img" src="https://media-exp1.licdn.com/dms/image/C560BAQFjWmGTmZL-bw/company-logo_200_200/0/1596636307248?e=2159024400&v=beta&t=BIz4ner1q2khkSTXb7zDhByPxqOjsb7fbkARbecpq1o" alt=""><h1 class="h1"> S&C CONTABLE</h1>
-    </div>  
+    <mat-nav-list role="list">
             <div class="div-group-item">
-                <h1>Administrativos</h1>
-              
-                <div class="div-content-item">
-                    <a mat-list-item [routerLink]="['/syc-contable/administrativo/empleado']" (click)="sidebar.close()" class="items-sidenav"><mat-icon color="primary">person_add</mat-icon>Empleados</a>
-                </div>
+                    <h1>Administrativos</h1>
                 
-                <div class="div-content-item">
-                    <a mat-list-item [routerLink]="['/syc-contable/administrativo/convenios']" (click)="sidebar.close()" class="items-sidenav"><mat-icon color="primary">person_add</mat-icon>Convenios</a>
-                </div>
-                <div class="div-content-item">
-                    <a mat-list-item [routerLink]="['/syc-contable/administrativo/proveedores']" (click)="sidebar.close()" class="items-sidenav"><mat-icon color="primary">person_add</mat-icon>Proveedores</a>
-                </div>
+                    <div class="div-content-item">
+                        <a mat-list-item [routerLink]="['/syc-contable/administrativo/empleado']" (click)="sidebar.close()" class="items-sidenav"><mat-icon color="primary">person_add</mat-icon>Empleados</a>
+                    </div>
                     
-                        <mat-divider class="title-divider"></mat-divider>
+                    <div class="div-content-item">                
+                        <ul id="div-content-item">
+                                <a mat-list-item (click)="expand = !expand" class="items-sidenav" data-bs-toggle="collapse" data-bs-target="#extend-collapse" aria-expanded="true">
+                                    <mat-icon color="primary">person_add</mat-icon>
+                                    Convenios
+                                <mat-icon class="mat-icon-rtl-mirror">
+                                    {{expand ? 'expand_more' : 'chevron_right'}}
+                                </mat-icon>
+                            </a>
+                            <div *ngIf="expand" class="collapse" id="extend-collapse" class="items-sidenav">
+                                <ul class="list-unstyled fw-normal pb-1 small">
+                                    <li><a (click)="sidebar.close()" [routerLink]="['/syc-contable/administrativo/convenios']" class="btn margin" ><mat-icon color="primary">person_add</mat-icon>Crear convenio</a></li>
+                                    <li><a (click)="sidebar.close()" [routerLink]="['/syc-contable/administrativo/asignarConvenio']" class="btn" ><mat-icon color="primary">person_add</mat-icon>Asignar convenio</a></li>
+                                </ul>
+                            </div>
+                        </ul>
+                    </div>
 
-                <h1>Nomina</h1>
-        
-                 <div class="div-content-item">
-                    <a mat-list-item [routerLink]="['/syc-contable/nomina/cargarDeducciones']" (click)="sidebar.close()" class="items-sidenav"><mat-icon color="primary">attach_money</mat-icon>Cargar Deducciones</a>
-                 </div>
-
-                        <mat-divider class="title-divider"></mat-divider>
-
-                <h1>Contabilidad</h1>
-                        
-                <div class="div-content-item">
-                    <a mat-list-item [routerLink]="['/syc-contable/contabilidad']" (click)="sidebar.close()" class="items-sidenav"><mat-icon color="primary">import_contacts</mat-icon>Registre Trabajador</a>
-                </div>
-
-                <h1>Seguridad</h1>
-                        
-                <div class="div-content-item">
-                    <a mat-list-item [routerLink]="['/syc-contable/seguridad/roles']" (click)="sidebar.close()" class="items-sidenav"><mat-icon color="primary">manage_accounts</mat-icon>Roles</a>
-                </div>
-
-                        <mat-divider class="title-divider"></mat-divider>
-
-                
-
-    </div>
-           
+                    <div class="div-content-item">
+                        <a mat-list-item [routerLink]="['/syc-contable/administrativo/proveedores']" (click)="sidebar.close()" class="items-sidenav"><mat-icon color="primary">person_add</mat-icon>Proveedores</a>
+                    </div>
+                            <!-- ......................................................... -->
+                    <h1>Nomina</h1>
+            
+                    <div class="div-content-item">
+                        <a mat-list-item [routerLink]="['/syc-contable/nomina/cargarDeducciones']" (click)="sidebar.close()" class="items-sidenav"><mat-icon color="primary">attach_money</mat-icon>Cargar Deducciones</a>
+                    </div>
+                            <!-- ..................................................................... -->
+                    <h1>Seguridad</h1>
+                            
+                    <div class="div-content-item">
+                        <a mat-list-item [routerLink]="['/syc-contable/seguridad/roles']" (click)="sidebar.close()" class="items-sidenav"><mat-icon color="primary">manage_accounts</mat-icon>Roles</a>
+                    </div>      
+        </div>
+            
 

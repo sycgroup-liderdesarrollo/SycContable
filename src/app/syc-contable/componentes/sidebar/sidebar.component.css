@@ -17,17 +17,18 @@
     font-family: "Open Sans";
     font-weight: bold;
     color: rgb(126, 127, 129);
+    
 }
 
 .div-content-item .mat-icon{
     margin-right: 5px;
     margin: 10px;
-    color: rgb(100, 101, 102);
+    color: rgb(17, 101, 184);
+    margin-left: 0px;
+    text-align: left;
     
 }
-.div-group-item{
-    margin-top: 60px;
-}
+
 .img {
     width: 60px;
     height: 60px;
@@ -39,7 +40,7 @@
      font-size: 1.5rem;
      margin-top: 10px;
      font-size: 2rem;
-    font-family:"algerian" ;
+    font-family:"Open Sans", sans-serif ;
     font-weight: bold;
     color: rgb(145, 146, 146);
     margin-top: 20px;
@@ -50,7 +51,7 @@
     box-sizing:border-box;
     color:rgb(121, 122, 122);
     display:block;
-    font-family:"algerian";
+    font-family:"Open Sans", sans-serif;
     font-size:20px;
     font-weight:600;
     height:20px;
@@ -64,5 +65,19 @@
     font-weight:500;
     color:rgb(136, 152, 170);
   }
+  .btn{
+      font-size: 13px;
+      margin-left: 20px;
+  }
+  
+  #div-content-item{
+      font-size: 0.9rem;
+      margin-top: 10px;
+      font-family: "Open Sans";
+      font-weight: bold;
+      color: rgb(126, 127, 129);
+      padding: 0px;
+  }
+  
 
 

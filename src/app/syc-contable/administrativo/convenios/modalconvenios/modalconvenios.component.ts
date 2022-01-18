@@ -75,7 +75,6 @@ export class ModalconveniosComponent implements OnInit {
   }
   
 crearform(dataConvenant?:any){
-
   this.form = this.fb.group({
     name: [dataConvenant?.name ?? '', Validators.required],
     value: [ dataConvenant?.value ?? '', Validators.required],

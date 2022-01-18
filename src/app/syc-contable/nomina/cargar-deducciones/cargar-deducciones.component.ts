@@ -64,13 +64,14 @@ export class CargarDeduccionesComponent implements OnInit,AfterViewInit {
   }
 
   onKeyUp(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
+    const filterValue = (event.target as HTMLInputElement).value.trim();
     if (filterValue != ''){
       this.serviceEmployer.getEmployed(filterValue).subscribe(
         resp =>{
         this.dataSource.data = resp.data
       });
     }
+    this.dataSource.data = [];
 
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
@@ -89,6 +90,8 @@ export class CargarDeduccionesComponent implements OnInit,AfterViewInit {
   }
 
   openNomina(PayrollId:number){
+    this.dataSource.data = [];
+    this.DataNomina.data = [];
     this.ServiceNomina.getNomina(PayrollId).subscribe(
       resp => {
         this.DataNomina.data = resp.data.concepts;

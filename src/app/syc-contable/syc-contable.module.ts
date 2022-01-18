@@ -17,6 +17,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
 import { ShareModule } from '../share/share.module';
+import {MatTreeModule} from '@angular/material/tree';
 
 
 
@@ -43,7 +44,8 @@ import { ShareModule } from '../share/share.module';
     MatTableModule,
     MatPaginatorModule,
     MatCardModule,
-    ShareModule
+    ShareModule,
+    MatTreeModule
   ]
   
 })

@@ -3,10 +3,10 @@
           <mat-form-field class="col-12" appearance="legacy">
               <mat-icon matSuffix>search</mat-icon>
               <mat-label class="label" >Buscar Empleado</mat-label>
-              <input matInput autocomplete="off" (keyup)="onKeyUp($event)" placeholder="Empleado" #input>
+              <input matInput autocomplete="off" (keyup)="onKeyUp($event)" placeholder="Ej: Victor" #input>
           </mat-form-field>
 
-        <div class="div">
+        <div class="div" *ngIf="dataSource.data[0]">
             <table mat-table [dataSource]="dataSource" matSort>
 
               <ng-container matColumnDef="identification_number">
@@ -61,13 +61,13 @@
       </mat-card>
 </div>
 
-<div class="col-12 payroll">
+<div class="col-12 payroll" *ngIf="DataNomina.data[0]">
     <mat-card class="card">
         <div class="div">
             <div *ngIf="dataPayroll.validador" class="flex col-12">
               <h1 class="col-5">{{ dataPayroll.created_at | date:'short'}}</h1>
               <h1 class="col-5">{{dataPayroll.name}}</h1>
-              <button   mat-stroked-button color="primary" class="col-2" (click)="openDialogAgregar(dataPayroll.id)">AGREGAR</button>
+              <button  mat-stroked-button color="primary" class="col-2" (click)="openDialogAgregar(dataPayroll.id)">AGREGAR</button>
             </div>
             <table mat-table [dataSource]="DataNomina" class="mat-elevation-z8"  >
 
@@ -84,8 +84,8 @@
               <ng-container matColumnDef="concept_type">
                 <th mat-header-cell *matHeaderCellDef> Tipo de Concepto </th>
                 <td mat-cell *matCellDef="let element">
-                  <p *ngIf="element.concept_type_id == 1">Devengado <mat-icon style="color:green; margin-left: 10px">trending_up</mat-icon></p>
-                  <p *ngIf="element.concept_type_id == 2">Deducido <mat-icon style="color:red; margin-left: 10px">trending_down</mat-icon></p>
+                  <p *ngIf="element.concept_type_id == 1"><mat-icon style="color:green; margin-left: 10px">trending_up</mat-icon></p>
+                  <p *ngIf="element.concept_type_id == 2"><mat-icon style="color:red; margin-left: 10px">trending_down</mat-icon></p>
                 </td>
               </ng-container>
 

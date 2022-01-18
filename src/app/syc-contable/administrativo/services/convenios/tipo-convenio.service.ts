@@ -13,5 +13,8 @@ export class TipoConvenioService {
   getConvenant() :Observable<any> {
     return this.http.get<any>(`${environment.API_Url}covenantType`);
   }
+  asignarConvenio(convenioId:any,formdata:any) :Observable<any> {
+    return this.http.post<any>(`${environment.API_Url}user/asignarConvenio/${convenioId}`,formdata);
+  }
 
 }

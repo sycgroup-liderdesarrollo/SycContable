@@ -1,0 +1,38 @@
+<div class="container">
+    <mat-toolbar>
+        <span mat-dialog-title>Asignar Convenio</span>
+    </mat-toolbar>
+    <mat-card>
+        <form *ngIf="form" [formGroup]="form" >    
+                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                        <mat-form-field class="ancho" >
+                            <mat-label>NOMBRE DEL CONVENIO</mat-label>
+                            <mat-select formControlName="covenant_id" name="convenio">
+                                <mat-option *ngFor="let convenio of convenants" [value]="convenio.id">
+                                  {{convenio.name}}
+                                </mat-option>
+                              </mat-select>
+                          </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                        <mat-form-field class="ancho" >
+                            <mat-label>TOTAL DE DEUDAS</mat-label>
+                            <mat-select formControlName="dues" name="deudas">
+                                <mat-option *ngFor="let dues of deudas" [value]="dues.id">
+                                  {{dues.name}}
+                                </mat-option>
+                              </mat-select>
+                          </mat-form-field>
+                    </mat-grid-tile>
+                    
+                   
+                    <mat-grid-tile [colspan]="2" [rowspan]="1" >
+                        <button mat-raised-button mat-dialog-close style="margin-right: 20px;">Asignar</button>
+                    </mat-grid-tile>
+        </form>
+
+    </mat-card>
+
+</div>
+

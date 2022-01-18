@@ -21,6 +21,8 @@ import { ModalconveniosComponent } from './convenios/modalconvenios/modalconveni
 import { ModalproveedoresComponent } from './proveedores/modalproveedores/modalproveedores.component';
 import {MatSelectModule} from '@angular/material/select';
 import { ShareModule } from 'src/app/share/share.module';
+import { AsignarConvenioComponent } from './convenios/asignar-convenio/asignar-convenio.component';
+import { ModalAsignarConvenioComponent } from './convenios/asignar-convenio/modal-asignar-convenio/modal-asignar-convenio.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { ShareModule } from 'src/app/share/share.module';
     ModalconveniosComponent,
     ConveniosComponent,
     ModalproveedoresComponent,
+    AsignarConvenioComponent,
+    ModalAsignarConvenioComponent,
   ],
 
   imports: [
