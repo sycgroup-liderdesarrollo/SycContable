@@ -10,8 +10,11 @@ export class TipoConvenioService {
 
   constructor(private http: HttpClient) { }
 
-  getConvenant() :Observable<any> {
+  getConvenantType() :Observable<any> {
     return this.http.get<any>(`${environment.API_Url}covenantType`);
+  }
+  getConvenant() :Observable<any> {
+    return this.http.get<any>(`${environment.API_Url}covenant`);
   }
   asignarConvenio(convenioId:any,formdata:any) :Observable<any> {
     return this.http.post<any>(`${environment.API_Url}user/asignarConvenio/${convenioId}`,formdata);

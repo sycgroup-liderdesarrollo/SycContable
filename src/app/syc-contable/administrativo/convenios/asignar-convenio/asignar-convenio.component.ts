@@ -24,13 +24,12 @@ export class AsignarConvenioComponent implements OnInit {
   @ViewChild(MatSort)
   sort!: MatSort;
   dialogRef: any;
-  
 
-  constructor( 
+  constructor(
     public dialog: MatDialog,
     private serviceEmployer: EmployeeService,
     private serviceconvenant:ConvenantService
-    ) { 
+    ) {
       this.dataSource = new MatTableDataSource();
     }
 
@@ -45,7 +44,7 @@ export class AsignarConvenioComponent implements OnInit {
     });
 
   }
-      
+
   getEmployee(){
     this.serviceEmployer.getEmployed().subscribe(
       resp => {
@@ -73,7 +72,7 @@ export class AsignarConvenioComponent implements OnInit {
     const dialogRef = this.dialog.open(ModalAsignarConvenioComponent);
     id? dialogRef.componentInstance.id = id: null;
     dialogRef.afterClosed().subscribe((result: any) => {
-      this.getConvenant(); 
+      this.getConvenant();
     });
   }
 }

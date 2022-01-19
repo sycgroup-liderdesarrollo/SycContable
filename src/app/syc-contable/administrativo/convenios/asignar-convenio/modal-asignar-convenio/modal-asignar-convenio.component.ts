@@ -13,10 +13,11 @@ import { ModalconveniosComponent } from '../../modalconvenios/modalconvenios.com
 export class ModalAsignarConvenioComponent implements OnInit {
 
   @Input() id: any;
-  convenants:any;
+  covenants:any;
   deudas:any;
   form!: FormGroup;
-  dataConvenant: any;
+  covenantList:any;
+
 
   constructor(
     private dialog: MatDialogRef<ModalconveniosComponent>,
@@ -25,18 +26,23 @@ export class ModalAsignarConvenioComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.crearform();
-
-    this.AsignarService.asignarConvenio(this.convenants, this.form).subscribe(resp=>{
-      this.convenants = resp.data
+    this.AsignarService.getConvenant().subscribe((resp)=>{
+      this.covenantList = resp.data;
+      console.log(this.covenantList)
     })
   }
 
-  crearform(dataConvenant?:any){
-    this.form = this.fb.group({
-      covenant_id: [dataConvenant?.covenant_id ?? '', Validators.required],
-      dues: [ dataConvenant?.dues ?? '', Validators.required],
-    });
+  cerrar(){
+    this.dialog.close();
   }
 
+  asignarCovenant(){
+    this.AsignarService.asignarConvenio(this.covenants, this.form).subscribe(resp=>{
+    this.covenants = resp.data;
+    })
+  }
+
+  covenant(){
+
+  }
 }
