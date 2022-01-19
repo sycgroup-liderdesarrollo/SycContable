@@ -16,8 +16,14 @@ export class TipoConvenioService {
   getConvenant() :Observable<any> {
     return this.http.get<any>(`${environment.API_Url}covenant`);
   }
-  asignarConvenio(convenioId:any,formdata:any) :Observable<any> {
-    return this.http.post<any>(`${environment.API_Url}user/asignarConvenio/${convenioId}`,formdata);
+  asignarConvenio(userId:any,formdata:any) :Observable<any> {
+    console.log(userId, "Form data: ", formdata);
+    console.log('entró al servicio');
+    
+    return this.http.post<any>(`${environment.API_Url}user/asignarConvenio/${userId}`,formdata);
+  }
+  selectCovenant(covenantId:any): Observable<any>{
+    return this.http.get<any>(`${environment.API_Url}covenant/${covenantId}`);
   }
 
 }

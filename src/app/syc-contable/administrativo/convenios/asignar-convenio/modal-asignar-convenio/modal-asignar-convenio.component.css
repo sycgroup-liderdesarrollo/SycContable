@@ -1,6 +1,15 @@
 .example-card {
-  max-width: 400px;
+  height: 360px;
+  width: 500px;
+  text-align: center;
+  margin-top: 30px;
 }
 .title{
-  margin-top: 15px;
+  font-size:1.33;
+  font-size: "Open Sans", sans-serif;
 }
+.ancho{
+  width: 70%;
+  margin-top: 20px;
+}
+

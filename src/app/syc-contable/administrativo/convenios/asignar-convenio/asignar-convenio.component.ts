@@ -17,7 +17,7 @@ export class AsignarConvenioComponent implements OnInit {
   dataSource : MatTableDataSource<any>;
   paginadores : string[] = ['identification_number','name','last_name','position','email','options'];
 
-  @Input() id: any;
+  @Input() row: any;
   @ViewChild(MatTable) tabla1!: MatTable<any>;
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
@@ -35,14 +35,6 @@ export class AsignarConvenioComponent implements OnInit {
 
   ngOnInit(): void {
     this.getEmployee();
-  }
-
-  getConvenant() {
-    this.serviceconvenant.getcovenant().subscribe(
-      resp =>{
-      this.dataSource.data = resp.data
-    });
-
   }
 
   getEmployee(){
@@ -70,9 +62,9 @@ export class AsignarConvenioComponent implements OnInit {
 
   openDialog(id:any): void {
     const dialogRef = this.dialog.open(ModalAsignarConvenioComponent);
-    id? dialogRef.componentInstance.id = id: null;
+    id? dialogRef.componentInstance.row = id: null;
     dialogRef.afterClosed().subscribe((result: any) => {
-      this.getConvenant();
+     this.getEmployee()
     });
   }
 }

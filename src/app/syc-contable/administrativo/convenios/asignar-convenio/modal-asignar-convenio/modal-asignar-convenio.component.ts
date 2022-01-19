@@ -11,12 +11,13 @@ import { ModalconveniosComponent } from '../../modalconvenios/modalconvenios.com
   styleUrls: ['./modal-asignar-convenio.component.css']
 })
 export class ModalAsignarConvenioComponent implements OnInit {
-
-  @Input() id: any;
-  covenants:any;
+  
+  @Input() row: any;
+  covenant:any;
   deudas:any;
   form!: FormGroup;
   covenantList:any;
+  covenantActual:any;
 
 
   constructor(
@@ -26,23 +27,39 @@ export class ModalAsignarConvenioComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    this.crearform(); this.row;
     this.AsignarService.getConvenant().subscribe((resp)=>{
       this.covenantList = resp.data;
-      console.log(this.covenantList)
     })
+  }
+  crearform(dataConvenant?:any){
+    this.form = this.fb.group({
+      covenant_id: [dataConvenant?.covenantList ?? '', Validators.required],
+      dues: [ dataConvenant?.dues ?? '', Validators.required],
+    });
   }
 
   cerrar(){
     this.dialog.close();
   }
 
-  asignarCovenant(){
-    this.AsignarService.asignarConvenio(this.covenants, this.form).subscribe(resp=>{
-    this.covenants = resp.data;
+  asignarCovenant(userId:any,formData:any){
+    console.log("El id del usuairo es: "+userId);
+    console.log("ELa formdata es "+formData);
+    
+    this.AsignarService.asignarConvenio(userId, formData).subscribe(resp=>{
+    this.covenant = resp;
+    this.dialog.close();
+    })
+  }
+  actualCovenant(covenantId:number){
+    console.log(covenantId);
+
+    this.AsignarService.selectCovenant(covenantId).subscribe((resp)=>{
+      console.log(resp.data);
+      
+      this.covenantActual = resp.data;
     })
   }
 
-  covenant(){
-
-  }
 }
