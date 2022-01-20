@@ -12,8 +12,12 @@ export class ServicioProveedoresService {
     private http: HttpClient
     ) {}
     
-  getProvider() :Observable<any> {
+  getProviders() :Observable<any> {
+   
+    
     return this.http.get<any>(`${environment.API_Url}provider`);
+    
+    
   }
  
   postProvider(formdata : any) :Observable<any> {

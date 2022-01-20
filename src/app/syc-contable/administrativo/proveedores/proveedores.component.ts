@@ -34,14 +34,13 @@ export class ProveedoresComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getProvider();
+    this.getProviders();
   }
 
-  getProvider() {
-    this.serviceproviders.getProvider().subscribe(
+  getProviders() {
+    this.serviceproviders.getProviders().subscribe(
       resp =>{
       this.dataSource.data = resp.data
-      console.log(this.dataSource.data);
       
     });
 
@@ -65,7 +64,7 @@ export class ProveedoresComponent implements OnInit {
     id? dialogRef.componentInstance.id = id : null;
     dialogRef.componentInstance.isEdit = isEdit ;
     dialogRef.afterClosed().subscribe(result => {
-      this.getProvider(); 
+      this.getProviders(); 
     });
   };
 
@@ -78,7 +77,7 @@ export class ProveedoresComponent implements OnInit {
   }
   deleteProvider(id :any){
     this.serviceproviders.deleteProvider(id).subscribe(res => {
-      this.getProvider();  
+      this.getProviders();  
 
     });
 

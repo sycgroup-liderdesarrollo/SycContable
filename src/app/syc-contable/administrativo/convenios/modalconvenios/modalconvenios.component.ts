@@ -5,6 +5,7 @@ import { ConceptConvenioService } from '../../services/convenios/concept-conveni
 import { ConvenantService } from '../../services/convenios/convenant.service';
 import { PeriodicidadConvenioService } from '../../services/convenios/periodicidad-convenio.service';
 import { TipoConvenioService } from '../../services/convenios/tipo-convenio.service';
+import { ServicioProveedoresService } from '../../services/proveedores/servicio-proveedores.service';
 
 
 @Component({
@@ -26,6 +27,7 @@ export class ModalconveniosComponent implements OnInit {
   name:any;
   value:any;
   respuesta:any;
+  providers:any
   
   actives = [
     {value : "1", name : "Activo"},
@@ -39,6 +41,7 @@ export class ModalconveniosComponent implements OnInit {
     private convenantservices: ConvenantService,
     private servicesperiodicidad:PeriodicidadConvenioService,
     private servicesTipoConvenio:TipoConvenioService,
+    private serviceproviders:ServicioProveedoresService,
   ) { }
 
   ngOnInit(): void {
@@ -54,8 +57,14 @@ export class ModalconveniosComponent implements OnInit {
   });
   this.servicesTipoConvenio.getConvenantType().subscribe(rest => {
     this.covenantType = rest.data
+  });
+  this.serviceproviders.getProviders().subscribe(resp=> {
+    console.log(resp);
+    
+    this.providers = resp.data
   })
   }
+  
 
   editConvenant(){
     this.convenantservices.putConvenant(this.id).subscribe(
@@ -82,6 +91,7 @@ crearform(dataConvenant?:any){
     covenant_type_id: [dataConvenant?.covenant_type_id ?? '', Validators.required],
     periodicity_type_id : [dataConvenant?.periodicity_type_id ?? '', Validators.required],
     concept_name: [dataConvenant?.concept.name ?? '', Validators.required],
+    providers:[dataConvenant?.provider ?? '', Validators.required],
   });
 }
 
@@ -101,6 +111,7 @@ updateConvenio(formData:any){
     this.dialog.close();
   });
 }
+
 
 
 
