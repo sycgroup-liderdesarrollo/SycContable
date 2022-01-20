@@ -14,10 +14,10 @@
                    
                     <mat-grid-tile [colspan]="1" [rowspan]="1" >
                         <mat-form-field class="ancho" >
-                            <mat-label>CONVENIO</mat-label>
+                            <mat-label>TIPO DE CONVENIO</mat-label>
                             <mat-select formControlName="covenant_type_id" name="convenio" [disabled]="!isEdit">
-                                <mat-option *ngFor="let convenio of convenants" [value]="convenio.id">
-                                  {{convenio.name}}
+                                <mat-option *ngFor="let covenant of covenantType" [value]="covenant.id">
+                                  {{covenant.name}}
                                 </mat-option>
                               </mat-select>
                           </mat-form-field>

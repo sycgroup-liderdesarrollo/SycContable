@@ -51,10 +51,9 @@ export class ModalSeleccionarComponent implements OnInit {
     });
   }
 
-  createPayroll(formData:any,id:any){
+  addConceptPayroll(formData:any,id:any){
     this.serviceConcept.addConcepts(formData,id).subscribe(res => {
       this.respuesta = res;
-      console.log(res);
       this.dialog.close();
     })
   }

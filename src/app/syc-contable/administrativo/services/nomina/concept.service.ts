@@ -19,11 +19,10 @@ export class ConceptService {
 
 
   getConcepts( typeId: number){
-      return this.http
-        .get<any>(`${environment.API_Url}concept`,{headers: this.headers, params: {'type': typeId}});
+      return this.http.get<any>(`${environment.API_Url}concept`,{headers: this.headers, params: {'type': typeId}});
   }
 
-  addConcepts(formdata:any, id:any) :Observable<any> {
+  addConcepts(formdata:any, id:number) :Observable<any> {
     return this.http.post<any>(`${environment.API_Url}payrollConcept/${id}` ,formdata);
   }
 

@@ -33,7 +33,7 @@ export class CargarDeduccionesComponent implements OnInit,AfterViewInit {
   dataPayroll = {
     created_at: 'short',
     name:'',
-    id: 0,
+    userId: 0,
     validador: false,
   }
 
@@ -51,8 +51,8 @@ export class CargarDeduccionesComponent implements OnInit,AfterViewInit {
   ngOnInit(): void {
   }
 
-  getEmployee() {
-    this.serviceEmployer.getEmployed().subscribe(
+  getEmployee(id?:any) {
+    this.serviceEmployer.getEmployed(id).subscribe(
       resp =>{
       this.dataSource.data = resp.data
     });
@@ -78,27 +78,28 @@ export class CargarDeduccionesComponent implements OnInit,AfterViewInit {
     }
   }
 
-  openDialogAgregar(id?: any): void {
+  openDialogAgregar(payrollId:number,id?: any): void {  
     const selectRef = this.dialog.open(ModalSeleccionarComponent);
-    id? selectRef.componentInstance.id = id : null;
+    payrollId? selectRef.componentInstance.id = payrollId : null;
     selectRef.componentInstance;
     selectRef.afterClosed().subscribe(result => {
-      this.getEmployee();
+      this.getEmployee(id);
       this.openNomina(id);
 
     });
   }
 
-  openNomina(PayrollId:number){
+   openNomina(userId:number){
     this.dataSource.data = [];
     this.DataNomina.data = [];
-    this.ServiceNomina.getNomina(PayrollId).subscribe(
+    this.ServiceNomina.getNomina(userId).subscribe(
       resp => {
         this.DataNomina.data = resp.data.concepts;
         this.dataPayroll.created_at = resp.data.created_at;
         this.dataPayroll.name = resp.data.user.name;
-        this.dataPayroll.id = PayrollId;
+        this.dataPayroll.userId = userId;
         this.dataPayroll.validador = true;
+        
     })
   }
 

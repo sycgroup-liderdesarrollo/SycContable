@@ -10,11 +10,11 @@ export class TipoConvenioService {
 
   constructor(private http: HttpClient) { }
 
-  getConvenantType() :Observable<any> {
-    return this.http.get<any>(`${environment.API_Url}covenantType`);
-  }
   getConvenant() :Observable<any> {
     return this.http.get<any>(`${environment.API_Url}covenant`);
+  }
+  getConvenantType() :Observable<any> {
+    return this.http.get<any>(`${environment.API_Url}covenantType`);
   }
   asignarConvenio(userId:any,formdata:any) :Observable<any> {
     console.log(userId, "Form data: ", formdata);

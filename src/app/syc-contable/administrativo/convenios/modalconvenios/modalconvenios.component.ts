@@ -22,7 +22,7 @@ export class ModalconveniosComponent implements OnInit {
   form!: FormGroup;
   periodicidad:any;
   convenants:any;
-  conceptType:any;
+  covenantType:any;
   name:any;
   value:any;
   respuesta:any;
@@ -39,22 +39,22 @@ export class ModalconveniosComponent implements OnInit {
     private convenantservices: ConvenantService,
     private servicesperiodicidad:PeriodicidadConvenioService,
     private servicesTipoConvenio:TipoConvenioService,
-    private servicesTipoConcepto:ConceptConvenioService,
   ) { }
 
   ngOnInit(): void {
  this.id ? this.editConvenant() : this.crearform()
 
    this.servicesperiodicidad.getperiodicidad().subscribe(rest => {
-    this.periodicidad = rest.data
+     
+     this.periodicidad = rest.data
   });
 
   this.servicesTipoConvenio.getConvenant().subscribe(rest => {
     this.convenants = rest.data
   });
-  this.servicesTipoConcepto.getconceptType().subscribe(rest => [
-    this.conceptType = rest.data
-  ])
+  this.servicesTipoConvenio.getConvenantType().subscribe(rest => {
+    this.covenantType = rest.data
+  })
   }
 
   editConvenant(){
@@ -79,7 +79,7 @@ crearform(dataConvenant?:any){
     name: [dataConvenant?.name ?? '', Validators.required],
     value: [ dataConvenant?.value ?? '', Validators.required],
     active: [dataConvenant?.active ?? '1', Validators.required],
-    covenant_type_id : [dataConvenant?.covenant_type_id ?? '', Validators.required],
+    covenant_type_id: [dataConvenant?.covenant_type_id ?? '', Validators.required],
     periodicity_type_id : [dataConvenant?.periodicity_type_id ?? '', Validators.required],
     concept_name: [dataConvenant?.concept.name ?? '', Validators.required],
   });

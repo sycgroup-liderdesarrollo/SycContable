@@ -67,8 +67,8 @@
             <div *ngIf="dataPayroll.validador" class="flex col-12">
               <h1 class="col-5">{{ dataPayroll.created_at | date:'short'}}</h1>
               <h1 class="col-5">{{dataPayroll.name}}</h1>
-              <button  mat-stroked-button color="primary" class="col-2" (click)="openDialogAgregar(dataPayroll.id)">AGREGAR</button>
-            </div>
+              <button  mat-stroked-button color="primary" class="col-2" (click)="openDialogAgregar(DataNomina.data[0].pivot.payroll_id,dataPayroll.userId)">AGREGAR</button>
+            </div> 
             <table mat-table [dataSource]="DataNomina" class="mat-elevation-z8"  >
 
               <ng-container matColumnDef="concept_id">
@@ -111,7 +111,7 @@
                       <mat-icon>more_vert </mat-icon>
                     </button>
                     <mat-menu #menu = "matMenu">
-                        <button mat-menu-item (click)=" openConfirmation(dataPayroll.id,element.pivot.id)">
+                        <button mat-menu-item (click)=" openConfirmation(dataPayroll.userId,element.pivot.id)">
                           <mat-icon>delete</mat-icon>
                           <span>Quitar</span>
                         </button>
