@@ -93,9 +93,6 @@ export class ModalconveniosComponent implements OnInit {
     });
   }
 
-  changePermanent(tipoId:number, iscuota: boolean=false){
-    
-  }
 
   crearConvenio(formData:any){ 
     this.convenantservices.postConvenant(formData).subscribe(res => {
