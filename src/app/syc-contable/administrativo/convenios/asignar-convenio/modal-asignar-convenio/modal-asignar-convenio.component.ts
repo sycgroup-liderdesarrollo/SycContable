@@ -11,7 +11,7 @@ import { ModalconveniosComponent } from '../../modalconvenios/modalconvenios.com
   styleUrls: ['./modal-asignar-convenio.component.css']
 })
 export class ModalAsignarConvenioComponent implements OnInit {
-  
+
   @Input() row: any;
   covenant:any;
   deudas:any;
@@ -36,6 +36,7 @@ export class ModalAsignarConvenioComponent implements OnInit {
     this.form = this.fb.group({
       covenant_id: [dataConvenant?.covenantList ?? '', Validators.required],
       dues: [ dataConvenant?.dues ?? '', Validators.required],
+      value: [ dataConvenant?.value ?? '', Validators.required],
     });
   }
 
@@ -46,7 +47,7 @@ export class ModalAsignarConvenioComponent implements OnInit {
   asignarCovenant(userId:any,formData:any){
     console.log("El id del usuairo es: "+userId);
     console.log("ELa formdata es "+formData);
-    
+
     this.AsignarService.asignarConvenio(userId, formData).subscribe(resp=>{
     this.covenant = resp;
     this.dialog.close();
