@@ -20,7 +20,6 @@ export class ModalSeleccionarComponent implements OnInit {
   Select!: FormGroup;
   respuesta: any;
   
- 
   constructor(
     private fb: FormBuilder,
     private servicesTipoConcepto:ConceptConvenioService,

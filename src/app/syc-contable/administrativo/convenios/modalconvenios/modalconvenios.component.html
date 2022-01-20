@@ -13,9 +13,9 @@
                     </mat-grid-tile>
                    
                     <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                        <mat-form-field class="ancho" >
+                        <mat-form-field class="ancho">
                             <mat-label>TIPO DE CONVENIO</mat-label>
-                            <mat-select formControlName="covenant_type_id" name="convenio" [disabled]="!isEdit">
+                            <mat-select formControlName="covenant_type_id" name="convenio" [disabled]="!isEdit" (selectionChange)="changePermanent($event.value)">
                                 <mat-option *ngFor="let covenant of covenantType" [value]="covenant.id">
                                   {{covenant.name}}
                                 </mat-option>
@@ -45,7 +45,7 @@
                           </mat-form-field>
                     </mat-grid-tile>
 
-                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                    <mat-grid-tile [colspan]="1" [rowspan]="1" *ngIf="form.value.covenant_type_id == 2">
                         <mat-form-field class="ancho" >
                             <mat-label>VALOR</mat-label>
                             <input matInput autocomplete="off" formControlName="value" [readonly]="!isEdit">
@@ -62,9 +62,9 @@
                     <mat-grid-tile [colspan]="1" [rowspan]="1" >
                         <mat-form-field class="ancho" >
                             <mat-label>PROVEEDORES</mat-label>
-                            <mat-select formControlName="providers" name="provider" [disabled]="!isEdit">
-                                <mat-option *ngFor="let provider of providers" [value]="providers.id">
-                                  {{providers.name}}
+                            <mat-select formControlName="provider_id" name="provider" [disabled]="!isEdit">
+                                <mat-option *ngFor="let provider_id of providers" [value]="provider_id.id">
+                                  {{provider_id.name}}
                                 </mat-option>
                               </mat-select>
                           </mat-form-field>

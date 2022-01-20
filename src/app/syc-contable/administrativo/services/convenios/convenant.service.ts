@@ -23,11 +23,9 @@ export class ConvenantService {
     return this.http.delete<any>(`${environment.API_Url}covenant/`+ id);
  }
    putConvenant(id:any): Observable<any>{
-   
   return  this.http.get<any>(`${environment.API_Url}covenant/`+ id);
 }
-updateConvenant(formdata:any, id:any): Observable<any>{
-    
+  updateConvenant(formdata:any, id:any): Observable<any>{
   return  this.http.put<any>(`${environment.API_Url}covenant/` + id,formdata);
 }
 

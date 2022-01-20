@@ -38,9 +38,7 @@ export class ConveniosComponent implements OnInit,AfterViewInit {
   getConvenant() {
       this.serviceConvenant.getcovenant().subscribe(
         resp =>{
-        this.dataSource.data = resp.data
-        console.log(this.dataSource.data);
-        
+        this.dataSource.data = resp.data   
       });
 
     }

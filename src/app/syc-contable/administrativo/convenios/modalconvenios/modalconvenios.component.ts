@@ -18,7 +18,6 @@ export class ModalconveniosComponent implements OnInit {
 @Input() id?: any;
 @Input() isEdit: boolean = true;
 
-  selectedValue!: string;
   dataConvenant: any;
   form!: FormGroup;
   periodicidad:any;
@@ -27,8 +26,10 @@ export class ModalconveniosComponent implements OnInit {
   name:any;
   value:any;
   respuesta:any;
-  providers:any
-  
+  providers:any;
+  ValueActual:any;
+  iscuota: boolean=false;
+
   actives = [
     {value : "1", name : "Activo"},
     {value : "0", name : "Inactivo"}
@@ -45,34 +46,31 @@ export class ModalconveniosComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
- this.id ? this.editConvenant() : this.crearform()
+  this.id ? this.editConvenant() : this.crearform()
 
-   this.servicesperiodicidad.getperiodicidad().subscribe(rest => {
-     
-     this.periodicidad = rest.data
-  });
+    this.servicesperiodicidad.getperiodicidad().subscribe(rest => {
+      this.periodicidad = rest.data
+    });
 
-  this.servicesTipoConvenio.getConvenant().subscribe(rest => {
-    this.convenants = rest.data
-  });
-  this.servicesTipoConvenio.getConvenantType().subscribe(rest => {
-    this.covenantType = rest.data
-  });
-  this.serviceproviders.getProviders().subscribe(resp=> {
-    console.log(resp);
-    
-    this.providers = resp.data
-  })
+    this.servicesTipoConvenio.getConvenant().subscribe(rest => {
+      this.convenants = rest.data
+    });
+
+    this.servicesTipoConvenio.getConvenantType().subscribe(rest => {
+      this.covenantType = rest.data
+    });
+
+    this.serviceproviders.getProviders().subscribe(resp=> {
+      this.providers = resp.data
+    })
+
   }
   
-
   editConvenant(){
     this.convenantservices.putConvenant(this.id).subscribe(
       resp => {
         this.dataConvenant = resp.data;
-        console.log(this.dataConvenant);
-        
-        
+
       },
       error => {
 
@@ -83,38 +81,32 @@ export class ModalconveniosComponent implements OnInit {
     )
   }
   
-crearform(dataConvenant?:any){
-  this.form = this.fb.group({
-    name: [dataConvenant?.name ?? '', Validators.required],
-    value: [ dataConvenant?.value ?? '', Validators.required],
-    active: [dataConvenant?.active ?? '1', Validators.required],
-    covenant_type_id: [dataConvenant?.covenant_type_id ?? '', Validators.required],
-    periodicity_type_id : [dataConvenant?.periodicity_type_id ?? '', Validators.required],
-    concept_name: [dataConvenant?.concept.name ?? '', Validators.required],
-    providers:[dataConvenant?.provider ?? '', Validators.required],
-  });
-}
+  crearform(dataConvenant?:any){
+    this.form = this.fb.group({
+      name: [dataConvenant?.name ?? '', Validators.required],
+      value: [ dataConvenant?.value ?? '0', Validators.required],
+      active: [dataConvenant?.active ?? '1', Validators.required],
+      covenant_type_id: [dataConvenant?.covenant_type_id ?? '', Validators.required],
+      periodicity_type_id : [dataConvenant?.periodicity_type_id ?? '', Validators.required],
+      concept_name: [dataConvenant?.concept.name ?? '', Validators.required],
+      provider_id:[dataConvenant?.provider_id ?? '', Validators.required],
+    });
+  }
 
-crearConvenio(formData:any){
-  console.log(formData);
-  
-  this.convenantservices.postConvenant(formData).subscribe(res => {
-    this.respuesta = res;
-    this.dialog.close();
-  } )
-}
-updateConvenio(formData:any){
-  console.log(formData);
-  
-  this.convenantservices.updateConvenant(formData, this.id).subscribe(res =>{
-    console.log('todo con exito');
-    this.dialog.close();
-  });
-}
+  changePermanent(tipoId:number, iscuota: boolean=false){
+    
+  }
 
-
-
-
-
+  crearConvenio(formData:any){ 
+    this.convenantservices.postConvenant(formData).subscribe(res => {
+      this.respuesta = res;
+      this.dialog.close();
+    });
+  }
+  updateConvenio(formData:any){ 
+    this.convenantservices.updateConvenant(formData, this.id).subscribe(res =>{  console.log('todo con exito');
+      this.dialog.close();
+    });
+  }
 
 }

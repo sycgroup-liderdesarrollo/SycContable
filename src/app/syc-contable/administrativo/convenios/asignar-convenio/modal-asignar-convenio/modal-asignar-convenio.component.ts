@@ -53,11 +53,7 @@ export class ModalAsignarConvenioComponent implements OnInit {
     })
   }
   actualCovenant(covenantId:number){
-    console.log(covenantId);
-
     this.AsignarService.selectCovenant(covenantId).subscribe((resp)=>{
-      console.log(resp.data);
-      
       this.covenantActual = resp.data;
     })
   }

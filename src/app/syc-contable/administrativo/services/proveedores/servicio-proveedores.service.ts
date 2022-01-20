@@ -12,14 +12,9 @@ export class ServicioProveedoresService {
     private http: HttpClient
     ) {}
     
-  getProviders() :Observable<any> {
-   
-    
-    return this.http.get<any>(`${environment.API_Url}provider`);
-    
-    
+  getProviders() :Observable<any> { 
+    return this.http.get<any>(`${environment.API_Url}provider`);   
   }
- 
   postProvider(formdata : any) :Observable<any> {
     return this.http.post<any>(`${environment.API_Url}provider`,formdata);
   }
@@ -27,11 +22,9 @@ export class ServicioProveedoresService {
      return this.http.delete<any>(`${environment.API_Url}provider/`+ id);
   }
   putProvider(id:any): Observable<any>{
-   
     return  this.http.get<any>(`${environment.API_Url}provider/`+ id);
   }
   updateProvider(formdata:any, id:any): Observable<any>{
-    
     return  this.http.put<any>(`${environment.API_Url}provider/` + id,formdata);
   }
 }
