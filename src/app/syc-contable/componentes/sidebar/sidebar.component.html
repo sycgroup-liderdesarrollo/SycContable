@@ -3,13 +3,13 @@
                     <h1>Administrativos</h1>
                 
                     <div class="div-content-item">
-                        <a mat-list-item [routerLink]="['/syc-contable/administrativo/empleado']" (click)="sidebar.close()" class="items-sidenav"><mat-icon color="primary">person_add</mat-icon>Empleados</a>
+                        <a mat-list-item [routerLink]="['/syc-contable/administrativo/empleado']" (click)="sidebar.close()" class="items-sidenav"><mat-icon color="primary">group</mat-icon>Colaboradores</a>
                     </div>
                     
                     <div class="div-content-item">                
                         <ul id="div-content-item">
                                 <a mat-list-item (click)="expand = !expand" class="items-sidenav" data-bs-toggle="collapse" data-bs-target="#extend-collapse" aria-expanded="true">
-                                    <mat-icon color="primary">person_add</mat-icon>
+                                    <mat-icon color="primary">work</mat-icon>
                                     Convenios
                                 <mat-icon class="mat-icon-rtl-mirror">
                                     {{expand ? 'expand_more' : 'chevron_right'}}
@@ -17,21 +17,21 @@
                             </a>
                             <div *ngIf="expand" class="collapse" id="extend-collapse" class="items-sidenav">
                                 <ul class="list-unstyled fw-normal pb-1 small">
-                                    <li><a (click)="sidebar.close()" [routerLink]="['/syc-contable/administrativo/convenios']" class="btn margin" ><mat-icon color="primary">person_add</mat-icon>Crear convenio</a></li>
-                                    <li><a (click)="sidebar.close()" [routerLink]="['/syc-contable/administrativo/asignarConvenio']" class="btn" ><mat-icon color="primary">person_add</mat-icon>Asignar convenio</a></li>
+                                    <li><a (click)="sidebar.close()" [routerLink]="['/syc-contable/administrativo/convenios']" class="btn margin" ><mat-icon color="primary">add</mat-icon>Crear convenio</a></li>
+                                    <li><a (click)="sidebar.close()" [routerLink]="['/syc-contable/administrativo/asignarConvenio']" class="btn" ><mat-icon color="primary">sync_alt</mat-icon>Asignar convenio</a></li>
                                 </ul>
                             </div>
                         </ul>
                     </div>
 
                     <div class="div-content-item">
-                        <a mat-list-item [routerLink]="['/syc-contable/administrativo/proveedores']" (click)="sidebar.close()" class="items-sidenav"><mat-icon color="primary">person_add</mat-icon>Proveedores</a>
+                        <a mat-list-item [routerLink]="['/syc-contable/administrativo/proveedores']" (click)="sidebar.close()" class="items-sidenav"><mat-icon color="primary">assignment_ind</mat-icon>Proveedores</a>
                     </div>
                             <!-- ......................................................... -->
                     <h1>Nomina</h1>
             
                     <div class="div-content-item">
-                        <a mat-list-item [routerLink]="['/syc-contable/nomina/cargarDeducciones']" (click)="sidebar.close()" class="items-sidenav"><mat-icon color="primary">attach_money</mat-icon>Cargar Deducciones</a>
+                        <a mat-list-item [routerLink]="['/syc-contable/nomina/cargarDeducciones']" (click)="sidebar.close()" class="items-sidenav"><mat-icon color="primary">paid</mat-icon>Cargar Deducciones</a>
                     </div>
                             <!-- ..................................................................... -->
                     <h1>Seguridad</h1>

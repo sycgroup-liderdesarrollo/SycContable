@@ -61,15 +61,18 @@
       </mat-card>
 </div>
 
-<div class="col-12 payroll" *ngIf="DataNomina.data[0]">
+<div class="col-12 payroll" *ngIf="payroll">
     <mat-card class="card">
         <div class="div">
             <div *ngIf="dataPayroll.validador" class="flex col-12">
-              <h1 class="col-5">{{ dataPayroll.created_at | date:'short'}}</h1>
-              <h1 class="col-5">{{dataPayroll.name}}</h1>
-              <button  mat-stroked-button color="primary" class="col-2" (click)="openDialogAgregar(DataNomina.data[0].pivot.payroll_id,dataPayroll.userId)">AGREGAR</button>
+              <h1 class="col-5">{{ payroll.created_at | date:'MMMM d, y'}}</h1>
+              <h1 class="col-5">{{payroll.user.name }} {{payroll.user.last_name }}</h1>
+              <button  mat-stroked-button color="primary" class="col-2" (click)="openDialogAgregar(payroll.id,payroll.user.id)">AGREGAR</button>
             </div> 
-            <table mat-table [dataSource]="DataNomina" class="mat-elevation-z8"  >
+            <div class="alert alert-warning" role="alert" *ngIf="!DataNomina.data[0]">
+              La nómina del colaborador <strong>{{payroll.user.name}}</strong>  aún no tiene conceptos cargados. 
+            </div>
+            <table mat-table [dataSource]="DataNomina" class="mat-elevation-z8" *ngIf="DataNomina.data[0]" >
 
               <ng-container matColumnDef="concept_id">
                 <th mat-header-cell *matHeaderCellDef> Codigo </th>
@@ -111,7 +114,7 @@
                       <mat-icon>more_vert </mat-icon>
                     </button>
                     <mat-menu #menu = "matMenu">
-                        <button mat-menu-item (click)=" openConfirmation(dataPayroll.userId,element.pivot.id)">
+                        <button mat-menu-item (click)=" openConfirmation(payroll.user.id,element.pivot.id)">
                           <mat-icon>delete</mat-icon>
                           <span>Quitar</span>
                         </button>
