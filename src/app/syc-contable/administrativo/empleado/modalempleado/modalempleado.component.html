@@ -3,102 +3,63 @@
         <span mat-dialog-title>Crear Empleado</span>
     </mat-toolbar>
     <mat-card>
-        <form *ngIf="form" [formGroup]="form" >
+       <form *ngIf="form" [formGroup]="form" >
+
                 <mat-grid-list cols="3" rowHeight="70px">
                     <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                        <mat-form-field class="ancho" >
-                            <mat-label>CC</mat-label>
-                            <input matInput autocomplete="off" formControlName="identification_number" [readonly]="!isEdit">
-                          </mat-form-field>
-                    </mat-grid-tile>
-                    
-                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                        <mat-form-field class="ancho" >
-                            <mat-label>NOMBRE</mat-label>
-                            <input matInput autocomplete="off" formControlName="name" [readonly]="!isEdit">
-                          </mat-form-field>
-                    </mat-grid-tile>
-
-                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                        <mat-form-field class="ancho" >
-                            <mat-label>APELLIDO</mat-label>
-                            <input matInput autocomplete="off" formControlName="last_name" [readonly]="!isEdit">
-                          </mat-form-field>
-                    </mat-grid-tile>
-    
-                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                        <mat-form-field class="ancho" >
-                            <mat-label>CORREO</mat-label>
-                            <input matInput autocomplete="off" formControlName="email" [readonly]="!isEdit">
-                          </mat-form-field>
-                    </mat-grid-tile>
-
-                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                        <mat-form-field class="ancho" >
-                            <mat-label>CONTRASEÑA</mat-label>
-                            <input matInput  autocomplete="off" formControlName="password"  [readonly]="!isEdit">
-                          </mat-form-field>
-                    </mat-grid-tile>
-
-                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                        <mat-form-field class="ancho" >
-                            <mat-label>FECHA</mat-label>
-                            <input matInput autocomplete="off" type="date" formControlName="admission_date" [readonly]="!isEdit">
-                          </mat-form-field>
-                    </mat-grid-tile>
-                    
-                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                        <mat-form-field class="ancho" >
-                            <mat-label>SALARIO BASICO</mat-label>
-                            <input matInput autocomplete="off"  formControlName="base_salary" [readonly]="!isEdit">
-                          </mat-form-field>
-                    </mat-grid-tile>
-
-                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
                         <mat-form-field class="ancho">
-                            <mat-label>CARGO</mat-label>
-                            <mat-select formControlName="position_id" name="cargo" [disabled]="!isEdit">
-                              <mat-option *ngFor="let cargo of cargos" [value]="cargo.id">
-                                {{cargo.name}}
+                           <mat-label>TIPO DE IDENTIFICACION</mat-label>
+                           <mat-select formControlName="identification_type_id" name="tipoIdentificacion" [disabled]="!isEdit">
+                              <mat-option *ngFor="let identificatiotype of tipoIdentificacion " [value]="identificatiotype.id">
+                              {{identificatiotype.name}}
                               </mat-option>
-                            </mat-select>
-                          </mat-form-field>
-                    </mat-grid-tile>
+                           </mat-select>
+                        </mat-form-field>
+                  </mat-grid-tile>
 
-                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                        <mat-form-field class="ancho">
-                            <mat-label>SUCURSAL</mat-label>
-                            <mat-select formControlName="headquarter_id" name="sucursal" [disabled]="!isEdit">
-                              <mat-option *ngFor="let sucursal of sucursales" [value]="sucursal.id">
-                                {{sucursal.name}}
-                              </mat-option>
-                            </mat-select>
-                          </mat-form-field>
-                    </mat-grid-tile>
-                    
-                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                        <mat-form-field class="ancho">
-                            <mat-label>LINEA DE NEGOCIO</mat-label>
-                            <mat-select formControlName="business_line_id" name="lineaNegocio" [disabled]="!isEdit">
-                              <mat-option *ngFor="let bussinesline of lineaNegocio" [value]="bussinesline.id">
-                                {{bussinesline.name}}
-                              </mat-option>
-                            </mat-select>
-                          </mat-form-field>
+                      <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                          <mat-form-field class="ancho" >
+                              <mat-label>CC,NIT</mat-label>
+                              <input matInput autocomplete="off" formControlName="identification_number" [readonly]="!isEdit">
+                            </mat-form-field>
+                      </mat-grid-tile>
+                      
+                      <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                          <mat-form-field class="ancho" >
+                              <mat-label>NOMBRE</mat-label>
+                              <input matInput autocomplete="off" formControlName="name" [readonly]="!isEdit">
+                            </mat-form-field>
+                      </mat-grid-tile>
 
-                    </mat-grid-tile>
-                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                        <mat-form-field class="ancho">
-                            <mat-label>TIPO DE CONTRATO</mat-label>
-                            <mat-select formControlName="contract_type_id" name="tipoContrato" [disabled]="!isEdit">
-                              <mat-option *ngFor="let ContractType of tipoContrato" [value]="ContractType.id">
-                                {{ContractType.name}}
-                              </mat-option>
-                            </mat-select>
-                          </mat-form-field>
-                    </mat-grid-tile>
+                      <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                          <mat-form-field class="ancho" >
+                              <mat-label>APELLIDO</mat-label>
+                              <input matInput autocomplete="off" formControlName="last_name" [readonly]="!isEdit">
+                            </mat-form-field>
+                      </mat-grid-tile>
+      
+                      <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                          <mat-form-field class="ancho" >
+                              <mat-label>CORREO</mat-label>
+                              <input matInput autocomplete="off" formControlName="email" [readonly]="!isEdit">
+                            </mat-form-field>
+                      </mat-grid-tile>
 
-                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                      <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                          <mat-form-field class="ancho" >
+                              <mat-label>CONTRASEÑA</mat-label>
+                              <input matInput  autocomplete="off" formControlName="password"  [readonly]="!isEdit">
+                            </mat-form-field>
+                      </mat-grid-tile>
+
+                      <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                          <mat-form-field class="ancho" >
+                              <mat-label>FECHA DE ADMISION</mat-label>
+                              <input matInput autocomplete="off" type="date" formControlName="admission_date" [readonly]="!isEdit">
+                            </mat-form-field>
+                      </mat-grid-tile>
+
+                      <mat-grid-tile [colspan]="1" [rowspan]="1" >
                         <mat-form-field class="ancho">
                             <mat-label>TIPO DE SALARIO</mat-label>
                             <mat-select formControlName="salary_type_id" name="tipoSalario" [disabled]="!isEdit">
@@ -108,27 +69,69 @@
                             </mat-select>
                           </mat-form-field>
                     </mat-grid-tile>
+                      
+                      <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                          <mat-form-field class="ancho" >
+                              <mat-label>SALARIO BASICO</mat-label>
+                              <input matInput autocomplete="off"  formControlName="base_salary" [readonly]="!isEdit">
+                            </mat-form-field>
+                      </mat-grid-tile>
 
-                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                        <mat-form-field class="ancho">
-                            <mat-label>TIPO DE IDENTIFICACION</mat-label>
-                            <mat-select formControlName="identification_type_id" name="tipoIdentificacion" [disabled]="!isEdit">
-                              <mat-option *ngFor="let identificatiotype of tipoIdentificacion " [value]="identificatiotype.id">
-                                {{identificatiotype.name}}
-                              </mat-option>
-                            </mat-select>
-                          </mat-form-field>
-                    </mat-grid-tile>
-                   
-                    <mat-grid-tile [colspan]="3" [rowspan]="1" >
-                        <button mat-raised-button mat-dialog-close style="margin-right: 20px;">Volver</button>
-                        <button *ngIf="!id" type="submit" [disabled]="form.invalid" mat-raised-button color="primary" (click)=" createEmployer(form.value)"  >Aceptar</button>
-                        <button *ngIf="id && isEdit" type="submit" [disabled]="form.invalid" mat-raised-button color="primary" (click)=" updateEmployer(form.value)"  >update</button>
-                    </mat-grid-tile>
+                      <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                          <mat-form-field class="ancho">
+                              <mat-label>CARGO</mat-label>
+                              <mat-select formControlName="position_id" name="cargo" [disabled]="!isEdit">
+                                <mat-option *ngFor="let cargo of cargos" [value]="cargo.id">
+                                  {{cargo.name}}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                      </mat-grid-tile>
 
-                </mat-grid-list>
-        </form>
+                      <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                          <mat-form-field class="ancho">
+                              <mat-label>SUCURSAL</mat-label>
+                              <mat-select formControlName="headquarter_id" name="sucursal" [disabled]="!isEdit">
+                                <mat-option *ngFor="let sucursal of sucursales" [value]="sucursal.id">
+                                  {{sucursal.name}}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                      </mat-grid-tile>
+                      
+                      <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                          <mat-form-field class="ancho">
+                              <mat-label>LINEA DE NEGOCIO</mat-label>
+                              <mat-select formControlName="business_line_id" name="lineaNegocio" [disabled]="!isEdit">
+                                <mat-option *ngFor="let bussinesline of lineaNegocio" [value]="bussinesline.id">
+                                  {{bussinesline.name}}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
 
-    </mat-card>
+                      </mat-grid-tile>
+                      <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                          <mat-form-field class="ancho">
+                              <mat-label>TIPO DE CONTRATO</mat-label>
+                              <mat-select formControlName="contract_type_id" name="tipoContrato" [disabled]="!isEdit">
+                                <mat-option *ngFor="let ContractType of tipoContrato" [value]="ContractType.id">
+                                  {{ContractType.name}}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                      </mat-grid-tile>
 
-</div>
+                      
+                    
+                      <mat-grid-tile [colspan]="3" [rowspan]="1" >
+                          <button mat-raised-button mat-dialog-close style="margin-right: 20px;">Volver</button>
+                          <button *ngIf="!id" type="submit" [disabled]="form.invalid" mat-raised-button color="primary" (click)=" createEmployer(form.value)"  >Aceptar</button>
+                          <button *ngIf="id && isEdit" type="submit" [disabled]="form.invalid" mat-raised-button color="primary" (click)=" updateEmployer(form.value)"  >update</button>
+                      </mat-grid-tile>
+
+                  </mat-grid-list>
+          </form>
+
+      </mat-card>
+
+  </div>

@@ -72,8 +72,8 @@
 
                     <mat-grid-tile [colspan]="2" [rowspan]="1" >
                         <button mat-raised-button mat-dialog-close style="margin-right: 20px;">Volver</button>
-                        <button *ngIf="!id" type="submit" [disabled]="form.invalid" mat-raised-button color="primary" (click)=" crearConvenio(form.value)">Aceptar</button>
-                        <button *ngIf="id && isEdit" type="submit" [disabled]="form.invalid" mat-raised-button color="primary" (click)=" updateConvenio(form.value)" >update</button>
+                        <button *ngIf="!id" type="submit" [disabled]="form.invalid" mat-raised-button color="primary" (click)="crearConvenio(form.value)">Aceptar</button>
+                        <button *ngIf="id && isEdit" type="submit" [disabled]="form.invalid" mat-raised-button color="primary" (click)="updateConvenio(form.value)" >update</button>
                     </mat-grid-tile>
 
                 </mat-grid-list>
