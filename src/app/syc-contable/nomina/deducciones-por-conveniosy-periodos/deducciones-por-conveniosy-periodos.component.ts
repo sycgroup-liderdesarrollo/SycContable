@@ -23,15 +23,13 @@ export class DeduccionesPorConveniosyPeriodosComponent implements OnInit {
   meses:any;
   periodo:any;
   DataDeducciones:any;
-  
+
   columna: string[] = ['TotalDeduccion', 'NumeroTrabajadores'];
   data=[
     {
       TotalDeduccion:'20',
       NumeroTrabajadores:'1',
-      
     },
-
   ]
   // new Date().getMonth();
 mes=[
