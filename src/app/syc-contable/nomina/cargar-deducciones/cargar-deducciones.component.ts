@@ -27,6 +27,7 @@ export class CargarDeduccionesComponent implements OnInit,AfterViewInit {
   selectRef: any;
   DataNomina: MatTableDataSource<any>;
   dataSource : MatTableDataSource<any>;
+  payroll:any;
   displayedColumns: string[] =['identification_number','name','last_name','position','email','options'];
   columna: string[] = ['concept_id', 'concept_name', 'concept_type','count','unit_value','total_value','options'];
   //  .........................................................................
@@ -94,10 +95,9 @@ export class CargarDeduccionesComponent implements OnInit,AfterViewInit {
     this.DataNomina.data = [];
     this.ServiceNomina.getNomina(userId).subscribe(
       resp => {
+        this.payroll = resp.data;
         this.DataNomina.data = resp.data.concepts;
-        this.dataPayroll.created_at = resp.data.created_at;
-        this.dataPayroll.name = resp.data.user.name;
-        this.dataPayroll.userId = userId;
+        
         this.dataPayroll.validador = true;
         
     })
