@@ -17,6 +17,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
+import { DeduccionesPorConveniosyPeriodosComponent } from './deducciones-por-conveniosy-periodos/deducciones-por-conveniosy-periodos.component';
 
 
 
@@ -24,6 +25,7 @@ import { MatDialogModule } from '@angular/material/dialog';
   declarations: [
     CargarDeduccionesComponent,
     ModalSeleccionarComponent,
+    DeduccionesPorConveniosyPeriodosComponent,
   ],
 
   imports: [
@@ -43,6 +45,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatPaginatorModule,
     MatSortModule,
     MatDialogModule,
+    
   ]
   
 })

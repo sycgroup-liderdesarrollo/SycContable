@@ -1,0 +1,39 @@
+.ancho{
+      width: 70%;
+  }
+  div{
+    width: 100%;
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+.mat-icon{
+    font-size: 1.3rem;
+    color: black;
+}
+.label{
+    font-size: 1rem;
+    font-family:'Times New Roman', Times, serif
+}
+
+ .mat-card{
+    margin-top: 1%;
+    width: 100%;
+  }
+  
+.mat-table{
+    width: 100vh;
+  }
+  .opciones{
+    border: solid none;
+  }
+  input{
+      font-size: 14px;
+      font-family:'Times New Roman', Times, serif;
+  }
+  .flex{
+    display: inline-flex;
+  }
+  .boton{
+      text-align: center;
+  }
+  
