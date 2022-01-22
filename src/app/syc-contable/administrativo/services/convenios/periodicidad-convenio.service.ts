@@ -15,5 +15,8 @@ export class PeriodicidadConvenioService {
   getperiodicidad() :Observable<any> {
     return this.http.get<any>(`${environment.API_Url}periodicityType`);
   }
+  getperiodo() :Observable<any> {
+    return this.http.get<any>(`${environment.API_Url}period`);
+  }
 
 }

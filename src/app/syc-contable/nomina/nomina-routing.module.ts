@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CargarDeduccionesComponent } from './cargar-deducciones/cargar-deducciones.component';
+import { DeduccionesPorConveniosyPeriodosComponent } from './deducciones-por-conveniosy-periodos/deducciones-por-conveniosy-periodos.component';
 import { ModalSeleccionarComponent } from './modal-seleccionar/modal-seleccionar.component';
 
 const routes: Routes = [
@@ -9,6 +10,9 @@ const routes: Routes = [
 },
 {
   path:'modal-seleccionar', component: ModalSeleccionarComponent
+},
+{
+  path:'CargarconveniosYperiodos', component: DeduccionesPorConveniosyPeriodosComponent
 }
 ];
 

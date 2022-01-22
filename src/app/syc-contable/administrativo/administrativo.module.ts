@@ -34,6 +34,7 @@ import { ModalAsignarConvenioComponent } from './convenios/asignar-convenio/moda
     ModalproveedoresComponent,
     AsignarConvenioComponent,
     ModalAsignarConvenioComponent,
+   
   ],
 
   imports: [

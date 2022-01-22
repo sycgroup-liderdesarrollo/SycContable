@@ -1,0 +1,78 @@
+<div class="container">
+    <mat-toolbar>
+        <span mat-dialog-title>Deducciones por convenios y periodos</span>
+    </mat-toolbar>
+
+    <mat-card>
+        
+        <form *ngIf="form" [formGroup]="form" >
+
+                <mat-grid-list cols="3" rowHeight="70px">
+                        <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                            <mat-form-field class="ancho">
+                                <mat-label>CONVENIO</mat-label>
+                                <mat-select formControlName="covenant" name="convenio"  >
+                                    <mat-option *ngFor="let covenant of covenants" [value]="covenant.id">
+                                    {{covenant.name}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </mat-grid-tile>
+
+                        <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                            
+                        </mat-grid-tile>
+
+                        <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                            <mat-form-field class="ancho" >
+                                <mat-label>PERIODO</mat-label>
+                                <mat-select formControlName="period" name="periodo" >
+                                    <mat-option *ngFor="let period of periodo" [value]="period.id">
+                                      {{period.name}}
+                                    </mat-option>
+                                  </mat-select>
+                              </mat-form-field>
+                        </mat-grid-tile>
+                </mat-grid-list>   
+        </form>
+
+        <div class="boton">
+            <button mat-stroked-button>Buscar</button>
+        </div>
+
+        
+            
+                 <table mat-table [dataSource]="DataDeducciones" class="mat-elevation-z8"  >
+        
+                      <ng-container matColumnDef="TotalDeduccion">
+                        <th mat-header-cell *matHeaderCellDef> Total Deducciones </th>
+                        <td mat-cell *matCellDef="let row"> {{row.TotalDeduccion}} </td>
+                      </ng-container>
+        
+                      <ng-container matColumnDef="NumeroTrabajadores">
+                        <th mat-header-cell *matHeaderCellDef> Numero Trabajadores </th>
+                        <td mat-cell *matCellDef="let row"> {{row.NumeroTrabajadores}} </td>
+                      </ng-container>
+        
+                      <ng-container matColumnDef="options">
+                        <th mat-header-cell *matHeaderCellDef > Opciones </th>
+                        <td mat-cell *matCellDef="let element">
+                            <button class="opciones" mat-icon-button [matMenuTriggerFor]="menu">
+                              <mat-icon>more_vert </mat-icon>
+                            </button>
+                            <mat-menu #menu = "matMenu">
+                                <button mat-menu-item >
+                                  <mat-icon>add</mat-icon>
+                                  <span>prueba</span>
+                                </button>
+                            </mat-menu>
+                        </td>
+                    </ng-container>
+
+                      <tr mat-header-row *matHeaderRowDef="columna"></tr>
+                      <tr mat-row *matRowDef="let element; columns: columna;"></tr>
+                    
+                    </table>
+        
+    </mat-card>
+</div>
