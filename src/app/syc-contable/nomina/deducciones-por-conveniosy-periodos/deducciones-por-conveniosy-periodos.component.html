@@ -20,7 +20,17 @@
                         </mat-grid-tile>
 
                         <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                            
+                          <mat-form-field appearance="fill">
+                            <mat-label>Month and Year</mat-label>
+                            <input matInput [matDatepicker]="dp" [formControl]="date">
+                            <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                            <mat-datepicker #dp
+                                            startView="multi-year"
+                                            (yearSelected)="chosenYearHandler($event)"
+                                            (monthSelected)="chosenMonthHandler($event, dp)"
+                                            panelClass="example-month-picker">
+                            </mat-datepicker>
+                          </mat-form-field>
                         </mat-grid-tile>
 
                         <mat-grid-tile [colspan]="1" [rowspan]="1" >

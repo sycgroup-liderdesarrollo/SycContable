@@ -18,7 +18,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DeduccionesPorConveniosyPeriodosComponent } from './deducciones-por-conveniosy-periodos/deducciones-por-conveniosy-periodos.component';
-
+import { MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -45,6 +46,8 @@ import { DeduccionesPorConveniosyPeriodosComponent } from './deducciones-por-con
     MatPaginatorModule,
     MatSortModule,
     MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     
   ]
   
