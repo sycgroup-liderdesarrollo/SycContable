@@ -85,7 +85,6 @@ export class DeduccionesPorConveniosyPeriodosComponent implements OnInit {
 
     ngOnInit(): void {
       this.crearform();
-
     
       this.servicesTipoConvenio.getConvenant().subscribe(rest => {
         this.covenants = rest.data
@@ -117,7 +116,6 @@ export class DeduccionesPorConveniosyPeriodosComponent implements OnInit {
       this.date.setValue(ctrlValue);
       datepicker.close();
     }
-
 
 }
 
