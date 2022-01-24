@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthenticationGuard } from './guards/authentication.guard';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   {
     path: 'syc-contable', 
     loadChildren: () => import ('./syc-contable/syc-contable.module').then(module => module.SycContableModule),
+    canActivate : [AuthenticationGuard]
   },
  
  

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDrawer, MatSidenav } from '@angular/material/sidenav';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +9,9 @@ import { MatDrawer, MatSidenav } from '@angular/material/sidenav';
 })
 export class navbarComponent implements OnInit {
   @Input() sidebar!: MatDrawer;
-  constructor() { }
+  constructor(
+    private authService : AuthService
+  ) { }
 
   ngOnInit(): void {
   }
@@ -17,4 +20,7 @@ export class navbarComponent implements OnInit {
     this.sidebar.toggle();
   }
 
+  toLogout(){
+    this.authService.logout();
+  }
 }
