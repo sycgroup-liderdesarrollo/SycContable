@@ -1,11 +1,10 @@
 <div class="container">
     <mat-toolbar>
-        <span mat-dialog-title>{{ isEdit ? "Editar" : "Crear" }} Colaborador</span>
+        <span mat-dialog-title>{{ isEdit ? "Editar" : "Ver" }} Colaborador</span>
     </mat-toolbar>
     <mat-card>
       <div class="d-flex justify-content-center" *ngIf="isLoading">
         <mat-spinner></mat-spinner>
-
       </div>
        <form *ngIf="form" [formGroup]="form" >
                 <mat-grid-list cols="3" rowHeight="70px">

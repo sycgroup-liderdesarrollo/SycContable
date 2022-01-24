@@ -25,6 +25,7 @@ export class ModalproveedoresComponent implements OnInit {
   Identificacion:any;
   telefono:any;
   dataProvider: any;
+  isLoading:boolean=false;
 
   constructor(
     private fb: FormBuilder,
@@ -36,11 +37,7 @@ export class ModalproveedoresComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.id ? this.editProvider() : this.crearform()
-
-    this.servicesTipoIdentificacion.getTipoIdentificacion().subscribe(rest => {
-      this.TipoIdentificacion = rest.data
-    });
+    this.init();
   }
 
   editProvider(){
@@ -48,15 +45,10 @@ export class ModalproveedoresComponent implements OnInit {
       resp => {
         this.dataProvider = resp.data;
         console.log(this.dataProvider);
+        this.crearform(this.dataProvider);
         
         
       },
-      error => {
-
-      }, 
-      () => {
-        this.crearform(this.dataProvider);
-      }
     )
   }
 
@@ -68,6 +60,7 @@ export class ModalproveedoresComponent implements OnInit {
       address: [dataProvider?.address ?? '', Validators.required],
       phone: [dataProvider?.phone ?? '', Validators.required],
     });
+    this.isLoading=false;
   }
 
   crearProvider(formData:any){
@@ -85,6 +78,20 @@ export class ModalproveedoresComponent implements OnInit {
       console.log('todo con exito');
       this.dialog.close();
     });
+  }
+  async init(){
+    this.isLoading = true;
+    await this.getTipoIdentificacion();
+    this.id ? this.editProvider() : this.crearform()
+  }
+
+  getTipoIdentificacion(){
+    return new Promise( (resolve,reject) => {
+      this.servicesTipoIdentificacion.getTipoIdentificacion().subscribe(rest => {
+        this.TipoIdentificacion = rest.data
+        resolve(rest.data);
+      });
+    })
   }
 
 }

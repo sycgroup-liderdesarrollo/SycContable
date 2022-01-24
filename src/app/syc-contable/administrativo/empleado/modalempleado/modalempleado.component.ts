@@ -2,7 +2,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {  FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { delay } from 'rxjs/operators';
 import { CargoService } from '../../services/empleados/cargo.service';
 import { EmployeeService } from '../../services/empleados/employee.service';
 import { LineaNegocioService } from '../../services/empleados/linea-negocio.service';

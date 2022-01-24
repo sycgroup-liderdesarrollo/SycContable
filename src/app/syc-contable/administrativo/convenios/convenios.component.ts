@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { finalize } from 'rxjs/operators';
 import { ConfirmacionComponent } from 'src/app/share/confirmacion/confirmacion.component';
 import { ConvenantService } from '../services/convenios/convenant.service';
 import { ModalconveniosComponent } from './modalconvenios/modalconvenios.component';
@@ -16,7 +17,7 @@ export class ConveniosComponent implements OnInit,AfterViewInit {
 
   dataSource : MatTableDataSource<any>;
   displayedColumns : string[] = ['name','convenant','periodicity','active','value','options'];
- 
+  isLoading: boolean = false;
   @ViewChild(MatTable) tabla1!: MatTable<any>;
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
@@ -36,10 +37,17 @@ export class ConveniosComponent implements OnInit,AfterViewInit {
   }
 
   getConvenant() {
-      this.serviceConvenant.getcovenant().subscribe(
-        resp =>{
-        this.dataSource.data = resp.data   
-      });
+    this.isLoading = true;
+      this.serviceConvenant.getcovenant().pipe(
+        finalize( () => {
+          this.isLoading = false;
+        } )
+      ).subscribe(
+        resp => {
+          this.dataSource.data = resp.data;
+  
+        }
+      );
 
     }
   ngAfterViewInit(): void {
