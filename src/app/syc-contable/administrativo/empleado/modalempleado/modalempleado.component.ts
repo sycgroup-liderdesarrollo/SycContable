@@ -2,6 +2,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {  FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { delay } from 'rxjs/operators';
 import { CargoService } from '../../services/empleados/cargo.service';
 import { EmployeeService } from '../../services/empleados/employee.service';
 import { LineaNegocioService } from '../../services/empleados/linea-negocio.service';
@@ -31,6 +32,7 @@ export class ModalempleadoComponent implements OnInit {
   tipoIdentificacion:any;
   tipoSalario:any;
   form!: FormGroup;
+  isLoading:boolean=false;
 
   constructor(
     private fb: FormBuilder,
@@ -45,40 +47,16 @@ export class ModalempleadoComponent implements OnInit {
   ){}
   
   ngOnInit(): void {
-   this.id ? this.editEmployee() : this.createForm();
-  //  ...............................................................
-   this.servicesCargo.getCargos().subscribe(res => {
-     this.cargos = res.data
-   });
-   this.servicesLineaNegocio.getLineaNegocio().subscribe(rest => {
-     this.lineaNegocio = rest.data
-   });
-   this.servicesSucursal.getSucursales().subscribe(rest => {
-     this.sucursales = rest.data
-   });
-   this.servicesTipoContrato.getTipoContrato().subscribe(rest => {     this.tipoContrato = rest.data    
-   });
-   this.servicesTipoIdentificacion.getTipoIdentificacion().subscribe(rest => {
-     this.tipoIdentificacion = rest.data
-   });
-   this.servicesTipoSalario.getTipoSalario().subscribe(rest => {
-     this.tipoSalario = rest.data
-   })
-   
+  
+    this.init();
   }
   
   editEmployee(){
-    this.servicesEmployee.putEmployee(this.id).subscribe(
+    this.servicesEmployee.getEmployee(this.id).subscribe(
       resp => {
         this.dataEmployee = resp.data;
-        
-      },
-      error => {
-
-      }, () => {
         this.createForm(this.dataEmployee);
-      }
-
+      },
     )
   }
 
@@ -98,6 +76,7 @@ export class ModalempleadoComponent implements OnInit {
       salary_type_id:[dataEmployee?.salary_type_id ?? '', Validators.required],
       identification_type_id:[dataEmployee?.identification_type_id ?? '', Validators.required],
     });
+    this.isLoading=false;
   }
 
   createEmployer(formData:any){
@@ -111,6 +90,76 @@ export class ModalempleadoComponent implements OnInit {
     this.servicesEmployee.updateEmployee(formData, this.id).subscribe(res =>{
       this.dialog.close();
     });
+  }
+  async init(){
+    this.isLoading = true;
+    await this.getCargos();
+    await this.getLineasNegocio();
+    await this.getSucursales();
+    await this.getTipoContrato();
+    await this.getTipoIdentificacion();
+    await this.getTipoSalario();
+    this.id ? this.editEmployee() : this.createForm();
+    
+  }
+
+  getCargos() : Promise<any>{
+    console.log('cargos');
+    
+    return new Promise( (resolve,reject) => {
+      this.servicesCargo.getCargos().subscribe(res => {
+        this.cargos = res.data;
+        resolve(res.data);
+      });
+    } )
+  }
+
+  getLineasNegocio(): Promise<any>{
+    console.log('lin_negocios');
+    
+    return new Promise( (resolve,reject)=>{
+      this.servicesLineaNegocio.getLineaNegocio().subscribe(rest => {
+        this.lineaNegocio = rest.data;
+        resolve(rest.data);
+      });
+
+    })
+  }
+
+  getSucursales() : Promise<any>{
+    return new Promise( (resolve,reject) => {
+      this.servicesSucursal.getSucursales().subscribe(rest => {
+        this.sucursales = rest.data;
+        resolve(rest.data);
+      });
+    })
+  }
+
+  getTipoContrato():Promise<any>{
+    return new Promise ( (resolve,reject) => {
+      this.servicesTipoContrato.getTipoContrato().subscribe(rest => {     
+        this.tipoContrato = rest.data;
+        resolve(rest.data);
+      });
+    })
+  }
+
+  getTipoIdentificacion():Promise<any>{
+    return new Promise( (resolve,reject)=>{
+      this.servicesTipoIdentificacion.getTipoIdentificacion().subscribe(rest => {
+        this.tipoIdentificacion = rest.data;
+        resolve(rest.data);
+      });
+    })
+  }
+
+  getTipoSalario():Promise<any>{
+    return new Promise( (resolve,reject)=>{
+      this.servicesTipoSalario.getTipoSalario().subscribe(rest => {
+        this.tipoSalario = rest.data;
+        resolve(rest.data);
+      })
+    })
   }
 
 }

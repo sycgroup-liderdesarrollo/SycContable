@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { finalize } from 'rxjs/operators';
 import { ConfirmacionComponent } from 'src/app/share/confirmacion/confirmacion.component';
 import { EmployeeService } from '../services/empleados/employee.service';
 import { ModalempleadoComponent } from './modalempleado/modalempleado.component';
@@ -17,6 +18,7 @@ export class EmpleadoComponent implements AfterViewInit,OnInit {
 
   dataSource : MatTableDataSource<any>;
   displayedColumns : string[] = ['identification_number','name','last_name','position','email','options'];
+  isLoading: boolean = false;
 
   @ViewChild(MatTable) tabla1!: MatTable<any>;
   @ViewChild(MatPaginator)
@@ -37,7 +39,12 @@ export class EmpleadoComponent implements AfterViewInit,OnInit {
     }
     
   getEmployee(){
-    this.serviceEmployer.getEmployed().subscribe(
+    this.isLoading = true;
+    this.serviceEmployer.getEmployed().pipe(
+      finalize( () => {
+        this.isLoading = false;
+      } )
+    ).subscribe(
       resp => {
         this.dataSource.data = resp.data;
 

@@ -25,7 +25,7 @@ export class EmployeeService {
   deleteEmployee(id: any){
      return this.http.delete<any>(`${environment.API_Url}user/`+ id);
   }
-  putEmployee(id:any): Observable<any>{
+  getEmployee(id:any): Observable<any>{
    
       return  this.http.get<any>(`${environment.API_Url}user/`+ id);
   }

@@ -23,6 +23,8 @@ import {MatSelectModule} from '@angular/material/select';
 import { ShareModule } from 'src/app/share/share.module';
 import { AsignarConvenioComponent } from './convenios/asignar-convenio/asignar-convenio.component';
 import { ModalAsignarConvenioComponent } from './convenios/asignar-convenio/modal-asignar-convenio/modal-asignar-convenio.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,8 @@ import { ModalAsignarConvenioComponent } from './convenios/asignar-convenio/moda
     ReactiveFormsModule,
     MatDialogModule, 
     MatSelectModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
     ShareModule
   ]
 })
