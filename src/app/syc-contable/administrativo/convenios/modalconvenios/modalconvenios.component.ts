@@ -16,7 +16,7 @@ import { ServicioProveedoresService } from '../../services/proveedores/servicio-
 export class ModalconveniosComponent implements OnInit {
 
 @Input() id?: any;
-@Input() isEdit: boolean = true;
+@Input() isEdit: boolean = false;
 
   dataConvenant: any;
   form!: FormGroup;

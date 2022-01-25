@@ -1,6 +1,6 @@
 <div class="container">
     <mat-toolbar>
-        <span mat-dialog-title>{{ isEdit ? "Agregar" : "Editar" }} Colaborador</span>
+        <span mat-dialog-title>{{ isEdit ? "Editar" : "Agregar" }} Colaborador</span>
     </mat-toolbar>
     <mat-card>
       <div class="d-flex justify-content-center" *ngIf="isLoading">
@@ -127,7 +127,8 @@
                     
                       <mat-grid-tile [colspan]="3" [rowspan]="1" >
                           <button mat-raised-button mat-dialog-close style="margin-right: 20px;">Volver</button>
-                          <button type="submit" [disabled]="form.invalid" mat-raised-button color="primary" (click)=" updateEmployer(form.value)"  >update</button>
+                          <button *ngIf="!id" type="submit" [disabled]="form.invalid" mat-raised-button color="primary" (click)=" createEmployer(form.value)"  >Aceptar</button>
+                          <button  type="submit" [disabled]="form.invalid" mat-raised-button color="primary" (click)=" updateEmployer(form.value)">update</button>
                       </mat-grid-tile>
 
                   </mat-grid-list>

@@ -56,9 +56,9 @@
                   <button class="opciones" mat-icon-button [matMenuTriggerFor]="menu">
                       
                     <mat-icon>more_vert </mat-icon>
-                  </button>
+                  </button> 
                   <mat-menu #menu="matMenu">
-                      <button mat-menu-item (click)="openDialog(row.id,false)">
+                      <button mat-menu-item (click)="openDialog(row.id,true)">
                         <mat-icon>edit</mat-icon>
                         <span>Editar</span>
                       </button>
