@@ -40,7 +40,7 @@
                     <mat-grid-tile *ngIf="!isEdit" [colspan]="1" [rowspan]="1" >
                         <mat-form-field class="ancho" >
                             <mat-label>ESTADO</mat-label>
-                            <mat-select formControlName="active" name="active" [disabled]="!isEdit">
+                            <mat-select formControlName="active" name="actives" >
                                 <mat-option *ngFor="let active of actives" [value]="active.value">
                                   {{active.name}}
                                 </mat-option>
@@ -76,7 +76,7 @@
                     <mat-grid-tile [colspan]="2" [rowspan]="1" >
                         <button mat-raised-button mat-dialog-close style="margin-right: 20px;">Volver</button>
                         <button *ngIf="!id" type="submit" [disabled]="form.invalid" mat-raised-button color="primary" (click)="crearConvenio(form.value)">Aceptar</button>
-                        <button *ngIf="id" type="submit" [disabled]="form.invalid" mat-raised-button color="primary" (click)="updateConvenio(form.value)" >update</button>
+                        <button *ngIf="id" type="submit" [disabled]="form.invalid" mat-raised-button color="primary" (click)="updateConvenio(form.value)">update</button>
                     </mat-grid-tile>
 
                 </mat-grid-list>

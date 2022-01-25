@@ -25,6 +25,7 @@ export class ModalconveniosComponent implements OnInit {
   covenantType:any;
   name:any;
   value:any;
+  // actives:any;
   respuesta:any;
   providers:any;
   ValueActual:any;
@@ -35,7 +36,6 @@ export class ModalconveniosComponent implements OnInit {
     {value : "1", name : "Activo"},
     {value : "0", name : "Inactivo"}
   ]
-
 
   constructor(
     private fb: FormBuilder,
@@ -64,8 +64,8 @@ export class ModalconveniosComponent implements OnInit {
   crearform(dataConvenant?:any){
     this.form = this.fb.group({
       name: [dataConvenant?.name ?? '', Validators.required],
-      value: [ dataConvenant?.value ?? '0', Validators.required],
-      active: [dataConvenant?.active ?? '1', Validators.required],
+      value: [ dataConvenant?.value ?? '1', Validators.required],
+      active: [dataConvenant?.active ?? '0', Validators.required],
       covenant_type_id: [dataConvenant?.covenant_type_id ?? '', Validators.required],
       periodicity_type_id : [dataConvenant?.periodicity_type_id ?? '', Validators.required],
       concept_name: [dataConvenant?.concept.name ?? '', Validators.required],
@@ -129,6 +129,5 @@ export class ModalconveniosComponent implements OnInit {
       });
     })
   }
-
 
 }
