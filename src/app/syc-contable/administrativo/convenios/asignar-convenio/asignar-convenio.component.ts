@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { finalize } from 'rxjs/operators';
 import { ConvenantService } from '../../services/convenios/convenant.service';
 import { EmployeeService } from '../../services/empleados/employee.service';
 import { ModalAsignarConvenioComponent } from './modal-asignar-convenio/modal-asignar-convenio.component';
@@ -24,6 +25,7 @@ export class AsignarConvenioComponent implements OnInit {
   @ViewChild(MatSort)
   sort!: MatSort;
   dialogRef: any;
+  isLoading:boolean=false;
 
   constructor(
     public dialog: MatDialog,
@@ -38,7 +40,12 @@ export class AsignarConvenioComponent implements OnInit {
   }
 
   getEmployee(){
-    this.serviceEmployer.getEmployed().subscribe(
+    this.isLoading = true;
+    this.serviceEmployer.getEmployed().pipe(
+      finalize( () => {
+        this.isLoading = false;
+      } )
+    ).subscribe(
       resp => {
         this.dataSource.data = resp.data;
 
