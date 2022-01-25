@@ -19,7 +19,7 @@ import { TipoSalarioService } from '../../services/empleados/tipo-salario.servic
 export class ModalempleadoComponent implements OnInit {
 
   @Input() id?: any;
-  @Input() isEdit: boolean = true;
+  @Input() isEdit: boolean = false;
   
   selectedValue!: string;
   dataEmployee: any;
