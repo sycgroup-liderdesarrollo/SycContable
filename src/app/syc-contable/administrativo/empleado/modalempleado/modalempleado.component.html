@@ -128,7 +128,7 @@
                       <mat-grid-tile [colspan]="3" [rowspan]="1" >
                           <button mat-raised-button mat-dialog-close style="margin-right: 20px;">Volver</button>
                           <button *ngIf="!id" type="submit" [disabled]="form.invalid" mat-raised-button color="primary" (click)=" createEmployer(form.value)"  >Aceptar</button>
-                          <button  type="submit" [disabled]="form.invalid" mat-raised-button color="primary" (click)=" updateEmployer(form.value)">update</button>
+                          <button *ngIf="id"  type="submit" [disabled]="form.invalid" mat-raised-button color="primary" (click)=" updateEmployer(form.value)">update</button>
                       </mat-grid-tile>
 
                   </mat-grid-list>
