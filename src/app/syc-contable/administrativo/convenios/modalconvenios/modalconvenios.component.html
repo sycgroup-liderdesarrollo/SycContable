@@ -1,8 +1,11 @@
 <div class="container">
     <mat-toolbar>
-        <span mat-dialog-title>Crear Convenio</span>
+        <span mat-dialog-title>{{ isEdit ? "Editar" : "Crear" }} Convenio</span>
     </mat-toolbar>
     <mat-card>
+      <div class="d-flex justify-content-center" *ngIf="isLoading">
+        <mat-spinner></mat-spinner>
+      </div>
         <form *ngIf="form" [formGroup]="form" >
                 <mat-grid-list cols="2" rowHeight="70px">
                     <mat-grid-tile [colspan]="1" [rowspan]="1" >

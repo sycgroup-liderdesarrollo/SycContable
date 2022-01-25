@@ -4,7 +4,7 @@
       <div class="example-spacer"></div>
       <button mat-raised-button color="primary" (click)="openDialog(undefined,true)">Agregar</button>
     </mat-toolbar>
-   
+    <mat-progress-bar *ngIf="isLoading" mode="query"></mat-progress-bar>
     <mat-card class="mat-elevation-z8">
   
       <mat-form-field appearance="standard">
