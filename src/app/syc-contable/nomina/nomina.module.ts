@@ -20,6 +20,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { DeduccionesPorConveniosyPeriodosComponent } from './deducciones-por-conveniosy-periodos/deducciones-por-conveniosy-periodos.component';
 import { MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 
 @NgModule({
@@ -48,7 +49,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatDialogModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    
+    MatProgressBarModule
   ]
   
 })

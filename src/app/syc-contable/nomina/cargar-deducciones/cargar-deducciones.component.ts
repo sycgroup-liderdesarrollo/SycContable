@@ -37,6 +37,7 @@ export class CargarDeduccionesComponent implements OnInit,AfterViewInit {
     userId: 0,
     validador: false,
   }
+  isLoading:boolean=false;
 
   constructor(
     private ServiceNomina: ServicioNominaService,
@@ -67,9 +68,11 @@ export class CargarDeduccionesComponent implements OnInit,AfterViewInit {
   onKeyUp(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value.trim();
     if (filterValue != ''){
+      this.isLoading = true;
       this.serviceEmployer.getEmployed(filterValue).subscribe(
         resp =>{
-        this.dataSource.data = resp.data
+        this.dataSource.data = resp.data;
+        this.isLoading = false;
       });
     }
     this.dataSource.data = [];

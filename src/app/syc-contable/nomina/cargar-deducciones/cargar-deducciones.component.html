@@ -1,11 +1,12 @@
 <div class="col-12 employees">
-      <mat-card class="card">
-          <mat-form-field class="col-12" appearance="legacy">
-              <mat-icon matSuffix>search</mat-icon>
-              <mat-label class="label" >Buscar Empleado</mat-label>
-              <input matInput autocomplete="off" (keyup)="onKeyUp($event)" placeholder="Ej: Victor" #input>
-          </mat-form-field>
-
+  <mat-card class="card">
+    <mat-form-field class="col-12" appearance="legacy">
+      <mat-icon matSuffix>search</mat-icon>
+      <mat-label class="label" >Buscar Empleado</mat-label>
+      <input matInput autocomplete="off" (keyup)="onKeyUp($event)" placeholder="Ej: Victor" #input>
+    </mat-form-field>
+    <mat-progress-bar mode="query" *ngIf="isLoading"></mat-progress-bar>
+        
         <div class="div" *ngIf="dataSource.data[0]">
             <table mat-table [dataSource]="dataSource" matSort>
 
@@ -72,7 +73,7 @@
             <div class="alert alert-warning" role="alert" *ngIf="!DataNomina.data[0]">
               La nómina del colaborador <strong>{{payroll.user.name}}</strong>  aún no tiene conceptos cargados. 
             </div>
-            <table mat-table [dataSource]="DataNomina" class="mat-elevation-z8" *ngIf="DataNomina.data[0]" >
+            <table mat-table [dataSource]="DataNomina"  *ngIf="DataNomina.data[0]" >
 
               <ng-container matColumnDef="concept_id">
                 <th mat-header-cell *matHeaderCellDef> Codigo </th>

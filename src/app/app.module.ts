@@ -15,6 +15,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ShareModule } from './share/share.module';
 import { AddTokenInterceptorService } from './interceptors/add-token.interceptor';
 import { RefreshTokenInterceptor } from './interceptors/refresh-token.interceptor';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 
 @NgModule({
@@ -33,6 +35,8 @@ import { RefreshTokenInterceptor } from './interceptors/refresh-token.intercepto
     MatButtonModule,
     ReactiveFormsModule,
     MatIconModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
     ShareModule,
   ],
 

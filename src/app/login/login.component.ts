@@ -13,6 +13,7 @@ import { finalize } from "rxjs/operators";
 export class LoginComponent implements OnInit {
   hide = true;
   loginForm : FormGroup;
+  isLoading:boolean;
 
   constructor(
     private router: Router,
@@ -32,9 +33,11 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
+    this.isLoading = true;
     this.authService.login(this.loginForm.value).pipe(
       finalize( () => {
         this.loginForm.reset();
+        this.isLoading = false;
       })
     ).subscribe(
       resp => {
