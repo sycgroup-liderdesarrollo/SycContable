@@ -11,7 +11,7 @@
                     <mat-grid-tile [colspan]="1" [rowspan]="1" >
                         <mat-form-field class="ancho">
                            <mat-label>TIPO DE IDENTIFICACION</mat-label>
-                           <mat-select formControlName="identification_type_id" name="tipoIdentificacion" [disabled]="!isEdit">
+                           <mat-select formControlName="identification_type_id" name="tipoIdentificacion">
                               <mat-option *ngFor="let identificatiotype of tipoIdentificacion " [value]="identificatiotype.id">
                               {{identificatiotype.name}}
                               </mat-option>
@@ -22,49 +22,49 @@
                       <mat-grid-tile [colspan]="1" [rowspan]="1" >
                           <mat-form-field class="ancho" >
                               <mat-label>NUMERO DE IDENTIFICACION</mat-label>
-                              <input matInput autocomplete="off" formControlName="identification_number" [readonly]="!isEdit">
+                              <input matInput autocomplete="off" formControlName="identification_number" >
                             </mat-form-field>
                       </mat-grid-tile>
                       
                       <mat-grid-tile [colspan]="1" [rowspan]="1" >
                           <mat-form-field class="ancho" >
                               <mat-label>NOMBRE</mat-label>
-                              <input matInput autocomplete="off" formControlName="name" [readonly]="!isEdit">
+                              <input matInput autocomplete="off" formControlName="name" >
                             </mat-form-field>
                       </mat-grid-tile>
 
                       <mat-grid-tile [colspan]="1" [rowspan]="1" >
                           <mat-form-field class="ancho" >
                               <mat-label>APELLIDO</mat-label>
-                              <input matInput autocomplete="off" formControlName="last_name" [readonly]="!isEdit">
+                              <input matInput autocomplete="off" formControlName="last_name" >
                             </mat-form-field>
                       </mat-grid-tile>
       
                       <mat-grid-tile [colspan]="1" [rowspan]="1" >
                           <mat-form-field class="ancho" >
                               <mat-label>CORREO</mat-label>
-                              <input matInput autocomplete="off" formControlName="email" [readonly]="!isEdit">
+                              <input matInput autocomplete="off" formControlName="email" >
                             </mat-form-field>
                       </mat-grid-tile>
 
                       <mat-grid-tile [colspan]="1" [rowspan]="1" >
                           <mat-form-field class="ancho" >
                               <mat-label>CONTRASEÑA</mat-label>
-                              <input matInput  autocomplete="off" formControlName="password"  [readonly]="!isEdit">
+                              <input matInput  autocomplete="off" formControlName="password"  >
                             </mat-form-field>
                       </mat-grid-tile>
 
                       <mat-grid-tile [colspan]="1" [rowspan]="1" >
                           <mat-form-field class="ancho" >
                               <mat-label>FECHA DE ADMISION</mat-label>
-                              <input matInput autocomplete="off" type="date" formControlName="admission_date" [readonly]="!isEdit">
+                              <input matInput autocomplete="off" type="date" formControlName="admission_date" >
                             </mat-form-field>
                       </mat-grid-tile>
 
                       <mat-grid-tile [colspan]="1" [rowspan]="1" >
                         <mat-form-field class="ancho">
                             <mat-label>TIPO DE SALARIO</mat-label>
-                            <mat-select formControlName="salary_type_id" name="tipoSalario" [disabled]="!isEdit">
+                            <mat-select formControlName="salary_type_id" name="tipoSalario">
                               <mat-option *ngFor="let salarytype of tipoSalario" [value]="salarytype.id">
                                 {{salarytype.name}}
                               </mat-option>
@@ -75,14 +75,14 @@
                       <mat-grid-tile [colspan]="1" [rowspan]="1" >
                           <mat-form-field class="ancho" >
                               <mat-label>SALARIO BASE</mat-label>
-                              <input matInput autocomplete="off"  formControlName="base_salary" [readonly]="!isEdit">
+                              <input matInput autocomplete="off"  formControlName="base_salary" >
                             </mat-form-field>
                       </mat-grid-tile>
 
                       <mat-grid-tile [colspan]="1" [rowspan]="1" >
                           <mat-form-field class="ancho">
                               <mat-label>CARGO</mat-label>
-                              <mat-select formControlName="position_id" name="cargo" [disabled]="!isEdit">
+                              <mat-select formControlName="position_id" name="cargo">
                                 <mat-option *ngFor="let cargo of cargos" [value]="cargo.id">
                                   {{cargo.name}}
                                 </mat-option>
@@ -93,7 +93,7 @@
                       <mat-grid-tile [colspan]="1" [rowspan]="1" >
                           <mat-form-field class="ancho">
                               <mat-label>SUCURSAL</mat-label>
-                              <mat-select formControlName="headquarter_id" name="sucursal" [disabled]="!isEdit">
+                              <mat-select formControlName="headquarter_id" name="sucursal">
                                 <mat-option *ngFor="let sucursal of sucursales" [value]="sucursal.id">
                                   {{sucursal.name}}
                                 </mat-option>
@@ -104,7 +104,7 @@
                       <mat-grid-tile [colspan]="1" [rowspan]="1" >
                           <mat-form-field class="ancho">
                               <mat-label>LINEA DE NEGOCIO</mat-label>
-                              <mat-select formControlName="business_line_id" name="lineaNegocio" [disabled]="!isEdit">
+                              <mat-select formControlName="business_line_id" name="lineaNegocio">
                                 <mat-option *ngFor="let bussinesline of lineaNegocio" [value]="bussinesline.id">
                                   {{bussinesline.name}}
                                 </mat-option>
@@ -115,7 +115,7 @@
                       <mat-grid-tile [colspan]="1" [rowspan]="1" >
                           <mat-form-field class="ancho">
                               <mat-label>TIPO DE CONTRATO</mat-label>
-                              <mat-select formControlName="contract_type_id" name="tipoContrato" [disabled]="!isEdit">
+                              <mat-select formControlName="contract_type_id" name="tipoContrato">
                                 <mat-option *ngFor="let ContractType of tipoContrato" [value]="ContractType.id">
                                   {{ContractType.name}}
                                 </mat-option>
@@ -127,8 +127,7 @@
                     
                       <mat-grid-tile [colspan]="3" [rowspan]="1" >
                           <button mat-raised-button mat-dialog-close style="margin-right: 20px;">Volver</button>
-                          <button *ngIf="!id" type="submit" [disabled]="form.invalid" mat-raised-button color="primary" (click)=" createEmployer(form.value)"  >Aceptar</button>
-                          <button *ngIf="id && isEdit" type="submit" [disabled]="form.invalid" mat-raised-button color="primary" (click)=" updateEmployer(form.value)"  >update</button>
+                          <button type="submit" [disabled]="form.invalid" mat-raised-button color="primary" (click)=" updateEmployer(form.value)"  >update</button>
                       </mat-grid-tile>
 
                   </mat-grid-list>
