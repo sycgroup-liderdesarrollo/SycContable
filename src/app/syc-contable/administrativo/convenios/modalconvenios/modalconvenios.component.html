@@ -1,6 +1,6 @@
 <div class="container">
     <mat-toolbar>
-        <span mat-dialog-title>{{ isEdit ? "Editar" : "Crear" }} Convenio</span>
+        <span mat-dialog-title>{{ isEdit ? "Agregar" : "Editar"  }} Convenio</span>
     </mat-toolbar>
     <mat-card>
       <div class="d-flex justify-content-center" *ngIf="isLoading">
@@ -11,14 +11,14 @@
                     <mat-grid-tile [colspan]="1" [rowspan]="1" >
                         <mat-form-field class="ancho" >
                             <mat-label>NOMBRE</mat-label>
-                            <input matInput autocomplete="off" formControlName="name" [readonly]="!isEdit">
+                            <input matInput autocomplete="off" formControlName="name" >
                           </mat-form-field>
                     </mat-grid-tile>
                    
                     <mat-grid-tile [colspan]="1" [rowspan]="1" >
                         <mat-form-field class="ancho">
                             <mat-label>TIPO DE CONVENIO</mat-label>
-                            <mat-select formControlName="covenant_type_id" name="convenio" [disabled]="!isEdit" >
+                            <mat-select formControlName="covenant_type_id" name="convenio"  >
                                 <mat-option *ngFor="let covenant of covenantType" [value]="covenant.id">
                                   {{covenant.name}}
                                 </mat-option>
@@ -29,7 +29,7 @@
                     <mat-grid-tile [colspan]="1" [rowspan]="1" >
                         <mat-form-field class="ancho" >
                             <mat-label>TIPO DE PERIODICIDAD</mat-label>
-                            <mat-select formControlName="periodicity_type_id" name="periodicidad" [disabled]="!isEdit">
+                            <mat-select formControlName="periodicity_type_id" name="periodicidad" >
                                 <mat-option *ngFor="let periodicity of periodicidad" [value]="periodicity.id">
                                   {{periodicity.name}}
                                 </mat-option>
@@ -40,7 +40,7 @@
                     <mat-grid-tile *ngIf="!isEdit" [colspan]="1" [rowspan]="1" >
                         <mat-form-field class="ancho" >
                             <mat-label>ESTADO</mat-label>
-                            <mat-select formControlName="active" name="active" [disabled]="!isEdit">
+                            <mat-select formControlName="active" name="active" >
                                 <mat-option *ngFor="let active of actives" [value]="active.value">
                                   {{active.name}}
                                 </mat-option>
@@ -51,21 +51,21 @@
                     <mat-grid-tile [colspan]="1" [rowspan]="1" *ngIf="form.value.covenant_type_id == 2">
                         <mat-form-field class="ancho" >
                             <mat-label>VALOR</mat-label>
-                            <input matInput autocomplete="off" formControlName="value" [readonly]="!isEdit">
+                            <input matInput autocomplete="off" formControlName="value" >
                           </mat-form-field>
                     </mat-grid-tile>
 
                     <mat-grid-tile [colspan]="1" [rowspan]="1">
                        <mat-form-field class="ancho" >
                             <mat-label>CONCEPTO</mat-label>
-                            <input matInput autocomplete="off" formControlName="concept_name" [readonly]="!isEdit">
+                            <input matInput autocomplete="off" formControlName="concept_name" >
                           </mat-form-field>
                     </mat-grid-tile>
 
                     <mat-grid-tile [colspan]="1" [rowspan]="1" >
                         <mat-form-field class="ancho" >
                             <mat-label>PROVEEDORES</mat-label>
-                            <mat-select formControlName="provider_id" name="provider" [disabled]="!isEdit">
+                            <mat-select formControlName="provider_id" name="provider" >
                                 <mat-option *ngFor="let provider_id of providers" [value]="provider_id.id">
                                   {{provider_id.name}}
                                 </mat-option>
@@ -76,7 +76,7 @@
                     <mat-grid-tile [colspan]="2" [rowspan]="1" >
                         <button mat-raised-button mat-dialog-close style="margin-right: 20px;">Volver</button>
                         <button *ngIf="!id" type="submit" [disabled]="form.invalid" mat-raised-button color="primary" (click)="crearConvenio(form.value)">Aceptar</button>
-                        <button *ngIf="id && isEdit" type="submit" [disabled]="form.invalid" mat-raised-button color="primary" (click)="updateConvenio(form.value)" >update</button>
+                        <button  type="submit" [disabled]="form.invalid" mat-raised-button color="primary" (click)="updateConvenio(form.value)" >update</button>
                     </mat-grid-tile>
 
                 </mat-grid-list>

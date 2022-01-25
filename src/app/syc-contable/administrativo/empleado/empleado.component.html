@@ -58,9 +58,9 @@
                     <mat-icon>more_vert </mat-icon>
                   </button>
                   <mat-menu #menu="matMenu">
-                      <button mat-menu-item (click)="openDialog(row.id,true)">
-                        <mat-icon>find_in_page</mat-icon>
-                        <span>Ver más</span>
+                      <button mat-menu-item (click)="openDialog(row.id,false)">
+                        <mat-icon>edit</mat-icon>
+                        <span>Editar</span>
                       </button>
                       <button  mat-menu-item (click)=" openConfirmation(row.id)">
                         <mat-icon>delete</mat-icon>
