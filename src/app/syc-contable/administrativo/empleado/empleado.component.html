@@ -28,6 +28,21 @@
                   <th mat-header-cell *matHeaderCellDef mat-sort-header> Primer Apellido </th>
                  <td mat-cell *matCellDef="let row"> {{row.last_name}} </td>
               </ng-container>
+
+              <ng-container matColumnDef="gender_id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Genero </th>
+               <td mat-cell *matCellDef="let row"> {{row.gender_id}} </td>
+            </ng-container>
+
+              <ng-container matColumnDef="neighborhood">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Barrio </th>
+                <td mat-cell *matCellDef="let row"> {{row.neighborhood}} </td>
+            </ng-container>
+
+              <ng-container matColumnDef="address">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Direccion </th>
+                <td mat-cell *matCellDef="let row"> {{row.address}} </td>
+            </ng-container>
         
               <ng-container matColumnDef="position">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header> Cargo </th>

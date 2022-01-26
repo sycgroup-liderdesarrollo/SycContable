@@ -45,10 +45,8 @@ export class ConveniosComponent implements OnInit,AfterViewInit {
       ).subscribe(
         resp => {
           this.dataSource.data = resp.data;
-  
         }
       );
-
     }
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;

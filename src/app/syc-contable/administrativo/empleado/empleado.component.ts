@@ -17,7 +17,7 @@ import { ModalempleadoComponent } from './modalempleado/modalempleado.component'
 export class EmpleadoComponent implements AfterViewInit,OnInit {
 
   dataSource : MatTableDataSource<any>;
-  displayedColumns : string[] = ['identification_number','name','last_name','position','email','options'];
+  displayedColumns : string[] = ['identification_number','name','last_name','position','email','address','neighborhood','gender_id','options'];
   isLoading: boolean = false;
 
   @ViewChild(MatTable) tabla1!: MatTable<any>;

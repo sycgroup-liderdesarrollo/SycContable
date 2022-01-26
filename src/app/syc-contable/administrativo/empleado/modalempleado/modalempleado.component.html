@@ -38,7 +38,46 @@
                               <mat-label>APELLIDO</mat-label>
                               <input matInput autocomplete="off" formControlName="last_name" >
                             </mat-form-field>
-                      </mat-grid-tile>
+                       </mat-grid-tile>
+
+                       <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                        <mat-form-field class="ancho">
+                            <mat-label>GENERO</mat-label>
+                            <mat-select formControlName="gender_id" name="genero">
+                              <mat-option *ngFor="let gender_id of genero" [value]="gender_id.id">
+                                {{gender_id.name}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                    </mat-grid-tile>
+                       
+                      <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                        <mat-form-field class="ancho" >
+                            <mat-label>BARRIO</mat-label>
+                            <input matInput autocomplete="off"  formControlName="neighborhood" >
+                          </mat-form-field>
+                    </mat-grid-tile>
+
+                      <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                        <mat-form-field class="ancho" >
+                            <mat-label>DIRECCION</mat-label>
+                            <input matInput autocomplete="off"  formControlName="address" >
+                          </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                      <mat-form-field class="ancho" >
+                          <mat-label>FECHA DE NACIMIENTO</mat-label>
+                          <input matInput autocomplete="off" type="date" formControlName="birthday" >
+                        </mat-form-field>
+                  </mat-grid-tile>
+
+                  <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                    <mat-form-field class="ancho" >
+                        <mat-label>NUMERO DE HIJOS</mat-label>
+                        <input matInput autocomplete="off" type="number" formControlName="children" >
+                      </mat-form-field>
+                </mat-grid-tile>
       
                       <mat-grid-tile [colspan]="1" [rowspan]="1" >
                           <mat-form-field class="ancho" >
@@ -63,6 +102,17 @@
 
                       <mat-grid-tile [colspan]="1" [rowspan]="1" >
                         <mat-form-field class="ancho">
+                            <mat-label>TIPO DE CONTRATO</mat-label>
+                            <mat-select formControlName="contract_type_id" name="tipoContrato">
+                              <mat-option *ngFor="let ContractType of tipoContrato" [value]="ContractType.id">
+                                {{ContractType.name}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                    </mat-grid-tile>
+
+                      <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                        <mat-form-field class="ancho">
                             <mat-label>TIPO DE SALARIO</mat-label>
                             <mat-select formControlName="salary_type_id" name="tipoSalario">
                               <mat-option *ngFor="let salarytype of tipoSalario" [value]="salarytype.id">
@@ -79,7 +129,19 @@
                             </mat-form-field>
                       </mat-grid-tile>
 
+                      
                       <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                          <mat-form-field class="ancho">
+                              <mat-label>LINEA DE NEGOCIO</mat-label>
+                              <mat-select formControlName="business_line_id" name="lineaNegocio">
+                                <mat-option *ngFor="let bussinesline of lineaNegocio" [value]="bussinesline.id">
+                                  {{bussinesline.name}}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </mat-grid-tile>
+
+                             <mat-grid-tile [colspan]="1" [rowspan]="1" >
                           <mat-form-field class="ancho">
                               <mat-label>CARGO</mat-label>
                               <mat-select formControlName="position_id" name="cargo">
@@ -91,37 +153,15 @@
                       </mat-grid-tile>
 
                       <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                          <mat-form-field class="ancho">
-                              <mat-label>SUCURSAL</mat-label>
-                              <mat-select formControlName="headquarter_id" name="sucursal">
-                                <mat-option *ngFor="let sucursal of sucursales" [value]="sucursal.id">
-                                  {{sucursal.name}}
-                                </mat-option>
-                              </mat-select>
-                            </mat-form-field>
-                      </mat-grid-tile>
-                      
-                      <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                          <mat-form-field class="ancho">
-                              <mat-label>LINEA DE NEGOCIO</mat-label>
-                              <mat-select formControlName="business_line_id" name="lineaNegocio">
-                                <mat-option *ngFor="let bussinesline of lineaNegocio" [value]="bussinesline.id">
-                                  {{bussinesline.name}}
-                                </mat-option>
-                              </mat-select>
-                            </mat-form-field>
-
-                      </mat-grid-tile>
-                      <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                          <mat-form-field class="ancho">
-                              <mat-label>TIPO DE CONTRATO</mat-label>
-                              <mat-select formControlName="contract_type_id" name="tipoContrato">
-                                <mat-option *ngFor="let ContractType of tipoContrato" [value]="ContractType.id">
-                                  {{ContractType.name}}
-                                </mat-option>
-                              </mat-select>
-                            </mat-form-field>
-                      </mat-grid-tile>
+                        <mat-form-field class="ancho">
+                            <mat-label>SUCURSAL</mat-label>
+                            <mat-select formControlName="headquarter_id" name="sucursal">
+                              <mat-option *ngFor="let sucursal of sucursales" [value]="sucursal.id">
+                                {{sucursal.name}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                    </mat-grid-tile>
 
                       <mat-grid-tile [colspan]="3" [rowspan]="1" >
                           <button mat-raised-button mat-dialog-close style="margin-right: 20px;">Volver</button>

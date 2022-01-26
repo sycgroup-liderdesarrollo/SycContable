@@ -26,7 +26,7 @@ export class ConvenantService {
   return  this.http.get<any>(`${environment.API_Url}covenant/`+ id);
 }
   updateConvenant(formdata:any, id:any): Observable<any>{
-  return  this.http.put<any>(`${environment.API_Url}covenant/` + id,formdata);
+  return  this.http.put<any>(`${environment.API_Url}covenant/`+ id,formdata);
 }
 
 }

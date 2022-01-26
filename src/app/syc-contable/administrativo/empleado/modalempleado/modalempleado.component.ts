@@ -23,6 +23,7 @@ export class ModalempleadoComponent implements OnInit {
   
   selectedValue!: string;
   dataEmployee: any;
+  genero:any;
   respuesta: any;
   cargos: any;
   lineaNegocio: any;
@@ -68,12 +69,17 @@ export class ModalempleadoComponent implements OnInit {
       email:[dataEmployee?.email ?? '', Validators.required],
       password:['12345678', Validators.required],
       admission_date:[dataEmployee?.admission_date ?? '', Validators.required],
+      birthday:[dataEmployee?.birthday ?? '', Validators.required],
       base_salary:[dataEmployee?.base_salary ?? '', Validators.required],
       headquarter_id:[dataEmployee?.headquarter_id ?? '', Validators.required],
       business_line_id:[dataEmployee?.business_line_id ?? '', Validators.required],
       contract_type_id:[dataEmployee?.contract_type_id ?? '', Validators.required],
       salary_type_id:[dataEmployee?.salary_type_id ?? '', Validators.required],
       identification_type_id:[dataEmployee?.identification_type_id ?? '', Validators.required],
+      address: [dataEmployee?.address ?? '', Validators.required],
+      neighborhood:[dataEmployee?.neighborhood ?? '', Validators.required],
+      children:[dataEmployee?.children ?? '', Validators.required],
+      gender_id:[dataEmployee?.gender_id ?? '', Validators.required],
     });
     this.isLoading=false;
   }
@@ -103,8 +109,6 @@ export class ModalempleadoComponent implements OnInit {
   }
 
   getCargos() : Promise<any>{
-    console.log('cargos');
-    
     return new Promise( (resolve,reject) => {
       this.servicesCargo.getCargos().subscribe(res => {
         this.cargos = res.data;
@@ -114,8 +118,6 @@ export class ModalempleadoComponent implements OnInit {
   }
 
   getLineasNegocio(): Promise<any>{
-    console.log('lin_negocios');
-    
     return new Promise( (resolve,reject)=>{
       this.servicesLineaNegocio.getLineaNegocio().subscribe(rest => {
         this.lineaNegocio = rest.data;

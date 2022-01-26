@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { ConceptConvenioService } from '../../services/convenios/concept-convenio.service';
 import { ConvenantService } from '../../services/convenios/convenant.service';
 import { PeriodicidadConvenioService } from '../../services/convenios/periodicidad-convenio.service';
 import { TipoConvenioService } from '../../services/convenios/tipo-convenio.service';
@@ -25,17 +24,12 @@ export class ModalconveniosComponent implements OnInit {
   covenantType:any;
   name:any;
   value:any;
-  // actives:any;
+  active:any;
   respuesta:any;
   providers:any;
   ValueActual:any;
   iscuota: boolean=false;
   isLoading:boolean=false;
-
-  actives = [
-    {value : "1", name : "Activo"},
-    {value : "0", name : "Inactivo"}
-  ]
 
   constructor(
     private fb: FormBuilder,
@@ -48,15 +42,14 @@ export class ModalconveniosComponent implements OnInit {
 
   ngOnInit(): void {
     this.init();
-
   }
   
   editConvenant(){
     this.convenantservices.putConvenant(this.id).subscribe(
       resp => {
         this.dataConvenant = resp.data;
+        
         this.crearform(this.dataConvenant);
-
       },
     )
   }
@@ -64,8 +57,8 @@ export class ModalconveniosComponent implements OnInit {
   crearform(dataConvenant?:any){
     this.form = this.fb.group({
       name: [dataConvenant?.name ?? '', Validators.required],
-      value: [ dataConvenant?.value ?? '1', Validators.required],
-      active: [dataConvenant?.active ?? '0', Validators.required],
+      value: [ dataConvenant?.value ?? '', Validators.required],
+      active: [ dataConvenant?.active ? 1 : ( dataConvenant?.active == 0 ? 0 : '' ) , Validators.required],
       covenant_type_id: [dataConvenant?.covenant_type_id ?? '', Validators.required],
       periodicity_type_id : [dataConvenant?.periodicity_type_id ?? '', Validators.required],
       concept_name: [dataConvenant?.concept.name ?? '', Validators.required],
@@ -79,8 +72,11 @@ export class ModalconveniosComponent implements OnInit {
       this.dialog.close();
     });
   }
-  updateConvenio(formData:any){ 
-    this.convenantservices.updateConvenant(formData, this.id).subscribe(res =>{  console.log('todo con exito');
+  updateConvenio(formData:any,id:any){ 
+    console.log(formData);
+    
+    this.convenantservices.updateConvenant(formData,id).subscribe(res =>{ 
+    this.respuesta = res;
       this.dialog.close();
     });
   }
