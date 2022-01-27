@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { TipoIdentificacionService } from '../../services/empleados/tipo-identificacion.service';
+import { ConstitutionTypeService } from '../../services/proveedores/constitution-type.service';
+import { ResponsabilityTypeService } from '../../services/proveedores/responsability-type.service';
 import { ServicioProveedoresService } from '../../services/proveedores/servicio-proveedores.service';
 
 @Component({
@@ -10,9 +12,9 @@ import { ServicioProveedoresService } from '../../services/proveedores/servicio-
   styleUrls: ['./modalproveedores.component.css']
 })
 export class ModalproveedoresComponent implements OnInit {
-  
+
   @Input() id?: any;
-@Input() isEdit: boolean = true;
+  @Input() isEdit: boolean = true;
 
 
   selectedValue!: string;
@@ -21,59 +23,76 @@ export class ModalproveedoresComponent implements OnInit {
   respuesta:any;
   value:any;
   TipoIdentificacion:any;
+  tiposNegocios:any;
+  tipoResponsabilidadIva:any;
   direccion:any;
   Identificacion:any;
   telefono:any;
   dataProvider: any;
   isLoading:boolean=false;
+  juridico:boolean=true;
+  nombre:string="NOMBRE";
+
 
   constructor(
     private fb: FormBuilder,
     private dialog: MatDialogRef<ModalproveedoresComponent>,
     private serviceproviders: ServicioProveedoresService,
     private servicesTipoIdentificacion: TipoIdentificacionService,
-
+    private serviceConstitutionType: ConstitutionTypeService,
+    private serviceResponsabilityType: ResponsabilityTypeService,
 
   ) {}
 
   ngOnInit(): void {
     this.init();
+
+    //obtiene los tipos de negocio, si es natural o juridico
+    this.serviceConstitutionType.getConstitutionType().subscribe(resp =>{
+      this.tiposNegocios = resp.data
+    });
+    //obtiene los tipo de responsabilidad de iva
+    this.serviceResponsabilityType.getResponsabilityType().subscribe(resp =>{
+      this.tipoResponsabilidadIva = resp.data
+    });
   }
 
   editProvider(){
     this.serviceproviders.putProvider(this.id).subscribe(
       resp => {
         this.dataProvider = resp.data;
-        console.log(this.dataProvider);
         this.crearform(this.dataProvider);
-        
-        
-      },
+      }
     )
   }
 
   crearform(dataProvider?:any){
     this.form = this.fb.group({
-       identification_type_id: [dataProvider?. identification_type_id ?? '', Validators.required],
+
+      identification_type_id: [dataProvider?.identification_type_id ?? '', Validators.required],
+      constitution_type_id: [dataProvider?.constitution_type_id ?? '', Validators.required],
       identification_number: [dataProvider?.identification_number ?? '', Validators.required],
       name: [dataProvider?.name ?? '', Validators.required],
       address: [dataProvider?.address ?? '', Validators.required],
       phone: [dataProvider?.phone ?? '', Validators.required],
+      trade_name: [dataProvider?.trade_name ?? '', Validators.required],
+      email: [dataProvider?.email ?? '', Validators.required],
+      password:[dataProvider?.password ?? '', Validators.required],
+      iva: [dataProvider?.iva ?? '', Validators.required],
+      responsability_type_id: [dataProvider?.responsability_type_id ?? '', Validators.required],
+      last_name: [dataProvider?.last_name ?? ''],
+      city_id: [dataProvider?.city_id ?? '', Validators.required],
     });
     this.isLoading=false;
   }
 
   crearProvider(formData:any){
-    console.log(formData);
-    
     this.serviceproviders.postProvider(formData).subscribe(res => {
       this.respuesta = res;
       this.dialog.close();
     } )
   }
   updateProvider(formData:any){
-    console.log(formData);
-    
     this.serviceproviders.updateProvider(formData, this.id).subscribe(res =>{
       console.log('todo con exito');
       this.dialog.close();
@@ -93,5 +112,15 @@ export class ModalproveedoresComponent implements OnInit {
       });
     })
   }
+  constitutionActual(actualConstitutio:number){
+    if (actualConstitutio == 2) {
+      this.nombre="RAZON SOCIAL";
+      this.juridico = false;
+    }
+    else{
+      this.nombre="NOMBRE"
+      this.juridico = true;
+    }
 
+  }
 }
