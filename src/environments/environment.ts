@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   API_Url: 'http://127.0.0.1:8000/api/',
   token_url: 'http://127.0.0.1:8000/oauth/token',
-  client_secret_API : 'fb8iMtthP8cLupYAaeGTpVIyER6DHik54TGJ04wf',
+  client_secret_API : '6EyT7oiSR6KkALFjdhRI9FOrHzkcXLRYuvoFgbdx',
   client_id_API : '2'
 };
 
