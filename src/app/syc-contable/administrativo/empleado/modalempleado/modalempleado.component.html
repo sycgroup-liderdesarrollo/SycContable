@@ -108,7 +108,7 @@
                   <mat-grid-tile [colspan]="1" [rowspan]="1" >
                     <mat-form-field class="ancho" >
                         <mat-label>NUMERO DE HIJOS</mat-label>
-                        <input matInput autocomplete="off" type="number" formControlName="children" >
+                        <input matInput autocomplete="off"  formControlName="children" >
                       </mat-form-field>
                 </mat-grid-tile>
       
@@ -260,6 +260,20 @@
                               </mat-option>
                             </mat-select>
                           </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                      <mat-form-field class="ancho">
+                          <mat-label>ESTADO</mat-label>
+                          <mat-select formControlName="active" name="Estado">
+                            <mat-option [value]="1">
+                              Activo
+                            </mat-option>
+                            <mat-option [value]="0">
+                              Inactivo
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
                     </mat-grid-tile>
 
                       <mat-grid-tile [colspan]="3" [rowspan]="1" >

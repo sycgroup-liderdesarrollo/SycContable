@@ -48,6 +48,7 @@ export class ModalempleadoComponent implements OnInit {
   expedicion:any;
   Emergencia:any;
   Estrato:any;
+  active:any;
   form!: FormGroup;
   isLoading:boolean=false;
 
@@ -114,6 +115,7 @@ export class ModalempleadoComponent implements OnInit {
       pension_fund_id:[dataEmployee?.pension_fund_id ??'',Validators.required],
       strata_id:[dataEmployee?.strata_id ??'',Validators.required],
       emergency_contact_id:[dataEmployee?.emergency_contact_id ??'',Validators.required],
+      active:[dataEmployee?.active ??'',Validators.required],
     });
     this.isLoading=false;
   }
