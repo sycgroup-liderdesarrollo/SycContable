@@ -25,6 +25,17 @@
                               <input matInput autocomplete="off" formControlName="identification_number" >
                             </mat-form-field>
                       </mat-grid-tile>
+
+                      <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                        <mat-form-field class="ancho">
+                            <mat-label>LUGAR DE EXPEDICION</mat-label>
+                            <mat-select formControlName="expedition_place_id" name="ciudadTrabajo">
+                              <mat-option *ngFor="let expedition_place_id of expedicion" [value]="expedition_place_id.id">
+                                {{expedition_place_id.name}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                      </mat-grid-tile>
                       
                       <mat-grid-tile [colspan]="1" [rowspan]="1" >
                           <mat-form-field class="ancho" >
@@ -49,8 +60,30 @@
                               </mat-option>
                             </mat-select>
                           </mat-form-field>
-                    </mat-grid-tile>
-                       
+                      </mat-grid-tile>
+
+                      <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                        <mat-form-field class="ancho">
+                            <mat-label>ESTADO CIVIL</mat-label>
+                            <mat-select formControlName="civil_statu_id" name="estadoCivil">
+                              <mat-option *ngFor="let civil_statu_id of estadoCivil" [value]="civil_statu_id.id">
+                                {{civil_statu_id.name}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                      </mat-grid-tile>
+
+                      <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                        <mat-form-field class="ancho">
+                            <mat-label>CONTACTO DE EMERGENCIA</mat-label>
+                            <mat-select formControlName="emergency_contact_id" name="ciudadResidencia">
+                              <mat-option *ngFor="let emergency_contact_id of Emergencia" [value]="emergency_contact_id.id">
+                                {{emergency_contact_id.name}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                      </mat-grid-tile>
+
                       <mat-grid-tile [colspan]="1" [rowspan]="1" >
                         <mat-form-field class="ancho" >
                             <mat-label>BARRIO</mat-label>
@@ -98,6 +131,72 @@
                               <mat-label>FECHA DE ADMISION</mat-label>
                               <input matInput autocomplete="off" type="date" formControlName="admission_date" >
                             </mat-form-field>
+                      </mat-grid-tile>
+
+                      <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                        <mat-form-field class="ancho">
+                            <mat-label>CIUDAD DE RESIDENCIA</mat-label>
+                            <mat-select formControlName="residence_city_id" name="ciudadResidencia">
+                              <mat-option *ngFor="let residence_city_id  of residencia" [value]="residence_city_id.id">
+                                {{residence_city_id.name}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                      </mat-grid-tile>
+
+                      <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                        <mat-form-field class="ancho">
+                            <mat-label>ESTRATO</mat-label>
+                            <mat-select formControlName="strata_id" name="Estrato">
+                              <mat-option *ngFor="let strata_id  of Estrato" [value]="strata_id.id">
+                                {{strata_id.name}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                      </mat-grid-tile>
+
+                      <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                        <mat-form-field class="ancho">
+                            <mat-label>CIUDAD DE TRABAJO</mat-label>
+                            <mat-select formControlName="work_city_id" name="ciudadTrabajo">
+                              <mat-option *ngFor="let work_city_id  of residencia" [value]="work_city_id.id">
+                                {{work_city_id.name}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                      </mat-grid-tile>
+
+                      <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                        <mat-form-field class="ancho">
+                            <mat-label>PROVEEDOR DE SALUD</mat-label>
+                            <mat-select formControlName="health_provider_id" name="proveedorSalud">
+                              <mat-option *ngFor="let health_provider_id  of ProveedorSalud" [value]="health_provider_id.id">
+                                {{health_provider_id.name}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                      </mat-grid-tile>
+
+                      <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                        <mat-form-field class="ancho">
+                            <mat-label>FONDO DE PENSIONES</mat-label>
+                            <mat-select formControlName="pension_fund_id" name="FondoPensiones">
+                              <mat-option *ngFor="let pension_fund_id  of FondoDePensiones" [value]="pension_fund_id.id">
+                                {{pension_fund_id.name}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                      </mat-grid-tile>
+
+                      <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                        <mat-form-field class="ancho">
+                            <mat-label>NIVEL DE EDUCACION</mat-label>
+                            <mat-select formControlName="education_level_id" name="nivelEducacion">
+                              <mat-option *ngFor="let education_level_id  of NivelEducativo" [value]="education_level_id.id">
+                                {{education_level_id.name}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
                       </mat-grid-tile>
 
                       <mat-grid-tile [colspan]="1" [rowspan]="1" >
