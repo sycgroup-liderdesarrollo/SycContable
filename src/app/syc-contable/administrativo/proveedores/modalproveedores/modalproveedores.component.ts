@@ -78,6 +78,8 @@ export class ModalproveedoresComponent implements OnInit {
   }
 
   crearform(dataProvider?:any){
+    console.log(dataProvider);
+
       this.form = this.fb.group({
         identification_type_id: [dataProvider?.identification_type_id ?? '', Validators.required],
         constitution_type_id: [dataProvider?.constitution_type_id ?? '', Validators.required],
@@ -89,12 +91,13 @@ export class ModalproveedoresComponent implements OnInit {
         email: [dataProvider?.email ?? '', Validators.required],
         password:[dataProvider?.password ?? '', Validators.required],
         iva: [dataProvider?.iva ?? '', Validators.required],
-        responsability_type_id: [dataProvider?.responsability_type_id ?? '', Validators.required],
+        responsability_type_id: [dataProvider?.responsability_type_id ?? ''],
         last_name: [dataProvider?.last_name ?? ''],
         city_id: [dataProvider?.city_id ?? '', Validators.required],
       });
     this.isLoading=false;
   }
+
   crearProvider(formData:any){
     console.log(formData);
 

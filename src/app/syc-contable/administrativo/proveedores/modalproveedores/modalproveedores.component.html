@@ -121,7 +121,7 @@
                           </mat-select>
                         </mat-form-field>
                     </mat-grid-tile>
-                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                    <mat-grid-tile [colspan]="1" [rowspan]="1" *ngIf="form.value.iva == 1">
                       <mat-form-field class="ancho" >
                           <mat-label>TIPO DE REGIMEN IVA</mat-label>
                             <mat-select formControlName="responsability_type_id" name="tipoResponsabilidadIva">

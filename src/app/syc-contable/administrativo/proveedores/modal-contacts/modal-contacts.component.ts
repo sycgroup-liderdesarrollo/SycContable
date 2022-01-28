@@ -11,7 +11,7 @@ import Swal from 'sweetalert2'
 })
 export class ModalContactsComponent implements OnInit {
 
-  isLoading:boolean=false;
+  isLoading:boolean=true;
   form!: FormGroup;
   name:any;
   dataContact:any;
@@ -39,6 +39,7 @@ export class ModalContactsComponent implements OnInit {
       position: [dataContact?.position ?? '', Validators.required],
       provider_id: [dataContact?.provider_id ?? this.id,Validators.required]
     })
+    this.isLoading = false
   }
 
   postContact(formData:Form){
