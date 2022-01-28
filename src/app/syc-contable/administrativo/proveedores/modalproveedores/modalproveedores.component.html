@@ -26,6 +26,15 @@
                                 <mat-option  [value]="TipoIdentificacion.id">
                                   {{TipoIdentificacion[1].name}}
                                 </mat-option>
+                                <mat-option [value]="TipoIdentificacion[2].id" *ngIf="form.value.constitution_type_id == 1">
+                                  {{TipoIdentificacion[2].name}}
+                                </mat-option>
+                                <mat-option [value]="TipoIdentificacion[3].id" *ngIf="form.value.constitution_type_id == 1">
+                                  {{TipoIdentificacion[3].name}}
+                                </mat-option>
+                                <mat-option [value]="TipoIdentificacion[4].id" *ngIf="form.value.constitution_type_id == 1">
+                                  {{TipoIdentificacion[4].name}}
+                                </mat-option>
                               </mat-select>
                           </mat-form-field>
                     </mat-grid-tile>
@@ -109,7 +118,7 @@
                           </mat-select>
                         </mat-form-field>
                     </mat-grid-tile>
-                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                    <mat-grid-tile [colspan]="1" [rowspan]="1" *ngIf="form.value.iva == 1">
                       <mat-form-field class="ancho" >
                           <mat-label>TIPO DE REGIMEN IVA</mat-label>
                             <mat-select formControlName="responsability_type_id" name="tipoResponsabilidadIva">

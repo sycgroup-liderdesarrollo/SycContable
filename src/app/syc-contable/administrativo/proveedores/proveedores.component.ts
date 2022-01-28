@@ -7,6 +7,8 @@ import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { finalize } from 'rxjs/operators';
 import { ConfirmacionComponent } from 'src/app/share/confirmacion/confirmacion.component';
 import { ServicioProveedoresService } from '../services/proveedores/servicio-proveedores.service';
+import { ModalContactsLitsComponent } from './contacts/modal-contacts-lits/modal-contacts-lits.component';
+import { ModalContactsComponent } from './contacts/modal-contacts/modal-contacts.component';
 import { ModalproveedoresComponent } from './modalproveedores/modalproveedores.component';
 
 @Component({
@@ -29,9 +31,9 @@ export class ProveedoresComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private serviceproviders: ServicioProveedoresService
-    ) { 
+    ) {
     this.dataSource = new MatTableDataSource();
-    
+
   }
 
   ngOnInit(): void {
@@ -47,10 +49,8 @@ export class ProveedoresComponent implements OnInit {
     ).subscribe(
       resp => {
         this.dataSource.data = resp.data;
-
       }
     );
-
   }
 
   ngAfterViewInit() {
@@ -71,26 +71,37 @@ export class ProveedoresComponent implements OnInit {
     id? dialogRef.componentInstance.id = id : null;
     dialogRef.componentInstance.isEdit = isEdit ;
     dialogRef.afterClosed().subscribe(result => {
-      this.getProviders(); 
+      this.getProviders();
     });
   };
 
   openConfirmation(id?: any): void{
     const ConfirmationRef = this.dialog.open(ConfirmacionComponent);
-
     ConfirmationRef.afterClosed().subscribe(resp => {
       resp ? this.deleteProvider(id): '';
     });
   }
   deleteProvider(id :any){
     this.serviceproviders.deleteProvider(id).subscribe(res => {
-      this.getProviders();  
-
+      this.getProviders();
     });
-
   }
-  
+  openDialogContacts(id?:number){
+    const dialogRef = this.dialog.open(ModalContactsComponent);
+    id? dialogRef.componentInstance.id = id : null;
+    dialogRef.afterClosed().subscribe(result => {
+      this.getProviders();
+    });
+  }
+  openDialogContactsList(id?:number){
+    const dialogRef = this.dialog.open(ModalContactsLitsComponent);
+    id? dialogRef.componentInstance.id = id : null;
+    dialogRef.afterClosed().subscribe(result => {
+      this.getProviders();
+    });
+  }
+
 }
 
-  
+
 

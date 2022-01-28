@@ -1,0 +1,59 @@
+<mat-card class="tabla">
+  <mat-toolbar>
+    <span>Contactos</span>
+    <div class="example-spacer"></div>
+  </mat-toolbar>
+  <div class="mat-elevation-z8">
+
+    <table mat-table [dataSource]="dataSource" class="col-12" >
+
+      <!-- name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <!-- last_name Column -->
+      <ng-container matColumnDef="last_name">
+        <th mat-header-cell *matHeaderCellDef> Apellido </th>
+        <td mat-cell *matCellDef="let element"> {{element.last_name}} </td>
+      </ng-container>
+
+      <!-- position Column -->
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> Cargo </th>
+        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+      </ng-container>
+
+      <!-- email Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Correo </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+      </ng-container>
+
+      <!-- phone Column -->
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef> Telefono </th>
+        <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+      </ng-container>
+
+      <!-- options Column -->
+      <ng-container matColumnDef="options">
+        <th mat-header-cell *matHeaderCellDef> Opciones </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button (click)="openEditDialog(element.id)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
+
+  <button mat-stroked-button color="primary" mat-dialog-close style="margin: auto; display: block; margin-top: 10px;">Volver</button>
+
+</mat-card>
+
