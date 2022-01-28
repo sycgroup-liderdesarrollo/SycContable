@@ -64,6 +64,10 @@
                         <mat-icon>group_add</mat-icon>
                         <span>Agregar contactos</span>
                       </button>
+                      <button mat-menu-item (click)="openDialogContactsList(row.id)">
+                        <mat-icon>contacts</mat-icon>
+                        <span>Ver contactos</span>
+                      </button>
                   </mat-menu>
               </td>
           </ng-container>

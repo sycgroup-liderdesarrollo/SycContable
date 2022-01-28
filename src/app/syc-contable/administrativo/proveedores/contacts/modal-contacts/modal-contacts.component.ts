@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Form, FormBuilder, FormControl, FormGroup, MinLengthValidator, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { ContactService } from '../../services/proveedores/contacts.service';
+import { ContactService } from '../../../services/proveedores/contacts.service';
 import Swal from 'sweetalert2'
 
 @Component({

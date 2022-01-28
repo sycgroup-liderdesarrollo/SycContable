@@ -15,4 +15,7 @@ export class ContactService {
     postContact(formData:any) :Observable<any> {
       return this.http.post<any>(`${environment.API_Url}contact`,formData);
     }
+    getContactProvider(provider_id:number): Observable<any>{
+      return this.http.get<any>(`${environment.API_Url}contact/provider/${provider_id}`);
+    }
 }
