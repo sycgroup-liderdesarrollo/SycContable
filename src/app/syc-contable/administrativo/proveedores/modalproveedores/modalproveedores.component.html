@@ -23,8 +23,8 @@
                         <mat-form-field class="ancho" >
                             <mat-label>TIPO DE IDENTIFICACION</mat-label>
                               <mat-select formControlName="identification_type_id" name="tipoIdentificacion"  >
-                                <mat-option *ngFor="let identificationtype of TipoIdentificacion " [value]="identificationtype.id">
-                                  {{identificationtype.name}}
+                                <mat-option [value]="TipoIdentificacion.id">
+                                  {{TipoIdentificacion[1].name}}
                                 </mat-option>
                               </mat-select>
                           </mat-form-field>
@@ -57,9 +57,9 @@
                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
                     <mat-form-field class="ancho" >
                         <mat-label>Departamento</mat-label>
-                        <mat-select name="departamento">
-                          <mat-option *ngFor="let tipoNegocio of tiposNegocios" [value]="tipoNegocio.id">
-                            {{tipoNegocio.name}}
+                        <mat-select name="departamento" (selectionChange)="cities($event.value)">
+                          <mat-option *ngFor="let province of provinces" [value]="province.id">
+                            {{province.name}}
                           </mat-option>
                         </mat-select>
                       </mat-form-field>
@@ -69,8 +69,8 @@
                   <mat-form-field class="ancho" >
                       <mat-label>Ciudad</mat-label>
                       <mat-select formControlName="city_id" name="city">
-                        <mat-option *ngFor="let tipoNegocio of tiposNegocios" [value]="tipoNegocio.id">
-                          {{tipoNegocio.name}}
+                        <mat-option *ngFor="let ciudad of ciudades" [value]="ciudad.id">
+                          {{ciudad.name}}
                         </mat-option>
                       </mat-select>
                     </mat-form-field>

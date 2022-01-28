@@ -45,9 +45,6 @@ export class ModalAsignarConvenioComponent implements OnInit {
   }
 
   asignarCovenant(userId:any,formData:any){
-    console.log("El id del usuairo es: "+userId);
-    console.log("ELa formdata es "+formData);
-
     this.AsignarService.asignarConvenio(userId, formData).subscribe(resp=>{
     this.covenant = resp;
     this.dialog.close();

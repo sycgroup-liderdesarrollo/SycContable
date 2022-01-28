@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { CiudadService } from '../../services/empleados/ciudad.service';
 import { TipoIdentificacionService } from '../../services/empleados/tipo-identificacion.service';
 import { ConstitutionTypeService } from '../../services/proveedores/constitution-type.service';
 import { ResponsabilityTypeService } from '../../services/proveedores/responsability-type.service';
@@ -32,6 +33,8 @@ export class ModalproveedoresComponent implements OnInit {
   isLoading:boolean=false;
   juridico:boolean=true;
   nombre:string="NOMBRE";
+  ciudades:any;
+  provinces:any;
 
 
   constructor(
@@ -41,6 +44,7 @@ export class ModalproveedoresComponent implements OnInit {
     private servicesTipoIdentificacion: TipoIdentificacionService,
     private serviceConstitutionType: ConstitutionTypeService,
     private serviceResponsabilityType: ResponsabilityTypeService,
+    private serviceCities:CiudadService,
 
   ) {}
 
@@ -55,6 +59,13 @@ export class ModalproveedoresComponent implements OnInit {
     this.serviceResponsabilityType.getResponsabilityType().subscribe(resp =>{
       this.tipoResponsabilidadIva = resp.data
     });
+    this.serviceCities.getProvince().subscribe(resp=>{
+      this.provinces = resp.data;
+    })
+    //obtiene todas las ciudades
+    this.serviceCities.getCiudad().subscribe(resp=>{
+      this.ciudades = resp.data;
+    })
   }
 
   editProvider(){
@@ -67,26 +78,28 @@ export class ModalproveedoresComponent implements OnInit {
   }
 
   crearform(dataProvider?:any){
-    this.form = this.fb.group({
+      console.log("entró a natural "+this.juridico);
 
-      identification_type_id: [dataProvider?.identification_type_id ?? '', Validators.required],
-      constitution_type_id: [dataProvider?.constitution_type_id ?? '', Validators.required],
-      identification_number: [dataProvider?.identification_number ?? '', Validators.required],
-      name: [dataProvider?.name ?? '', Validators.required],
-      address: [dataProvider?.address ?? '', Validators.required],
-      phone: [dataProvider?.phone ?? '', Validators.required],
-      trade_name: [dataProvider?.trade_name ?? '', Validators.required],
-      email: [dataProvider?.email ?? '', Validators.required],
-      password:[dataProvider?.password ?? '', Validators.required],
-      iva: [dataProvider?.iva ?? '', Validators.required],
-      responsability_type_id: [dataProvider?.responsability_type_id ?? '', Validators.required],
-      last_name: [dataProvider?.last_name ?? ''],
-      city_id: [dataProvider?.city_id ?? '', Validators.required],
-    });
+      this.form = this.fb.group({
+        identification_type_id: [dataProvider?.identification_type_id ?? '', Validators.required],
+        constitution_type_id: [dataProvider?.constitution_type_id ?? '', Validators.required],
+        identification_number: [dataProvider?.identification_number ?? '', Validators.required],
+        name: [dataProvider?.name ?? '', Validators.required],
+        address: [dataProvider?.address ?? '', Validators.required],
+        phone: [dataProvider?.phone ?? '', Validators.required],
+        trade_name: [dataProvider?.trade_name ?? '', Validators.required],
+        email: [dataProvider?.email ?? '', Validators.required],
+        password:[dataProvider?.password ?? '', Validators.required],
+        iva: [dataProvider?.iva ?? '', Validators.required],
+        responsability_type_id: [dataProvider?.responsability_type_id ?? '', Validators.required],
+        last_name: [dataProvider?.last_name ?? ''],
+        city_id: [dataProvider?.city_id ?? '', Validators.required],
+      });
     this.isLoading=false;
   }
-
   crearProvider(formData:any){
+    console.log(formData);
+
     this.serviceproviders.postProvider(formData).subscribe(res => {
       this.respuesta = res;
       this.dialog.close();
@@ -112,15 +125,19 @@ export class ModalproveedoresComponent implements OnInit {
       });
     })
   }
-  constitutionActual(actualConstitutio:number){
-    if (actualConstitutio == 2) {
+  constitutionActual(actualConstitution:number){
+    if (actualConstitution == 2) {
       this.nombre="RAZON SOCIAL";
       this.juridico = false;
-    }
-    else{
+    }else{
       this.nombre="NOMBRE"
       this.juridico = true;
     }
+  }
 
+  cities(province_id:number){
+    this.serviceCities.getCiudad(province_id).subscribe(resp=>{
+      this.ciudades = resp.data;
+    })
   }
 }
