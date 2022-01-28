@@ -23,8 +23,20 @@
                         <mat-form-field class="ancho" >
                             <mat-label>TIPO DE IDENTIFICACION</mat-label>
                               <mat-select formControlName="identification_type_id" name="tipoIdentificacion"  >
-                                <mat-option [value]="TipoIdentificacion.id">
+                                <mat-option [value]="TipoIdentificacion[0].id" *ngIf="form.value.constitution_type_id == 1">
+                                  {{TipoIdentificacion[0].name}}
+                                </mat-option>
+                                <mat-option [value]="TipoIdentificacion[1].id" *ngIf="form.value.constitution_type_id == 2">
                                   {{TipoIdentificacion[1].name}}
+                                </mat-option>
+                                <mat-option [value]="TipoIdentificacion[2].id" *ngIf="form.value.constitution_type_id == 1">
+                                  {{TipoIdentificacion[2].name}}
+                                </mat-option>
+                                <mat-option [value]="TipoIdentificacion[3].id" *ngIf="form.value.constitution_type_id == 1">
+                                  {{TipoIdentificacion[3].name}}
+                                </mat-option>
+                                <mat-option [value]="TipoIdentificacion[4].id" *ngIf="form.value.constitution_type_id == 1">
+                                  {{TipoIdentificacion[4].name}}
                                 </mat-option>
                               </mat-select>
                           </mat-form-field>

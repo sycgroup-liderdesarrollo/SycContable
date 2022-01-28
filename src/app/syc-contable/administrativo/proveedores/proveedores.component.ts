@@ -7,6 +7,7 @@ import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { finalize } from 'rxjs/operators';
 import { ConfirmacionComponent } from 'src/app/share/confirmacion/confirmacion.component';
 import { ServicioProveedoresService } from '../services/proveedores/servicio-proveedores.service';
+import { ModalContactsComponent } from './modal-contacts/modal-contacts.component';
 import { ModalproveedoresComponent } from './modalproveedores/modalproveedores.component';
 
 @Component({
@@ -29,9 +30,9 @@ export class ProveedoresComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private serviceproviders: ServicioProveedoresService
-    ) { 
+    ) {
     this.dataSource = new MatTableDataSource();
-    
+
   }
 
   ngOnInit(): void {
@@ -71,7 +72,7 @@ export class ProveedoresComponent implements OnInit {
     id? dialogRef.componentInstance.id = id : null;
     dialogRef.componentInstance.isEdit = isEdit ;
     dialogRef.afterClosed().subscribe(result => {
-      this.getProviders(); 
+      this.getProviders();
     });
   };
 
@@ -84,13 +85,18 @@ export class ProveedoresComponent implements OnInit {
   }
   deleteProvider(id :any){
     this.serviceproviders.deleteProvider(id).subscribe(res => {
-      this.getProviders();  
-
+      this.getProviders();
     });
-
   }
-  
+  openDialogContacts(id?:number){
+    const dialogRef = this.dialog.open(ModalContactsComponent);
+    id? dialogRef.componentInstance.id = id : null;
+    dialogRef.afterClosed().subscribe(result => {
+      this.getProviders();
+    });
+  }
+
 }
 
-  
+
 

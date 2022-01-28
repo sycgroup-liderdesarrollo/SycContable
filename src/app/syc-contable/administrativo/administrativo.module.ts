@@ -25,6 +25,7 @@ import { AsignarConvenioComponent } from './convenios/asignar-convenio/asignar-c
 import { ModalAsignarConvenioComponent } from './convenios/asignar-convenio/modal-asignar-convenio/modal-asignar-convenio.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { ModalContactsComponent } from './proveedores/modal-contacts/modal-contacts.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     ModalproveedoresComponent,
     AsignarConvenioComponent,
     ModalAsignarConvenioComponent,
+    ModalContactsComponent,
    
   ],
 

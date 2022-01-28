@@ -78,8 +78,6 @@ export class ModalproveedoresComponent implements OnInit {
   }
 
   crearform(dataProvider?:any){
-      console.log("entró a natural "+this.juridico);
-
       this.form = this.fb.group({
         identification_type_id: [dataProvider?.identification_type_id ?? '', Validators.required],
         constitution_type_id: [dataProvider?.constitution_type_id ?? '', Validators.required],
