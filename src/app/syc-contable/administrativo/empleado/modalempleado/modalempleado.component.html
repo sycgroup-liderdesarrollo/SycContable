@@ -12,10 +12,10 @@
                         <mat-form-field class="ancho">
                            <mat-label>TIPO DE IDENTIFICACION</mat-label>
                            <mat-select formControlName="identification_type_id" name="tipoIdentificacion">
-                              <mat-option *ngFor="let identificatiotype of tipoIdentificacion " [value]="identificatiotype.id">
+                         <mat-option *ngFor="let identificatiotype of tipoIdentificacion " [value]="identificatiotype.id">
                               {{identificatiotype.name}}
                               </mat-option>
-                           </mat-select>
+                                </mat-select>
                         </mat-form-field>
                   </mat-grid-tile>
 
