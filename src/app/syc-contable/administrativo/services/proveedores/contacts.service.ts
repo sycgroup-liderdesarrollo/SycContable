@@ -18,4 +18,10 @@ export class ContactService {
     getContactProvider(provider_id:number): Observable<any>{
       return this.http.get<any>(`${environment.API_Url}contact/provider/${provider_id}`);
     }
+    putContact(contact_id:number, formData:any):Observable<any>{
+      return this.http.put<any>(`${environment.API_Url}contact/${contact_id}`,formData);
+    }
+    showContact(contact_id:number):Observable<any>{
+      return this.http.get<any>(`${environment.API_Url}contact/${contact_id}`);
+    }
 }

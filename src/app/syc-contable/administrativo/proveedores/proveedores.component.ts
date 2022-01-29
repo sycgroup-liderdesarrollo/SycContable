@@ -67,6 +67,8 @@ export class ProveedoresComponent implements OnInit {
     }
   }
   openDialog(id?: any,isEdit: boolean = false): void {
+    console.log("proveedores component "+id);
+
     const dialogRef = this.dialog.open(ModalproveedoresComponent);
     id? dialogRef.componentInstance.id = id : null;
     dialogRef.componentInstance.isEdit = isEdit ;

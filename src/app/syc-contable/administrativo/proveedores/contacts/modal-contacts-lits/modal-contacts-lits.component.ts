@@ -29,13 +29,21 @@ export class ModalContactsLitsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getContacts()
+  }
+
+  openEditDialog(contact_id?:number, isEdit=true){
+    const dialogRef = this.dialog.open(ModalContactsComponent);
+    dialogRef.componentInstance.isEdit = isEdit ;
+    contact_id? dialogRef.componentInstance.id = contact_id : null;
+    dialogRef.afterClosed().subscribe(resp=>{
+      this.getContacts();
+    })
+  }
+
+  getContacts(){
     this.serviceContactList.getContactProvider(this.id).subscribe(resp=>{
       this.dataSource = resp.data;
     })
-  }
-  openEditDialog(contact_id?:number){
-    const dialogRef = this.dialog.open(ModalContactsComponent);
-    contact_id? dialogRef.componentInstance.id = contact_id : null;
-
   }
 }

@@ -4,11 +4,10 @@
     </mat-toolbar>
     <div class="d-flex justify-content-center" *ngIf="isLoading">
         <mat-spinner></mat-spinner>
-      </div>
+    </div>
     <mat-card>
         <form *ngIf="form" [formGroup]="form" >
               <mat-grid-list cols="3" rowHeight="70px">
-
                 <mat-grid-tile [colspan]="1" [rowspan]="1" >
                   <mat-form-field class="ancho" >
                       <mat-label>TIPO</mat-label>
@@ -65,18 +64,16 @@
                           <input matInput autocomplete="off" formControlName="trade_name" >
                         </mat-form-field>
                    </mat-grid-tile>
-
                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
                     <mat-form-field class="ancho" >
                         <mat-label>Departamento</mat-label>
-                        <mat-select name="departamento" (selectionChange)="cities($event.value)">
+                        <mat-select name="departamento" (selectionChange)="cities($event.value)" formControlName="province">
                           <mat-option *ngFor="let province of provinces" [value]="province.id">
                             {{province.name}}
                           </mat-option>
                         </mat-select>
                       </mat-form-field>
                 </mat-grid-tile>
-
                 <mat-grid-tile [colspan]="1" [rowspan]="1" >
                   <mat-form-field class="ancho" >
                       <mat-label>Ciudad</mat-label>
@@ -87,58 +84,71 @@
                       </mat-select>
                     </mat-form-field>
               </mat-grid-tile>
+              <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                  <mat-form-field class="ancho" >
+                      <mat-label>DIRECCION</mat-label>
+                      <input matInput autocomplete="off" formControlName="address" >
+                    </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                  <mat-form-field class="ancho" >
+                      <mat-label>TELEFONO</mat-label>
+                      <input matInput autocomplete="off" formControlName="phone" type="tel" matInput placeholder="555-555-1234">
+                    </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                <mat-form-field class="ancho" >
+                    <mat-label>CORREO</mat-label>
+                    <input matInput autocomplete="off" formControlName="email" type="email" placeholder="Ex. pat@example.com">
+                  </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1" >
+              <mat-form-field class="ancho" >
+                  <mat-label>Contraseña</mat-label>
+                  <input matInput autocomplete="off" formControlName="password" type="password" >
+                </mat-form-field>
+          </mat-grid-tile>
+              <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                <mat-form-field class="ancho" >
+                    <mat-label>IVA</mat-label>
+                    <mat-select formControlName="iva">
+                      <mat-option [value]="1">Si</mat-option>
+                      <mat-option [value]="0">No</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="1" [rowspan]="1" *ngIf="form.value.iva == 1">
+                <mat-form-field class="ancho" >
+                    <mat-label>TIPO DE REGIMEN IVA</mat-label>
+                      <mat-select formControlName="responsability_type_id" name="tipoResponsabilidadIva">
+                        <mat-option *ngFor="let tipoResponsabilidadIva of tipoResponsabilidadIva " [value]="tipoResponsabilidadIva.id">
+                          {{tipoResponsabilidadIva.name}}
+                        </mat-option>
+                      </mat-select>
+                  </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile [colspan]="3" [rowspan]="1" >
+                  <button mat-raised-button mat-dialog-close style="margin-right: 20px;">Volver</button>
+                  <button *ngIf="!id" type="submit" [disabled]="form.invalid" mat-raised-button color="primary" (click)=" crearProvider(form.value)">Aceptar</button>
+                  <button *ngIf="id" type="submit" [disabled]="form.invalid" mat-raised-button color="primary" (click)=" updateProvider(form.value)" >update</button>
+              </mat-grid-tile>
+            </mat-grid-list>
 
-                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                        <mat-form-field class="ancho" >
-                            <mat-label>DIRECCION</mat-label>
-                            <input matInput autocomplete="off" formControlName="address" >
-                          </mat-form-field>
-                    </mat-grid-tile>
-                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                        <mat-form-field class="ancho" >
-                            <mat-label>TELEFONO</mat-label>
-                            <input matInput autocomplete="off" formControlName="phone" type="tel" matInput placeholder="555-555-1234">
-                          </mat-form-field>
-                    </mat-grid-tile>
-                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                      <mat-form-field class="ancho" >
-                          <mat-label>CORREO</mat-label>
-                          <input matInput autocomplete="off" formControlName="email" type="email" placeholder="Ex. pat@example.com">
-                        </mat-form-field>
-                  </mat-grid-tile>
-                  <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                    <mat-form-field class="ancho" >
-                        <mat-label>Contraseña</mat-label>
-                        <input matInput autocomplete="off" formControlName="password" type="password" >
-                      </mat-form-field>
-                </mat-grid-tile>
-                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                      <mat-form-field class="ancho" >
-                          <mat-label>IVA</mat-label>
-                          <mat-select formControlName="iva">
-                            <mat-option value="1">Si</mat-option>
-                            <mat-option value="0">No</mat-option>
-                          </mat-select>
-                        </mat-form-field>
-                    </mat-grid-tile>
-                    <mat-grid-tile [colspan]="1" [rowspan]="1" *ngIf="form.value.iva == 1">
-                      <mat-form-field class="ancho" >
-                          <mat-label>TIPO DE REGIMEN IVA</mat-label>
-                            <mat-select formControlName="responsability_type_id" name="tipoResponsabilidadIva">
-                              <mat-option *ngFor="let tipoResponsabilidadIva of tipoResponsabilidadIva " [value]="tipoResponsabilidadIva.id">
-                                {{tipoResponsabilidadIva.name}}
-                              </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </mat-grid-tile>
-                    <mat-grid-tile [colspan]="3" [rowspan]="1" >
-                        <button mat-raised-button mat-dialog-close style="margin-right: 20px;">Volver</button>
-                        <button *ngIf="!id" type="submit" [disabled]="form.invalid" mat-raised-button color="primary" (click)=" crearProvider(form.value)">Aceptar</button>
-                        <button *ngIf="id" type="submit" [disabled]="form.invalid" mat-raised-button color="primary" (click)=" updateProvider(form.value)" >update</button>
-                    </mat-grid-tile>
-              </mat-grid-list>
+            <div class="container">
+              <div class="alert alert-danger" role="alert" *ngIf="errorIdentification">
+                  {{errorIdentification}}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              <div class="alert alert-danger" role="alert" *ngIf="errorTradeName">
+                {{errorTradeName}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              <div class="alert alert-danger" role="alert" *ngIf="errorEmail">
+                {{errorEmail}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            </div>
+
         </form>
-
     </mat-card>
-
 </div>
