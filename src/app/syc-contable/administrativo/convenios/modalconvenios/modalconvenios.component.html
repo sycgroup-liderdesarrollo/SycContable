@@ -1,6 +1,6 @@
 <div class="container">
     <mat-toolbar>
-        <span mat-dialog-title>{{ isEdit ? "Registrar" : "Editar"  }} Convenio</span>
+        <span mat-dialog-title>{{ isEdit ? "Agregar" : "Editar"  }} Convenio</span>
     </mat-toolbar>
     <mat-card>
       <div class="d-flex justify-content-center" *ngIf="isLoading">
@@ -78,7 +78,7 @@
 
                     <mat-grid-tile [colspan]="2" [rowspan]="1" >
                         <button mat-raised-button mat-dialog-close style="margin-right: 20px;">Volver</button>
-                        <button *ngIf="!id" type="submit" [disabled]="form.invalid" mat-raised-button color="primary" (click)="crearConvenio(form.value)">Aceptar</button>
+                        <button *ngIf="!id" type="submit"  mat-raised-button color="primary" (click)="crearConvenio(form.value)">Aceptar</button>
                         <button *ngIf="id" type="submit" [disabled]="form.invalid" mat-raised-button color="primary" (click)="updateConvenio(form.value,id)">update</button>
                     </mat-grid-tile>
 

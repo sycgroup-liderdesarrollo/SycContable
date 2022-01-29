@@ -6,8 +6,9 @@ export const environment = {
   production: false,
   API_Url: 'http://127.0.0.1:8000/api/',
   token_url: 'http://127.0.0.1:8000/oauth/token',
-  client_secret_API : 'Wz2KQ4CFQOXwM6PUp76uPwxRUi5j7og1eM3C6y0b',
-  client_id_API : '2'
+
+  client_secret_API : 'bu5qTmiLe8gZ2yBU1upHZmJs8RY0dwOYq5ZDbMlD',
+  client_id_API : '2',
 };
 
 /*
@@ -18,3 +19,4 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/plugins/zone-error';  // Included with Angular CLI.
+  

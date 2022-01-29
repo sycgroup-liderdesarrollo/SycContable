@@ -32,7 +32,8 @@
           <ng-container matColumnDef="active" >
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
               <td mat-cell *matCellDef="let row">
-              {{ row.active ? 'Activo':'Inactivo' }} 
+                <p *ngIf="row.active == 1"><mat-icon style="color:green; margin-left: 10px">toggle_on</mat-icon></p>
+                <p *ngIf="row.active == 0"><mat-icon style="color:red; margin-left: 10px">toggle_off</mat-icon></p>
                </td>
           </ng-container>
     
