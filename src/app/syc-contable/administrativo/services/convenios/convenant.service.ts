@@ -16,7 +16,7 @@ export class ConvenantService {
     return this.http.get<any>(`${environment.API_Url}covenant`)
   }
 
-  postConvenant(formdata : any) :Observable<any> {
+  postConvenant(formdata: any) :Observable<any> {
     return this.http.post<any>(`${environment.API_Url}covenant`,formdata);
   }
   deleteConvenant(id: any){

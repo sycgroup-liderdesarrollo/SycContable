@@ -55,10 +55,11 @@ export class ModalconveniosComponent implements OnInit {
   }
   
   crearform(dataConvenant?:any){
+    
     this.form = this.fb.group({
       name: [dataConvenant?.name ?? '', Validators.required],
-      value: [ dataConvenant?.value ?? '', Validators.required],
-      active: [ dataConvenant?.active ? 1 : ( dataConvenant?.active == 0 ? 0 : '' ) , Validators.required],
+      value: [ dataConvenant?.value ?? ''],
+      active: [ dataConvenant?.active ?? 1],
       covenant_type_id: [dataConvenant?.covenant_type_id ?? '', Validators.required],
       periodicity_type_id : [dataConvenant?.periodicity_type_id ?? '', Validators.required],
       concept_name: [dataConvenant?.concept.name ?? '', Validators.required],
@@ -67,6 +68,8 @@ export class ModalconveniosComponent implements OnInit {
     this.isLoading=false;
   }
   crearConvenio(formData:any){ 
+    console.log(formData);
+    
     this.convenantservices.postConvenant(formData).subscribe(res => {
       this.respuesta = res;
       this.dialog.close();
