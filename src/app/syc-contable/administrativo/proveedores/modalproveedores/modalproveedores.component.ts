@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { CiudadService } from '../../services/empleados/ciudad.service';
 import { TipoIdentificacionService } from '../../services/empleados/tipo-identificacion.service';
@@ -35,6 +35,9 @@ export class ModalproveedoresComponent implements OnInit {
   nombre:string="NOMBRE";
   ciudades:any;
   provinces:any;
+  errorIdentification:string;
+  errorTradeName:string;
+  errorEmail:string;
 
 
   constructor(
@@ -72,39 +75,50 @@ export class ModalproveedoresComponent implements OnInit {
     this.serviceproviders.putProvider(this.id).subscribe(
       resp => {
         this.dataProvider = resp.data;
+        this.dataProvider.identification_type.id == 2 ? this.juridico = false : this.juridico = true
         this.crearform(this.dataProvider);
       }
     )
   }
 
   crearform(dataProvider?:any){
-    console.log(dataProvider);
-
       this.form = this.fb.group({
-        identification_type_id: [dataProvider?.identification_type_id ?? '', Validators.required],
-        constitution_type_id: [dataProvider?.constitution_type_id ?? '', Validators.required],
+        identification_type_id: [dataProvider?.identification_type.id ?? '', Validators.required],
+        constitution_type_id: [dataProvider?.constitution_type.id ?? '', Validators.required],
         identification_number: [dataProvider?.identification_number ?? '', Validators.required],
         name: [dataProvider?.name ?? '', Validators.required],
-        address: [dataProvider?.address ?? '', Validators.required],
+        address: new FormControl(dataProvider?.address ?? '', Validators.minLength(5)),
         phone: [dataProvider?.phone ?? '', Validators.required],
         trade_name: [dataProvider?.trade_name ?? '', Validators.required],
         email: [dataProvider?.email ?? '', Validators.required],
         password:[dataProvider?.password ?? '', Validators.required],
         iva: [dataProvider?.iva ?? '', Validators.required],
-        responsability_type_id: [dataProvider?.responsability_type_id ?? ''],
+        responsability_type_id: [dataProvider?.responsability_type?.id ?? ''],
         last_name: [dataProvider?.last_name ?? ''],
-        city_id: [dataProvider?.city_id ?? '', Validators.required],
+        city_id: [dataProvider?.city.id ?? '', Validators.required],
+        province: [dataProvider?.city.province_id ?? ''],
       });
     this.isLoading=false;
   }
 
   crearProvider(formData:any){
-    console.log(formData);
-
-    this.serviceproviders.postProvider(formData).subscribe(res => {
+    this.serviceproviders.postProvider(formData).subscribe(
+      res => {
       this.respuesta = res;
       this.dialog.close();
-    } )
+      },
+      err=>{
+        console.log(err.error);
+          if (err.error.errors.identification_number) {
+            this.errorIdentification = "El numero de identificacion ya existe"
+          }
+          if (err.error.errors.email) {
+            this.errorEmail = "El correo electronico ya existe"
+          }
+          if (err.error.errors.trade_name) {
+            this.errorTradeName = "El nombre comercial ya existe"
+          }
+      })
   }
   updateProvider(formData:any){
     this.serviceproviders.updateProvider(formData, this.id).subscribe(res =>{
@@ -113,6 +127,8 @@ export class ModalproveedoresComponent implements OnInit {
     });
   }
   async init(){
+    console.log(this.id + " Id del init");
+
     this.isLoading = true;
     await this.getTipoIdentificacion();
     this.id ? this.editProvider() : this.crearform()

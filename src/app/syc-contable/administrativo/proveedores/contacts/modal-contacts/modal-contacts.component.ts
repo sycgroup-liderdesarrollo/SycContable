@@ -16,6 +16,7 @@ export class ModalContactsComponent implements OnInit {
   name:any;
   dataContact:any;
   @Input() id:any;
+  @Input() isEdit:Boolean=false;
   message:boolean=false;
 
   constructor(
@@ -27,16 +28,18 @@ export class ModalContactsComponent implements OnInit {
 
   ngOnInit(): void {
     this.crearForm();
+    this.isEdit ? this.showContact(): 0;
+
   }
 
   crearForm(dataContact?:any){
 
     this.form = this.fb.group({
-      name: new FormControl('', Validators.minLength(3)),
-      last_name: new FormControl('', Validators.minLength(3)),
-      email: new FormControl('', Validators.email),
+      name: new FormControl(dataContact?.name ??'', Validators.minLength(3)),
+      last_name: new FormControl(dataContact?.last_name ??'', Validators.minLength(3)),
+      email: new FormControl(dataContact?.email ??'', Validators.email),
       phone: [dataContact?.phone ?? '', Validators.required],
-      position: [dataContact?.position ?? '', Validators.required],
+      position: [dataContact?.position ?? ''],
       provider_id: [dataContact?.provider_id ?? this.id,Validators.required]
     })
     this.isLoading = false
@@ -48,7 +51,6 @@ export class ModalContactsComponent implements OnInit {
     })
     this.form.reset();
     this.crearForm();
-
     Swal.fire({
       showDenyButton: true,
       icon: 'success',
@@ -60,5 +62,19 @@ export class ModalContactsComponent implements OnInit {
           this.dialog.close();
         }
       })
+  }
+  putContact(formData:any){
+    this.serviceContact.putContact(this.id, formData).subscribe(resp=>{
+      console.log(resp.data);
+      console.log('cambios realizados con exito');
+      this.dialog.close();
+    });
+  }
+  showContact(){
+    this.serviceContact.showContact(this.id).subscribe(resp=>{
+      console.log(resp.data);
+      this.dataContact = resp.data;
+      this.crearForm(this.dataContact);
+    })
   }
 }

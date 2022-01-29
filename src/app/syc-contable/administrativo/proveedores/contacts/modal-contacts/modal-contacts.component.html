@@ -47,7 +47,8 @@
 
         <mat-grid-tile [colspan]="2" [rowspan]="1" >
           <button mat-raised-button mat-dialog-close style="margin-right: 20px;">Volver</button>
-          <button type="submit" [disabled]="form.invalid"  mat-raised-button color="primary" (click)="postContact(form.value)">Aceptar</button>
+          <button type="submit" [disabled]="form.invalid"  mat-raised-button color="primary" (click)="postContact(form.value)" *ngIf="!isEdit">Aceptar</button>
+          <button type="submit" [disabled]="form.invalid"  mat-raised-button color="primary" (click)="putContact(form.value)" *ngIf="isEdit">Actualizar</button>
         </mat-grid-tile>
       </mat-grid-list>
     </form>
