@@ -27,6 +27,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ModalContactsComponent } from './proveedores/contacts/modal-contacts/modal-contacts.component';
 import { ModalContactsLitsComponent } from './proveedores/contacts/modal-contacts-lits/modal-contacts-lits.component';
+import {MatStepperModule} from '@angular/material/stepper';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { ModalContactsLitsComponent } from './proveedores/contacts/modal-contact
     MatSelectModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
-    ShareModule
+    ShareModule,
+    MatStepperModule
   ]
 })
 

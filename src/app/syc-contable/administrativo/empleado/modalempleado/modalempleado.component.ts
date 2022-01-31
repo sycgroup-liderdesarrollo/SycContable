@@ -28,7 +28,7 @@ export class ModalempleadoComponent implements OnInit {
 
   @Input() id?: any;
   @Input() isEdit: boolean = false;
-  
+
   selectedValue!: string;
   dataEmployee: any;
   genero:any;
@@ -51,6 +51,42 @@ export class ModalempleadoComponent implements OnInit {
   active:any;
   form!: FormGroup;
   isLoading:boolean=false;
+  isLinear = false;
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+  thirdFormGroup: FormGroup;
+  fourthFormGroup: FormGroup;
+  provinces:any;
+  formulario = {
+    name:"",
+    last_name:"",
+    identification_number:"",
+    email:"",
+    password:"",
+    admission_date:"",
+    address:"",
+    neighborhood:"",
+    birthday:""  ,
+    children:""  ,
+    base_salary:"",
+    position_id:"",
+    contract_type_id:"",
+    salary_type_id:"",
+    headquarter_id:"",
+    identification_type_id:"",
+    gender_id:"",
+    health_provider_id:"",
+    pension_fund_id:"",
+    civil_statu_id:"",
+    work_city_id:"",
+    residence_city_id:"",
+    expedition_place_id:"",
+    strata_id:"",
+    education_level_id:"",
+    active:"",
+    emergency_contact_id:"",
+    business_line_id:""
+  };
 
   constructor(
     private fb: FormBuilder,
@@ -70,65 +106,120 @@ export class ModalempleadoComponent implements OnInit {
     private serviceEstrato:EstratoService,
     private serviceContactoEmergencia:ContactoEmergenciaService,
     private dialog: MatDialogRef<ModalempleadoComponent>,
+    private _formBuilder: FormBuilder
   ){}
-  
+
   ngOnInit(): void {
-  
     this.init();
+        //obtiene todos los departamentos
+        this.servicesResidencia.getProvince().subscribe(resp=>{
+          this.provinces = resp.data;
+        })
   }
-  
   editEmployee(){
     this.servicesEmployee.getEmployee(this.id).subscribe(
       resp => {
-        this.dataEmployee = resp.data;
-        this.createForm(this.dataEmployee);
-      },
-    )
-  }
+        console.log(resp.data);
 
-  createForm(dataEmployee?:any){
-    this.form = this.fb.group({
+        this.dataEmployee = resp.data;
+        this.firtsForm(this.dataEmployee);
+        this.secondForm(this.dataEmployee);
+        this.thirdFormn(this.dataEmployee)
+        this.fourthForm(this.dataEmployee);
+      })
+  }
+  firtsForm(dataEmployee?:any){
+    this.firstFormGroup = this._formBuilder.group({
       identification_number: [dataEmployee?.identification_number ?? '', Validators.required],
       name:[ dataEmployee?.name ?? '', Validators.required],
       last_name: [dataEmployee?.last_name ?? '', Validators.required],
-      position_id:[dataEmployee?.position_id ?? '', Validators.required],
-      email:[dataEmployee?.email ?? '', Validators.required],
-      password:['12345678', Validators.required],
-      admission_date:[dataEmployee?.admission_date ?? '', Validators.required],
       birthday:[dataEmployee?.birthday ?? '', Validators.required],
-      base_salary:[dataEmployee?.base_salary ?? '', Validators.required],
-      headquarter_id:[dataEmployee?.headquarter_id ?? '', Validators.required],
-      business_line_id:[dataEmployee?.business_line_id ?? '', Validators.required],
-      contract_type_id:[dataEmployee?.contract_type_id ?? '', Validators.required],
-      salary_type_id:[dataEmployee?.salary_type_id ?? '', Validators.required],
       identification_type_id:[dataEmployee?.identification_type_id ?? '', Validators.required],
-      address: [dataEmployee?.address ?? '', Validators.required],
-      neighborhood:[dataEmployee?.neighborhood ?? '', Validators.required],
       children:[dataEmployee?.children ?? '', Validators.required],
-      gender_id:[dataEmployee?.gender_id ?? '', Validators.required],
-      health_provider_id:[dataEmployee?.health_provider_id ?? '', Validators.required],
+      gender_id:[dataEmployee?.gender.id ?? '', Validators.required],
       education_level_id:[dataEmployee?.education_level_id ?? '', Validators.required],
-      work_city_id :[dataEmployee?.work_city_id  ??'',Validators.required],
       civil_statu_id:[dataEmployee?.civil_statu_id ??'',Validators.required],
       expedition_place_id:[dataEmployee?.expedition_place_id ??'',Validators.required],
-      residence_city_id:[dataEmployee?.residence_city_id ??'',Validators.required],
-      pension_fund_id:[dataEmployee?.pension_fund_id ??'',Validators.required],
-      strata_id:[dataEmployee?.strata_id ??'',Validators.required],
       emergency_contact_id:[dataEmployee?.emergency_contact_id ??'',Validators.required],
+    });
+    this.isLoading=false;
+  }
+  secondForm(dataEmployee?:any){
+    this.secondFormGroup = this._formBuilder.group({
+      address: [dataEmployee?.address ?? '', Validators.required],
+      neighborhood:[dataEmployee?.neighborhood ?? '', Validators.required],
+      residence_city_id:[dataEmployee?.residence_city_id ??'',Validators.required],
+      strata_id:[dataEmployee?.strata_id ??'',Validators.required],
+    });
+    this.isLoading=false;
+  }
+  thirdFormn(dataEmployee?:any){
+    this.thirdFormGroup = this._formBuilder.group({
+      email:[dataEmployee?.email ?? '', Validators.required],
+      password:['123456', Validators.required],
+    });
+    this.isLoading=false;
+  }
+  fourthForm(dataEmployee?:any){
+    this.fourthFormGroup = this._formBuilder.group({
+      position_id:[dataEmployee?.position.id ?? '', Validators.required],
+      admission_date:[dataEmployee?.admission_date ?? '', Validators.required],
+      base_salary:[dataEmployee?.base_salary ?? '', Validators.required],
+      business_line_id:[dataEmployee?.position.business_line.id ?? '', Validators.required],
+      contract_type_id:[dataEmployee?.contract_type_id ?? '', Validators.required],
+      salary_type_id:[dataEmployee?.salary_type_id ?? '', Validators.required],
+      work_city_id :[dataEmployee?.work_city_id  ??'',Validators.required],
+      pension_fund_id:[dataEmployee?.pension_fund_id ??'',Validators.required],
       active:[dataEmployee?.active ??'',Validators.required],
+      health_provider_id:[dataEmployee?.health_provider_id ?? '', Validators.required],
+      headquarter_id:[dataEmployee?.headquarter_id ?? '', Validators.required]
     });
     this.isLoading=false;
   }
 
-  createEmployer(formData:any){
-    this.servicesEmployee.postEmployed(formData).subscribe(res => {
+  asigForm(firts:any,second:any,third:any,fourth:any){
+    // primer formulario
+    this.formulario.name = firts.name,
+    this.formulario.last_name = firts.last_name,
+    this.formulario.identification_number = firts.identification_number,
+    this.formulario.birthday = firts.birthday,
+    this.formulario.identification_type_id = firts.identification_type_id,
+    this.formulario.children = firts.children,
+    this.formulario.gender_id = firts.gender_id
+    this.formulario.education_level_id = firts.education_level_id
+    this.formulario.civil_statu_id = firts.civil_statu_id
+    this.formulario.expedition_place_id = firts.expedition_place_id
+    this.formulario.emergency_contact_id = firts.emergency_contact_id
+    // segundo formulario
+    this.formulario.address = second.address
+    this.formulario.neighborhood = second.neighborhood
+    this.formulario.residence_city_id = second.residence_city_id
+    this.formulario.strata_id = second.strata_id
+    // tercer formulario
+    this.formulario.email = third.email
+    this.formulario.password = third.password
+    // cuarto formulario
+    this.formulario.position_id = fourth.position_id
+    this.formulario.admission_date = fourth.admission_date
+    this.formulario.base_salary = fourth.base_salary
+    this.formulario.headquarter_id = fourth.headquarter_id
+    this.formulario.business_line_id = fourth.business_line_id
+    this.formulario.contract_type_id = fourth.contract_type_id
+    this.formulario.salary_type_id = fourth.salary_type_id
+    this.formulario.work_city_id = fourth.work_city_id
+    this.formulario.pension_fund_id = fourth.pension_fund_id
+    this.formulario.active = fourth.active
+    this.formulario.health_provider_id = fourth.health_provider_id
+    this.isEdit ? this.updateEmployer() : this.createEmployer()
+  }
+  createEmployer(){
+    this.servicesEmployee.postEmployed(this.formulario).subscribe(res => {
       this.respuesta = res;
       this.dialog.close();
-    } )
+    })
   }
-
-  updateEmployer(formData:any){
-    this.servicesEmployee.updateEmployee(formData, this.id).subscribe(res =>{
+  updateEmployer(){
+    this.servicesEmployee.updateEmployee(this.formulario, this.id).subscribe(res =>{
       this.dialog.close();
     });
   }
@@ -149,10 +240,8 @@ export class ModalempleadoComponent implements OnInit {
     await this.getFondoDePensiones();
     await this.getEstrato();
     await this.getContactoEmergencia();
-    this.id ? this.editEmployee() : this.createForm();
-    
+    this.id ? this.editEmployee() : this.firtsForm(), this.secondForm(), this.thirdFormn(), this.fourthForm();
   }
-
   getCargos() : Promise<any>{
     return new Promise( (resolve,reject) => {
       this.servicesCargo.getCargos().subscribe(res => {
@@ -161,17 +250,14 @@ export class ModalempleadoComponent implements OnInit {
       });
     } )
   }
-
   getLineasNegocio(): Promise<any>{
     return new Promise( (resolve,reject)=>{
       this.servicesLineaNegocio.getLineaNegocio().subscribe(rest => {
         this.lineaNegocio = rest.data;
         resolve(rest.data);
       });
-
     })
   }
-
   getSucursales() : Promise<any>{
     return new Promise( (resolve,reject) => {
       this.servicesSucursal.getSucursales().subscribe(rest => {
@@ -180,16 +266,14 @@ export class ModalempleadoComponent implements OnInit {
       });
     })
   }
-
   getTipoContrato():Promise<any>{
     return new Promise ( (resolve,reject) => {
-      this.servicesTipoContrato.getTipoContrato().subscribe(rest => {     
+      this.servicesTipoContrato.getTipoContrato().subscribe(rest => {
         this.tipoContrato = rest.data;
         resolve(rest.data);
       });
     })
   }
-
   getTipoIdentificacion():Promise<any>{
     return new Promise( (resolve,reject)=>{
       this.servicesTipoIdentificacion.getTipoIdentificacion().subscribe(rest => {
@@ -198,7 +282,6 @@ export class ModalempleadoComponent implements OnInit {
       });
     })
   }
-
   getTipoSalario():Promise<any>{
     return new Promise( (resolve,reject)=>{
       this.servicesTipoSalario.getTipoSalario().subscribe(rest => {
@@ -207,7 +290,6 @@ export class ModalempleadoComponent implements OnInit {
       });
     })
   }
-
   getGenero():Promise<any>{
     return new Promise( (resolve,reject)=>{
       this.servicesGenero.getGenero().subscribe(resp=>{
@@ -216,7 +298,6 @@ export class ModalempleadoComponent implements OnInit {
       });
     })
   }
-
   getNivelEducativo():Promise<any>{
     return new Promise( (resolve,reject)=>{
       this.servicesNivelEducativo.getNivelEducacion().subscribe(resp=>{
@@ -233,7 +314,6 @@ export class ModalempleadoComponent implements OnInit {
       });
     })
   }
-
   getProveedorSalud():Promise<any>{
     return new Promise( (resolve,reject)=>{
       this.servicesProveedorSalud.getProveedorSalud().subscribe(resp=>{
@@ -250,7 +330,6 @@ export class ModalempleadoComponent implements OnInit {
       });
     })
   }
-
   getLugarExpedicion():Promise<any>{
     return new Promise( (resolve,reject)=>{
       this.servicesResidencia.getCiudad().subscribe(resp=>{
@@ -259,7 +338,6 @@ export class ModalempleadoComponent implements OnInit {
       });
     })
   }
-
   getFondoDePensiones():Promise<any>{
     return new Promise( (resolve,reject)=>{
       this.serviceFondoPensiones.getFondoPensiones().subscribe(resp=>{
@@ -268,7 +346,6 @@ export class ModalempleadoComponent implements OnInit {
       });
     })
   }
-
   getEstrato():Promise<any>{
     return new Promise( (resolve,reject)=>{
       this.serviceEstrato.getCEstrato().subscribe(resp=>{
@@ -286,7 +363,10 @@ export class ModalempleadoComponent implements OnInit {
       });
     })
   }
-
-
-
+  cities(province_id:number){
+    this.servicesResidencia.getCiudad(province_id).subscribe(resp=>{
+      this.expedicion = resp.data;
+      this.residencia = resp.data;
+    })
+  }
 }

@@ -62,6 +62,7 @@ export class ModalproveedoresComponent implements OnInit {
     this.serviceResponsabilityType.getResponsabilityType().subscribe(resp =>{
       this.tipoResponsabilidadIva = resp.data
     });
+    //obtiene todos los departamentos
     this.serviceCities.getProvince().subscribe(resp=>{
       this.provinces = resp.data;
     })

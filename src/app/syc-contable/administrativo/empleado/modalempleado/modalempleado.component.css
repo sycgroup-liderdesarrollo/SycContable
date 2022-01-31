@@ -1,9 +1,15 @@
 .mat-card{
     margin-top: 1%;
-    width: 70vh;
-  }
-  .ancho{
-      width: 90%;
-  }
-  
-  
+    width: 150vh;
+}
+.ancho{
+    width: 30%;
+    margin-right: 8px;
+    margin-left: 0px;
+}
+.mat-stepper-vertical {
+  margin-top: 8px;
+}
+.mat-form-field {
+  margin-top: 16px;
+}
