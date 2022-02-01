@@ -12,7 +12,7 @@ const routes: Routes = [
   path:'modal-seleccionar', component: ModalSeleccionarComponent
 },
 {
-  path:'CargarconveniosYperiodos', component: DeduccionesPorConveniosyPeriodosComponent
+  path:'consultar-convenios-periodos', component: DeduccionesPorConveniosyPeriodosComponent
 }
 ];
 

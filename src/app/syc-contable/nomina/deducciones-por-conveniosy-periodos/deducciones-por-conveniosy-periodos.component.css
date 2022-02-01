@@ -19,7 +19,7 @@
     margin-top: 1%;
     width: 100%;
   }
-  
+
 .mat-table{
     width: 100vh;
   }
@@ -39,8 +39,10 @@
   example-month-picker .mat-calendar-period-button {
     pointer-events: none;
   }
-  
+
   .example-month-picker .mat-calendar-arrow {
     display: none;
   }
-  
+  .cop{
+    color: rgb(24, 24, 136);
+  }

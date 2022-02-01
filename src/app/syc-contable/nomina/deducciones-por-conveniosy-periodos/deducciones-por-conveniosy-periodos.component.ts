@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { PeriodicidadConvenioService } from '../../administrativo/services/convenios/periodicidad-convenio.service';
 import { TipoConvenioService } from '../../administrativo/services/convenios/tipo-convenio.service';
+import { ServicioNominaService } from '../../administrativo/services/nomina/servicio-nomina.service';
 import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 import {MatDatepicker} from '@angular/material/datepicker'
@@ -40,87 +41,70 @@ export const MY_FORMATS = {
       useClass: MomentDateAdapter,
       deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
     },
-
     {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
   ],
 })
+
 export class DeduccionesPorConveniosyPeriodosComponent implements OnInit {
- 
 
-    @ViewChild('picker') datePickerElement = MatDatepicker;
-    @ViewChild(MatPaginator)
-    paginator!: MatPaginator;
-    @ViewChild(MatTable) tabla1!: MatTable<any>;
-    @ViewChild(MatSort)
-    dataConvenant: any;
-    covenants:any;
-    form: any;
-    meses:any;
-    periodo:any;
-    DataDeducciones:any;
+  @ViewChild('picker') datePickerElement = MatDatepicker;
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
+  @ViewChild(MatTable) tabla1!: MatTable<any>;
+  @ViewChild(MatSort)
+  dataConvenant: any;
+  covenants:any;
+  form: any;
+  periodo:any;
+  dataSource : MatTableDataSource<any>;
+  columna: string[] = ['concept_name','covenant_name','user_name','identification_number','value_charged',];
+  total:number=0;
 
-    columna: string[] = ['TotalDeduccion', 'NumeroTrabajadores'];
-    data=[
-      {
-        TotalDeduccion:'20',
-        NumeroTrabajadores:'1',
-      },
-    ]
-    // new Date().getMonth();
-  mes=[
-    'ENERO',
-    'FEBRERO',
-    'MARZO',
-    'ABRIL',
-    'MAYO',
-    'JUNIO',
-  ]
-    constructor(
-      private servicesTipoConvenio:TipoConvenioService,
-      private servicesperiodo:PeriodicidadConvenioService,
-      private fb: FormBuilder,) {
-      this.DataDeducciones = new MatTableDataSource();
-      this.DataDeducciones.data = this.data;
-      }
-
-    ngOnInit(): void {
-      this.crearform();
-    
-      this.servicesTipoConvenio.getConvenant().subscribe(rest => {
-        this.covenants = rest.data
-      });
-      this.servicesperiodo.getperiodo().subscribe(rest => {
-        this.periodo = rest.data
-        console.log(rest);
-      });
+  constructor(
+    private servicesTipoConvenio:TipoConvenioService,
+    private servicesperiodo:PeriodicidadConvenioService,
+    private serviceNomina:ServicioNominaService,
+    private fb: FormBuilder,
+    ) {
+      this.dataSource = new MatTableDataSource();
     }
 
-    crearform(dataConvenant?:any){
-      this.form = this.fb.group({
-        covenant: [dataConvenant?.covenant ?? '', Validators.required],
-        mes:['', Validators.required],
-        period : [dataConvenant?.period ?? '', Validators.required],
-      });
-    }
-    date = new FormControl(moment());
+  ngOnInit(): void {
+    this.crearform();
 
-    chosenYearHandler(normalizedYear: Moment) {
-      const ctrlValue = this.date.value;
-      ctrlValue.year(normalizedYear.year());
-      this.date.setValue(ctrlValue);
-    }
+    this.servicesTipoConvenio.getConvenant().subscribe(rest => {
+      this.covenants = rest.data
+    });
+    this.servicesperiodo.getperiodo().subscribe(rest => {
+      this.periodo = rest.data
+    });
+  }
 
-    chosenMonthHandler(normalizedMonth: Moment, datepicker: MatDatepicker<Moment>) {
-      const ctrlValue = this.date.value;
-      ctrlValue.month(normalizedMonth.month());
-      this.date.setValue(ctrlValue);
-      datepicker.close();
-    }
+  crearform(){
+    this.form = this.fb.group({
+      covenants_id: ['', Validators.required],
+      created_at:['', Validators.required],
+      period_id : ['', Validators.required],
+    });
+  }
+  consultar(formData:any){
+    let period = formData.period_id;
+    let covenant = formData.covenants_id;
+    let created_at = formData.created_at;
+    this.serviceNomina.getConsultaDeduccion(period, covenant, created_at).subscribe(resp=>{
+      this.dataSource.data = resp.data;
+      this.getTotal();
+    })
+    this.total = 0;
+  }
 
+  getTotal(){
+    for (let i = 0; i < this.dataSource.data.length; i++) {
+      this.total = this.total + this.dataSource.data[i].value_charged;
+    }
+    console.log(this.total);
+  }
 }
 
-  // mes(){
-  //   const date = new Date().getMonth;
-  // }
 
 

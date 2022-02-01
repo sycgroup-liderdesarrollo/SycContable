@@ -1,12 +1,12 @@
     <mat-nav-list role="list">
             <div class="div-group-item">
                     <h1>Administrativos</h1>
-                
+
                     <div class="div-content-item">
                         <a mat-list-item [routerLink]="['/syc-contable/administrativo/empleado']" (click)="sidebar.close()" class="items-sidenav"><mat-icon color="primary">group</mat-icon>Colaboradores</a>
                     </div>
-                    
-                    <div class="div-content-item">                
+
+                    <div class="div-content-item">
                         <ul id="div-content-item">
                                 <a mat-list-item (click)="expand = !expand" class="items-sidenav" data-bs-toggle="collapse" data-bs-target="#extend-collapse" aria-expanded="true">
                                     <mat-icon color="primary">work</mat-icon>
@@ -29,19 +29,19 @@
                     </div>
                             <!-- ......................................................... -->
                     <h1>Nomina</h1>
-            
+
                     <div class="div-content-item">
                         <a mat-list-item [routerLink]="['/syc-contable/nomina/cargarDeducciones']" (click)="sidebar.close()" class="items-sidenav"><mat-icon color="primary">paid</mat-icon>Cargar Conceptos</a>
                     </div>
                     <div class="div-content-item">
-                        <a mat-list-item [routerLink]="['/syc-contable/nomina/CargarconveniosYperiodos']" (click)="sidebar.close()" class="items-sidenav"><mat-icon color="primary">attach_money</mat-icon>Deducciones por Convenios y periodos</a>
+                        <a mat-list-item [routerLink]="['/syc-contable/nomina/consultar-convenios-periodos']" (click)="sidebar.close()" class="items-sidenav"><mat-icon color="primary">attach_money</mat-icon>Deducciones por Convenios y periodos</a>
                     </div>
                             <!-- ..................................................................... -->
                     <h1>Seguridad</h1>
-                            
+
                     <div class="div-content-item">
                         <a mat-list-item [routerLink]="['/syc-contable/seguridad/roles']" (click)="sidebar.close()" class="items-sidenav"><mat-icon color="primary">manage_accounts</mat-icon>Roles</a>
-                    </div>      
+                    </div>
         </div>
-            
+
 
