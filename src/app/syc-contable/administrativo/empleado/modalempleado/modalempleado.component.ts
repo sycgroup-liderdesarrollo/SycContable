@@ -1,6 +1,6 @@
 
 import { Component, Input, OnInit } from '@angular/core';
-import {  FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {  FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { CargoService } from '../../services/empleados/cargo.service';
 import { CiudadService } from '../../services/empleados/ciudad.service';
@@ -89,7 +89,6 @@ export class ModalempleadoComponent implements OnInit {
   };
 
   constructor(
-    private fb: FormBuilder,
     private servicesEmployee: EmployeeService,
     private servicesCargo: CargoService,
     private servicesLineaNegocio: LineaNegocioService,
@@ -131,8 +130,8 @@ export class ModalempleadoComponent implements OnInit {
   firtsForm(dataEmployee?:any){
     this.firstFormGroup = this._formBuilder.group({
       identification_number: [dataEmployee?.identification_number ?? '', Validators.required],
-      name:[ dataEmployee?.name ?? '', Validators.required],
-      last_name: [dataEmployee?.last_name ?? '', Validators.required],
+      name: new FormControl (dataEmployee?.name ??'', Validators.minLength(3)),
+      last_name: new FormControl (dataEmployee?.last_name ??'', Validators.minLength(3)),
       birthday:[dataEmployee?.birthday ?? '', Validators.required],
       identification_type_id:[dataEmployee?.identification_type_id ?? '', Validators.required],
       children:[dataEmployee?.children ?? '', Validators.required],
@@ -146,7 +145,7 @@ export class ModalempleadoComponent implements OnInit {
   }
   secondForm(dataEmployee?:any){
     this.secondFormGroup = this._formBuilder.group({
-      address: [dataEmployee?.address ?? '', Validators.required],
+      address: new FormControl (dataEmployee?.address ?? '', Validators.minLength(5)),
       neighborhood:[dataEmployee?.neighborhood ?? '', Validators.required],
       residence_city_id:[dataEmployee?.residence_city_id ??'',Validators.required],
       strata_id:[dataEmployee?.strata_id ??'',Validators.required],

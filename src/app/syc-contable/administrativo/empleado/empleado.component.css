@@ -9,3 +9,9 @@
 .opciones{
   border: solid none;
 }
+@media (max-width: 1000px) {
+  .mat-table{
+    width: 100%;
+    overflow:scroll;
+  }
+}

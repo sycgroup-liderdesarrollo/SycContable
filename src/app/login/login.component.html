@@ -1,13 +1,14 @@
  <div class="body">
-     <div class="login">
+     <div class="login col-6 col-md-12">
         <img src="./assets/img/sycgroup.jpg" alt="login">
         <h1>LOGIN</h1>
-        <form action="" [formGroup]="loginForm">
+        <form [formGroup]="loginForm">
+
           <mat-form-field class="ancho" appearance="fill">
               <mat-label>Correo</mat-label>
               <input matInput autocomplete="off" formControlName="email" [disabled]="isLoading">
           </mat-form-field>
-    
+
           <mat-form-field appearance="fill">
               <mat-label>Contraseña</mat-label>
               <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" [disabled]="isLoading">
@@ -15,14 +16,15 @@
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               </button>
           </mat-form-field>
+
           <br>
-          <button *ngIf="!isLoading" class="boton" mat-raised-button color="primary" (click)="login()" [disabled]="loginForm.invalid"> 
+          <button *ngIf="!isLoading" class="boton" mat-raised-button color="primary" (click)="login()" [disabled]="loginForm.invalid">
             Entrar
           </button>
-          
+
         </form>
         <div *ngIf="isLoading">
           <mat-progress-bar mode="indeterminate"></mat-progress-bar>
         </div>
-      </div>
+    </div>
  </div>
