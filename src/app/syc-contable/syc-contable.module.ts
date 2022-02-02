@@ -18,6 +18,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
 import { ShareModule } from '../share/share.module';
 import {MatTreeModule} from '@angular/material/tree';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 
@@ -27,6 +28,7 @@ import {MatTreeModule} from '@angular/material/tree';
     LayoutComponent,
     navbarComponent,
     SidebarComponent,
+    DashboardComponent,
   ],
 
   imports: [

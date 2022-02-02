@@ -16,6 +16,7 @@ const routes: Routes = [
     path: 'syc-contable', 
     loadChildren: () => import ('./syc-contable/syc-contable.module').then(module => module.SycContableModule),
     canActivate : [AuthenticationGuard]
+    
   },
  
  
