@@ -7,50 +7,31 @@
     </div>
   <mat-card>
     <form *ngIf="form" [formGroup]="form">
-
-
-
-
-          <mat-form-field class="ancho col-12 col-md-5" >
-            <mat-label>NOMBRE</mat-label>
-            <input matInput autocomplete="off" formControlName="name" >
-          </mat-form-field>
-
-
-
-          <mat-form-field class="ancho col-12 col-md-5" >
-              <mat-label>APELLIDO</mat-label>
-              <input matInput autocomplete="off" formControlName="last_name" >
-            </mat-form-field>
-
-
-
-          <mat-form-field class="ancho col-12 col-md-5" >
-              <mat-label>TELEFONO</mat-label>
-              <input matInput autocomplete="off" formControlName="phone" type="number" matInput placeholder="555-555-1235">
-            </mat-form-field>
-
-
-
-          <mat-form-field class="ancho col-12 col-md-5" >
-              <mat-label>CORREO</mat-label>
-              <input matInput autocomplete="off" formControlName="email" type="email" placeholder="Ex. pat@example.com">
-            </mat-form-field>
-
-
-
-          <mat-form-field class="ancho col-12 col-md-5" >
-            <mat-label>CARGO</mat-label>
-            <input matInput autocomplete="off" formControlName="position" >
-          </mat-form-field>
-
-          <br>
-          <div style="margin-top: 15px;">
-            <button mat-raised-button mat-dialog-close style="margin-right: 20px;">Volver</button>
-            <button type="submit" [disabled]="form.invalid"  mat-raised-button color="primary" (click)="postContact(form.value)" *ngIf="!isEdit">Aceptar</button>
-            <button type="submit" [disabled]="form.invalid"  mat-raised-button color="primary" (click)="putContact(form.value)" *ngIf="isEdit">Actualizar</button>
-          </div>
-
-
+      <mat-form-field class="ancho col-12 col-md-5" >
+        <mat-label>NOMBRE</mat-label>
+        <input matInput autocomplete="off" formControlName="name" >
+      </mat-form-field>
+      <mat-form-field class="ancho col-12 col-md-5" >
+          <mat-label>APELLIDO</mat-label>
+          <input matInput autocomplete="off" formControlName="last_name" >
+        </mat-form-field>
+      <mat-form-field class="ancho col-12 col-md-5" >
+          <mat-label>TELEFONO</mat-label>
+          <input matInput autocomplete="off" formControlName="phone" type="number" matInput placeholder="555-555-1235">
+        </mat-form-field>
+      <mat-form-field class="ancho col-12 col-md-5" >
+          <mat-label>CORREO</mat-label>
+          <input matInput autocomplete="off" formControlName="email" type="email" placeholder="Ex. pat@example.com">
+        </mat-form-field>
+      <mat-form-field class="ancho col-12 col-md-5" >
+        <mat-label>CARGO</mat-label>
+        <input matInput autocomplete="off" formControlName="position" >
+      </mat-form-field>
+      <br>
+      <div style="margin-top: 15px;">
+        <button mat-raised-button mat-dialog-close style="margin-right: 20px;">Volver</button>
+        <button type="submit" [disabled]="form.invalid"  mat-raised-button color="primary" (click)="postContact(form.value)" *ngIf="!isEdit">Aceptar</button>
+        <button type="submit" [disabled]="form.invalid"  mat-raised-button color="primary" (click)="putContact(form.value)" *ngIf="isEdit">Actualizar</button>
+      </div>
     </form>
   </mat-card>
