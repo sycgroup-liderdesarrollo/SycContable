@@ -2,10 +2,19 @@
     margin-top: 1%;
     width: 90vw;
   }
-  
+
   .mat-table{
     width: 100%;
   }
   .opciones{
     border: solid none;
   }
+@media (max-width: 600px) {
+  .mat-table{
+    width: 100%;
+    overflow: scroll;
+  }
+  .input{
+    width: 60%;
+  }
+}

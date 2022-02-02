@@ -10,7 +10,8 @@
 }
 @media (max-width: 600px){
   .mat-card{
-    margin-top: 1%;
-    width: 50vh;
+    height: 75vh;
+    width: 35vh;
+    overflow: scroll;
 }
 }
