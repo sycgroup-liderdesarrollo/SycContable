@@ -32,6 +32,8 @@
   .ancho{
       width: 85%;
       color: black;
+      margin: auto;
+      display: block;
   }
   .boton{
       height: 40px;

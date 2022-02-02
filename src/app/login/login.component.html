@@ -9,7 +9,7 @@
               <input matInput autocomplete="off" formControlName="email" [disabled]="isLoading">
           </mat-form-field>
 
-          <mat-form-field appearance="fill">
+          <mat-form-field appearance="fill"  class="ancho" >
               <mat-label>Contraseña</mat-label>
               <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" [disabled]="isLoading">
               <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">

@@ -7,134 +7,103 @@
     </div>
     <mat-card>
         <form *ngIf="form" [formGroup]="form" >
-              <mat-grid-list cols="3" rowHeight="70px">
-                <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                  <mat-form-field class="ancho" >
-                      <mat-label>TIPO</mat-label>
-                        <mat-select formControlName="constitution_type_id" name="tipo_negocio" (selectionChange)="constitutionActual($event.value)">
-                          <mat-option *ngFor="let tipoNegocio of tiposNegocios" [value]="tipoNegocio.id">
-                            {{tipoNegocio.name}}
-                          </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </mat-grid-tile>
-                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                        <mat-form-field class="ancho" >
-                            <mat-label>TIPO DE IDENTIFICACION</mat-label>
-                              <mat-select formControlName="identification_type_id" name="tipoIdentificacion"  >
-                                <mat-option [value]="TipoIdentificacion[0].id" *ngIf="form.value.constitution_type_id == 1">
-                                  {{TipoIdentificacion[0].name}}
-                                </mat-option>
-                                <mat-option [value]="TipoIdentificacion[1].id" *ngIf="form.value.constitution_type_id == 2">
-                                  {{TipoIdentificacion[1].name}}
-                                </mat-option>
-                                <mat-option [value]="TipoIdentificacion[2].id" *ngIf="form.value.constitution_type_id == 1">
-                                  {{TipoIdentificacion[2].name}}
-                                </mat-option>
-                                <mat-option [value]="TipoIdentificacion[3].id" *ngIf="form.value.constitution_type_id == 1">
-                                  {{TipoIdentificacion[3].name}}
-                                </mat-option>
-                                <mat-option [value]="TipoIdentificacion[4].id" *ngIf="form.value.constitution_type_id == 1">
-                                  {{TipoIdentificacion[4].name}}
-                                </mat-option>
-                              </mat-select>
-                          </mat-form-field>
-                    </mat-grid-tile>
-                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                        <mat-form-field class="ancho" >
-                            <mat-label>NUMERO DE IDENTIFICACION</mat-label>
-                            <input matInput autocomplete="off" formControlName="identification_number" >
-                          </mat-form-field>
-                    </mat-grid-tile>
-                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                        <mat-form-field class="ancho" >
-                            <mat-label>{{nombre}}</mat-label>
-                            <input matInput autocomplete="off" formControlName="name" >
-                          </mat-form-field>
-                    </mat-grid-tile>
-                    <mat-grid-tile [colspan]="1" [rowspan]="1" *ngIf="juridico">
-                      <mat-form-field class="ancho" >
-                          <mat-label>APELLIDO</mat-label>
-                          <input matInput autocomplete="off" formControlName="last_name" >
-                        </mat-form-field>
-                  </mat-grid-tile>
-                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                      <mat-form-field class="ancho" >
-                          <mat-label>NOMBRE COMERCIAL</mat-label>
-                          <input matInput autocomplete="off" formControlName="trade_name" >
-                        </mat-form-field>
-                   </mat-grid-tile>
-                   <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                    <mat-form-field class="ancho" >
-                        <mat-label>Departamento</mat-label>
-                        <mat-select name="departamento" (selectionChange)="cities($event.value)" formControlName="province">
-                          <mat-option *ngFor="let province of provinces" [value]="province.id">
-                            {{province.name}}
-                          </mat-option>
-                        </mat-select>
-                      </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                  <mat-form-field class="ancho" >
-                      <mat-label>Ciudad</mat-label>
-                      <mat-select formControlName="city_id" name="city">
-                        <mat-option *ngFor="let ciudad of ciudades" [value]="ciudad.id">
-                          {{ciudad.name}}
-                        </mat-option>
-                      </mat-select>
-                    </mat-form-field>
-              </mat-grid-tile>
-              <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                  <mat-form-field class="ancho" >
-                      <mat-label>DIRECCION</mat-label>
-                      <input matInput autocomplete="off" formControlName="address" >
-                    </mat-form-field>
-              </mat-grid-tile>
-              <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                  <mat-form-field class="ancho" >
-                      <mat-label>TELEFONO</mat-label>
-                      <input matInput autocomplete="off" formControlName="phone" type="tel" matInput placeholder="555-555-1234">
-                    </mat-form-field>
-              </mat-grid-tile>
-              <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                <mat-form-field class="ancho" >
-                    <mat-label>CORREO</mat-label>
-                    <input matInput autocomplete="off" formControlName="email" type="email" placeholder="Ex. pat@example.com">
-                  </mat-form-field>
-            </mat-grid-tile>
-            <mat-grid-tile [colspan]="1" [rowspan]="1" >
-              <mat-form-field class="ancho" >
-                  <mat-label>Contraseña</mat-label>
-                  <input matInput autocomplete="off" formControlName="password" type="password" >
-                </mat-form-field>
-          </mat-grid-tile>
-              <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                <mat-form-field class="ancho" >
-                    <mat-label>IVA</mat-label>
-                    <mat-select formControlName="iva">
-                      <mat-option [value]="1">Si</mat-option>
-                      <mat-option [value]="0">No</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-              </mat-grid-tile>
-              <mat-grid-tile [colspan]="1" [rowspan]="1" *ngIf="form.value.iva == 1">
-                <mat-form-field class="ancho" >
-                    <mat-label>TIPO DE REGIMEN IVA</mat-label>
-                      <mat-select formControlName="responsability_type_id" name="tipoResponsabilidadIva">
-                        <mat-option *ngFor="let tipoResponsabilidadIva of tipoResponsabilidadIva " [value]="tipoResponsabilidadIva.id">
-                          {{tipoResponsabilidadIva.name}}
-                        </mat-option>
-                      </mat-select>
-                  </mat-form-field>
-              </mat-grid-tile>
-              <mat-grid-tile [colspan]="3" [rowspan]="1" >
-                  <button mat-raised-button mat-dialog-close style="margin-right: 20px;">Volver</button>
-                  <button *ngIf="!id" type="submit" [disabled]="form.invalid" mat-raised-button color="primary" (click)=" crearProvider(form.value)">Aceptar</button>
-                  <button *ngIf="id" type="submit" [disabled]="form.invalid" mat-raised-button color="primary" (click)=" updateProvider(form.value)" >update</button>
-              </mat-grid-tile>
-            </mat-grid-list>
-
-            <div class="container">
+          <mat-form-field class="ancho col-12 col-md-4 " >
+              <mat-label>TIPO</mat-label>
+                <mat-select formControlName="constitution_type_id" name="tipo_negocio" (selectionChange)="constitutionActual($event.value)">
+                  <mat-option *ngFor="let tipoNegocio of tiposNegocios" [value]="tipoNegocio.id">
+                    {{tipoNegocio.name}}
+                  </mat-option>
+                </mat-select>
+          </mat-form-field>
+          <mat-form-field class="ancho col-12 col-md-4" >
+              <mat-label>TIPO DE IDENTIFICACION</mat-label>
+                <mat-select formControlName="identification_type_id" name="tipoIdentificacion"  >
+                  <mat-option [value]="TipoIdentificacion[0].id" *ngIf="form.value.constitution_type_id == 1">
+                    {{TipoIdentificacion[0].name}}
+                  </mat-option>
+                  <mat-option [value]="TipoIdentificacion[1].id" *ngIf="form.value.constitution_type_id == 2">
+                    {{TipoIdentificacion[1].name}}
+                  </mat-option>
+                  <mat-option [value]="TipoIdentificacion[2].id" *ngIf="form.value.constitution_type_id == 1">
+                    {{TipoIdentificacion[2].name}}
+                  </mat-option>
+                  <mat-option [value]="TipoIdentificacion[3].id" *ngIf="form.value.constitution_type_id == 1">
+                    {{TipoIdentificacion[3].name}}
+                  </mat-option>
+                  <mat-option [value]="TipoIdentificacion[4].id" *ngIf="form.value.constitution_type_id == 1">
+                    {{TipoIdentificacion[4].name}}
+                  </mat-option>
+                </mat-select>
+          </mat-form-field>
+          <mat-form-field class="ancho col-12 col-md-4" >
+            <mat-label>NUMERO DE IDENTIFICACION</mat-label>
+            <input matInput autocomplete="off" formControlName="identification_number" >
+          </mat-form-field>
+          <mat-form-field class="ancho col-12 col-md-4" >
+            <mat-label>{{nombre}}</mat-label>
+            <input matInput autocomplete="off" formControlName="name" >
+          </mat-form-field>
+          <mat-form-field class="ancho col-12 col-md-4" *ngIf="juridico">
+            <mat-label>APELLIDO</mat-label>
+            <input matInput autocomplete="off" formControlName="last_name" >
+          </mat-form-field>
+          <mat-form-field class="ancho col-12 col-md-4" >
+            <mat-label>NOMBRE COMERCIAL</mat-label>
+            <input matInput autocomplete="off" formControlName="trade_name" >
+          </mat-form-field>
+          <mat-form-field class="ancho col-12 col-md-4" >
+              <mat-label>Departamento</mat-label>
+              <mat-select name="departamento" (selectionChange)="cities($event.value)" formControlName="province">
+                <mat-option *ngFor="let province of provinces" [value]="province.id">
+                  {{province.name}}
+                </mat-option>
+              </mat-select>
+          </mat-form-field>
+          <mat-form-field class="ancho col-12 col-md-4" >
+              <mat-label>Ciudad</mat-label>
+              <mat-select formControlName="city_id" name="city">
+                <mat-option *ngFor="let ciudad of ciudades" [value]="ciudad.id">
+                  {{ciudad.name}}
+                </mat-option>
+              </mat-select>
+          </mat-form-field>
+          <mat-form-field class="ancho col-12 col-md-4" >
+            <mat-label>DIRECCION</mat-label>
+            <input matInput autocomplete="off" formControlName="address" >
+          </mat-form-field>
+          <mat-form-field class="ancho col-12 col-md-4" >
+            <mat-label>TELEFONO</mat-label>
+            <input matInput autocomplete="off" formControlName="phone" type="tel" matInput placeholder="555-555-1234">
+          </mat-form-field>
+          <mat-form-field class="ancho col-12 col-md-4" >
+            <mat-label>CORREO</mat-label>
+            <input matInput autocomplete="off" formControlName="email" type="email" placeholder="Ex. pat@example.com">
+          </mat-form-field>
+          <mat-form-field class="ancho col-12 col-md-4" >
+            <mat-label>Contraseña</mat-label>
+            <input matInput autocomplete="off" formControlName="password" type="password" >
+          </mat-form-field>
+          <mat-form-field class="ancho col-12 col-md-4" >
+            <mat-label>IVA</mat-label>
+            <mat-select formControlName="iva">
+              <mat-option [value]="1">Si</mat-option>
+              <mat-option [value]="0">No</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="ancho col-12 col-md-4" *ngIf="form.value.iva == 1">
+            <mat-label>TIPO DE REGIMEN IVA</mat-label>
+              <mat-select formControlName="responsability_type_id" name="tipoResponsabilidadIva">
+                <mat-option *ngFor="let tipoResponsabilidadIva of tipoResponsabilidadIva " [value]="tipoResponsabilidadIva.id">
+                  {{tipoResponsabilidadIva.name}}
+                </mat-option>
+              </mat-select>
+          </mat-form-field>
+          <br>
+          <div style="margin-top: 5%;">
+            <button mat-raised-button mat-dialog-close style="margin-right: 20px;">Volver</button>
+            <button *ngIf="!id" type="submit" [disabled]="form.invalid" mat-raised-button color="primary" (click)=" crearProvider(form.value)">Aceptar</button>
+            <button *ngIf="id" type="submit" [disabled]="form.invalid" mat-raised-button color="primary" (click)=" updateProvider(form.value)" >update</button>
+            <div class="container col-12 col-md-4">
               <div class="alert alert-danger" role="alert" *ngIf="errorIdentification">
                   {{errorIdentification}}
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -148,7 +117,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
               </div>
             </div>
-
+          </div>
         </form>
     </mat-card>
 </div>
