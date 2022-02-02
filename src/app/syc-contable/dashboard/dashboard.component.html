@@ -1,1 +1,19 @@
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero magnam architecto laboriosam hic omnis? Corrupti, quos accusamus quia tempora ut quae animi cumque ex enim laborum dignissimos maiores iste inventore.</p>
+<div class="row">
+    <div class="div-navbar col-12">
+        <app-navbar [sidebar]='drawer'></app-navbar>
+    </div>
+    
+    <mat-drawer-container class = "example-container"> 
+        <mat-drawer #drawer mode = "side">
+            <app-sidebar [sidebar]='drawer'></app-sidebar>
+        </mat-drawer> 
+        
+        <mat-drawer-content  class="col-12">
+            <!-- <img src="./assets/img/sycgroup.jpg" alt="login"> -->
+                <div class="texto">
+                    <h1>Bienvenid@ a Syc Contable</h1><br>
+                   <b> <u> ⇱ Selecciona una opcion en el menú superior en la parte izquierda ⇱</u></b>
+                </div>
+        </mat-drawer-content > 
+    </mat-drawer-container>
+</div>

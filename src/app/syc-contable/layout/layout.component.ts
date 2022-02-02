@@ -7,7 +7,6 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class LayoutComponent implements OnInit {
   
-  layout:any;
   constructor() { }
 
   ngOnInit(): void {

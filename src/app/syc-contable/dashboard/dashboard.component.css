@@ -1,0 +1,28 @@
+.row, .div-navbar{
+    padding: 0%;
+    margin: 0%;
+    
+}
+
+.mat-drawer-container{
+    min-height: 90vh;
+    width: 100%;
+    
+}
+
+.mat-drawer-content{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    font-size: 5rem;
+    font-family: 'Times New Roman', Times, serif;
+}
+.texto{
+ text-align: center;
+}
+
+

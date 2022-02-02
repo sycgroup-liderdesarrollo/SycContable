@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
       resp => {
         this.localService.setToken(resp);
         if(resp.access_token){ 
-          this.router.navigate(["/syc-contable"])
+          this.router.navigate(["/dashboard"])
         }
       },
       error => {
