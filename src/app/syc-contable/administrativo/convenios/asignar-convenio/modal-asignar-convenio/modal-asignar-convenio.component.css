@@ -1,4 +1,4 @@
-.example-card {
+.card {
   height: 360px;
   width: 500px;
   text-align: center;
@@ -8,7 +8,7 @@
   font-size:1.33;
   font-size: "Open Sans", sans-serif;
 }
-.ancho{
+.largo{
   width: 70%;
   margin-top: 20px;
 }
@@ -16,4 +16,20 @@
   width: 30%;
   margin-top: 20px;
   margin-right: 15px;
+}
+@media (max-width: 600px) {
+  .largo{
+    width: 70%;
+    margin-top: 20px;
+  }
+  .corto{
+    width: 30%;
+    margin-top: 20px;
+  }
+  .card {
+    height: 75vh;
+    width: 75vh;
+    text-align: center;
+    margin-top: 30px;
+  }
 }

@@ -3,11 +3,11 @@
              <mat-toolbar>
                 <span mat-dialog-title class="title">Asignar Convenio</span>
             </mat-toolbar>
-            <mat-card class="example-card">
-                <mat-card-title class="h1" > <h3>Seleccionar un convenio</h3> </mat-card-title>
+            <mat-card class="card">
 
-                <mat-card-content cols="2" rowHeight="70px">
-                    <mat-form-field class="ancho">
+              <mat-card-content>
+                  <mat-card-title class="h1" > <h3>Seleccionar un convenio</h3> </mat-card-title>
+                    <mat-form-field class="largo">
                         <mat-label>Convenios</mat-label>
                         <mat-select id="covenant_id" formControlName="covenant_id" (selectionChange)="actualCovenant($event.value)">
                             <mat-option  *ngFor="let covenant of covenantList" [value]="covenant.id">{{covenant.name}}</mat-option>

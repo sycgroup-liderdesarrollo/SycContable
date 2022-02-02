@@ -8,3 +8,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.ancho{
+  margin-right: 2%;
+}
+
+@media (max-width: 600px){
+  .mat-form-field {
+    margin-top: 16px;
+    width: 50vh;
+  }
+  .ancho{
+    margin-right: 10vh;
+    width: 35vh;
+  }
+
+}

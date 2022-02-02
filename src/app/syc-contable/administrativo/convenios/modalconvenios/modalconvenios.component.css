@@ -2,6 +2,15 @@
     margin-top: 1%;
     width: 90vh;
   }
+@media (min-width: 1000px) {
   .ancho{
-      width: 90%;
+    width: 180px;
+    margin-bottom: 35px;
   }
+}
+@media (max-width: 600px){
+  .mat-card{
+    margin-top: 1%;
+    width: 50vh;
+}
+}

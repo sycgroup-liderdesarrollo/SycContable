@@ -12,7 +12,7 @@
         <mat-step [stepControl]="firstFormGroup" >
           <form *ngIf="firstFormGroup" [formGroup]="firstFormGroup" >
             <ng-template matStepLabel>Datos personales</ng-template>
-              <mat-form-field class="ancho col-6 col-md-3 col-6 col-md-3">
+              <mat-form-field class="ancho col-6 col-md-3">
                   <mat-label>TIPO DE IDENTIFICACION</mat-label>
                   <mat-select formControlName="identification_type_id" name="tipoIdentificacion">
                 <mat-option *ngFor="let identificatiotype of tipoIdentificacion " [value]="identificatiotype.id">
@@ -20,11 +20,11 @@
                     </mat-option>
                       </mat-select>
               </mat-form-field>
-              <mat-form-field class="ancho col-6 col-md-3 col-6 col-md-3">
+              <mat-form-field class="ancho col-6 col-md-3">
                   <mat-label>NUMERO DE IDENTIFICACION</mat-label>
                   <input matInput autocomplete="off" formControlName="identification_number" >
                 </mat-form-field>
-                <mat-form-field class="ancho col-6 col-md-3 col-6 col-md-3" >
+                <mat-form-field class="ancho col-6 col-md-3" >
                   <mat-label>Departamento</mat-label>
                   <mat-select name="departamento" (selectionChange)="cities($event.value)">
                     <mat-option *ngFor="let province of provinces" [value]="province.id">
@@ -32,7 +32,7 @@
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
-                <mat-form-field class="ancho col-6 col-md-3 col-6 col-md-3">
+                <mat-form-field class="ancho col-6 col-md-3">
                   <mat-label>LUGAR DE EXPEDICION</mat-label>
                   <mat-select formControlName="expedition_place_id" name="ciudadTrabajo">
                     <mat-option *ngFor="let expedition_place_id of expedicion" [value]="expedition_place_id.id">
@@ -40,15 +40,15 @@
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
-                <mat-form-field class="ancho col-6 col-md-3 col-6 col-md-3" >
+                <mat-form-field class="ancho col-6 col-md-3" >
                   <mat-label>NOMBRE</mat-label>
                   <input matInput autocomplete="off" formControlName="name" >
                 </mat-form-field>
-              <mat-form-field class="ancho col-6 col-md-3 col-6 col-md-3" >
+              <mat-form-field class="ancho col-6 col-md-3" >
                   <mat-label>APELLIDO</mat-label>
                   <input matInput autocomplete="off" formControlName="last_name" >
                 </mat-form-field>
-            <mat-form-field class="ancho col-6 col-md-3 col-6 col-md-3">
+            <mat-form-field class="ancho col-6 col-md-3">
                 <mat-label>GENERO</mat-label>
                 <mat-select formControlName="gender_id" name="genero">
                   <mat-option *ngFor="let gender_id of genero" [value]="gender_id.id">
@@ -56,11 +56,11 @@
                   </mat-option>
                 </mat-select>
               </mat-form-field>
-              <mat-form-field class="ancho col-6 col-md-3 col-6 col-md-3" >
+              <mat-form-field class="ancho col-6 col-md-3" >
                 <mat-label>FECHA DE NACIMIENTO</mat-label>
                 <input matInput autocomplete="off" type="date" formControlName="birthday" >
               </mat-form-field>
-              <mat-form-field class="ancho col-6 col-md-3 col-6 col-md-3">
+              <mat-form-field class="ancho col-6 col-md-3">
                   <mat-label>ESTADO CIVIL</mat-label>
                   <mat-select formControlName="civil_statu_id" name="estadoCivil">
                     <mat-option *ngFor="let civil_statu_id of estadoCivil" [value]="civil_statu_id.id">
@@ -68,7 +68,7 @@
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
-              <mat-form-field class="ancho col-6 col-md-3 col-6 col-md-3">
+              <mat-form-field class="ancho col-6 col-md-3">
                   <mat-label>CONTACTO DE EMERGENCIA</mat-label>
                   <mat-select formControlName="emergency_contact_id" name="ciudadResidencia">
                     <mat-option *ngFor="let emergency_contact_id of Emergencia" [value]="emergency_contact_id.id">
@@ -76,11 +76,11 @@
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
-            <mat-form-field class="ancho col-6 col-md-3 col-6 col-md-3" >
+            <mat-form-field class="ancho col-6 col-md-3" >
                 <mat-label>NUMERO DE HIJOS</mat-label>
                 <input matInput autocomplete="off" type="number" formControlName="children" >
               </mat-form-field>
-              <mat-form-field class="ancho col-6 col-md-3 col-6 col-md-3">
+              <mat-form-field class="ancho col-6 col-md-3">
                 <mat-label>NIVEL DE EDUCACION</mat-label>
                 <mat-select formControlName="education_level_id" name="nivelEducacion">
                   <mat-option *ngFor="let education_level_id  of NivelEducativo" [value]="education_level_id.id">
