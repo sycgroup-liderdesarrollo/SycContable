@@ -18,11 +18,22 @@
 }
 
 h1{
-    font-size: 5rem;
+    font-size: 3rem;
     font-family: 'Times New Roman', Times, serif;
 }
 .texto{
  text-align: center;
 }
+img {
+    border-radius: 50%;
+    box-shadow: 5px 5px 9px rgb(211, 204, 204);
+    margin-bottom: 40px;
+}
+@media (max-width: 1000px) {
+    .mat-table{
+      width: 100%;
+      overflow:scroll;
+    }
+  }
 
 
