@@ -8,14 +8,17 @@
             <app-sidebar [sidebar]='drawer'></app-sidebar>
         </mat-drawer> 
         
-        <mat-drawer-content  class="col-12">
-            <div class="texto col-12">
+        <mat-drawer-content  class="texto">
+            <div class="letra">
                     <img src="./assets/img/sycgroup.jpg">
 
                     <h1>Bienvenid@ a Syc Contable</h1><br>
-                    
-                   <b> <u> ⇱ Selecciona una opcion en el menú superior en
-                        la parte izquierda ⇱</u></b>
+
+                    <div class="example-sidenav-content">
+                        <button type="button" mat-button (click)="drawer.toggle()">
+                            <b>  ⇱ Selecciona una opcion en el menú superior  izquierdo ⇱</b>
+                        </button>
+                      </div>
                 </div>
         </mat-drawer-content > 
     </mat-drawer-container>

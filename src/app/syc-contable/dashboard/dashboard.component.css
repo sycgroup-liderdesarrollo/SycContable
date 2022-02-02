@@ -21,7 +21,7 @@ h1{
     font-size: 3rem;
     font-family: 'Times New Roman', Times, serif;
 }
-.texto{
+.letra{
  text-align: center;
 }
 img {
@@ -29,10 +29,13 @@ img {
     box-shadow: 5px 5px 9px rgb(211, 204, 204);
     margin-bottom: 40px;
 }
-@media (max-width: 1000px) {
-    .mat-table{
+@media (max-width: 600px) {
+    .texto{
       width: 100%;
       overflow:scroll;
+    }
+    h1{
+        font-size: 2rem;
     }
   }
 
