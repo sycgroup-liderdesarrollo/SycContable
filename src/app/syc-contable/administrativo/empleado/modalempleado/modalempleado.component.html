@@ -92,7 +92,7 @@
               <button [disabled]="firstFormGroup.invalid" mat-raised-button color="primary" matStepperNext >Siguiente</button>
             </div>
           </form>
-         </mat-step>
+        </mat-step>
          <!-- DIRECCION -->
         <mat-step [stepControl]="secondFormGroup">
         <form *ngIf="secondFormGroup" [formGroup]="secondFormGroup" >
@@ -133,7 +133,7 @@
             <button mat-button matStepperPrevious>Atras</button>
             <button [disabled]="secondFormGroup.invalid" mat-raised-button color="primary" matStepperNext>Siguiente</button>
           </div>
-          </form>
+        </form>
           <!-- LOGIN -->
           <mat-step [stepControl]="thirdFormGroup">
             <form *ngIf="thirdFormGroup" [formGroup]="thirdFormGroup" >
@@ -145,7 +145,7 @@
             <mat-form-field class="ancho col-6 col-md-3" >
                 <mat-label>CONTRASEÑA</mat-label>
                 <input matInput  autocomplete="off" formControlName="password"  >
-              </mat-form-field>
+            </mat-form-field>
               <div>
                 <button mat-button matStepperPrevious>Atras</button>
                 <button [disabled]="thirdFormGroup.invalid" mat-raised-button color="primary" matStepperNext>Siguiente</button>
@@ -268,4 +268,4 @@
         </mat-step>
       </mat-stepper>
     </mat-card>
-    </div>
+</div>
