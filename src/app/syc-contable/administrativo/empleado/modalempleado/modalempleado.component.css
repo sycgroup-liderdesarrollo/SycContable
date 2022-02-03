@@ -10,18 +10,22 @@
   width: 180px;
 }
 @media (max-width: 600px){
-  .mat-form-field {
-    margin-top: 16px;
-    width: 50vh;
-  }
+
   .ancho{
-    margin-right: 10vh;
-    width: 35vh;
+    width: 25vh;
+    margin-left: 0px;
   }
   .mat-card{
     margin-top: 1%;
-    width: 50vh;
-}
+    width: 38vh;
+    padding: 0px;
+  }
+  .container{
+    overflow: scroll;
+    height: 90vh;
+    padding: 0px;
+    width: 40vh;
+  }
 }
 .container{
   overflow: scroll;

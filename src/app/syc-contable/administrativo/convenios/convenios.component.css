@@ -13,6 +13,9 @@
     width: 100%;
     overflow:scroll;
   }
+  .container{
+    width: 85%;
+  }
   .input{
     width: 60%;
   }

@@ -11,7 +11,11 @@
 @media (max-width: 600px){
   .mat-card{
     height: 75vh;
-    width: 35vh;
+    width: 32vh;
     overflow: scroll;
-}
+  }
+  .ancho{
+    width: 25vh;
+    margin-right: 0px;
+  }
 }
