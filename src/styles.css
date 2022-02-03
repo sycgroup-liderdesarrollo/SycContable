@@ -22,5 +22,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     margin-right: 10vh;
     width: 35vh;
   }
-
+  .mat-drawer-container {
+    min-height: 90vh;
+    width: 100%;
+    padding: 0px;
+  }
 }

@@ -15,4 +15,8 @@
     width: 35vh;
     overflow: scroll;
   }
+  .ancho{
+    margin-right: 0px;
+    width: 30vh;
+  }
 }

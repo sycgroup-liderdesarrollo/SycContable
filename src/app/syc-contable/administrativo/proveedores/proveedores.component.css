@@ -17,4 +17,9 @@
   .input{
     width: 60%;
   }
+  .mat-card{
+    margin-top: 1%;
+    width: 100vw;
+    padding: 5px;
+  }
 }

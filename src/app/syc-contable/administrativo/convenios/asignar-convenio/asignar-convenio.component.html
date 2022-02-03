@@ -1,65 +1,65 @@
-<div class="container col-12 col-md-12">
-    <mat-toolbar>
-      <span>Asignar un convenio a un empleado</span>
-      <div class="example-spacer"></div>
-    </mat-toolbar>
-    <mat-progress-bar *ngIf="isLoading" mode="query"></mat-progress-bar>
-    <mat-card class="mat-elevation-z8">
-      <mat-form-field appearance="standard" class="input">
-      <mat-label>Filter</mat-label>
-      <input  matInput (keyup)="applyFilter($event)" placeholder="Ej: Victor Holguin" #input autocomplete="off">
-      </mat-form-field>
-      <mat-card class="mat-table cdk-table mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource" matSort>
+<mat-toolbar>
+  <span>Asignar un convenio a un empleado</span>
+  <div class="example-spacer"></div>
+</mat-toolbar>
+<mat-progress-bar *ngIf="isLoading" mode="query"></mat-progress-bar>
+<mat-card class="col-12">
+  <mat-form-field appearance="standard" class="input">
+  <mat-label>Filter</mat-label>
+  <input  matInput (keyup)="applyFilter($event)" placeholder="Ej: Victor Holguin" #input autocomplete="off">
+  </mat-form-field>
+  <div class="mat-table col-12">
+    <table mat-table [dataSource]="dataSource" matSort>
 
-            <ng-container matColumnDef="identification_number">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> CC </th>
-            <td mat-cell *matCellDef="let row"> {{row.identification_number}} </td>
-            </ng-container>
+        <ng-container matColumnDef="identification_number">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> CC </th>
+        <td mat-cell *matCellDef="let row"> {{row.identification_number}} </td>
+        </ng-container>
 
-            <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
-            <td mat-cell *matCellDef="let row"> {{row.name}}</td>
-            </ng-container>
+        <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+        <td mat-cell *matCellDef="let row"> {{row.name}}</td>
+        </ng-container>
 
-            <ng-container matColumnDef="last_name">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Primer Apellido </th>
-            <td mat-cell *matCellDef="let row"> {{row.last_name}} </td>
-            </ng-container>
+        <ng-container matColumnDef="last_name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Primer Apellido </th>
+        <td mat-cell *matCellDef="let row"> {{row.last_name}} </td>
+        </ng-container>
 
-            <ng-container matColumnDef="position">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Cargo </th>
-            <td mat-cell *matCellDef="let row"> {{row.position.name}} </td>
-            </ng-container>
+        <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Cargo </th>
+        <td mat-cell *matCellDef="let row"> {{row.position.name}} </td>
+        </ng-container>
 
-            <ng-container matColumnDef="email">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
-                <td mat-cell *matCellDef="let row"> {{row.email}} </td>
-            </ng-container>
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+            <td mat-cell *matCellDef="let row"> {{row.email}} </td>
+        </ng-container>
 
-            <ng-container matColumnDef="base_salary">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Salario Basico </th>
-              <td mat-cell *matCellDef="let row"> {{row.base_salary}} </td>
-          </ng-container>
+        <ng-container matColumnDef="base_salary">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Salario Basico </th>
+          <td mat-cell *matCellDef="let row"> {{row.base_salary}} </td>
+      </ng-container>
 
-            <ng-container matColumnDef="options">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Opciones </th>
-              <td mat-cell *matCellDef="let row">
-                <button mat-stroked-button color="primary" (click)="openDialog(row.id)">
-                  Asignar Convenio
-                </button>
-              </td>
-          </ng-container>
+        <ng-container matColumnDef="options">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Opciones </th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-stroked-button color="primary" (click)="openDialog(row.id)">
+              Asignar Convenio
+            </button>
+          </td>
+      </ng-container>
 
-            <tr mat-header-row *matHeaderRowDef="paginadores"></tr>
-            <tr mat-row *matRowDef="let row; columns: paginadores;"></tr>
+        <tr mat-header-row *matHeaderRowDef="paginadores"></tr>
+        <tr mat-row *matRowDef="let row; columns: paginadores;"></tr>
 
-            <tr class="mat-row" *matNoDataRow>
-            <td class="mat-cell" colspan="4">No se encuentran coincidencias con "{{input.value}}"</td>
-            </tr>
-        </table>
-        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-      </mat-card>
-    </mat-card>
-
+        <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No se encuentran coincidencias con "{{input.value}}"</td>
+        </tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
   </div>
+</mat-card>
+
+
+

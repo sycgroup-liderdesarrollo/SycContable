@@ -1,37 +1,35 @@
-<div class="container">
-        <form *ngIf="form" [formGroup]="form">
-             <mat-toolbar>
-                <span mat-dialog-title class="title">Asignar Convenio</span>
-            </mat-toolbar>
-            <mat-card class="card">
 
-              <mat-card-content>
-                  <mat-card-title  class="title" > <h3>Seleccionar un convenio</h3> </mat-card-title>
-                    <mat-form-field class="largo">
-                        <mat-label>Convenios</mat-label>
-                        <mat-select id="covenant_id" formControlName="covenant_id" (selectionChange)="actualCovenant($event.value)">
-                            <mat-option  *ngFor="let covenant of covenantList" [value]="covenant.id">{{covenant.name}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </mat-card-content>
+<form *ngIf="form" [formGroup]="form">
+  <mat-toolbar>
+      <span mat-dialog-title class="title">Asignar Convenio</span>
+  </mat-toolbar>
+    <mat-card class="card">
+      <mat-card-content>
+          <mat-card-title  class="title" > <h3>Seleccionar un convenio</h3> </mat-card-title>
+            <mat-form-field class="largo">
+                <mat-label>Convenios</mat-label>
+                <mat-select id="covenant_id" formControlName="covenant_id" (selectionChange)="actualCovenant($event.value)">
+                    <mat-option  *ngFor="let covenant of covenantList" [value]="covenant.id">{{covenant.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+      </mat-card-content>
+      <mat-card-content *ngIf="covenantActual && covenantActual.covenant_type_id == 1" >
+          <h4 >Ingrese el numero de deudas a cobrar</h4>
+          <mat-form-field class="corto col-12">
+              <mat-label>Deudas</mat-label>
+              <input matInput type="number" autocomplete="off" id="dues" formControlName="dues"  >
+          </mat-form-field>
+          <mat-form-field class="corto col-12">
+            <mat-label>Valor</mat-label>
+            <input matInput type="number" autocomplete="off" id="value" formControlName="value"  >
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions>
+          <button mat-raised-button color="primary" (click)="asignarCovenant(row,form.value)">Asignar</button>
+          <button mat-stroked-button (click)="cerrar()">Salir</button>
+      </mat-card-actions>
+    </mat-card>
+</form>
 
-                <mat-card-content *ngIf="covenantActual && covenantActual.covenant_type_id == 1" >
-                    <h4 >Ingrese el numero de deudas a cobrar</h4>
-                    <mat-form-field class="corto col-12">
-                        <mat-label>Deudas</mat-label>
-                        <input matInput type="number" autocomplete="off" id="dues" formControlName="dues"  >
-                    </mat-form-field>
-                    <mat-form-field class="corto col-12">
-                      <mat-label>Valor</mat-label>
-                      <input matInput type="number" autocomplete="off" id="value" formControlName="value"  >
-                  </mat-form-field>
-                </mat-card-content>
 
-                <mat-card-actions>
-                    <button mat-raised-button color="primary" (click)="asignarCovenant(row,form.value)">Asignar</button>
-                    <button mat-stroked-button (click)="cerrar()">Salir</button>
-                </mat-card-actions>
-            </mat-card>
-        </form>
-</div>
 

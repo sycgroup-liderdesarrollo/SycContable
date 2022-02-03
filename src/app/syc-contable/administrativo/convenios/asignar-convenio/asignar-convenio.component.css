@@ -13,8 +13,13 @@
   .mat-table{
     width: 100%;
     overflow:scroll;
+    padding: 0px;
   }
   .input{
     width: 60%;
+  }
+  .mat-card{
+    width: 100vw;
+    padding: 1vw;
   }
 }

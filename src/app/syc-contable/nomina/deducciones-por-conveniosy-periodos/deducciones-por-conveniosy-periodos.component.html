@@ -1,82 +1,64 @@
-<div class="container">
+<div>
     <mat-toolbar>
         <span mat-dialog-title>Deducciones por convenios y periodos</span>
     </mat-toolbar>
     <mat-card>
         <form *ngIf="form" [formGroup]="form" >
-                <mat-grid-list cols="3" rowHeight="70px">
-                        <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                            <mat-form-field class="ancho">
-                                <mat-label>CONVENIO</mat-label>
-                                <mat-select formControlName="covenants_id" name="convenio"  >
-                                    <mat-option *ngFor="let covenant of covenants" [value]="covenant.id">
-                                    {{covenant.name}}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </mat-grid-tile>
-                        <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                          <mat-form-field appearance="fill">
-                            <mat-label>Mes y año</mat-label>
-                            <input matInput type="month" formControlName="created_at">
-                          </mat-form-field>
-                        </mat-grid-tile>
-                        <mat-grid-tile [colspan]="1" [rowspan]="1" >
-                            <mat-form-field class="ancho" >
-                                <mat-label>PERIODO</mat-label>
-                                <mat-select formControlName="period_id" name="periodo" >
-                                    <mat-option *ngFor="let period of periodo" [value]="period.id">
-                                      {{period.name}}
-                                    </mat-option>
-                                  </mat-select>
-                              </mat-form-field>
-                        </mat-grid-tile>
-                </mat-grid-list>
+          <mat-form-field class="ancho col-4 col-md-2">
+              <mat-label>CONVENIO</mat-label>
+              <mat-select formControlName="covenants_id" name="convenio"  >
+                  <mat-option *ngFor="let covenant of covenants" [value]="covenant.id">
+                  {{covenant.name}}
+                  </mat-option>
+              </mat-select>
+          </mat-form-field>
+          <mat-form-field  class="ancho col-4 col-md-2">
+            <mat-label>Mes y año</mat-label>
+            <input matInput type="month" formControlName="created_at">
+          </mat-form-field>
+          <mat-form-field class="ancho col-4 col-md-2" >
+              <mat-label>PERIODO</mat-label>
+              <mat-select formControlName="period_id" name="periodo" >
+                  <mat-option *ngFor="let period of periodo" [value]="period.id">
+                    {{period.name}}
+                  </mat-option>
+                </mat-select>
+          </mat-form-field>
         </form>
-
         <div class="boton">
             <button mat-stroked-button [disabled]="!form.valid" (click)="consultar(form.value)">Buscar</button>
         </div>
-
-        <div class="container mat-elevation-z8">
+        <div class="mat-table cdk-table">
           <table mat-table [dataSource]="dataSource">
-
               <ng-container matColumnDef="concept_name">
                 <th mat-header-cell *matHeaderCellDef> Concepto </th>
                 <td mat-cell *matCellDef="let row"> {{row.concept_name}} </td>
                 <td mat-footer-cell *matFooterCellDef> <b>Total</b>  </td>
               </ng-container>
-
               <ng-container matColumnDef="covenant_name">
                 <th mat-header-cell *matHeaderCellDef> Convenio </th>
                 <td mat-cell *matCellDef="let row"> {{row.covenant_name}} </td>
                 <td mat-footer-cell *matFooterCellDef></td>
-
               </ng-container>
-
               <ng-container matColumnDef="user_name">
                 <th mat-header-cell *matHeaderCellDef> Empleado </th>
                 <td mat-cell *matCellDef="let row"> {{row.user_name}} </td>
                 <td mat-footer-cell *matFooterCellDef></td>
               </ng-container>
-
               <ng-container matColumnDef="identification_number">
                 <th mat-header-cell *matHeaderCellDef> Numero de identificacion </th>
                 <td mat-cell *matCellDef="let row"> {{row.identification_number}} </td>
                 <td mat-footer-cell *matFooterCellDef></td>
               </ng-container>
-
               <ng-container matColumnDef="value_charged">
                 <th mat-header-cell *matHeaderCellDef> Valor </th>
                 <td mat-cell *matCellDef="let row"> {{row.value_charged | currency:' '}} <b class="cop">COP</b> </td>
                 <td mat-footer-cell *matFooterCellDef> <b>{{total | currency:' '}}</b> <b class="cop"> COP</b></td>
               </ng-container>
-
-
               <tr mat-header-row *matHeaderRowDef="columna"></tr>
               <tr mat-row *matRowDef="let element; columns: columna;"></tr>
               <tr mat-footer-row *matFooterRowDef="columna; sticky: true"></tr>
-            </table>
+          </table>
         </div>
     </mat-card>
 </div>

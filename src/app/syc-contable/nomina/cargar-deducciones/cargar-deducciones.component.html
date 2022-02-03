@@ -1,77 +1,76 @@
-<div class="col-12 employees">
+<div class="employees col-12">
   <mat-card class="card">
-    <mat-form-field class="col-12" appearance="legacy">
+    <mat-form-field appearance="standard" class="input">
       <mat-icon matSuffix>search</mat-icon>
       <mat-label class="label" >Buscar Empleado</mat-label>
-      <input matInput autocomplete="off" (keyup)="onKeyUp($event)" placeholder="Ej: Victor" #input>
+      <input matInput autocomplete="off" (keyup)="onKeyUp($event)" placeholder="Ej: Victor" #input >
     </mat-form-field>
     <mat-progress-bar mode="query" *ngIf="isLoading"></mat-progress-bar>
-        
-        <div class="div" *ngIf="dataSource.data[0]">
-            <table mat-table [dataSource]="dataSource" matSort>
+    <div class="mat-table cdk-table" *ngIf="dataSource.data[0]">
+        <table mat-table [dataSource]="dataSource" matSort>
 
-              <ng-container matColumnDef="identification_number">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> CC </th>
-              <td mat-cell *matCellDef="let row"> {{row.identification_number}} </td>
-              </ng-container>
+          <ng-container matColumnDef="identification_number">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> CC </th>
+          <td mat-cell *matCellDef="let row"> {{row.identification_number}} </td>
+          </ng-container>
 
-              <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
-              <td mat-cell *matCellDef="let row"> {{row.name}}</td>
-              </ng-container>
+          <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+          <td mat-cell *matCellDef="let row"> {{row.name}}</td>
+          </ng-container>
 
-              <ng-container matColumnDef="last_name">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Primer Apellido </th>
-              <td mat-cell *matCellDef="let row"> {{row.last_name}} </td>
-              </ng-container>
+          <ng-container matColumnDef="last_name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Primer Apellido </th>
+          <td mat-cell *matCellDef="let row"> {{row.last_name}} </td>
+          </ng-container>
 
-              <ng-container matColumnDef="position">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Cargo </th>
-              <td mat-cell *matCellDef="let row"> {{row.position.name}} </td>
-              </ng-container>
+          <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Cargo </th>
+          <td mat-cell *matCellDef="let row"> {{row.position.name}} </td>
+          </ng-container>
 
-              <ng-container matColumnDef="email">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
-                  <td mat-cell *matCellDef="let row"> {{row.email}} </td>
-              </ng-container>
+          <ng-container matColumnDef="email">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+              <td mat-cell *matCellDef="let row"> {{row.email}} </td>
+          </ng-container>
 
-              <ng-container matColumnDef="base_salary">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Salario Basico </th>
-                <td mat-cell *matCellDef="let row"> {{row.base_salary}} </td>
-              </ng-container>
+          <ng-container matColumnDef="base_salary">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Salario Basico </th>
+            <td mat-cell *matCellDef="let row"> {{row.base_salary}} </td>
+          </ng-container>
 
-              <ng-container matColumnDef="options">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Opciones </th>
-                  <td mat-cell *matCellDef="let row">
-                    <button mat-stroked-button color="primary" (click)="openNomina(row.id)">
-                      Seleccionar
-                    </button>
-                  </td>
-              </ng-container>
+          <ng-container matColumnDef="options">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Opciones </th>
+              <td mat-cell *matCellDef="let row">
+                <button mat-stroked-button color="primary" (click)="openNomina(row.id)">
+                  Seleccionar
+                </button>
+              </td>
+          </ng-container>
 
-              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
-              <tr class="mat-row" *matNoDataRow>
-              <td class="mat-cell" colspan="4">No se encuentran coincidencias con "{{input.value}}"</td>
-              </tr>
-          </table>
+          <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No se encuentran coincidencias con "{{input.value}}"</td>
+          </tr>
+      </table>
 
-          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-        </div>
-      </mat-card>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>
+  </mat-card>
 </div>
 
-<div class="col-12 payroll" *ngIf="payroll">
+<div class="payroll col-12" *ngIf="payroll">
     <mat-card class="card">
-        <div class="div">
+        <div class="mat-table cdk-table">
             <div *ngIf="dataPayroll.validador" class="flex col-12">
-              <h1 class="col-5">{{ payroll.created_at | date:'MMMM d, y'}}</h1>
-              <h1 class="col-5">{{payroll.user.name }} {{payroll.user.last_name }}</h1>
-              <button  mat-stroked-button color="primary" class="col-2" (click)="openDialogAgregar(payroll.id,payroll.user.id)">AGREGAR</button>
-            </div> 
+              <h1 id="h1" class="col-4">{{ payroll.created_at | date:'MMMM d, y'}}</h1>
+              <h1 id="h1" class="col-4">{{payroll.user.name }} {{payroll.user.last_name }}</h1>
+              <button mat-stroked-button color="primary" class="btn-add col-4" (click)="openDialogAgregar(payroll.id,payroll.user.id)">AGREGAR</button>
+            </div>
             <div class="alert alert-warning" role="alert" *ngIf="!DataNomina.data[0]">
-              La nómina del colaborador <strong>{{payroll.user.name}}</strong>  aún no tiene conceptos cargados. 
+              La nómina del colaborador <strong>{{payroll.user.name}}</strong>  aún no tiene conceptos cargados.
             </div>
             <table mat-table [dataSource]="DataNomina"  *ngIf="DataNomina.data[0]" >
 

@@ -9,3 +9,13 @@ table {
 .options{
   margin-left: 50px;
 }
+@media (max-width: 600px){
+  .tabla{
+    padding: 0px;
+    height: 60vh;
+  }
+  .mat-table{
+    width: 100%;
+    overflow: scroll;
+  }
+}

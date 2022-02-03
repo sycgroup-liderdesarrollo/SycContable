@@ -12,11 +12,14 @@
 @media (max-width: 1000px) {
   .mat-table{
     width: 100%;
-    overflow:scroll;
-
+    overflow: scroll;
   }
-  .container{
-    width: 45%;
-    padding: 0px;
+  .input-filter{
+    width: 60%;
+  }
+  .mat-card{
+    margin-top: 1%;
+    width: 100vw;
+    padding: 5px;
   }
 }

@@ -1,48 +1,42 @@
-.ancho{
-      width: 70%;
-  }
-  div{
-    width: 100%;
-    margin-bottom: 30px;
-    margin-top: 10px;
-}
-.mat-icon{
-    font-size: 1.3rem;
-    color: black;
-}
-.label{
-    font-size: 1rem;
-    font-family:'Times New Roman', Times, serif
-}
-
- .mat-card{
-    margin-top: 1%;
-    width: 100%;
-  }
 
 .mat-table{
     width: 100vh;
   }
-  .opciones{
-    border: solid none;
-  }
-  input{
-      font-size: 14px;
-      font-family:'Times New Roman', Times, serif;
-  }
-  .flex{
-    display: inline-flex;
-  }
-  .boton{
-      text-align: center;
-  }
-  example-month-picker .mat-calendar-period-button {
-    pointer-events: none;
-  }
+.boton{
+    text-align: center;
+}
 
-  .example-month-picker .mat-calendar-arrow {
-    display: none;
+.cop{
+  color: rgb(24, 24, 136);
+}
+.ancho{
+  width: 25%;
+  /* margin-right: 5%; */
+  margin-right: 5%;
+}
+.mat-card{
+  margin-top: 1%;
+  width: 100%;
+}
+.ancho{
+  width: 30vh;
+  margin-right: 3%;
+}
+
+@media (max-width: 600px) {
+  .mat-table{
+    width: 100%;
+    overflow: scroll;
   }
-  .cop{
-    color: rgb(24, 24, 136);
+  .mat-card{
+    margin-top: 1%;
+    width: 100vw;
   }
+  .div{
+    margin-left: 15px;
+  }
+  .ancho{
+    width: 45%;
+    margin-right: 5%;
+  }
+}

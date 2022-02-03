@@ -24,7 +24,7 @@ table {
     margin-top: 1%;
     width: 92vw;
   }
-  
+
   .mat-table{
     width: 100%;
   }
@@ -38,4 +38,27 @@ table {
   .flex{
     display: inline-flex;
   }
-  
+  .input{
+    width: 100%;
+  }
+  @media (max-width: 600px) {
+    .mat-table{
+      width: 100%;
+      overflow: scroll;
+    }
+    .agg{
+      width: 50px;
+    }
+    #h1{
+      font-size: 1rem;
+    }
+    .btn-add{
+      width: 100px;
+      height: 40px;
+    }
+    .mat-card{
+      margin-top: 1%;
+      width: 93vw;
+      padding: 5px
+    }
+  }
