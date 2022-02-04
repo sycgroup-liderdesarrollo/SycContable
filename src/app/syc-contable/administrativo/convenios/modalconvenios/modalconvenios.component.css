@@ -4,8 +4,8 @@
   }
 @media (min-width: 1000px) {
   .ancho{
-    width: 180px;
-    margin-bottom: 35px;
+    width: 25vh;
+    margin-bottom: 5vh;
   }
 }
 @media (max-width: 600px){
