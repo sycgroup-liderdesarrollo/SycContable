@@ -2,6 +2,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import Swal from 'sweetalert2';
 import { TipoConvenioService } from '../../../services/convenios/tipo-convenio.service';
 import { ModalconveniosComponent } from '../../modalconvenios/modalconvenios.component';
 
@@ -47,7 +48,18 @@ export class ModalAsignarConvenioComponent implements OnInit {
   asignarCovenant(userId:any,formData:any){
     this.AsignarService.asignarConvenio(userId, formData).subscribe(resp=>{
     this.covenant = resp;
-    this.dialog.close();
+    console.log(resp);
+    Swal.fire({
+      showDenyButton: true,
+      icon: 'success',
+      title: resp.data,
+      confirmButtonText:'Ok',
+      denyButtonText: 'Salir',
+      }).then((result) => {
+        if (result.isDenied) {
+          this.dialog.close();
+        }
+      })
     })
   }
   actualCovenant(covenantId:number){
