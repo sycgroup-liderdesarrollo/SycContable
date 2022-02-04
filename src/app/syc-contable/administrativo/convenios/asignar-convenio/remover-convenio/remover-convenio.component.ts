@@ -6,6 +6,8 @@ import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { finalize } from 'rxjs/operators';
 import { ConfirmacionComponent } from 'src/app/share/confirmacion/confirmacion.component';
 import { ConvenantService } from '../../../services/convenios/convenant.service';
+import { EmployeeService } from '../../../services/empleados/employee.service';
+
 
 
 @Component({
@@ -16,56 +18,53 @@ import { ConvenantService } from '../../../services/convenios/convenant.service'
 export class RemoverConvenioComponent implements OnInit {
   dataSource : MatTableDataSource<any>;
   displayedColumns: string[] = ['user', 'covenant', 'dues', 'total_dues', 'value','options'];
- 
+
   isLoading: boolean = false;
-
-  @ViewChild(MatTable) tabla1!: MatTable<any>;
-  @ViewChild(MatPaginator)
-  paginator!: MatPaginator;
-  @ViewChild(MatSort)
-  sort!: MatSort;
   dialogRef:any;
-
-  @Input() id:any;
+  userName:any;
+  @Input() row:any;
 
 
   constructor(
     public dialog: MatDialog,
-    private serviceConvenant: ConvenantService
-  ) { 
+    private serviceConvenant: ConvenantService,
+    private serviceUser: EmployeeService,
+  ) {
     this.dataSource = new MatTableDataSource();
- 
   }
-
   ngOnInit(): void {
-    this.getConvenant();
-  }
-  getConvenant() {
-    this.isLoading = true;
-      this.serviceConvenant.getcovenant().pipe(
-        finalize( () => {
-          this.isLoading = false;
-        } )
-      ).subscribe(
-        resp => {
-          this.dataSource.data = resp.data;
-        }
-      );
-    }
-  
+    this.getEmploye();
+    this.userName = this.row.name
 
-  openConfirmation(id?: any): void{
+  }
+  openConfirmation(pivotId?: any): void{
+    console.log(pivotId);
+
     const ConfirmationRef = this.dialog.open(ConfirmacionComponent);
 
     ConfirmationRef.afterClosed().subscribe(resp => {
-      resp ? this.deleteConvenio(id): '';
+      resp ? this.deleteConvenio(this.row.id, pivotId): '';
     });
   }
-  deleteConvenio(id :any){
-    this.serviceConvenant.deleteConvenant(id).subscribe(res => {
-      this.getConvenant();  
+
+  deleteConvenio(UserId:any, pivotId:number){
+    this.serviceConvenant.deleteUserCovenant(UserId, pivotId).subscribe(resp => {
+      console.log(resp.data);
+      this.getEmploye();
+
     });
  }
+  getEmploye(){
+    this.isLoading = true;
+    this.serviceUser.getEmployee(this.row.id).pipe(
+      finalize( () => {
+        this.isLoading = false;
+      } )
+    ).subscribe(resp=>{
+      this.dataSource.data = resp.data.covenants;
+      console.log(this.dataSource.data);
 
+    })
+  }
 
 }

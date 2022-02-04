@@ -28,25 +28,21 @@
                     </mat-option>
                   </mat-select>
             </mat-form-field>
-            <mat-grid-tile *ngIf="!isEdit" class="ancho col-6 col-md-3" >
-                <mat-form-field class="ancho col-6 col-md-3" >
-                    <mat-label>ESTADO</mat-label>
-                    <mat-select formControlName="active" name="active">
-                        <mat-option [value]="1">
-                          Activo
-                        </mat-option>
-                        <mat-option [value]="0">
-                          Inactivo
-                        </mat-option>
-                      </mat-select>
-                  </mat-form-field>
-            </mat-grid-tile>
-            <mat-grid-tile *ngIf="form.value.covenant_type_id == 2" class="ancho col-6 col-md-3">
-                <mat-form-field class="ancho col-6 col-md-3" >
-                    <mat-label>VALOR</mat-label>
-                    <input matInput autocomplete="off" formControlName="value" >
-                  </mat-form-field>
-            </mat-grid-tile>
+            <mat-form-field class="ancho col-6 col-md-3" *ngIf="!isEdit">
+                <mat-label>ESTADO</mat-label>
+                <mat-select formControlName="active" name="active">
+                    <mat-option [value]="1">
+                      Activo
+                    </mat-option>
+                    <mat-option [value]="0">
+                      Inactivo
+                    </mat-option>
+                  </mat-select>
+            </mat-form-field>
+            <mat-form-field *ngIf="form.value.covenant_type_id == 2" class="ancho col-6 col-md-3" >
+                <mat-label>VALOR</mat-label>
+                <input matInput autocomplete="off" formControlName="value" >
+            </mat-form-field>
             <mat-form-field class="ancho col-6 col-md-3" >
                  <mat-label>CONCEPTO</mat-label>
                  <input matInput autocomplete="off" formControlName="concept_name" >

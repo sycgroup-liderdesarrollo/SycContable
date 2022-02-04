@@ -77,14 +77,14 @@ export class AsignarConvenioComponent implements OnInit {
   }
   openConfirmation(id?: any): void{
     const ConfirmationRef = this.dialog.open(RemoverConvenioComponent);
-
+    id? ConfirmationRef.componentInstance.row = id: null;
     ConfirmationRef.afterClosed().subscribe(resp => {
       resp ? this.deleteEmployee(id): '';
     });
   }
   deleteEmployee(id :any){
     this.serviceEmployer.deleteEmployee(id).subscribe(res => {
-      this.getEmployee();  
+      this.getEmployee();
     });
  }
 

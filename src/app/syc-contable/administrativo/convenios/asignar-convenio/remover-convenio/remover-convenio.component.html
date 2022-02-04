@@ -3,54 +3,45 @@
       <span>Remover Convenios</span>
       <div class="example-spacer"></div>
     </mat-toolbar>
+
     <div class="mat-table cdk-table">
-      <table mat-table [dataSource]="dataSource" class="col-12" >
-  
-        
+      <div class="d-flex justify-content-center col-12 col-md-12" *ngIf="isLoading">
+        <mat-spinner></mat-spinner>
+      </div>
+      <table mat-table [dataSource]="dataSource" class="col-12" *ngIf="!isLoading">
         <ng-container matColumnDef="user">
           <th mat-header-cell *matHeaderCellDef> Nombre del Usuario </th>
-          <td mat-cell *matCellDef="let element"> {{element.user}} </td>
+          <td mat-cell *matCellDef="let row"> {{userName}}</td>
         </ng-container>
-  
-        
         <ng-container matColumnDef="covenant">
           <th mat-header-cell *matHeaderCellDef> Nombre de Convenio </th>
-          <td mat-cell *matCellDef="let element"> {{element.covenant}} </td>
+          <td mat-cell *matCellDef="let element">  {{element.name}} </td>
         </ng-container>
-  
-      
         <ng-container matColumnDef="dues">
           <th mat-header-cell *matHeaderCellDef> Deudas Pagadas </th>
-          <td mat-cell *matCellDef="let element"> {{element.dues}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.pivot.paid_dues}} </td>
         </ng-container>
-  
-        
         <ng-container matColumnDef="total_dues">
           <th mat-header-cell *matHeaderCellDef> Deudas Totales</th>
-          <td mat-cell *matCellDef="let element"> {{element.total_dues}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.pivot.dues}} </td>
         </ng-container>
-  
-       
         <ng-container matColumnDef="value">
           <th mat-header-cell *matHeaderCellDef> Valor </th>
-          <td mat-cell *matCellDef="let element"> {{element.value}} </td>
+          <td mat-cell *matCellDef="let element">{{element.pivot.value}} </td>
         </ng-container>
-
         <ng-container matColumnDef="options">
             <th mat-header-cell *matHeaderCellDef> Opciones </th>
-            <td mat-cell *matCellDef="let row">
-              <button mat-stroked-button color="primary" (click)="openConfirmation(id)">
+            <td mat-cell *matCellDef="let element">
+              <button mat-stroked-button color="primary" (click)="openConfirmation(element.pivot.id)">
                 Remover
               </button>
             </td>
         </ng-container>
-  
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
       <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
     </div>
-  
   </mat-card>
-  
-  
+
+

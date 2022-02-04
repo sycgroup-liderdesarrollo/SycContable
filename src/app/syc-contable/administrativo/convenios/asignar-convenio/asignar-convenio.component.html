@@ -1,4 +1,4 @@
-<div class="container col-12 col-md-12">
+<div>
     <mat-toolbar>
       <span>Asignar un convenio a un empleado</span>
       <div class="example-spacer"></div>
@@ -53,13 +53,9 @@
                       <mat-icon color="">group_add</mat-icon>
                       <span>Asignar Convenio</span>
                     </button>
-                    <button mat-menu-item (click)="openConfirmation(row)" >
-                      <mat-icon color="warn">delete</mat-icon>
-                      <span>Remover Convenio</span>
-                    </button>
-                    <button mat-menu-item >
+                    <button mat-menu-item (click)="openConfirmation(row)">
                       <mat-icon color="primary">visibility</mat-icon>
-                      <span>Ver Convenio</span>
+                      <span>Ver más</span>
                     </button>
                 </mat-menu>
             </td>
