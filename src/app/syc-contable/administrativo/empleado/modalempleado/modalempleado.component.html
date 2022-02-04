@@ -68,14 +68,6 @@
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
-              <mat-form-field class="ancho col-6 col-md-3">
-                  <mat-label>CONTACTO DE EMERGENCIA</mat-label>
-                  <mat-select formControlName="emergency_contact_id" name="ciudadResidencia">
-                    <mat-option *ngFor="let emergency_contact_id of Emergencia" [value]="emergency_contact_id.id">
-                      {{emergency_contact_id.name}}
-                    </mat-option>
-                  </mat-select>
-                </mat-form-field>
             <mat-form-field class="ancho col-6 col-md-3" >
                 <mat-label>NUMERO DE HIJOS</mat-label>
                 <input matInput autocomplete="off" type="number" formControlName="children" >
@@ -90,6 +82,33 @@
               </mat-form-field>
             <div>
               <button [disabled]="firstFormGroup.invalid" mat-raised-button color="primary" matStepperNext >Siguiente</button>
+            </div>
+          </form>
+        </mat-step>
+        <!-- CONTACTO DE EMERGENCIA -->
+        <mat-step [stepControl]="fifthFormGroup">
+          <form *ngIf="fifthFormGroup" [formGroup]="fifthFormGroup" >
+            <ng-template matStepLabel>Contacto de emergencia</ng-template>
+            <mat-form-field class="ancho col-6 col-md-3" >
+              <mat-label>NOMBRE</mat-label>
+              <input matInput autocomplete="off" formControlName="name" >
+            </mat-form-field>
+            <mat-form-field class="ancho col-6 col-md-3" >
+                <mat-label>TELEFONO</mat-label>
+                <input matInput  autocomplete="off" formControlName="phone" type="number"  >
+            </mat-form-field>
+            <mat-form-field class="ancho col-6 col-md-3" >
+              <mat-label>Parentezco</mat-label>
+              <mat-select name="kinship_id" formControlName="kinship_id">
+                <mat-option *ngFor="let kinship of kinships" [value]="kinship.id">
+                  {{kinship.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Atras</button>
+              <button *ngIf="!id" [disabled]="fifthFormGroup.invalid" mat-raised-button color="primary" matStepperNext (click)="postEmergencyContact(fifthFormGroup.value)">Siguiente</button>
+              <button *ngIf="id" [disabled]="fifthFormGroup.invalid" mat-raised-button color="primary" matStepperNext (click)="putEmergencyContact(fifthFormGroup.value)">Actualizar y continuar</button>
             </div>
           </form>
         </mat-step>
@@ -260,8 +279,8 @@
             <div>
               <button mat-button matStepperPrevious>Atras</button>
               <button mat-button (click)="stepper.reset()">Restaurar</button>
-              <button *ngIf="!id" type="submit"  mat-raised-button color="primary" (click)="asigForm(firstFormGroup.value,secondFormGroup.value,thirdFormGroup.value,fourthFormGroup.value)">Aceptar</button>
-              <button *ngIf="id"  type="submit"  mat-raised-button color="primary" (click)="asigForm(firstFormGroup.value,secondFormGroup.value,thirdFormGroup.value,fourthFormGroup.value)">update</button>
+              <button *ngIf="!id" type="submit"  mat-raised-button color="primary" (click)="asigForm(firstFormGroup.value,secondFormGroup.value,thirdFormGroup.value,fourthFormGroup.value, fifthFormGroup.value)">Aceptar</button>
+              <button *ngIf="id"  type="submit"  mat-raised-button color="primary" (click)="asigForm(firstFormGroup.value,secondFormGroup.value,thirdFormGroup.value,fourthFormGroup.value, fifthFormGroup.value)">Actualizar</button>
 
             </div>
           </mat-step>

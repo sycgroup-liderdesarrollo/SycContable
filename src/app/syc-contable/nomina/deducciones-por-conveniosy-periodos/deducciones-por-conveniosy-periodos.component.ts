@@ -11,7 +11,8 @@ import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/
 import {MatDatepicker} from '@angular/material/datepicker'
 import * as _moment from 'moment';
 import {default as _rollupMoment, Moment} from 'moment';
-
+import {MatSnackBar} from '@angular/material/snack-bar';
+import { ScankbarComponent } from 'src/app/scankbar/not-found/scankbar.component';
 
 const moment = _rollupMoment || _moment;
 
@@ -59,12 +60,13 @@ export class DeduccionesPorConveniosyPeriodosComponent implements OnInit {
   dataSource : MatTableDataSource<any>;
   columna: string[] = ['concept_name','covenant_name','user_name','identification_number','value_charged',];
   total:number=0;
-
+  durationInSeconds = 5;
   constructor(
     private servicesTipoConvenio:TipoConvenioService,
     private servicesperiodo:PeriodicidadConvenioService,
     private serviceNomina:ServicioNominaService,
     private fb: FormBuilder,
+    private _snackBar: MatSnackBar
     ) {
       this.dataSource = new MatTableDataSource();
     }
@@ -103,8 +105,12 @@ export class DeduccionesPorConveniosyPeriodosComponent implements OnInit {
       this.total = this.total + this.dataSource.data[i].value_charged;
     }
     console.log(this.total);
+    if(this.total == 0){
+      this._snackBar.openFromComponent(ScankbarComponent, {
+        duration: this.durationInSeconds * 1000,
+      });
+    }
   }
 }
-
 
 

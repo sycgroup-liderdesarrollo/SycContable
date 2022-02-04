@@ -4,7 +4,7 @@ import {  FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms
 import { MatDialogRef } from '@angular/material/dialog';
 import { CargoService } from '../../services/empleados/cargo.service';
 import { CiudadService } from '../../services/empleados/ciudad.service';
-import { ContactoEmergenciaService } from '../../services/empleados/contacto-emergencia.service';
+import { ContactoEmergenciaService } from '../../services/empleados/contacts/contacto-emergencia.service';
 import { EmployeeService } from '../../services/empleados/employee.service';
 import { EstadoCivilService } from '../../services/empleados/estado-civil.service';
 import { EstratoService } from '../../services/empleados/estrato.service';
@@ -56,7 +56,9 @@ export class ModalempleadoComponent implements OnInit {
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
   fourthFormGroup: FormGroup;
+  fifthFormGroup: FormGroup;
   provinces:any;
+  kinships:any;
   formulario = {
     name:"",
     last_name:"",
@@ -105,7 +107,7 @@ export class ModalempleadoComponent implements OnInit {
     private serviceEstrato:EstratoService,
     private serviceContactoEmergencia:ContactoEmergenciaService,
     private dialog: MatDialogRef<ModalempleadoComponent>,
-    private _formBuilder: FormBuilder
+    private _formBuilder: FormBuilder,
   ){}
 
   ngOnInit(): void {
@@ -119,12 +121,13 @@ export class ModalempleadoComponent implements OnInit {
     this.servicesEmployee.getEmployee(this.id).subscribe(
       resp => {
         console.log(resp.data);
-
+        this.isLinear = true
         this.dataEmployee = resp.data;
         this.firtsForm(this.dataEmployee);
         this.secondForm(this.dataEmployee);
         this.thirdFormn(this.dataEmployee)
         this.fourthForm(this.dataEmployee);
+        this.getContactoEmergencia(this.dataEmployee.emergency_contact_id)
       })
   }
   firtsForm(dataEmployee?:any){
@@ -139,7 +142,6 @@ export class ModalempleadoComponent implements OnInit {
       education_level_id:[dataEmployee?.education_level_id ?? '', Validators.required],
       civil_statu_id:[dataEmployee?.civil_statu_id ??'',Validators.required],
       expedition_place_id:[dataEmployee?.expedition_place_id ??'',Validators.required],
-      emergency_contact_id:[dataEmployee?.emergency_contact_id ??'',Validators.required],
     });
     this.isLoading=false;
   }
@@ -175,8 +177,14 @@ export class ModalempleadoComponent implements OnInit {
     });
     this.isLoading=false;
   }
-
-  asigForm(firts:any,second:any,third:any,fourth:any){
+  fifthForm(dataEmployee?:any){
+    this.fifthFormGroup = this._formBuilder.group({
+      name: new FormControl (dataEmployee?.name ??'', Validators.minLength(3)),
+      phone: new FormControl (dataEmployee?.phone ?? '', Validators.maxLength(10)),
+      kinship_id:[dataEmployee?.kinship_id ?? '', Validators.required]
+    })
+  }
+  asigForm(firts:any,second:any,third:any,fourth:any, fifth:any){
     // primer formulario
     this.formulario.name = firts.name,
     this.formulario.last_name = firts.last_name,
@@ -188,7 +196,7 @@ export class ModalempleadoComponent implements OnInit {
     this.formulario.education_level_id = firts.education_level_id
     this.formulario.civil_statu_id = firts.civil_statu_id
     this.formulario.expedition_place_id = firts.expedition_place_id
-    this.formulario.emergency_contact_id = firts.emergency_contact_id
+    this.formulario.emergency_contact_id = fifth.kinship_id
     // segundo formulario
     this.formulario.address = second.address
     this.formulario.neighborhood = second.neighborhood
@@ -238,8 +246,8 @@ export class ModalempleadoComponent implements OnInit {
     await this.getLugarExpedicion();
     await this.getFondoDePensiones();
     await this.getEstrato();
-    await this.getContactoEmergencia();
-    this.id ? this.editEmployee() : this.firtsForm(), this.secondForm(), this.thirdFormn(), this.fourthForm();
+    await this.getKinships();
+    this.id ? this.editEmployee() : this.firtsForm(), this.secondForm(), this.thirdFormn(), this.fourthForm(), this.fifthForm();
   }
   getCargos() : Promise<any>{
     return new Promise( (resolve,reject) => {
@@ -353,11 +361,11 @@ export class ModalempleadoComponent implements OnInit {
       });
     })
   }
-
-  getContactoEmergencia():Promise<any>{
+  getContactoEmergencia(id:any):Promise<any>{
     return new Promise( (resolve,reject)=>{
-      this.serviceContactoEmergencia.getContactoEmergencia().subscribe(resp=>{
+      this.serviceContactoEmergencia.getContactoEmergencia(id).subscribe(resp=>{
         this.Emergencia = resp.data;
+        this.fifthForm(this.Emergencia);
         resolve(resp.data);
       });
     })
@@ -366,6 +374,23 @@ export class ModalempleadoComponent implements OnInit {
     this.servicesResidencia.getCiudad(province_id).subscribe(resp=>{
       this.expedicion = resp.data;
       this.residencia = resp.data;
+    })
+  }
+  getKinships():Promise<any>{
+    return new Promise ((resolve, reject)=>{
+      this.serviceContactoEmergencia.getKinship().subscribe(resp=>{
+        this.kinships = resp.data;
+        resolve(resp.data);
+      });
+    });
+  }
+  postEmergencyContact(formData:any){
+    this.serviceContactoEmergencia.postContacts(formData).subscribe(resp=>{
+    })
+  }
+  putEmergencyContact(formData:any){
+    this.serviceContactoEmergencia.putContacts(this.Emergencia.id, formData).subscribe(resp=>{
+      console.log(resp);
     })
   }
 }

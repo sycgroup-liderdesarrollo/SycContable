@@ -17,12 +17,14 @@ import { AddTokenInterceptorService } from './interceptors/add-token.interceptor
 import { RefreshTokenInterceptor } from './interceptors/refresh-token.interceptor';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ScankbarComponent } from './scankbar/not-found/scankbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    ScankbarComponent,
   ],
 
   imports: [
@@ -38,6 +40,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatProgressSpinnerModule,
     MatProgressBarModule,
     ShareModule,
+    MatSnackBarModule
   ],
 
   providers: [
