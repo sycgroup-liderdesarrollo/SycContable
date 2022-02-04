@@ -28,6 +28,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ModalContactsComponent } from './proveedores/contacts/modal-contacts/modal-contacts.component';
 import { ModalContactsLitsComponent } from './proveedores/contacts/modal-contacts-lits/modal-contacts-lits.component';
 import {MatStepperModule} from '@angular/material/stepper';
+import { RemoverConvenioComponent } from './convenios/asignar-convenio/remover-convenio/remover-convenio.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import {MatStepperModule} from '@angular/material/stepper';
     ModalAsignarConvenioComponent,
     ModalContactsComponent,
     ModalContactsLitsComponent,
+    RemoverConvenioComponent,
 
   ],
 

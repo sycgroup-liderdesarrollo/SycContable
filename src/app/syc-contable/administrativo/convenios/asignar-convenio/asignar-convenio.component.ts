@@ -7,6 +7,7 @@ import { finalize } from 'rxjs/operators';
 import { ConvenantService } from '../../services/convenios/convenant.service';
 import { EmployeeService } from '../../services/empleados/employee.service';
 import { ModalAsignarConvenioComponent } from './modal-asignar-convenio/modal-asignar-convenio.component';
+import { RemoverConvenioComponent } from './remover-convenio/remover-convenio.component';
 
 @Component({
   selector: 'app-asignar-convenio',
@@ -74,4 +75,19 @@ export class AsignarConvenioComponent implements OnInit {
      this.getEmployee()
     });
   }
+  openConfirmation(id?: any): void{
+    const ConfirmationRef = this.dialog.open(RemoverConvenioComponent);
+
+    ConfirmationRef.afterClosed().subscribe(resp => {
+      resp ? this.deleteEmployee(id): '';
+    });
+  }
+  deleteEmployee(id :any){
+    this.serviceEmployer.deleteEmployee(id).subscribe(res => {
+      this.getEmployee();  
+    });
+ }
+
+
+
 }
