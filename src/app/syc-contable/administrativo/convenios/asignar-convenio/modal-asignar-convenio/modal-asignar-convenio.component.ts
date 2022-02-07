@@ -44,7 +44,7 @@ export class ModalAsignarConvenioComponent implements OnInit {
   cerrar(){
     this.dialog.close();
   }
-
+  
   asignarCovenant(userId:any,formData:any){
     this.AsignarService.asignarConvenio(userId, formData).subscribe(resp=>{
     this.covenant = resp;
