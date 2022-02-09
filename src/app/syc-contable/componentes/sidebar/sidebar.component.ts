@@ -11,10 +11,11 @@ import {FlatTreeControl} from '@angular/cdk/tree';
 export class SidebarComponent implements OnInit {
 
   expand:boolean=false;
+  expandEmploye:boolean=false;
   @ViewChild(MatAccordion)
   accordion!: MatAccordion;
   @Input() sidebar !: MatDrawer;
-  
+
   constructor() { }
 
   ngOnInit(): void {
