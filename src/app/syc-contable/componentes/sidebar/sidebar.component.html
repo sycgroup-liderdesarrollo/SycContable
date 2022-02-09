@@ -1,11 +1,23 @@
     <mat-nav-list role="list">
             <div class="div-group-item">
                     <h1>Administrativos</h1>
-
                     <div class="div-content-item">
-                        <a mat-list-item [routerLink]="['/syc-contable/administrativo/empleado']" (click)="sidebar.close()" class="items-sidenav"><mat-icon color="primary">group</mat-icon>Colaboradores</a>
-                    </div>
-
+                      <ul id="div-content-item">
+                              <a mat-list-item (click)="expandEmploye = !expandEmploye" class="items-sidenav" data-bs-toggle="collapse" data-bs-target="#extend-collapse" aria-expanded="true">
+                                  <mat-icon color="primary">group</mat-icon>
+                                  Colaboradores
+                              <mat-icon class="mat-icon-rtl-mirror">
+                                  {{expandEmploye ? 'expand_more' : 'chevron_right'}}
+                              </mat-icon>
+                          </a>
+                          <div *ngIf="expandEmploye;" class="collapse" id="extend-collapse" class="items-sidenav">
+                              <ul class="list-unstyled fw-normal pb-1 small">
+                                  <li><a (click)="sidebar.close()" [routerLink]="['/syc-contable/administrativo/empleado']" class="btn margin" ><mat-icon color="primary">group_add</mat-icon>Gestionar Colaboradores</a></li>
+                                  <li><a (click)="sidebar.close()" [routerLink]="['/syc-contable/administrativo/empleado']" class="btn" ><mat-icon color="primary">flight_takeoff</mat-icon>Asignar vacaciones</a></li>
+                              </ul>
+                          </div>
+                      </ul>
+                  </div>
                     <div class="div-content-item">
                         <ul id="div-content-item">
                                 <a mat-list-item (click)="expand = !expand" class="items-sidenav" data-bs-toggle="collapse" data-bs-target="#extend-collapse" aria-expanded="true">
@@ -23,7 +35,6 @@
                             </div>
                         </ul>
                     </div>
-
                     <div class="div-content-item">
                         <a mat-list-item [routerLink]="['/syc-contable/administrativo/proveedores']" (click)="sidebar.close()" class="items-sidenav"><mat-icon color="primary">assignment_ind</mat-icon>Proveedores</a>
                     </div>
