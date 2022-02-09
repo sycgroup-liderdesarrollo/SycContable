@@ -4,6 +4,7 @@ import { ConfirmacionComponent } from 'src/app/share/confirmacion/confirmacion.c
 import { AsignarConvenioComponent } from './convenios/asignar-convenio/asignar-convenio.component';
 import { ModalAsignarConvenioComponent } from './convenios/asignar-convenio/modal-asignar-convenio/modal-asignar-convenio.component';
 import { ConveniosComponent } from './convenios/convenios.component';
+import { AsignarVacacionesComponent } from './empleado/asignar-vacaciones/asignar-vacaciones.component';
 import { EmpleadoComponent } from './empleado/empleado.component';
 import { ModalempleadoComponent } from './empleado/modalempleado/modalempleado.component';
 import { ProveedoresComponent } from './proveedores/proveedores.component';
@@ -26,6 +27,9 @@ const routes: Routes = [
 },
 {
   path:'modal-asignarCovenio', component: ModalAsignarConvenioComponent
+},
+{
+  path:'asignar-vacaciones', component: AsignarVacacionesComponent
 }
 
 ];

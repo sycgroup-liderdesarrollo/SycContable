@@ -29,6 +29,7 @@ import { ModalContactsComponent } from './proveedores/contacts/modal-contacts/mo
 import { ModalContactsLitsComponent } from './proveedores/contacts/modal-contacts-lits/modal-contacts-lits.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import { RemoverConvenioComponent } from './convenios/asignar-convenio/remover-convenio/remover-convenio.component';
+import { AsignarVacacionesComponent } from './empleado/asignar-vacaciones/asignar-vacaciones.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { RemoverConvenioComponent } from './convenios/asignar-convenio/remover-c
     ModalContactsComponent,
     ModalContactsLitsComponent,
     RemoverConvenioComponent,
-
+    AsignarVacacionesComponent,
+ 
   ],
 
   imports: [

@@ -1,0 +1,42 @@
+.mat-table{
+    width: 100vh;
+  }
+.boton{
+    text-align: center;
+    width: 25vh;
+}
+
+.cop{
+  color: rgb(24, 24, 136);
+}
+.ancho{
+  width: 10%;
+  /* margin-right: 5%; */
+  margin-right: 5%;
+}
+.mat-card{
+  margin-top: 1%;
+  width: 100%;
+}
+.ancho{
+  width: 20vh;
+  margin-right: 3%;
+}
+
+@media (max-width: 600px) {
+  .mat-table{
+    width: 100%;
+    overflow: scroll;
+  }
+  .mat-card{
+    margin-top: 1%;
+    width: 100vw;
+  }
+  .div{
+    margin-left: 15px;
+  }
+  .ancho{
+    width: 45%;
+    margin-right: 5%;
+  }
+}
