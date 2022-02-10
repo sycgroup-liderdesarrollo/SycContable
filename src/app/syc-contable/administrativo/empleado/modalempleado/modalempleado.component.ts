@@ -69,6 +69,7 @@ export class ModalempleadoComponent implements OnInit {
     address:"",
     neighborhood:"",
     birthday:""  ,
+    phone:"",
     children:""  ,
     base_salary:"",
     position_id:"",
@@ -142,6 +143,7 @@ export class ModalempleadoComponent implements OnInit {
       education_level_id:[dataEmployee?.education_level_id ?? '', Validators.required],
       civil_statu_id:[dataEmployee?.civil_statu_id ??'',Validators.required],
       expedition_place_id:[dataEmployee?.expedition_place_id ??'',Validators.required],
+      phone: new FormControl (dataEmployee?.phone ?? '', Validators.maxLength(10)),
     });
     this.isLoading=false;
   }
@@ -185,6 +187,8 @@ export class ModalempleadoComponent implements OnInit {
     })
   }
   asigForm(firts:any,second:any,third:any,fourth:any, fifth:any){
+    console.log(firts);
+    
     // primer formulario
     this.formulario.name = firts.name,
     this.formulario.last_name = firts.last_name,
@@ -197,6 +201,7 @@ export class ModalempleadoComponent implements OnInit {
     this.formulario.civil_statu_id = firts.civil_statu_id
     this.formulario.expedition_place_id = firts.expedition_place_id
     this.formulario.emergency_contact_id = fifth.kinship_id
+    this.formulario.phone = firts.phone
     // segundo formulario
     this.formulario.address = second.address
     this.formulario.neighborhood = second.neighborhood
