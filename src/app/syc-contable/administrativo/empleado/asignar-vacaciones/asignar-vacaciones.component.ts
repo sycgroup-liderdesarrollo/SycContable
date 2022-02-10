@@ -6,14 +6,12 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { VacacionesserviceService } from '../../services/vacaciones/vacacionesservice.service';
 
-
 @Component({
   selector: 'app-asignar-vacaciones',
   templateUrl: './asignar-vacaciones.component.html',
   styleUrls: ['./asignar-vacaciones.component.css']
 })
 export class AsignarVacacionesComponent implements OnInit {
-
 
   @Input()id:any;
   @ViewChild(MatPaginator)
@@ -30,7 +28,6 @@ export class AsignarVacacionesComponent implements OnInit {
   // fechaInicio:any;
   // fechaFinal:any;
 
-
   constructor(
     private serviceVacaciones: VacacionesserviceService,  
     public dialog: MatDialog,
@@ -38,7 +35,6 @@ export class AsignarVacacionesComponent implements OnInit {
     ) {
       this.dataSource = new MatTableDataSource();
     }
-
 
   ngOnInit(): void {
     this.crearform(); 
@@ -51,7 +47,6 @@ export class AsignarVacacionesComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
-
 
   getVacaciones(){
     this.serviceVacaciones.getVacaciones().subscribe(

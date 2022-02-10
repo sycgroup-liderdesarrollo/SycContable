@@ -47,7 +47,6 @@ export class EmpleadoComponent implements AfterViewInit,OnInit {
     ).subscribe(
       resp => {
         this.dataSource.data = resp.data;
-
       }
     );
   }
@@ -87,7 +86,7 @@ export class EmpleadoComponent implements AfterViewInit,OnInit {
     this.serviceEmployer.deleteEmployee(id).subscribe(res => {
       this.getEmployee();  
     });
- }
+  }
   
 }
 
