@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { VacacionesserviceService } from '../../services/vacaciones/vacacionesservice.service';
@@ -15,7 +16,10 @@ export class AsignarVacacionesComponent implements OnInit {
 
 
   @Input()id:any;
-
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
+  @ViewChild(MatSort)
+  sort!: MatSort;
   dataSource: MatTableDataSource<any>;
   columna: string[] = ['user_id','start_date','end_date','total_days'];
   users:any;
@@ -42,6 +46,10 @@ export class AsignarVacacionesComponent implements OnInit {
     this.serviceVacaciones.getUsers().subscribe(resp=>{
       this.users = resp.data
     })
+  }
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
 
