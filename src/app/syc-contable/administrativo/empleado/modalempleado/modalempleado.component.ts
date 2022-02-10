@@ -147,7 +147,7 @@ export class ModalempleadoComponent implements OnInit {
   }
   secondForm(dataEmployee?:any){
     this.secondFormGroup = this._formBuilder.group({
-      address:(dataEmployee?.address ?? '', Validators.minLength(5)),
+      address: new FormControl(dataEmployee?.address ?? '', Validators.minLength(5)),
       neighborhood:[dataEmployee?.neighborhood ?? '', Validators.required],
       residence_city_id:[dataEmployee?.residence_city_id ??'',Validators.required],
       strata_id:[dataEmployee?.strata_id ??'',Validators.required],
