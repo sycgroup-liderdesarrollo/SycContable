@@ -1,8 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { VacacionesserviceService } from '../../services/vacaciones/vacacionesservice.service';
@@ -15,42 +13,43 @@ import { VacacionesserviceService } from '../../services/vacaciones/vacacionesse
 })
 export class AsignarVacacionesComponent implements OnInit {
 
-  @ViewChild(MatPaginator)
-  paginator!: MatPaginator;
-  @ViewChild(MatSort)
 
-  dataSource : MatTableDataSource<any>;
+  @Input()id:any;
 
+  dataSource: MatTableDataSource<any>;
   columna: string[] = ['user_id','start_date','end_date','total_days'];
-
+  users:any;
+  respuesta:any;
   vacacionesUser:any;
   form!:FormGroup;
+ 
   // fechaInicio:any;
   // fechaFinal:any;
 
 
   constructor(
-    private serviceVacaciones: VacacionesserviceService,
+    private serviceVacaciones: VacacionesserviceService,  
     public dialog: MatDialog,
     private fb: FormBuilder,
     ) {
       this.dataSource = new MatTableDataSource();
     }
 
+
   ngOnInit(): void {
     this.crearform(); 
-    this.getVacaciones();
+
+    this.serviceVacaciones.getUsers().subscribe(resp=>{
+      this.users = resp.data
+    })
   }
+
 
   getVacaciones(){
     this.serviceVacaciones.getVacaciones().subscribe(
       resp => {
         this.dataSource = resp.data;
-      console.log(this.dataSource);
-      console.log(resp);
-      
       });
-
   }
 
   crearform(){
@@ -58,6 +57,12 @@ export class AsignarVacacionesComponent implements OnInit {
       user_id: ['', Validators.required],
       start_date: ['', Validators.required],
       end_date:   ['', Validators.required],
+    });
+  }
+
+  crearVacaciones(formdata:any){
+    this.serviceVacaciones.postVacaciones(formdata).subscribe(res => {
+      this.getVacaciones();
     });
   }
 

@@ -15,4 +15,13 @@ export class VacacionesserviceService {
     getVacaciones() :Observable<any> {
       return this.http.get<any>(`${environment.API_Url}vacation`);
     }
+
+    postVacaciones(formdata:any) :Observable<any> {
+      return this.http.post<any>(`${environment.API_Url}vacation`,formdata);
+    }
+    getUsers(){
+      return this.http.get<any>(`${environment.API_Url}usersColletion`);
+    }
+    
+
   }
