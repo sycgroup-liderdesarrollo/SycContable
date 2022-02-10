@@ -42,7 +42,7 @@ export class AsignarVacacionesComponent implements OnInit {
 
   ngOnInit(): void {
     this.crearform(); 
-
+    this. getVacaciones();
     this.serviceVacaciones.getUsers().subscribe(resp=>{
       this.users = resp.data
     })

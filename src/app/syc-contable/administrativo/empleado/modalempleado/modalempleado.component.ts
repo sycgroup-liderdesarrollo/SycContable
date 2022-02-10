@@ -147,7 +147,7 @@ export class ModalempleadoComponent implements OnInit {
   }
   secondForm(dataEmployee?:any){
     this.secondFormGroup = this._formBuilder.group({
-      address: new FormControl (dataEmployee?.address ?? '', Validators.minLength(5)),
+      address:(dataEmployee?.address ?? '', Validators.minLength(5)),
       neighborhood:[dataEmployee?.neighborhood ?? '', Validators.required],
       residence_city_id:[dataEmployee?.residence_city_id ??'',Validators.required],
       strata_id:[dataEmployee?.strata_id ??'',Validators.required],
@@ -157,7 +157,7 @@ export class ModalempleadoComponent implements OnInit {
   thirdFormn(dataEmployee?:any){
     this.thirdFormGroup = this._formBuilder.group({
       email:[dataEmployee?.email ?? '', Validators.required],
-      password:['123456', Validators.required],
+      password:['12345678', Validators.required],
     });
     this.isLoading=false;
   }

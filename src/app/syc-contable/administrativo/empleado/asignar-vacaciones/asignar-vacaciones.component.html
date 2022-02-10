@@ -45,14 +45,14 @@
 
               <ng-container matColumnDef="total_days">
                 <th mat-header-cell *matHeaderCellDef> Dias Totales </th>
-                <td mat-cell *matCellDef="let row"> {{row.total_days}} </td>
+                <td mat-cell *matCellDef="let row"> {{row.total_days}}-Dias </td>
               </ng-container>
 
               <tr mat-header-row *matHeaderRowDef="columna"></tr>
               <tr mat-row *matRowDef="let row; columns: columna;"></tr>
 
             </table>
-            
+
             <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
         </div>
      </mat-card>
