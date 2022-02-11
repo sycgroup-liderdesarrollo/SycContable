@@ -13,6 +13,7 @@ import { GeneroService } from '../../services/empleados/genero.service';
 import { LineaNegocioService } from '../../services/empleados/linea-negocio.service';
 import { NiveleducaionService } from '../../services/empleados/niveleducaion.service';
 import { ProveedorSaludService } from '../../services/empleados/proveedor-salud.service';
+import { RiesgosLaboralesService } from '../../services/empleados/riesgos-laborales.service';
 import { SucursalService } from '../../services/empleados/sucursal.service';
 import { TipoContratoService } from '../../services/empleados/tipo-contrato.service';
 import { TipoIdentificacionService } from '../../services/empleados/tipo-identificacion.service';
@@ -48,6 +49,7 @@ export class ModalempleadoComponent implements OnInit {
   expedicion:any;
   Emergencia:any;
   Estrato:any;
+  riesgosLaborales:any;
   active:any;
   form!: FormGroup;
   isLoading:boolean=false;
@@ -86,6 +88,7 @@ export class ModalempleadoComponent implements OnInit {
     expedition_place_id:"",
     strata_id:"",
     education_level_id:"",
+    occupationalRiskManager:"",
     active:"",
     emergency_contact_id:"",
     business_line_id:""
@@ -109,6 +112,7 @@ export class ModalempleadoComponent implements OnInit {
     private serviceContactoEmergencia:ContactoEmergenciaService,
     private dialog: MatDialogRef<ModalempleadoComponent>,
     private _formBuilder: FormBuilder,
+    private serviceRiesgosLaborales:RiesgosLaboralesService,
   ){}
 
   ngOnInit(): void {
@@ -175,7 +179,8 @@ export class ModalempleadoComponent implements OnInit {
       pension_fund_id:[dataEmployee?.pension_fund_id ??'',Validators.required],
       active:[dataEmployee?.active ??'',Validators.required],
       health_provider_id:[dataEmployee?.health_provider_id ?? '', Validators.required],
-      headquarter_id:[dataEmployee?.headquarter_id ?? '', Validators.required]
+      headquarter_id:[dataEmployee?.headquarter_id ?? '', Validators.required],
+      occupationalRiskManager:[dataEmployee?.occupationalRiskManager ?? '',Validators.required],
     });
     this.isLoading=false;
   }
@@ -222,9 +227,13 @@ export class ModalempleadoComponent implements OnInit {
     this.formulario.pension_fund_id = fourth.pension_fund_id
     this.formulario.active = fourth.active
     this.formulario.health_provider_id = fourth.health_provider_id
+    this.formulario.occupationalRiskManager = fourth.occupationalRiskManager
     this.isEdit ? this.updateEmployer() : this.createEmployer()
   }
   createEmployer(){
+    console.log(this.formulario);
+
+    
     this.servicesEmployee.postEmployed(this.formulario).subscribe(res => {
       this.respuesta = res;
       this.dialog.close();
@@ -252,6 +261,7 @@ export class ModalempleadoComponent implements OnInit {
     await this.getFondoDePensiones();
     await this.getEstrato();
     await this.getKinships();
+    await this.getRiesgosLaborales();
     this.id ? this.editEmployee() : this.firtsForm(), this.secondForm(), this.thirdFormn(), this.fourthForm(), this.fifthForm();
   }
   getCargos() : Promise<any>{
@@ -397,5 +407,14 @@ export class ModalempleadoComponent implements OnInit {
     this.serviceContactoEmergencia.putContacts(this.Emergencia.id, formData).subscribe(resp=>{
       console.log(resp);
     })
+  }
+
+  getRiesgosLaborales(){
+    return new Promise ((resolve, reject)=>{
+    this.serviceRiesgosLaborales.getSucursales().subscribe(res=>{
+      this.riesgosLaborales = res.data
+      resolve(res.data);
+      });
+    });
   }
 }
