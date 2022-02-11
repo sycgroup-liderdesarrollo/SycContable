@@ -1,20 +1,16 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { PeriodicidadConvenioService } from '../../administrativo/services/convenios/periodicidad-convenio.service';
 import { TipoConvenioService } from '../../administrativo/services/convenios/tipo-convenio.service';
 import { ServicioNominaService } from '../../administrativo/services/nomina/servicio-nomina.service';
-import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
-import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 import {MatDatepicker} from '@angular/material/datepicker'
 import * as _moment from 'moment';
-import {default as _rollupMoment, Moment} from 'moment';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { ScankbarComponent } from 'src/app/scankbar/not-found/scankbar.component';
 
-const moment = _rollupMoment || _moment;
 
 
 export const MY_FORMATS = {
@@ -33,17 +29,6 @@ export const MY_FORMATS = {
   selector: 'app-deducciones-por-conveniosy-periodos',
   templateUrl: './deducciones-por-conveniosy-periodos.component.html',
   styleUrls: ['./deducciones-por-conveniosy-periodos.component.css'],
-  providers: [
-    // `MomentDateAdapter` can be automatically provided by importing `MomentDateModule` in your
-    // application's root module. We provide it at the component level here, due to limitations of
-    // our example generation script.
-    {
-      provide: DateAdapter,
-      useClass: MomentDateAdapter,
-      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
-    },
-    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
-  ],
 })
 
 export class DeduccionesPorConveniosyPeriodosComponent implements OnInit {
