@@ -1,6 +1,5 @@
-
 import { Component, Input, OnInit } from '@angular/core';
-import {  FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { CargoService } from '../../services/empleados/cargo.service';
 import { CiudadService } from '../../services/empleados/ciudad.service';
@@ -48,6 +47,7 @@ export class ModalempleadoComponent implements OnInit {
   FondoDePensiones:any;
   expedicion:any;
   Emergencia:any;
+  email:any;
   Estrato:any;
   riesgosLaborales:any;
   active:any;
@@ -162,8 +162,12 @@ export class ModalempleadoComponent implements OnInit {
   }
   thirdFormn(dataEmployee?:any){
     this.thirdFormGroup = this._formBuilder.group({
-      email:[dataEmployee?.email ?? '', Validators.required],
-      password:['12345678', Validators.required],
+      email: [dataEmployee?.email ?? '', Validators.compose([
+        Validators.required, Validators.email
+      ])],
+      password:[dataEmployee?.email ?? '12345678',Validators.compose([
+        Validators.required,Validators.minLength(8)
+      ])],
     });
     this.isLoading=false;
   }
@@ -279,8 +283,10 @@ export class ModalempleadoComponent implements OnInit {
         resolve(rest.data);
       });
     })
+
   }
   getSucursales() : Promise<any>{
+
     return new Promise( (resolve,reject) => {
       this.servicesSucursal.getSucursales().subscribe(rest => {
         this.sucursales = rest.data;

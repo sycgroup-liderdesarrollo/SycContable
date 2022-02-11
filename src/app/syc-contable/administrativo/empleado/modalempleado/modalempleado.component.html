@@ -163,12 +163,19 @@
               <ng-template matStepLabel>Datos de registro</ng-template>
               <mat-form-field class="ancho col-6 col-md-3" >
                 <mat-label>CORREO</mat-label>
-                <input matInput autocomplete="off" formControlName="email" >
+                <input matInput autocomplete="off" formControlName="email">
               </mat-form-field>
+              <div *ngIf="thirdFormGroup.invalid && (thirdFormGroup.touched || thirdFormGroup.dirty)">
+                <span *ngIf="thirdFormGroup.controls['email'].errors" class="validators"  role="alert">*el correo electronico es requerido</span>
+          </div> 
             <mat-form-field class="ancho col-6 col-md-3" >
                 <mat-label>CONTRASEÑA</mat-label>
-                <input matInput  autocomplete="off" formControlName="password"  >
-            </mat-form-field>
+                <input matInput  autocomplete="off" formControlName="password">
+              </mat-form-field>
+              <div *ngIf=" thirdFormGroup.get('password')?.dirty && thirdFormGroup.get('password')?.touched">
+                <span *ngIf="thirdFormGroup.get('password')?.hasError('required') && thirdFormGroup.get('password')?.touched"  class="validators" role="alert">la contraseña es requerida </span>
+              </div>
+              <div *ngIf=" thirdFormGroup.get('password')?.dirty && thirdFormGroup.get('password')?.invalid" class="validators" role="alert">su contraseña debe contener almenos 8 caracteres</div>
               <div>
                 <button mat-button matStepperPrevious>Atras</button>
                 <button [disabled]="thirdFormGroup.invalid" mat-raised-button color="primary" matStepperNext>Siguiente</button>

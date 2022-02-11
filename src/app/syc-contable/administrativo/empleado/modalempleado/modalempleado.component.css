@@ -2,12 +2,18 @@
     margin-top: 1%;
     width: 130vh;
 }
+.validators{
+  color: red;
+  font-size: 10px;
+  
+}
 .ancho{
     margin-right: 2%;
 }
 .mat-form-field {
   margin-top: 16px;
   width: 180px;
+  
 }
 @media (max-width: 600px){
 
