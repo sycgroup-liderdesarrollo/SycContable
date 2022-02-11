@@ -172,10 +172,10 @@
                 <mat-label>CONTRASEÑA</mat-label>
                 <input matInput  autocomplete="off" formControlName="password">
               </mat-form-field>
-              <div *ngIf=" thirdFormGroup.get('password')?.dirty && thirdFormGroup.get('password')?.touched">
-                <span *ngIf="thirdFormGroup.get('password')?.hasError('required') && thirdFormGroup.get('password')?.touched"  class="validators" role="alert">la contraseña es requerida </span>
+              <div *ngIf=" thirdFormGroup.get('password')?.dirty && thirdFormGroup.get('password')?.invalid">
+                <span *ngIf="thirdFormGroup.get('password')?.hasError('required') && thirdFormGroup.get('password')?.touched"  class="validators" role="alert">*la contraseña es requerida </span>
               </div>
-              <div *ngIf=" thirdFormGroup.get('password')?.dirty && thirdFormGroup.get('password')?.invalid" class="validators" role="alert">su contraseña debe contener almenos 8 caracteres</div>
+              <div *ngIf=" thirdFormGroup.get('password')?.invalid && thirdFormGroup.get('password')?.dirty" class="validators" role="alert">*su contraseña debe contener almenos 8 caracteres</div>
               <div>
                 <button mat-button matStepperPrevious>Atras</button>
                 <button [disabled]="thirdFormGroup.invalid" mat-raised-button color="primary" matStepperNext>Siguiente</button>
