@@ -35,9 +35,15 @@ export class ModalContactsComponent implements OnInit {
   crearForm(dataContact?:any){
 
     this.form = this.fb.group({
-      name: new FormControl(dataContact?.name ??'', Validators.minLength(3)),
-      last_name: new FormControl(dataContact?.last_name ??'', Validators.minLength(3)),
-      email: new FormControl(dataContact?.email ??'', Validators.email),
+      name:[dataContact?.name ??'', Validators.compose([
+        Validators.required,Validators.minLength(3),
+      ])],
+      last_name: [dataContact?.last_name ??'', Validators.compose([
+        Validators.required,Validators.minLength(3),
+      ])],
+      email:[dataContact?.email ??'',Validators.compose([
+        Validators.required,Validators.email,
+      ])],
       phone:      [dataContact?.phone ?? '', Validators.compose([
         Validators.required,Validators.minLength(10),
       ])],
