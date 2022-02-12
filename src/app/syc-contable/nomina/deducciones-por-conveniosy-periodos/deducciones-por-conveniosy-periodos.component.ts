@@ -1,29 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
 import { PeriodicidadConvenioService } from '../../administrativo/services/convenios/periodicidad-convenio.service';
 import { TipoConvenioService } from '../../administrativo/services/convenios/tipo-convenio.service';
 import { ServicioNominaService } from '../../administrativo/services/nomina/servicio-nomina.service';
-import {MatDatepicker} from '@angular/material/datepicker'
-import * as _moment from 'moment';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ScankbarComponent } from 'src/app/scankbar/not-found/scankbar.component';
-
-
-
-export const MY_FORMATS = {
-  parse: {
-    dateInput: 'MM/YYYY',
-  },
-  display: {
-    dateInput: 'MM/YYYY',
-    monthYearLabel: 'MMM YYYY',
-    dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'MMMM YYYY',
-  },
-};
 
 @Component({
   selector: 'app-deducciones-por-conveniosy-periodos',
@@ -33,19 +17,19 @@ export const MY_FORMATS = {
 
 export class DeduccionesPorConveniosyPeriodosComponent implements OnInit {
 
-  @ViewChild('picker') datePickerElement = MatDatepicker;
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
-  @ViewChild(MatTable) tabla1!: MatTable<any>;
   @ViewChild(MatSort)
+
   dataConvenant: any;
   covenants:any;
-  form: any;
+  form: FormGroup;
   periodo:any;
   dataSource : MatTableDataSource<any>;
   columna: string[] = ['concept_name','covenant_name','user_name','identification_number','value_charged',];
-  total:number=0;
+  total:number = 0;
   durationInSeconds = 5;
+
   constructor(
     private servicesTipoConvenio:TipoConvenioService,
     private servicesperiodo:PeriodicidadConvenioService,

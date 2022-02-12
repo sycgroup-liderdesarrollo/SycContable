@@ -2,7 +2,7 @@ import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/cor
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
 import { ConfirmacionComponent } from 'src/app/share/confirmacion/confirmacion.component';
 import { EmployeeService } from '../../administrativo/services/empleados/employee.service';
 import { ConceptService } from '../../administrativo/services/nomina/concept.service';
@@ -19,12 +19,12 @@ export class CargarDeduccionesComponent implements OnInit,AfterViewInit {
   @Input() id?: any;
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
-  @ViewChild(MatTable) tabla1!: MatTable<any>;
   @ViewChild(MatSort)
-  created_at:any;
-  name:any;
+
+
+  created_at:string;
+  name:string;
   sort!: MatSort;
-  selectRef: any;
   DataNomina: MatTableDataSource<any>;
   dataSource : MatTableDataSource<any>;
   payroll:any;
@@ -37,14 +37,14 @@ export class CargarDeduccionesComponent implements OnInit,AfterViewInit {
     userId: 0,
     validador: false,
   }
-  isLoading:boolean=false;
+  isLoading:boolean = false;
 
   constructor(
-    private ServiceNomina: ServicioNominaService,
-    private serviceEmployer: EmployeeService,
-    public dialog: MatDialog,
-    private serviceconcept: ConceptService,
-    
+    private ServiceNomina:    ServicioNominaService,
+    private serviceEmployer:  EmployeeService,
+    public  dialog:           MatDialog,
+    private serviceconcept:   ConceptService,
+
   ) {
      this.dataSource = new MatTableDataSource();
      this.DataNomina = new MatTableDataSource();
@@ -82,7 +82,7 @@ export class CargarDeduccionesComponent implements OnInit,AfterViewInit {
     }
   }
 
-  openDialogAgregar(payrollId:number,id?: any): void {  
+  openDialogAgregar(payrollId:number,id?: any): void {
     const selectRef = this.dialog.open(ModalSeleccionarComponent);
     payrollId? selectRef.componentInstance.id = payrollId : null;
     selectRef.componentInstance;
@@ -100,9 +100,9 @@ export class CargarDeduccionesComponent implements OnInit,AfterViewInit {
       resp => {
         this.payroll = resp.data;
         this.DataNomina.data = resp.data.concepts;
-        
+
         this.dataPayroll.validador = true;
-        
+
     })
   }
 
@@ -110,15 +110,15 @@ export class CargarDeduccionesComponent implements OnInit,AfterViewInit {
     const ConfirmationRef = this.dialog.open(ConfirmacionComponent);
     ConfirmationRef.afterClosed().subscribe(resp => {
       resp ? this.deleteConceptPayroll(payrollId,conceptPivotId): '';
-      
+
     });
   }
 
   deleteConceptPayroll(PayrollId:any, conceptPivotId:any){
     this.serviceconcept.removeConcept(PayrollId,conceptPivotId).subscribe(res => {
      this.openNomina(PayrollId);
-     
+
     });
-    
+
  }
 }

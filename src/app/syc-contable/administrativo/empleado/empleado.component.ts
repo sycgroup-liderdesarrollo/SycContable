@@ -25,19 +25,18 @@ export class EmpleadoComponent implements AfterViewInit,OnInit {
   paginator!: MatPaginator;
   @ViewChild(MatSort)
   sort!: MatSort;
-  dialogRef: any;
 
   constructor(
     public dialog: MatDialog,
     private serviceEmployer: EmployeeService
-    ) { 
+    ) {
       this.dataSource = new MatTableDataSource();
     }
-    
+
     ngOnInit(): void {
       this.getEmployee();
     }
-    
+
   getEmployee(){
     this.isLoading = true;
     this.serviceEmployer.getEmployed().pipe(
@@ -70,7 +69,7 @@ export class EmpleadoComponent implements AfterViewInit,OnInit {
     id? dialogRef.componentInstance.id = id : null;
     dialogRef.componentInstance.isEdit = isEdit;
     dialogRef.afterClosed().subscribe(result => {
-      this.getEmployee(); 
+      this.getEmployee();
     });
   }
 
@@ -84,9 +83,9 @@ export class EmpleadoComponent implements AfterViewInit,OnInit {
 
   deleteEmployee(id :any){
     this.serviceEmployer.deleteEmployee(id).subscribe(res => {
-      this.getEmployee();  
+      this.getEmployee();
     });
   }
-  
+
 }
 

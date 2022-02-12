@@ -30,10 +30,8 @@ export class ModalempleadoComponent implements OnInit {
   @Input() id?: any;
   @Input() isEdit: boolean = false;
 
-  selectedValue!: string;
   dataEmployee: any;
   genero:any;
-  respuesta: any;
   cargos: any;
   lineaNegocio: any;
   sucursales: any;
@@ -41,7 +39,6 @@ export class ModalempleadoComponent implements OnInit {
   tipoIdentificacion:any;
   tipoSalario:any;
   residencia:any;
-  ciudadTrabajo:any;
   NivelEducativo:any;
   ProveedorSalud:any;
   estadoCivil:any;
@@ -50,7 +47,6 @@ export class ModalempleadoComponent implements OnInit {
   Emergencia:any;
   Estrato:any;
   riesgosLaborales:any;
-  active:any;
   form!: FormGroup;
   isLoading:boolean=false;
   isLinear = false;
@@ -137,17 +133,17 @@ export class ModalempleadoComponent implements OnInit {
   }
   firtsForm(dataEmployee?:any){
     this.firstFormGroup = this._formBuilder.group({
-      identification_number: [dataEmployee?.identification_number ?? '', Validators.required],
-      name: new FormControl (dataEmployee?.name ??'', Validators.minLength(3)),
-      last_name: new FormControl (dataEmployee?.last_name ??'', Validators.minLength(3)),
-      birthday:[dataEmployee?.birthday ?? '', Validators.required],
-      identification_type_id:[dataEmployee?.identification_type_id ?? '', Validators.required],
-      children:[dataEmployee?.children ?? '', Validators.required],
-      gender_id:[dataEmployee?.gender.id ?? '', Validators.required],
-      education_level_id:[dataEmployee?.education_level_id ?? '', Validators.required],
-      civil_statu_id:[dataEmployee?.civil_statu_id ??'',Validators.required],
-      expedition_place_id:[dataEmployee?.expedition_place_id ??'',Validators.required],
-      phone: new FormControl (dataEmployee?.phone ?? '', Validators.maxLength(10)),
+      identification_number:  [dataEmployee?.identification_number ?? '', Validators.required],
+      name:                   [dataEmployee?.name ??'', Validators.minLength(3)],
+      last_name:              [dataEmployee?.last_name ??'', Validators.minLength(3)],
+      birthday:               [dataEmployee?.birthday ?? '', Validators.required],
+      identification_type_id: [dataEmployee?.identification_type_id ?? '', Validators.required],
+      children:               [dataEmployee?.children ?? '', Validators.required],
+      gender_id:              [dataEmployee?.gender.id ?? '', Validators.required],
+      education_level_id:     [dataEmployee?.education_level_id ?? '', Validators.required],
+      civil_statu_id:         [dataEmployee?.civil_statu_id ??'',Validators.required],
+      expedition_place_id:    [dataEmployee?.expedition_place_id ??'',Validators.required],
+      phone:                  [dataEmployee?.phone ?? '', [Validators.required, Validators.pattern("[0-9]{10}")]],
     });
     this.isLoading=false;
   }
@@ -193,7 +189,7 @@ export class ModalempleadoComponent implements OnInit {
   }
   asigForm(firts:any,second:any,third:any,fourth:any, fifth:any){
     console.log(firts);
-    
+
     // primer formulario
     this.formulario.name = firts.name,
     this.formulario.last_name = firts.last_name,
@@ -233,9 +229,8 @@ export class ModalempleadoComponent implements OnInit {
   createEmployer(){
     console.log(this.formulario);
 
-    
+
     this.servicesEmployee.postEmployed(this.formulario).subscribe(res => {
-      this.respuesta = res;
       this.dialog.close();
     })
   }

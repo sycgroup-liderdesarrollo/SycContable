@@ -13,11 +13,9 @@ export class ModalContactsComponent implements OnInit {
 
   isLoading:boolean=true;
   form!: FormGroup;
-  name:any;
   dataContact:any;
   @Input() id:any;
   @Input() isEdit:Boolean=false;
-  message:boolean=false;
 
   constructor(
     private fb: FormBuilder,
@@ -35,12 +33,12 @@ export class ModalContactsComponent implements OnInit {
   crearForm(dataContact?:any){
 
     this.form = this.fb.group({
-      name: new FormControl(dataContact?.name ??'', Validators.minLength(3)),
-      last_name: new FormControl(dataContact?.last_name ??'', Validators.minLength(3)),
-      email: new FormControl(dataContact?.email ??'', Validators.email),
-      phone: [dataContact?.phone ?? '', Validators.required],
-      position: [dataContact?.position ?? ''],
-      provider_id: [dataContact?.provider_id ?? this.id,Validators.required]
+      name:         [dataContact?.name ??'', Validators.minLength(3)],
+      last_name:    [dataContact?.last_name ??'', Validators.minLength(3)],
+      email:        [dataContact?.email ??'', Validators.email],
+      phone:        [dataContact?.phone ?? '', [Validators.required, Validators.pattern("[0,9]{10}")]],
+      position:     [dataContact?.position ?? ''],
+      provider_id:  [dataContact?.provider_id ?? this.id,Validators.required]
     })
     this.isLoading = false
   }

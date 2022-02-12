@@ -23,12 +23,11 @@ export class ConveniosComponent implements OnInit,AfterViewInit {
   paginator!: MatPaginator;
   @ViewChild(MatSort)
   sort!: MatSort;
-  dialogRef:any
 
   constructor(
     public dialog: MatDialog,
     private serviceConvenant: ConvenantService,
-    ) { 
+    ) {
     this.dataSource = new MatTableDataSource();
   }
 
@@ -66,7 +65,7 @@ export class ConveniosComponent implements OnInit,AfterViewInit {
     id? dialogRef.componentInstance.id = id : null;
     dialogRef.componentInstance.isEdit = isEdit ;
     dialogRef.afterClosed().subscribe(result => {
-      this.getConvenant(); 
+      this.getConvenant();
     });
   };
   openConfirmation(id?: any): void{
@@ -79,14 +78,10 @@ export class ConveniosComponent implements OnInit,AfterViewInit {
 
   deleteConvenant(id :any){
     this.serviceConvenant.deleteConvenant(id).subscribe(res => {
-      this.getConvenant();  
+      this.getConvenant();
     });
  }
- 
-
-
-
 }
 
-  
+
 

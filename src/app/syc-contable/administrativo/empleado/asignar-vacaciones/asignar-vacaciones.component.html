@@ -3,7 +3,7 @@
         <span mat-dialog-title>Vacaciones</span>
     </mat-toolbar>
     <mat-card>
-          <form *ngIf="form" [formGroup]="form" >    
+          <form *ngIf="form" [formGroup]="form" >
                <mat-form-field class="ancho col-4 col-md-3">
                  <mat-label> Seleccione Usuario</mat-label>
                  <mat-select formControlName="user_id" name="user_id">
@@ -17,12 +17,12 @@
                     <mat-label>Fecha de Inicio</mat-label>
                     <input matInput type="date" formControlName="start_date">
                 </mat-form-field>
-          
+
                 <mat-form-field class="ancho col-4 col-md-2">
                   <mat-label>Fecha Finalizacion</mat-label>
                   <input matInput type="date" formControlName="end_date">
                 </mat-form-field>
-      
+
             <button mat-stroked-button class="boton col-4 col-md-2" (click)="crearVacaciones(form.value)">Crear</button>
           </form>
 
@@ -31,6 +31,11 @@
               <ng-container matColumnDef="user_id">
                 <th mat-header-cell *matHeaderCellDef> Contribuidor </th>
                 <td mat-cell *matCellDef="let row"> {{row.user.name}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="identification_number">
+                <th mat-header-cell *matHeaderCellDef> Cedula </th>
+                <td mat-cell *matCellDef="let row"> {{row.user.identification_number}} </td>
               </ng-container>
 
               <ng-container matColumnDef="start_date">

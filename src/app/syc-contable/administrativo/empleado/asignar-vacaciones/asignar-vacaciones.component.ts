@@ -19,17 +19,12 @@ export class AsignarVacacionesComponent implements OnInit {
   @ViewChild(MatSort)
   sort!: MatSort;
   dataSource: MatTableDataSource<any>;
-  columna: string[] = ['user_id','start_date','end_date','total_days'];
+  columna: string[] = ['user_id','identification_number','start_date','end_date','total_days'];
   users:any;
-  respuesta:any;
-  vacacionesUser:any;
   form!:FormGroup;
- 
-  // fechaInicio:any;
-  // fechaFinal:any;
 
   constructor(
-    private serviceVacaciones: VacacionesserviceService,  
+    private serviceVacaciones: VacacionesserviceService,
     public dialog: MatDialog,
     private fb: FormBuilder,
     ) {
@@ -37,7 +32,7 @@ export class AsignarVacacionesComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.crearform(); 
+    this.crearform();
     this. getVacaciones();
     this.serviceVacaciones.getUsers().subscribe(resp=>{
       this.users = resp.data
@@ -57,7 +52,7 @@ export class AsignarVacacionesComponent implements OnInit {
 
   crearform(){
     this.form = this.fb.group({
-      user_id: ['', Validators.required],
+      user_id:    ['', Validators.required],
       start_date: ['', Validators.required],
       end_date:   ['', Validators.required],
     });

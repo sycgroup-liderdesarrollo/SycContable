@@ -11,15 +11,13 @@ import { ConceptService } from '../../administrativo/services/nomina/concept.ser
   styleUrls: ['./modal-seleccionar.component.css']
 })
 export class ModalSeleccionarComponent implements OnInit {
-  
-  formData:any;
+
   concepts:any;
-  dataConcept:any
   conceptType:any;
   @Input() id?: any;
   Select!: FormGroup;
-  respuesta: any;
-  
+
+
   constructor(
     private fb: FormBuilder,
     private servicesTipoConcepto:ConceptConvenioService,
@@ -28,7 +26,7 @@ export class ModalSeleccionarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.crearform(); 
+    this.crearform();
     this.servicesTipoConcepto.getconceptType().subscribe(rest => [
       this.conceptType = rest.data
     ]);
@@ -36,24 +34,23 @@ export class ModalSeleccionarComponent implements OnInit {
 
   crearform(dataConcept?:any){
     this.Select = this.fb.group({
-      conceptType: [dataConcept?.concept_id  ?? '', Validators.required],
-      concept_id: [dataConcept?.concept ?? '', Validators.required],
-      count: [dataConcept?.count ?? '', Validators.required],
-      unit_value: [dataConcept?.unit_value ?? '', Validators.required],
+      conceptType:  [dataConcept?.concept_id  ?? '', Validators.required],
+      concept_id:   [dataConcept?.concept ?? '', Validators.required],
+      count:        [dataConcept?.count ?? '', Validators.required],
+      unit_value:   [dataConcept?.unit_value ?? '', Validators.required],
     });
   }
 
   conceptoconTipo(tipoId: number){
      this.serviceConcept.getConcepts(tipoId).subscribe(resp => {
-      this.concepts = resp.data; 
+      this.concepts = resp.data;
     });
   }
 
   addConceptPayroll(formData:any,id:any){
     this.serviceConcept.addConcepts(formData,id).subscribe(res => {
-      this.respuesta = res;
       this.dialog.close();
     })
   }
-    
+
 }

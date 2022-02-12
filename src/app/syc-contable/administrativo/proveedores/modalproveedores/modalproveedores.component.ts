@@ -17,12 +17,8 @@ export class ModalproveedoresComponent implements OnInit {
   @Input() id?: any;
   @Input() isEdit: boolean = true;
 
-
-  selectedValue!: string;
   form!: FormGroup;
-  name:any;
-  respuesta:any;
-  value:any;
+
   TipoIdentificacion:any;
   tiposNegocios:any;
   tipoResponsabilidadIva:any;
@@ -38,7 +34,6 @@ export class ModalproveedoresComponent implements OnInit {
   errorIdentification:string;
   errorTradeName:string;
   errorEmail:string;
-
 
   constructor(
     private fb: FormBuilder,
@@ -85,27 +80,26 @@ export class ModalproveedoresComponent implements OnInit {
   crearform(dataProvider?:any){
       this.form = this.fb.group({
         identification_type_id: [dataProvider?.identification_type.id ?? '', Validators.required],
-        constitution_type_id: [dataProvider?.constitution_type.id ?? '', Validators.required],
-        identification_number: [dataProvider?.identification_number ?? '', Validators.required],
-        name: [dataProvider?.name ?? '', Validators.required],
-        address: new FormControl(dataProvider?.address ?? '', Validators.minLength(5)),
-        phone: [dataProvider?.phone ?? '', Validators.required],
-        trade_name: [dataProvider?.trade_name ?? '', Validators.required],
-        email: [dataProvider?.email ?? '', Validators.required],
-        password:[dataProvider?.password ?? '', Validators.required],
-        iva: [dataProvider?.iva ?? '', Validators.required],
+        constitution_type_id:   [dataProvider?.constitution_type.id ?? '', Validators.required],
+        identification_number:  [dataProvider?.identification_number ?? '', Validators.required],
+        name:                   [dataProvider?.name ?? '',[Validators.required, Validators.minLength(3)]],
+        address:                [dataProvider?.address ?? '', [Validators.required, Validators.minLength(3)]],
+        phone:                  [dataProvider?.phone ?? '', [Validators.required, Validators.pattern("[0-9]{10}")]],
+        trade_name:             [dataProvider?.trade_name ?? '', [Validators.required, Validators.minLength(3)]],
+        email:                  [dataProvider?.email ?? '', Validators.required],
+        password:               [dataProvider?.password ?? '', Validators.required],
+        iva:                    [dataProvider?.iva ?? '', Validators.required],
         responsability_type_id: [dataProvider?.responsability_type?.id ?? ''],
-        last_name: [dataProvider?.last_name ?? ''],
-        city_id: [dataProvider?.city.id ?? '', Validators.required],
-        province: [dataProvider?.city.province_id ?? ''],
+        last_name:              [dataProvider?.last_name ?? ''],
+        city_id:                [dataProvider?.city.id ?? '', Validators.required],
+        province:               [dataProvider?.city.province_id ?? ''],
       });
-    this.isLoading=false;
+    this.isLoading = false;
   }
 
   crearProvider(formData:any){
     this.serviceproviders.postProvider(formData).subscribe(
       res => {
-      this.respuesta = res;
       this.dialog.close();
       },
       err=>{
@@ -123,13 +117,10 @@ export class ModalproveedoresComponent implements OnInit {
   }
   updateProvider(formData:any){
     this.serviceproviders.updateProvider(formData, this.id).subscribe(res =>{
-      console.log('todo con exito');
       this.dialog.close();
     });
   }
   async init(){
-    console.log(this.id + " Id del init");
-
     this.isLoading = true;
     await this.getTipoIdentificacion();
     this.id ? this.editProvider() : this.crearform()

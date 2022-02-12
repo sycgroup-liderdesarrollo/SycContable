@@ -10,18 +10,17 @@ export interface PeriodicElement {
   symbol: string;
 }
 
-
 @Component({
   selector: 'app-modal-contacts-lits',
   templateUrl: './modal-contacts-lits.component.html',
   styleUrls: ['./modal-contacts-lits.component.css']
 })
+
 export class ModalContactsLitsComponent implements OnInit {
   displayedColumns: string[] = ['name', 'last_name', 'email', 'phone', 'position', 'options'];
   dataSource:any;
 
   @Input() id:any;
-
 
   constructor(
     private serviceContactList: ContactService,

@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
 import { finalize } from 'rxjs/operators';
 import { ConfirmacionComponent } from 'src/app/share/confirmacion/confirmacion.component';
 import { ServicioProveedoresService } from '../services/proveedores/servicio-proveedores.service';
@@ -19,14 +19,12 @@ import { ModalproveedoresComponent } from './modalproveedores/modalproveedores.c
 export class ProveedoresComponent implements OnInit {
   dataSource : MatTableDataSource<any>;
   displayedColumns : string[] = ['identification_type','identification_number','name','address','phone','options'];
-  isLoading:boolean=false;
+  isLoading:boolean = false;
 
-  @ViewChild(MatTable) tabla1!: MatTable<any>;
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
   @ViewChild(MatSort)
   sort!: MatSort;
-  dialogRef:any;
 
   constructor(
     public dialog: MatDialog,
