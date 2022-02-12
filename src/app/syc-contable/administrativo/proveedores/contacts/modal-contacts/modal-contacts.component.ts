@@ -38,7 +38,9 @@ export class ModalContactsComponent implements OnInit {
       name: new FormControl(dataContact?.name ??'', Validators.minLength(3)),
       last_name: new FormControl(dataContact?.last_name ??'', Validators.minLength(3)),
       email: new FormControl(dataContact?.email ??'', Validators.email),
-      phone: [dataContact?.phone ?? '', Validators.required],
+      phone:      [dataContact?.phone ?? '', Validators.compose([
+        Validators.required,Validators.minLength(10),
+      ])],
       position: [dataContact?.position ?? ''],
       provider_id: [dataContact?.provider_id ?? this.id,Validators.required]
     })
