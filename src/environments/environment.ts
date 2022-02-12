@@ -7,7 +7,7 @@ export const environment = {
   API_Url: 'http://127.0.0.1:8000/api/',
   token_url: 'http://127.0.0.1:8000/oauth/token',
 
-  client_secret_API : 'Xey8FqQ1v4VI8mqgs2PZYbv11T9Vkr9Yh7Zj6Is7',
+  client_secret_API : 'pgkmowRCEiEmc9PUOcS2WeZUCpZs4q0UPd8XcxaG',
   client_id_API : '2',
 };
 
