@@ -38,18 +38,30 @@
           <mat-form-field class="ancho col-12 col-md-4" >
             <mat-label>NUMERO DE IDENTIFICACION</mat-label>
             <input matInput autocomplete="off" formControlName="identification_number" >
+            <mat-error *ngIf=" form.get('identification_number')?.dirty && form.get('identification_number')?.invalid">
+              <span *ngIf="form.get('identification_number')?.hasError('required') && form.get('identification_number')?.touched"  class="validators" role="alert">*El numero de identificacion es requerido</span>
+            </mat-error>
           </mat-form-field>
           <mat-form-field class="ancho col-12 col-md-4" >
             <mat-label>{{nombre}}</mat-label>
             <input matInput autocomplete="off" formControlName="name" >
+            <mat-error *ngIf=" form.get('name')?.dirty && form.get('name')?.invalid">
+              <span *ngIf="form.get('name')?.hasError('required') && form.get('name')?.touched"  class="validators" role="alert">*El nombre es requerido</span>
+            </mat-error>
           </mat-form-field>
           <mat-form-field class="ancho col-12 col-md-4" *ngIf="juridico">
             <mat-label>APELLIDO</mat-label>
             <input matInput autocomplete="off" formControlName="last_name" >
+            <mat-error *ngIf=" form.get('last_name')?.dirty && form.get('last_name')?.invalid">
+              <span *ngIf="form.get('last_name')?.hasError('required') && form.get('last_name')?.touched"  class="validators" role="alert">*El apellido es requerido</span>
+            </mat-error>
           </mat-form-field>
           <mat-form-field class="ancho col-12 col-md-4" >
             <mat-label>NOMBRE COMERCIAL</mat-label>
             <input matInput autocomplete="off" formControlName="trade_name" >
+            <mat-error *ngIf=" form.get('trade_name')?.dirty && form.get('trade_name')?.invalid">
+              <span *ngIf="form.get('trade_name')?.hasError('required') && form.get('trade_name')?.touched"  class="validators" role="alert">*El nombre comercial es requerido</span>
+            </mat-error>
           </mat-form-field>
           <mat-form-field class="ancho col-12 col-md-4" >
               <mat-label>Departamento</mat-label>
@@ -70,18 +82,30 @@
           <mat-form-field class="ancho col-12 col-md-4" >
             <mat-label>DIRECCION</mat-label>
             <input matInput autocomplete="off" formControlName="address" >
+            <mat-error *ngIf=" form.get('address')?.dirty && form.get('address')?.invalid">
+              <span *ngIf="form.get('address')?.hasError('required') && form.get('address')?.touched"  class="validators" role="alert">*La direccion es requerida</span>
+            </mat-error>
           </mat-form-field>
           <mat-form-field class="ancho col-12 col-md-4" >
             <mat-label>TELEFONO</mat-label>
             <input matInput autocomplete="off" formControlName="phone" type="tel" matInput placeholder="555-555-1234">
+            <mat-error *ngIf=" form.get('phone')?.dirty && form.get('phone')?.invalid">
+              <span *ngIf="form.get('phone')?.hasError('required') && form.get('phone')?.touched"  class="validators" role="alert">*El telefono es requerido</span>
+            </mat-error>
           </mat-form-field>
           <mat-form-field class="ancho col-12 col-md-4" >
             <mat-label>CORREO</mat-label>
             <input matInput autocomplete="off" formControlName="email" type="email" placeholder="Ex. pat@example.com">
+            <mat-error *ngIf=" form.get('email')?.dirty && form.get('email')?.invalid">
+              <span *ngIf="form.get('email')?.hasError('required') && form.get('email')?.touched"  class="validators" role="alert">*El correo electronico es requerido</span>
+            </mat-error>
           </mat-form-field>
           <mat-form-field class="ancho col-12 col-md-4" >
             <mat-label>Contraseña</mat-label>
-            <input matInput autocomplete="off" formControlName="password" type="password" >
+            <input matInput autocomplete="off" formControlName="password" type="password">
+            <mat-error *ngIf=" form.get('password')?.dirty && form.get('password')?.invalid">
+              <span *ngIf="form.get('password')?.hasError('required') && form.get('password')?.touched"  class="validators" role="alert">*La contraseña es requerida</span>
+            </mat-error>
           </mat-form-field>
           <mat-form-field class="ancho col-12 col-md-4" >
             <mat-label>IVA</mat-label>

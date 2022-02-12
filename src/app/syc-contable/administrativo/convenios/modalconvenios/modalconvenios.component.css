@@ -2,6 +2,9 @@
     margin-top: 1%;
     width: 90vh;
   }
+  .validators{
+    color: red;
+  }
 @media (min-width: 1000px) {
   .ancho{
     width: 25vh;

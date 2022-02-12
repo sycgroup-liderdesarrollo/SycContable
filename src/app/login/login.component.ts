@@ -23,8 +23,10 @@ export class LoginComponent implements OnInit {
     private localService : LocalStorageService
   ) { 
     this.loginForm = this.formBuilder.group({
-      email : ['',[Validators.required,Validators.email]],
-      password : ['',[Validators.required]]
+      email :     ['',[Validators.required,Validators.email]],
+      password:   ['',Validators.compose([
+        Validators.required,Validators.minLength(8)
+      ])],
     })
   }
 

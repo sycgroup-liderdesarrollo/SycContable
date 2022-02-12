@@ -22,10 +22,16 @@
     <mat-form-field class="ancho col-12 col-md-5" >
       <mat-label>CANTIDAD</mat-label>
         <input matInput autocomplete="off" formControlName="count" >
+        <mat-error *ngIf=" Select.get('count')?.dirty && Select.get('count')?.invalid">
+          <span *ngIf="Select.get('count')?.hasError('required') && Select.get('count')?.touched"  class="validators" role="alert">*La cantidad es requerida</span>
+        </mat-error>
     </mat-form-field>
     <mat-form-field class="ancho col-12 col-md-5" >
       <mat-label>VALOR</mat-label>
         <input matInput autocomplete="off" formControlName="unit_value" >
+        <mat-error *ngIf=" Select.get('unit_value')?.dirty && Select.get('unit_value')?.invalid">
+          <span *ngIf="Select.get('unit_value')?.hasError('required') && Select.get('unit_value')?.touched"  class="validators" role="alert">*El valor unitario es requerido</span>
+        </mat-error>
     </mat-form-field>
     <br>
     <div>

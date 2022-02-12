@@ -18,10 +18,16 @@
           <mat-form-field class="corto col-12">
               <mat-label>Deudas</mat-label>
               <input matInput type="number" autocomplete="off" id="dues" formControlName="dues"  >
+              <mat-error *ngIf=" form.get('dues')?.dirty && form.get('dues')?.invalid">
+                <span *ngIf="form.get('dues')?.hasError('required') && form.get('dues')?.touched"  class="validators" role="alert">*Las deudas son requeridas</span>
+              </mat-error>
           </mat-form-field>
           <mat-form-field class="corto col-12">
             <mat-label>Valor</mat-label>
             <input matInput type="number" autocomplete="off" id="value" formControlName="value"  >
+            <mat-error *ngIf=" form.get('value')?.dirty && form.get('value')?.invalid">
+              <span *ngIf="form.get('value')?.hasError('required') && form.get('value')?.touched"  class="validators" role="alert">*El valor es requerido</span>
+            </mat-error>
         </mat-form-field>
       </mat-card-content>
       <mat-card-actions>
