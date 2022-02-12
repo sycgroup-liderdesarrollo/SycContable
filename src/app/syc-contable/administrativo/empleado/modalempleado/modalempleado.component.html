@@ -22,7 +22,10 @@
               </mat-form-field>
               <mat-form-field class="ancho col-6 col-md-3">
                   <mat-label>NUMERO DE IDENTIFICACION</mat-label>
-                  <input matInput autocomplete="off" formControlName="identification_number" >
+                  <input matInput autocomplete="off" formControlName="identification_number">
+                  <mat-error *ngIf=" firstFormGroup.get('identification_number')?.dirty && firstFormGroup.get('identification_number')?.invalid">
+                    <span *ngIf="firstFormGroup.get('identification_number')?.hasError('required') && firstFormGroup.get('identification_number')?.touched"  class="validators" role="alert">*El numero de identificacion es requerido</span>
+                  </mat-error>
                 </mat-form-field>
                 <mat-form-field class="ancho col-6 col-md-3" >
                   <mat-label>Departamento</mat-label>
@@ -43,14 +46,26 @@
                 <mat-form-field class="ancho col-6 col-md-3" >
                   <mat-label>NOMBRE</mat-label>
                   <input matInput autocomplete="off" formControlName="name" >
+                  <mat-error *ngIf=" firstFormGroup.get('name')?.dirty && firstFormGroup.get('name')?.invalid">
+                    <span *ngIf="firstFormGroup.get('name')?.hasError('required') && firstFormGroup.get('name')?.touched"  class="validators" role="alert">*El nombre es requerido</span>
+                  </mat-error>
                 </mat-form-field>
               <mat-form-field class="ancho col-6 col-md-3" >
                   <mat-label>APELLIDO</mat-label>
                   <input matInput autocomplete="off" formControlName="last_name" >
+                  <mat-error *ngIf=" firstFormGroup.get('last_name')?.dirty && firstFormGroup.get('last_name')?.invalid">
+                    <span *ngIf="firstFormGroup.get('last_name')?.hasError('required') && firstFormGroup.get('last_name')?.touched"  class="validators" role="alert">*El apellido es requerido</span>
+                  </mat-error>
                 </mat-form-field>
                 <mat-form-field class="ancho col-6 col-md-3" >
                   <mat-label>TELEFONO</mat-label>
-                  <input matInput  autocomplete="off" formControlName="phone" type="number"  >
+                  <input matInput  autocomplete="off" formControlName="phone" type="number">
+                  <mat-error *ngIf=" firstFormGroup.get('phone')?.dirty && firstFormGroup.get('phone')?.invalid">
+                    <span *ngIf="firstFormGroup.get('phone')?.hasError('required') && firstFormGroup.get('phone')?.touched"  class="validators" role="alert">*El telefono es requerido</span>
+                  </mat-error>
+                  <mat-error *ngIf=" thirdFormGroup.get('phone')?.invalid && thirdFormGroup.get('phone')?.dirty" class="validators" role="alert">
+                    *El telefono no cuenta con los valores requeridos
+                   </mat-error>
               </mat-form-field>
             <mat-form-field class="ancho col-6 col-md-3">
                 <mat-label>GENERO</mat-label>
@@ -96,10 +111,19 @@
             <mat-form-field class="ancho col-6 col-md-3" >
               <mat-label>NOMBRE</mat-label>
               <input matInput autocomplete="off" formControlName="name" >
+              <mat-error *ngIf=" fifthFormGroup.get('name')?.dirty && fifthFormGroup.get('name')?.invalid">
+                <span *ngIf="fifthFormGroup.get('name')?.hasError('required') && fifthFormGroup.get('name')?.touched"  class="validators" role="alert">*El nombre es requerido</span>
+              </mat-error>
             </mat-form-field>
             <mat-form-field class="ancho col-6 col-md-3" >
                 <mat-label>TELEFONO</mat-label>
-                <input matInput  autocomplete="off" formControlName="phone" type="number"  >
+                <input matInput  autocomplete="off" formControlName="phone" type="number">
+                <mat-error *ngIf=" fifthFormGroup.get('phone')?.dirty && fifthFormGroup.get('phone')?.invalid">
+                  <span *ngIf="fifthFormGroup.get('phone')?.hasError('required') && fifthFormGroup.get('phone')?.touched"  class="validators" role="alert">*El telefono es requerido</span>
+                </mat-error>
+                <mat-error *ngIf=" fifthFormGroup.get('phone')?.invalid && fifthFormGroup.get('phone')?.dirty" class="validators" role="alert">
+                 *Su telefono no cuenta con todos los caracteres
+                </mat-error>
             </mat-form-field>
             <mat-form-field class="ancho col-6 col-md-3" >
               <mat-label>Parentezco</mat-label>
@@ -139,10 +163,16 @@
           <mat-form-field class="ancho col-6 col-md-3" >
             <mat-label>BARRIO</mat-label>
             <input matInput autocomplete="off"  formControlName="neighborhood" >
+            <mat-error *ngIf=" secondFormGroup.get('neighborhood')?.dirty && secondFormGroup.get('neighborhood')?.invalid">
+              <span *ngIf="secondFormGroup.get('neighborhood')?.hasError('required') && secondFormGroup.get('neighborhood')?.touched"  class="validators" role="alert">*El barrio es requerido</span>
+            </mat-error>
           </mat-form-field>
         <mat-form-field class="ancho col-6 col-md-3" >
             <mat-label>DIRECCION</mat-label>
             <input matInput autocomplete="off"  formControlName="address" >
+            <mat-error *ngIf=" secondFormGroup.get('address')?.dirty && secondFormGroup.get('address')?.invalid">
+              <span *ngIf="secondFormGroup.get('address')?.hasError('required') && secondFormGroup.get('address')?.touched"  class="validators" role="alert">*La direccion es requerida</span>
+            </mat-error>
           </mat-form-field>
         <mat-form-field class="ancho col-6 col-md-3">
             <mat-label>ESTRATO</mat-label>
@@ -163,12 +193,21 @@
               <ng-template matStepLabel>Datos de registro</ng-template>
               <mat-form-field class="ancho col-6 col-md-3" >
                 <mat-label>CORREO</mat-label>
-                <input matInput autocomplete="off" formControlName="email" >
+                <input matInput autocomplete="off" formControlName="email">
+                <mat-error *ngIf=" thirdFormGroup.get('email')?.dirty && thirdFormGroup.get('email')?.invalid">
+                  <span *ngIf="thirdFormGroup.get('email')?.hasError('required') && thirdFormGroup.get('email')?.touched"  class="validators" role="alert">*El corrreo electronico es requerido</span>
+                </mat-error>
               </mat-form-field>
             <mat-form-field class="ancho col-6 col-md-3" >
                 <mat-label>CONTRASEÑA</mat-label>
-                <input matInput  autocomplete="off" formControlName="password"  >
-            </mat-form-field>
+                <input matInput  autocomplete="off" formControlName="password">
+                <mat-error *ngIf=" thirdFormGroup.get('password')?.dirty && thirdFormGroup.get('password')?.invalid">
+                  <span *ngIf="thirdFormGroup.get('password')?.hasError('required') && thirdFormGroup.get('password')?.touched"  class="validators" role="alert">*La contraseña es requerida</span>
+                </mat-error>
+                <mat-error *ngIf=" thirdFormGroup.get('password')?.invalid && thirdFormGroup.get('password')?.dirty" class="validators" role="alert">
+                 *La contraseña debe contener almenos 8 caracteres
+                </mat-error>
+              </mat-form-field>
               <div>
                 <button mat-button matStepperPrevious>Atras</button>
                 <button [disabled]="thirdFormGroup.invalid" mat-raised-button color="primary" matStepperNext>Siguiente</button>
@@ -182,7 +221,10 @@
               <mat-form-field class="ancho col-6 col-md-3" >
                 <mat-label>FECHA DE ADMISION</mat-label>
                 <input matInput autocomplete="off" type="date" formControlName="admission_date" >
-              </mat-form-field>
+                <mat-error *ngIf=" fourthFormGroup.get('admission_date')?.dirty && fourthFormGroup.get('admission_date')?.invalid">
+                  <span *ngIf="fourthFormGroup.get('admission_date')?.hasError('required') && fourthFormGroup.get('admission_date')?.touched"  class="validators" role="alert">*La fecha de admision es requerida</span>
+                </mat-error>
+              </mat-form-field> 
               <mat-form-field class="ancho col-6 col-md-3" >
                 <mat-label>Departamento</mat-label>
                 <mat-select name="departamento" (selectionChange)="cities($event.value)">
@@ -242,6 +284,9 @@
             <mat-form-field class="ancho col-6 col-md-3" >
                 <mat-label>SALARIO BASE</mat-label>
                 <input matInput autocomplete="off"  formControlName="base_salary" >
+                <mat-error *ngIf=" fourthFormGroup.get('base_salary')?.dirty && fourthFormGroup.get('base_salary')?.invalid">
+                  <span *ngIf="fourthFormGroup.get('base_salary')?.hasError('required') && fourthFormGroup.get('base_salary')?.touched"  class="validators" role="alert">*El salario base es requerido</span>
+                </mat-error>
               </mat-form-field>
             <mat-form-field class="ancho col-6 col-md-3">
                 <mat-label>LINEA DE NEGOCIO</mat-label>

@@ -7,11 +7,20 @@
           <mat-form-field class="ancho" appearance="fill">
               <mat-label>Correo</mat-label>
               <input matInput autocomplete="off" formControlName="email" [disabled]="isLoading">
+              <mat-error *ngIf=" loginForm.get('email')?.dirty && loginForm.get('email')?.invalid">
+                <span *ngIf="loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched"  class="validators" role="alert">*El correo  es <strong>requerido</strong></span>
+              </mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="fill"  class="ancho" >
               <mat-label>Contraseña</mat-label>
               <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" [disabled]="isLoading">
+              <mat-error *ngIf=" loginForm.get('password')?.dirty && loginForm.get('password')?.invalid">
+                <span *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched"  class="validators" role="alert">*La contraseña es requerida</span>
+              </mat-error>
+              <mat-error *ngIf=" loginForm.get('password')?.invalid && loginForm.get('password')?.dirty" class="validators" role="alert">
+               *La contraseña debe contener almenos 8 caracteres
+              </mat-error>
               <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               </button>

@@ -79,20 +79,30 @@ export class ModalproveedoresComponent implements OnInit {
 
   crearform(dataProvider?:any){
       this.form = this.fb.group({
-        identification_type_id: [dataProvider?.identification_type.id ?? '', Validators.required],
-        constitution_type_id:   [dataProvider?.constitution_type.id ?? '', Validators.required],
-        identification_number:  [dataProvider?.identification_number ?? '', Validators.required],
-        name:                   [dataProvider?.name ?? '',[Validators.required, Validators.minLength(3)]],
-        address:                [dataProvider?.address ?? '', [Validators.required, Validators.minLength(3)]],
-        phone:                  [dataProvider?.phone ?? '', [Validators.required, Validators.pattern("[0-9]{10}")]],
-        trade_name:             [dataProvider?.trade_name ?? '', [Validators.required, Validators.minLength(3)]],
-        email:                  [dataProvider?.email ?? '', Validators.required],
-        password:               [dataProvider?.password ?? '', Validators.required],
-        iva:                    [dataProvider?.iva ?? '', Validators.required],
-        responsability_type_id: [dataProvider?.responsability_type?.id ?? ''],
-        last_name:              [dataProvider?.last_name ?? ''],
-        city_id:                [dataProvider?.city.id ?? '', Validators.required],
-        province:               [dataProvider?.city.province_id ?? ''],
+        identification_type_id:   [dataProvider?.identification_type.id ?? '', Validators.required],
+        constitution_type_id:     [dataProvider?.constitution_type.id ?? '', Validators.required],
+        identification_number:    [dataProvider?.identification_number ?? '', Validators.required],
+        name:                     [dataProvider?.name ?? '', Validators.compose([
+                                    Validators.required,Validators.minLength(3),
+                                  ])],
+        address:                  [dataProvider?.address ?? '',Validators.compose([
+                                    Validators.required,Validators.minLength(3),
+                                  ])],
+        phone:                    [dataProvider?.phone ?? '', Validators.required],
+        trade_name:               [dataProvider?.trade_name ?? '', Validators.required],
+        email:                    [dataProvider?.email ?? '',Validators.compose([
+                                    Validators.required,Validators.email,
+                                  ])],
+        password:                 [dataProvider?.password ?? '',Validators.compose([
+                                    Validators.required,Validators.minLength(8),
+                                  ])],
+        iva:                      [dataProvider?.iva ?? '', Validators.required],
+        responsability_type_id:   [dataProvider?.responsability_type?.id ?? ''],
+        last_name:                [dataProvider?.last_name ?? '', Validators.compose([
+                                    Validators.required,Validators.minLength(3),
+                                  ])],
+        city_id:                  [dataProvider?.city.id ?? '', Validators.required],
+        province:                 [dataProvider?.city.province_id ?? ''],
       });
     this.isLoading = false;
   }

@@ -38,5 +38,7 @@
   .boton{
       height: 40px;
       width: 85%;
-
+  }
+  .validators{
+      color: red;
   }

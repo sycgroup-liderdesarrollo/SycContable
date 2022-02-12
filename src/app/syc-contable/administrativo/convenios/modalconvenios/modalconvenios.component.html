@@ -11,6 +11,9 @@
             <mat-form-field class="ancho col-6 col-md-3" >
                 <mat-label>NOMBRE</mat-label>
                 <input matInput autocomplete="off" formControlName="name" >
+                <mat-error *ngIf=" form.get('name')?.dirty && form.get('name')?.invalid">
+                  <span *ngIf="form.get('name')?.hasError('required') && form.get('name')?.touched"  class="validators" role="alert">*El nombre es requerido</span>
+                </mat-error>
             </mat-form-field>
             <mat-form-field class="ancho col-6 col-md-3">
                 <mat-label>TIPO DE CONVENIO</mat-label>
@@ -42,10 +45,16 @@
             <mat-form-field *ngIf="form.value.covenant_type_id == 2" class="ancho col-6 col-md-3" >
                 <mat-label>VALOR</mat-label>
                 <input matInput autocomplete="off" formControlName="value" >
+                <mat-error *ngIf=" form.get('value')?.dirty && form.get('value')?.invalid">
+                  <span *ngIf="form.get('value')?.hasError('required') && form.get('value')?.touched"  class="validators" role="alert">*El valor es requerido</span>
+                </mat-error>
             </mat-form-field>
             <mat-form-field class="ancho col-6 col-md-3" >
                  <mat-label>CONCEPTO</mat-label>
                  <input matInput autocomplete="off" formControlName="concept_name" >
+                 <mat-error *ngIf=" form.get('concept_name')?.dirty && form.get('concept_name')?.invalid">
+                  <span *ngIf="form.get('concept_name')?.hasError('required') && form.get('concept_name')?.touched"  class="validators" role="alert">*El concepto es requerido</span>
+                </mat-error>
             </mat-form-field>
             <mat-form-field class="ancho col-6 col-md-3" >
                 <mat-label>PROVEEDORES</mat-label>

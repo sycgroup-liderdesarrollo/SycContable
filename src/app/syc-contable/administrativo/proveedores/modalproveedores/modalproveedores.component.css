@@ -1,3 +1,7 @@
+.validators{
+  color: red;
+}
+
 @media (min-width: 1000px) {
     .mat-card{
         margin-top: 1%;

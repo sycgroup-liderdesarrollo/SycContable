@@ -1,6 +1,5 @@
-
 import { Component, Input, OnInit } from '@angular/core';
-import {  FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { CargoService } from '../../services/empleados/cargo.service';
 import { CiudadService } from '../../services/empleados/ciudad.service';
@@ -45,6 +44,7 @@ export class ModalempleadoComponent implements OnInit {
   FondoDePensiones:any;
   expedicion:any;
   Emergencia:any;
+  email:any;
   Estrato:any;
   riesgosLaborales:any;
   form!: FormGroup;
@@ -134,8 +134,12 @@ export class ModalempleadoComponent implements OnInit {
   firtsForm(dataEmployee?:any){
     this.firstFormGroup = this._formBuilder.group({
       identification_number:  [dataEmployee?.identification_number ?? '', Validators.required],
-      name:                   [dataEmployee?.name ??'', Validators.minLength(3)],
-      last_name:              [dataEmployee?.last_name ??'', Validators.minLength(3)],
+      name:                   [dataEmployee?.name ?? '', Validators.compose([
+        Validators.required, Validators.minLength(3)
+      ])],
+      last_name:              [dataEmployee?.last_name ?? '', Validators.compose([
+        Validators.required, Validators.minLength(3)
+      ])],
       birthday:               [dataEmployee?.birthday ?? '', Validators.required],
       identification_type_id: [dataEmployee?.identification_type_id ?? '', Validators.required],
       children:               [dataEmployee?.children ?? '', Validators.required],
@@ -143,48 +147,60 @@ export class ModalempleadoComponent implements OnInit {
       education_level_id:     [dataEmployee?.education_level_id ?? '', Validators.required],
       civil_statu_id:         [dataEmployee?.civil_statu_id ??'',Validators.required],
       expedition_place_id:    [dataEmployee?.expedition_place_id ??'',Validators.required],
-      phone:                  [dataEmployee?.phone ?? '', [Validators.required, Validators.pattern("[0-9]{10}")]],
+      phone:                  [dataEmployee?.phone ?? '', Validators.compose([
+        Validators.required,Validators.minLength(10),
+      ])],
     });
     this.isLoading=false;
   }
   secondForm(dataEmployee?:any){
     this.secondFormGroup = this._formBuilder.group({
-      address: new FormControl(dataEmployee?.address ?? '', Validators.minLength(5)),
-      neighborhood:[dataEmployee?.neighborhood ?? '', Validators.required],
-      residence_city_id:[dataEmployee?.residence_city_id ??'',Validators.required],
-      strata_id:[dataEmployee?.strata_id ??'',Validators.required],
+      address:            [dataEmployee?.address ?? '', Validators.compose([
+        Validators.required,
+      ])],
+      neighborhood:       [dataEmployee?.neighborhood ?? '', Validators.required],
+      residence_city_id:  [dataEmployee?.residence_city_id ??'',Validators.required],
+      strata_id:          [dataEmployee?.strata_id ??'',Validators.required],
     });
     this.isLoading=false;
   }
   thirdFormn(dataEmployee?:any){
     this.thirdFormGroup = this._formBuilder.group({
-      email:[dataEmployee?.email ?? '', Validators.required],
-      password:['12345678', Validators.required],
+      email:    [dataEmployee?.email ?? '', Validators.compose([
+        Validators.required, Validators.email
+      ])],
+      password: [dataEmployee?.email ?? '12345678',Validators.compose([
+        Validators.required,Validators.minLength(8)
+      ])],
     });
     this.isLoading=false;
   }
   fourthForm(dataEmployee?:any){
     this.fourthFormGroup = this._formBuilder.group({
-      position_id:[dataEmployee?.position.id ?? '', Validators.required],
-      admission_date:[dataEmployee?.admission_date ?? '', Validators.required],
-      base_salary:[dataEmployee?.base_salary ?? '', Validators.required],
-      business_line_id:[dataEmployee?.position.business_line.id ?? '', Validators.required],
-      contract_type_id:[dataEmployee?.contract_type_id ?? '', Validators.required],
-      salary_type_id:[dataEmployee?.salary_type_id ?? '', Validators.required],
-      work_city_id :[dataEmployee?.work_city_id  ??'',Validators.required],
-      pension_fund_id:[dataEmployee?.pension_fund_id ??'',Validators.required],
-      active:[dataEmployee?.active ??'',Validators.required],
-      health_provider_id:[dataEmployee?.health_provider_id ?? '', Validators.required],
-      headquarter_id:[dataEmployee?.headquarter_id ?? '', Validators.required],
-      occupationalRiskManager:[dataEmployee?.occupationalRiskManager ?? '',Validators.required],
+      position_id:        [dataEmployee?.position.id ?? '', Validators.required],
+      admission_date:     [dataEmployee?.admission_date ?? '', Validators.required],
+      base_salary:        [dataEmployee?.base_salary ?? '', Validators.required],
+      business_line_id:   [dataEmployee?.position.business_line.id ?? '', Validators.required],
+      contract_type_id:   [dataEmployee?.contract_type_id ?? '', Validators.required],
+      salary_type_id:     [dataEmployee?.salary_type_id ?? '', Validators.required],
+      work_city_id :      [dataEmployee?.work_city_id  ??'',Validators.required],
+      pension_fund_id:    [dataEmployee?.pension_fund_id ??'',Validators.required],
+      active:             [dataEmployee?.active ??'',Validators.required],
+      health_provider_id: [dataEmployee?.health_provider_id ?? '', Validators.required],
+      headquarter_id:     [dataEmployee?.headquarter_id ?? '', Validators.required],
+      occupationalRiskManager:  [dataEmployee?.occupationalRiskManager ?? '',Validators.required],
     });
     this.isLoading=false;
   }
   fifthForm(dataEmployee?:any){
     this.fifthFormGroup = this._formBuilder.group({
-      name: new FormControl (dataEmployee?.name ??'', Validators.minLength(3)),
-      phone: new FormControl (dataEmployee?.phone ?? '', Validators.maxLength(10)),
-      kinship_id:[dataEmployee?.kinship_id ?? '', Validators.required]
+      name:       [dataEmployee?.name ?? '', Validators.compose([
+        Validators.required, Validators.minLength(3)
+      ])],
+      phone:      [dataEmployee?.phone ?? '', Validators.compose([
+        Validators.required,Validators.minLength(10),
+      ])],
+      kinship_id: [dataEmployee?.kinship_id ?? '', Validators.required]
     })
   }
   asigForm(firts:any,second:any,third:any,fourth:any, fifth:any){
@@ -274,8 +290,10 @@ export class ModalempleadoComponent implements OnInit {
         resolve(rest.data);
       });
     })
+
   }
   getSucursales() : Promise<any>{
+
     return new Promise( (resolve,reject) => {
       this.servicesSucursal.getSucursales().subscribe(rest => {
         this.sucursales = rest.data;
