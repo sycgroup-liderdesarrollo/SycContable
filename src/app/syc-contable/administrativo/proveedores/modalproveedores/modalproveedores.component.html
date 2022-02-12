@@ -52,7 +52,7 @@
           <mat-form-field class="ancho col-12 col-md-4" *ngIf="juridico">
             <mat-label>APELLIDO</mat-label>
             <input matInput autocomplete="off" formControlName="last_name" >
-            <mat-error *ngIf=" form.get('last_name')?.dirty && form.get('last_name')?.invalid">
+            <mat-error *ngIf="form.get('last_name')?.dirty && form.get('last_name')?.invalid">
               <span *ngIf="form.get('last_name')?.hasError('required') && form.get('last_name')?.touched"  class="validators" role="alert">*El apellido es requerido</span>
             </mat-error>
           </mat-form-field>
