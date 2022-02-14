@@ -58,7 +58,7 @@ export class ModalconveniosComponent implements OnInit {
     
     this.form = this.fb.group({
       name: [dataConvenant?.name ?? '', Validators.required],
-      value: [ dataConvenant?.value ?? ''],
+      value: [ dataConvenant?.value ?? '',  Validators.required],
       active: [ dataConvenant?.active ?? 1],
       covenant_type_id: [dataConvenant?.covenant_type_id ?? '', Validators.required],
       periodicity_type_id : [dataConvenant?.periodicity_type_id ?? '', Validators.required],

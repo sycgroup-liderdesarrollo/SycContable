@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { CargoService } from '../../services/empleados/cargo.service';
 import { CiudadService } from '../../services/empleados/ciudad.service';
@@ -46,7 +46,7 @@ export class ModalempleadoComponent implements OnInit {
   Emergencia:any;
   email:any;
   Estrato:any;
-  riesgosLaborales:any;
+  occupational_risk_manager_id:any;
   form!: FormGroup;
   isLoading:boolean=false;
   isLinear = false;
@@ -84,7 +84,7 @@ export class ModalempleadoComponent implements OnInit {
     expedition_place_id:"",
     strata_id:"",
     education_level_id:"",
-    occupationalRiskManager:"",
+    occupational_risk_manager_id:"",
     active:"",
     emergency_contact_id:"",
     business_line_id:""
@@ -188,7 +188,7 @@ export class ModalempleadoComponent implements OnInit {
       active:             [dataEmployee?.active ??'',Validators.required],
       health_provider_id: [dataEmployee?.health_provider_id ?? '', Validators.required],
       headquarter_id:     [dataEmployee?.headquarter_id ?? '', Validators.required],
-      occupationalRiskManager:  [dataEmployee?.occupationalRiskManager ?? '',Validators.required],
+      occupational_risk_manager_id:  [dataEmployee?.occupational_risk_manager_id ?? '',Validators.required],
     });
     this.isLoading=false;
   }
@@ -239,7 +239,7 @@ export class ModalempleadoComponent implements OnInit {
     this.formulario.pension_fund_id = fourth.pension_fund_id
     this.formulario.active = fourth.active
     this.formulario.health_provider_id = fourth.health_provider_id
-    this.formulario.occupationalRiskManager = fourth.occupationalRiskManager
+    this.formulario.occupational_risk_manager_id = fourth.occupational_risk_manager_id
     this.isEdit ? this.updateEmployer() : this.createEmployer()
   }
   createEmployer(){
@@ -425,7 +425,7 @@ export class ModalempleadoComponent implements OnInit {
   getRiesgosLaborales(){
     return new Promise ((resolve, reject)=>{
     this.serviceRiesgosLaborales.getSucursales().subscribe(res=>{
-      this.riesgosLaborales = res.data
+      this.occupational_risk_manager_id = res.data
       resolve(res.data);
       });
     });
