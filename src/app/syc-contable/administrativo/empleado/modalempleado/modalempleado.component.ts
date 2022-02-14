@@ -148,7 +148,7 @@ export class ModalempleadoComponent implements OnInit {
       civil_statu_id:         [dataEmployee?.civil_statu_id ??'',Validators.required],
       expedition_place_id:    [dataEmployee?.expedition_place_id ??'',Validators.required],
       phone:                  [dataEmployee?.phone ?? '', Validators.compose([
-        Validators.required,Validators.minLength(10),
+        Validators.required,Validators.maxLength(10)
       ])],
     });
     this.isLoading=false;
