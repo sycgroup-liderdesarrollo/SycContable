@@ -14,6 +14,7 @@ export class navbarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.openSideNav();
   }
 
   openSideNav(){

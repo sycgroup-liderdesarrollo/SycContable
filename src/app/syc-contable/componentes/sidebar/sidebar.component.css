@@ -1,75 +1,22 @@
 
-.title-sidenav{
-    padding-left: 10%;
-    color: #3f51b5;
-    font-weight: 500;
-   
-}
-
-.title-divider{
-    margin: auto;
-    width: 60%;
-}
-
-.items-sidenav{
+  .items-sidenav{
     font-size: 0.9rem;
     margin-top: 10px;
     font-family: "Open Sans";
     font-weight: bold;
     color: rgb(126, 127, 129);
-    
-}
-
-.div-content-item .mat-icon{
+  }
+  .div-content-item .mat-icon{
     margin-right: 5px;
     margin: 10px;
     color:#3f51b5;
-    margin-left: 0px;
+    margin-left: -10px;
     text-align: left;
-    
-}
-
-.img {
-    width: 60px;
-    height: 60px;
-    box-shadow: 5px 5px 9px ;
-    border-radius: 50px;
-    
-}
- .h1{
-     font-size: 1.5rem;
-     margin-top: 10px;
-     font-size: 2rem;
-    font-family:"Open Sans", sans-serif ;
-    font-weight: bold;
-    color: rgb(145, 146, 146);
-    margin-top: 20px;
- }
-
-
-  h1{
-    box-sizing:border-box;
-    color:rgb(121, 122, 122);
-    display:block;
-    font-family:"Open Sans", sans-serif;
-    font-size:20px;
-    font-weight:600;
-    height:20px;
-    text-align:left;
-    margin-top: 20px;
-    
-  }
-  .contenido{
-    font-family:"Open Sans", sans-serif;
-    font-size:13px;
-    font-weight:500;
-    color:rgb(136, 152, 170);
   }
   .btn{
       font-size: 13px;
-      margin-left: 20px;
+      margin-left: 30px;
   }
-  
   #div-content-item{
       font-size: 0.9rem;
       margin-top: 10px;
@@ -78,6 +25,16 @@
       color: rgb(126, 127, 129);
       padding: 0px;
   }
-  
-
-
+  .sidebar{
+    width: 2.5rem;
+    overflow: hidden;
+    margin-right: 2px;
+  }
+  #show{
+    width: 15rem;
+  }
+  @media (max-width: 400px) {
+    .sidebar{
+      width: 15rem;
+    }
+  }

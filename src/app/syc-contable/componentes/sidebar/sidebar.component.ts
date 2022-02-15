@@ -10,6 +10,7 @@ import {FlatTreeControl} from '@angular/cdk/tree';
 })
 export class SidebarComponent implements OnInit {
 
+  hidden:string = "";
   expand:boolean=false;
   expandEmploye:boolean=false;
   @ViewChild(MatAccordion)
