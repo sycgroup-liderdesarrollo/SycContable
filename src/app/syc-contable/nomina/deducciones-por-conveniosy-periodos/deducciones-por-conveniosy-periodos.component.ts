@@ -76,7 +76,7 @@ export class DeduccionesPorConveniosyPeriodosComponent implements OnInit {
     console.log(this.total);
     if(this.total == 0){
       this._snackBar.openFromComponent(ScankbarComponent, {
-        duration: this.durationInSeconds * 1000,
+        duration: this.durationInSeconds * 500,
       });
     }
   }

@@ -57,16 +57,11 @@
                     <span *ngIf="firstFormGroup.get('last_name')?.hasError('required') && firstFormGroup.get('last_name')?.touched"  class="validators" role="alert">*El apellido es requerido</span>
                   </mat-error>
                 </mat-form-field>
-                <mat-form-field class="ancho col-6 col-md-3" >
+                <mat-form-field hintLabel="Max 10 characters"  class="ancho col-6 col-md-3">
                   <mat-label>TELEFONO</mat-label>
-                  <input matInput  autocomplete="off" formControlName="phone" type="number">
-                  <mat-error *ngIf=" firstFormGroup.get('phone')?.dirty && firstFormGroup.get('phone')?.invalid">
-                    <span *ngIf="firstFormGroup.get('phone')?.hasError('required') && firstFormGroup.get('phone')?.touched"  class="validators" role="alert">*El telefono es requerido</span>
-                  </mat-error>
-                  <mat-error *ngIf=" thirdFormGroup.get('phone')?.invalid && thirdFormGroup.get('phone')?.dirty" class="validators" role="alert">
-                    *El telefono no cuenta con los valores requeridos
-                   </mat-error>
-              </mat-form-field>
+                  <input matInput #input maxlength="10" autocomplete="off" formControlName="phone">
+                  <mat-hint align="end">{{input.value.length || 0}}/10</mat-hint>
+                </mat-form-field>
             <mat-form-field class="ancho col-6 col-md-3">
                 <mat-label>GENERO</mat-label>
                 <mat-select formControlName="gender_id" name="genero">
@@ -89,7 +84,10 @@
                 </mat-form-field>
             <mat-form-field class="ancho col-6 col-md-3" >
                 <mat-label>NUMERO DE HIJOS</mat-label>
-                <input matInput autocomplete="off" type="number" formControlName="children" >
+                <input matInput autocomplete="off" type="number" formControlName="children" type="tel" >
+                <mat-error *ngIf=" firstFormGroup.get('children')?.dirty && firstFormGroup.get('children')?.invalid">
+                  <span *ngIf="firstFormGroup.get('children')?.hasError('required') && firstFormGroup .get('children')?.touched"  class="validators" role="alert">*El numero de hijos es requerido</span>
+                </mat-error>
               </mat-form-field>
               <mat-form-field class="ancho col-6 col-md-3">
                 <mat-label>NIVEL DE EDUCACION</mat-label>
@@ -115,15 +113,10 @@
                 <span *ngIf="fifthFormGroup.get('name')?.hasError('required') && fifthFormGroup.get('name')?.touched"  class="validators" role="alert">*El nombre es requerido</span>
               </mat-error>
             </mat-form-field>
-            <mat-form-field class="ancho col-6 col-md-3" >
-                <mat-label>TELEFONO</mat-label>
-                <input matInput  autocomplete="off" formControlName="phone" type="number">
-                <mat-error *ngIf=" fifthFormGroup.get('phone')?.dirty && fifthFormGroup.get('phone')?.invalid">
-                  <span *ngIf="fifthFormGroup.get('phone')?.hasError('required') && fifthFormGroup.get('phone')?.touched"  class="validators" role="alert">*El telefono es requerido</span>
-                </mat-error>
-                <mat-error *ngIf=" fifthFormGroup.get('phone')?.invalid && fifthFormGroup.get('phone')?.dirty" class="validators" role="alert">
-                 *Su telefono no cuenta con todos los caracteres
-                </mat-error>
+            <mat-form-field hintLabel="Max 10 characters"  class="ancho col-6 col-md-3">
+              <mat-label>TELEFONO</mat-label>
+              <input matInput #input maxlength="10" autocomplete="off" formControlName="phone">
+              <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
             </mat-form-field>
             <mat-form-field class="ancho col-6 col-md-3" >
               <mat-label>Parentezco</mat-label>
