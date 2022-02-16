@@ -9,10 +9,16 @@
               {{expandEmploye ? 'expand_more' : 'chevron_right'}}
           </mat-icon>
         </a>
-        <div *ngIf="expandEmploye;" class="collapse" id="extend-collapse" class="items-sidenav">
+        <div *ngIf="expandEmploye;" class="collapse" id="extend-collapse" class="items-sidenav d-md-block d-none">
           <ul class="list-unstyled fw-normal pb-1 small">
             <li><a (click)="expandEmploye = !expandEmploye" [routerLink]="['/syc-contable/administrativo/empleado']" class="btn margin" ><mat-icon color="primary">group_add</mat-icon>Gestionar Colaboradores</a></li>
             <li><a (click)="expandEmploye = !expandEmploye" [routerLink]="['/syc-contable/administrativo/asignar-vacaciones']" class="btn" ><mat-icon color="primary">flight_takeoff</mat-icon>Asignar vacaciones</a></li>
+          </ul>
+        </div>
+        <div *ngIf="expandEmploye;" class="collapse" id="extend-collapse" class="items-sidenav d-block d-sm-none">
+          <ul class="list-unstyled fw-normal pb-1 small">
+            <li><a (click)="expandEmploye = !expandEmploye; sidebar.close()" [routerLink]="['/syc-contable/administrativo/empleado']" class="btn margin" ><mat-icon color="primary">group_add</mat-icon>Gestionar Colaboradores</a></li>
+            <li><a (click)="expandEmploye = !expandEmploye; sidebar.close()" [routerLink]="['/syc-contable/administrativo/asignar-vacaciones']" class="btn" ><mat-icon color="primary">flight_takeoff</mat-icon>Asignar vacaciones</a></li>
           </ul>
         </div>
       </ul>
@@ -26,28 +32,43 @@
               {{expand ? 'expand_more' : 'chevron_right'}}
           </mat-icon>
         </a>
-          <div *ngIf="expand" class="collapse" id="extend-collapse" class="items-sidenav">
+          <div *ngIf="expand" class="collapse" id="extend-collapse" class="items-sidenav d-md-block d-none">
             <ul class="list-unstyled fw-normal pb-1 small">
               <li><a (click)="expand = !expand" [routerLink]="['/syc-contable/administrativo/convenios']" class="btn margin" ><mat-icon color="primary">filter_b_and_w</mat-icon>Gestionar convenio</a></li>
               <li><a (click)="expand = !expand" [routerLink]="['/syc-contable/administrativo/asignarConvenio']" class="btn" ><mat-icon color="primary">sync_alt</mat-icon>Asignar convenio</a></li>
             </ul>
           </div>
+          <div *ngIf="expand" class="collapse" id="extend-collapse" class="items-sidenav d-block d-sm-none">
+            <ul class="list-unstyled fw-normal pb-1 small">
+              <li><a (click)="expand = !expand; sidebar.close()" [routerLink]="['/syc-contable/administrativo/convenios']" class="btn margin" ><mat-icon color="primary">filter_b_and_w</mat-icon>Gestionar convenio</a></li>
+              <li><a (click)="expand = !expand; sidebar.close()" [routerLink]="['/syc-contable/administrativo/asignarConvenio']" class="btn" ><mat-icon color="primary">sync_alt</mat-icon>Asignar convenio</a></li>
+            </ul>
+          </div>
       </ul>
     </div>
-    <div class="div-content-item">
+    <div class="div-content-item d-md-block d-none">
       <a mat-list-item [routerLink]="['/syc-contable/administrativo/proveedores']" class="items-sidenav"><mat-icon color="primary">assignment_ind</mat-icon>Proveedores</a>
     </div>
-    <div class="div-content-item">
+    <div class="div-content-item d-block d-sm-none">
+      <a mat-list-item (click)="sidebar.close()" [routerLink]="['/syc-contable/administrativo/proveedores']" class="items-sidenav"><mat-icon color="primary">assignment_ind</mat-icon>Proveedores</a>
+    </div>
+    <div class="div-content-item d-md-block d-none">
       <a mat-list-item [routerLink]="['/syc-contable/nomina/cargarDeducciones']" class="items-sidenav"><mat-icon color="primary">paid</mat-icon>Cargar Conceptos</a>
     </div>
-    <div class="div-content-item">
-      <a mat-list-item [routerLink]="['/syc-contable/nomina/cargarDeducciones']" class="items-sidenav"><mat-icon color="primary">paid</mat-icon>Cargar Conceptos</a>
+    <div class="div-content-item d-block d-sm-none">
+      <a mat-list-item (click)="sidebar.close()" [routerLink]="['/syc-contable/nomina/cargarDeducciones']" class="items-sidenav"><mat-icon color="primary">paid</mat-icon>Cargar Conceptos</a>
     </div>
-    <div class="div-content-item">
+    <div class="div-content-item d-md-block d-none">
       <a mat-list-item [routerLink]="['/syc-contable/nomina/consultar-convenios-periodos']" class="items-sidenav"><mat-icon color="primary">attach_money</mat-icon>Consultar por Convenios</a>
     </div>
-    <div class="div-content-item">
+    <div class="div-content-item d-block d-sm-none">
+      <a mat-list-item (click)="sidebar.close()" [routerLink]="['/syc-contable/nomina/consultar-convenios-periodos']" class="items-sidenav"><mat-icon color="primary">attach_money</mat-icon>Consultar por Convenios</a>
+    </div>
+    <div class="div-content-item d-md-block d-none">
       <a mat-list-item [routerLink]="['/syc-contable/seguridad/roles']" class="items-sidenav"><mat-icon color="primary">manage_accounts</mat-icon>Roles</a>
+    </div>
+    <div class="div-content-item d-block d-sm-none">
+      <a mat-list-item (click)="sidebar.close()" [routerLink]="['/syc-contable/seguridad/roles']" class="items-sidenav"><mat-icon color="primary">manage_accounts</mat-icon>Roles</a>
     </div>
   </div>
 </mat-nav-list>

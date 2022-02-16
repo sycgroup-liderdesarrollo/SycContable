@@ -15,3 +15,11 @@
     justify-content: center;
     align-items: center;
 }
+@media (max-width: 400px) {
+  .mat-drawer-content{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+}
