@@ -16,6 +16,18 @@ const routes: Routes = [
         path: 'dashboard',
         loadChildren: () => import('./views/pages/dashboard/dashboard.module').then(m => m.DashboardModule)
       },
+      {
+        path: 'administrative',
+        loadChildren: () => import('./views/pages/administrative/administrative.module').then(m => m.AdministrativeModule)
+      },
+      {
+        path: 'payroll',
+        loadChildren: () => import('./views/pages/payroll/payroll.module').then(m => m.PayrollModule)
+      },
+      {
+        path: 'security',
+        loadChildren: () => import('./views/pages/security/security.module').then(m => m.SecurityModule)
+      },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }, 
       // { path: '**', redirectTo: 'dashboard', pathMatch: 'full' }
     ]
