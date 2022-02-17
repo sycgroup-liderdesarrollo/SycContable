@@ -20,11 +20,11 @@ export const MENU: MenuItem[] = [
     subItems: [
       {
         label: 'Gestionar Colaboradores',
-        link: '/',
+        link: 'administrative/employees',
       },
       {
         label: 'Gestionar Vacaciones',
-        link: '/'
+        link: 'administrative/manage-vacations'
       }
     ]
   },
