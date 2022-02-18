@@ -1,0 +1,79 @@
+#btn-add{
+  text-align: center;
+  font-size: medium;
+  font-weight: 800;
+  background-color: rgb(174,29,33);
+  border-color: rgb(174,29,33);
+  border-radius: 10px;
+}
+.table-title{
+  color:#9b9a9a;
+}
+.table-body{
+  font-weight: 500;
+}
+.card{
+  padding: 1rem;
+  width: 50%;
+}
+.row{
+  width: 75%;
+  flex-wrap: nowrap;
+}
+@media (max-width: 400px){
+  #btn-add{
+    text-align: center;
+    font-size: smaller;
+    font-weight: 600;
+    background-color: rgb(174,29,33);
+    border-color: rgb(174,29,33);
+    border-radius: 10px;
+  }
+  #div-add{
+    width: 85%;
+    margin-bottom: 30px;
+  }
+  #div-head-buttons{
+    flex-wrap: nowrap;
+  }
+  .table-title{
+    padding: 5px;
+    font-size: smaller;
+  }
+  .table-body{
+    padding: 5px;
+    font-size: smaller;
+  }
+  .card{
+    width: 100%;
+    padding: 1rem;
+  }
+  .row{
+    width: 60%;
+    flex-wrap: nowrap;
+  }
+}
+@media (max-width: 1400px) {
+  .div-table{
+    overflow: scroll;
+  }
+  .div-table::-webkit-scrollbar {
+    background-color: #fff;
+    width: 16px;
+  }
+  .div-table::-webkit-scrollbar-track {
+    background-color: #fff;
+  }
+  .div-table::-webkit-scrollbar-thumb {
+    background-color: rgb(219, 126, 129);
+    border-radius: 16px;
+    border: 4px solid #fff;
+  }
+  .div-table::-webkit-scrollbar-button {
+    display: none;
+  }
+  .row{
+    width: 60%;
+    flex-wrap: nowrap;
+  }
+}

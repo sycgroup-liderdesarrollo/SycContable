@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { EmployeesComponent } from './employees/employees.component';
 import { InfoUserComponent } from './employees/components/info-user/info-user.component';
 import { ManageVacationsComponent } from './manage-vacations/manage-vacations.component';
+import { SliderComponent } from './covenants/slider/slider.component';
 
 const routes: Routes = [
   {
@@ -14,7 +15,11 @@ const routes: Routes = [
   },
   {
     path:'info-user/:id', component:InfoUserComponent
-  }
+  },
+  {
+    path:'admin-covenant',
+    component: SliderComponent
+  },
 ];
 
 @NgModule({
