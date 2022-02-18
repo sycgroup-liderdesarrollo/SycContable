@@ -295,7 +295,7 @@
   }
   
   .sidebar-profile{
-    padding: 25px 25px 5px 25px;
+    padding: 5% 5% 1% 5%;
     background-color: #333333;
     border-right: 1px solid #e9ecef;
     display: flex;
@@ -303,7 +303,7 @@
     .avatar{
       -webkit-transition: all .3s ease-out;
       transition: all .3s ease-out;
-      width: 40%;
+      width: 30%;
 
       img{
         border-radius: 10%;
@@ -320,6 +320,7 @@
       .profile-name{
         color: white;
         font-weight: 700;
+        margin-bottom: 1%;
       }
 
       .profile-position{
@@ -330,7 +331,7 @@
 
   .sidebar-log-out{
     margin: 0%;
-    padding-top: 2%;
+    padding-top: 1%;
     padding-bottom: 8%;
     padding-left: auto;
     background-color: #333333;
