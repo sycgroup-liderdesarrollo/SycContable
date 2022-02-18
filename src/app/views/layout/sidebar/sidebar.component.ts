@@ -6,6 +6,7 @@ import MetisMenu from 'metismenujs';
 import { MENU } from './menu';
 import { MenuItem } from './menu.model';
 import { Router, NavigationEnd } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -15,14 +16,15 @@ import { Router, NavigationEnd } from '@angular/router';
 export class SidebarComponent implements OnInit, AfterViewInit {
 
   @ViewChild('sidebarToggler') sidebarToggler: ElementRef;
-
+  isLogined :boolean = true;
   menuItems: MenuItem[] = [];
   @ViewChild('sidebarMenu') sidebarMenu: ElementRef;
 
   constructor(
     @Inject(DOCUMENT) private document: Document, 
     private renderer: Renderer2, 
-    private router: Router
+    private router: Router,
+    private authService : AuthService
     ) { 
       
     router.events.forEach((event) => {
@@ -253,5 +255,8 @@ export class SidebarComponent implements OnInit, AfterViewInit {
     }
   };
 
-
+  logout(){
+    this.isLogined = false;
+    this.authService.logout();
+  }
 }

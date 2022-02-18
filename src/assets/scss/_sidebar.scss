@@ -337,11 +337,7 @@
     background-color: #333333;
     border-right: 1px solid #e9ecef;
     text-align: center;
-    color: #50cd89;
-
-    &{
-      border-top: #333333;
-    }
+    
     .link-icon:hover{
       color: $primary;
       cursor: pointer;

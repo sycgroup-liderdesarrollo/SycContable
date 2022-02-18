@@ -30,7 +30,9 @@
     </div>
   </div>
   <div class="sidebar-log-out">
-    <i class="link-icon" [attr.data-feather]="'power'" appFeatherIcon></i>
+    <a href="" (click)="logout()" [ngStyle]="isLogined ? {color: '#50cd89'} : {color: '#B0191F'} ">
+      <i class="link-icon" [attr.data-feather]="'power'" appFeatherIcon></i>
+    </a>
   </div>
   <div class="divide-bar">
     <hr size="3">
