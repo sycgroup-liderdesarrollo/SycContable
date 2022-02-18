@@ -17,12 +17,28 @@
     </div>
 
   </div>
+  <div class="divide-bar">
+    <hr size="3">
+  </div>
+  <div class="sidebar-profile">
+    <div class="avatar">
+      <img src="/assets/images/michael.jpg" alt="avatar">
+    </div>
+    <div class="information">
+      <h6 class="profile-name">Michael Moncada</h6>
+      <p class="profile-position">Lider de Desarrollo</p>
+    </div>
+  </div>
+  <div class="divide-bar">
+    <hr size="3">
+  </div>
   <div class="sidebar-body"  [perfectScrollbar]>
 
     <!--- Sidemenu start -->
 
     <ul class="sidebar-nav metismenu" id="sidebar-menu" #sidebarMenu>
       <ng-container *ngFor="let item of menuItems">
+
         <li class="nav-item nav-category" *ngIf="item.isTitle">{{ item.label }}</li>
     
         <li class="nav-item" *ngIf="!item.isTitle" >
@@ -73,4 +89,5 @@
     <!--- Sidemenu end -->
 
   </div>
+  
 </nav>

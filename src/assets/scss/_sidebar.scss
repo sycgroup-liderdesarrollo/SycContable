@@ -11,7 +11,6 @@
   .sidebar-header {
     background: $bg-sidebar;
     height: $navbar-height;
-    border-bottom: 1px solid $border-color;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -280,6 +279,56 @@
       }
     }
   }
+
+  .divide-bar{
+    color: $secondary;
+    background-color: #333333;
+    border-right: 1px solid #e9ecef;
+    
+    hr{
+      margin: 0%;
+      background-color: $secondary !important;
+      opacity: 1;
+      width: 90%;
+      margin: auto;
+    }
+  }
+  
+  .sidebar-profile{
+    padding: 25px 25px 25px 25px;
+    background-color: #333333;
+    border-right: 1px solid #e9ecef;
+    display: flex;
+    flex-grow: 1;
+    .avatar{
+      -webkit-transition: all .3s ease-out;
+      transition: all .3s ease-out;
+      width: 40%;
+
+      img{
+        border-radius: 10%;
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    .information{
+      margin-left: 8%;
+      width: 60%;
+      display: inline-block;
+      
+      .profile-name{
+        color: white;
+        font-weight: 700;
+      }
+
+      .profile-position{
+        color: #999999;
+      }
+    }
+  }
+
+
   .sidebar-body {
     max-height: calc(100% - #{$navbar-height});
     position: relative;
@@ -434,7 +483,7 @@
       }
     }
   }
-  @media(max-width: 991px) {
+  /* @media(max-width: 991px) {
     z-index: 999;
     margin-left: -#{$sidebar-width-lg};
     visibility: hidden;
@@ -464,7 +513,7 @@
         }
       }
     }
-  }
+  } */
 }
 
 // Right sidebar
