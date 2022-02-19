@@ -34,22 +34,21 @@ export class LoginComponent implements OnInit {
 
   login(){
     this.isLoading = true;
-    this.authService.login(this.loginForm.value).pipe(
-      finalize( () => {
-        this.loginForm.reset();
-        this.isLoading = false;
-      })
-    ).subscribe(
-      resp => {
+    this.authService.login(this.loginForm.value).subscribe({
+      next: (resp) => {
         this.localService.setToken(resp);
         if(resp.access_token){ 
           this.router.navigate(["/dashboard"])
         }
       },
-      error => {
+      error : (error) => {
         alert(error.error?.message ?? "Fallo de Autenticación");
+      },
+      complete : () => {
+        this.loginForm.reset();
+        this.isLoading = false;
       }
-    )
+    })
   }
 
 }

@@ -23,7 +23,7 @@ export class AuthService {
     private router : Router
   ) { }
 
-  login(credentials : any): Observable<any>{
+  login(credentials : any): Observable<TokenResponseInterface>{
     let data:any = {
       grant_type : "password",
       client_id : environment.client_id_API,
