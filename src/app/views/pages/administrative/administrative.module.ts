@@ -7,6 +7,7 @@ import { ManageVacationsComponent } from './manage-vacations/manage-vacations.co
 import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 import { InfoUserComponent } from './employees/components/info-user/info-user.component';
 
+
 @NgModule({
   declarations: [
     EmployeesComponent,
@@ -17,7 +18,8 @@ import { InfoUserComponent } from './employees/components/info-user/info-user.co
     CommonModule,
     AdministrativeRoutingModule,
     NgbPaginationModule,
-    NgbAlertModule
+    NgbAlertModule,
+    
   ]
 })
 export class AdministrativeModule { }

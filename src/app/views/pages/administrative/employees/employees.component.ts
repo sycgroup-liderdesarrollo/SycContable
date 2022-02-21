@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { EmployeeInterface } from '../interfaces/employee-interface';
 import { ServiceEmployeesService } from './services/service-employees.service';
 
 @Component({
@@ -7,13 +9,15 @@ import { ServiceEmployeesService } from './services/service-employees.service';
   styleUrls: ['./employees.component.scss']
 })
 export class EmployeesComponent implements OnInit {
+  
 
-  users:any;
+  users:EmployeeInterface[];
   page = 1;
   pageSize = 4;
   total:number;
 
   constructor(
+    private router:Router,
     private serviceEmployees:ServiceEmployeesService
   ) { }
 
@@ -23,8 +27,13 @@ export class EmployeesComponent implements OnInit {
 
   getEmployees(){
     this.serviceEmployees.getEmployed().subscribe(res =>{
-      this.users = res.data;
+      this.users = res;
+      console.log(res);
     })
+  }
+
+  verProfile(userId:number){
+    this.router.navigate(["/administrative/info-user",userId])
   }
 
 }

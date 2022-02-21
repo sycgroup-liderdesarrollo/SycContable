@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { EmployeeInterface } from '../../interfaces/employee-interface';
 
 @Injectable({
   providedIn: 'root'
@@ -12,19 +13,18 @@ export class ServiceEmployeesService {
     private http: HttpClient
   ) { }
 
-  getEmployed(filterValue?:any) :Observable<any> {
+  getEmployed(filterValue?:any) :Observable<EmployeeInterface[]> {
     if( filterValue){
-      return this.http.get<any>(`${environment.API_Url}user`,{params:{'filter':  filterValue }});
+      return this.http.get<EmployeeInterface[]>(`${environment.API_Url}user`,{params:{'filter':  filterValue }});
     }
-    return this.http.get<any>(`${environment.API_Url}user`);
+    return this.http.get<EmployeeInterface[]>(`${environment.API_Url}user`);
   }
 
-  postEmployed(formdata : any) :Observable<any> {
-    return this.http.post<any>(`${environment.API_Url}user`,formdata);
+  postEmployed(formdata : any) :Observable<EmployeeInterface[]> {
+    return this.http.post<EmployeeInterface[]>(`${environment.API_Url}user`,formdata);
   }
 
-  getEmployee(id:any): Observable<any>{
-   
-    return  this.http.get<any>(`${environment.API_Url}user/`+ id);
-}
+  getEmployee(id:string | null): Observable<EmployeeInterface[]>{
+    return this.http.get<EmployeeInterface[]>(`${environment.API_Url}user/${id}`);
+  }
 }

@@ -1,5 +1,8 @@
-.profileImg{
-    float:left;
+.cardimg{
+    width: 100%;
+}
+
+.Profileimg{
     width: 160px;
     height:160px;
     box-sizing: border-box;
@@ -8,9 +11,15 @@
     margin: 10px;
 }
 
-.userName{
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 1.9rem;
-    color: rgb(194, 0, 0);
-    font-weight: bold;  
+.Profilename{
+    font-size: 19.5px;
+    color: rgb(46, 46, 46);
 }
+
+
+
+
+
+
+
+
