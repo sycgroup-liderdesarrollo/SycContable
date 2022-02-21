@@ -9,13 +9,14 @@ import { FooterComponent } from './footer/footer.component';
 
 import { ContentAnimateDirective } from '../../core/content-animate/content-animate.directive';
 
-import { NgbDropdownModule, NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDropdownModule, NgbCollapseModule, NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { FeahterIconModule } from '../../core/feather-icon/feather-icon.module';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { ToastContainerComponent } from './toast-container/toast-container.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -31,7 +32,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     NgbDropdownModule,
     NgbCollapseModule,
     PerfectScrollbarModule,
-    FeahterIconModule
+    FeahterIconModule,
+    NgbToastModule
   ],
   providers: [
     {

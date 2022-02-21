@@ -6,6 +6,7 @@ import MetisMenu from 'metismenujs';
 import { MENU } from './menu';
 import { MenuItem } from './menu.model';
 import { Router, NavigationEnd } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -15,11 +16,17 @@ import { Router, NavigationEnd } from '@angular/router';
 export class SidebarComponent implements OnInit, AfterViewInit {
 
   @ViewChild('sidebarToggler') sidebarToggler: ElementRef;
-
+  isLogined :boolean = true;
   menuItems: MenuItem[] = [];
   @ViewChild('sidebarMenu') sidebarMenu: ElementRef;
 
-  constructor(@Inject(DOCUMENT) private document: Document, private renderer: Renderer2, router: Router) { 
+  constructor(
+    @Inject(DOCUMENT) private document: Document, 
+    private renderer: Renderer2, 
+    private router: Router,
+    private authService : AuthService
+    ) { 
+      
     router.events.forEach((event) => {
       if (event instanceof NavigationEnd) {
 
@@ -70,7 +77,8 @@ export class SidebarComponent implements OnInit, AfterViewInit {
       this.document.body.classList.toggle('sidebar-folded');
     } else if (window.matchMedia('(max-width: 991px)').matches) {
       e.preventDefault();
-      this.document.body.classList.toggle('sidebar-open');
+      // this.document.body.classList.toggle('sidebar-open');
+      this.document.body.classList.toggle('sidebar-folded');
     }
   }
 
@@ -247,5 +255,8 @@ export class SidebarComponent implements OnInit, AfterViewInit {
     }
   };
 
-
+  logout(){
+    this.isLogined = false;
+    this.authService.logout();
+  }
 }

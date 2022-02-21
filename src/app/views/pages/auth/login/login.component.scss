@@ -3,4 +3,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  .content-button{
+    display: flex;
+    align-items: center;
+  }
+
+  .content-alert{
+    color: #B0191F;
+    padding: 0px;
+  }
+
+  .alert{
+    margin: auto;
+  }
 }

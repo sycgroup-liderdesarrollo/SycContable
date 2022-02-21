@@ -12,15 +12,15 @@ import { ErrorPageComponent } from './views/pages/error-page/error-page.componen
 
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule} from '@angular/common/http';
+import { ToastContainerComponent } from './views/layout/toast-container/toast-container.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ErrorPageComponent,
-  
-    
+    ToastContainerComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +30,7 @@ import { HttpClientModule} from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
+    NgbToastModule,
     HttpClientModule
   ],
   providers: [

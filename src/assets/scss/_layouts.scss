@@ -2,6 +2,7 @@
   .sidebar {
     .sidebar-header {
         width: $sidebar-folded-width;
+        height: 60px;
         .sidebar-brand {
           display: none;
         }
@@ -25,6 +26,16 @@
           opacity: 0;
           visibility: hidden;
           width: 0;
+        }
+      }
+      .sidebar-profile{
+        padding: 10% 10% 20% 10%;
+        .avatar{
+          width: 100%;
+        }
+        .information{
+          opacity: 0;
+          display: none;
         }
       }
       .sidebar-body {

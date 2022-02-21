@@ -34,7 +34,7 @@ export const MENU: MenuItem[] = [
     subItems: [
       {
         label: 'Gestionar convenios',
-        link: '/',
+        link: '/administrative/admin-covenant',
       },
       {
         label: 'Asignar Convenio',
