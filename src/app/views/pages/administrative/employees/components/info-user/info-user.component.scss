@@ -1,6 +1,6 @@
 .cardimg{
     width: 100%;
-    height: 60%;
+    height: 100%;
 }
 
 .Profileimg{
@@ -13,37 +13,37 @@
 }
 .fw-bolder{
     font-size: 2rem;
-    font-family: 'Times New Roman', Times, serif;
+    font-family:' Poppins',Helvetica,sans-serif;
 }
 
 .Profilename{
     font-size: 19.5px;
     color: rgb(46, 46, 46);
-    font-family: 'Times New Roman', Times, serif;
+    font-family:' Poppins',Helvetica,sans-serif;
     font-weight: bold;
 }
 .Emailstyles{
     display: flex;
-    opacity: 50%;
-    font-family: 'Times New Roman', Times, serif;
-    color: rgb(46, 46, 46);
+    color: #b5b5c3;
+    font-family:' Poppins',Helvetica,sans-serif;
     font-size: 15px;
 }
 .businessData{
-    font-size: 25px;
-    font-weight: bold;
-    font-family: 'Times New Roman', Times, serif;
+    font-size: 19.5px;
+    font-weight: 600;
+    font-family:' Poppins',Helvetica,sans-serif;
+    color: #181c32;
 }
 .businessDataname{
     font-size: 15px;
-    font-weight: bold;
-    font-family: 'Times New Roman', Times, serif;
-    opacity: 50%;
+    font-weight: 600;
+    font-family:' Poppins',Helvetica,sans-serif;
+    color: #b5b5c3;
 }
 .detailsData{
-    font-size: 19px;
-    font-weight: bold;
-    font-family: 'Times New Roman', Times, serif;
+    font-size: 19.5px;
+    font-weight: 400;
+    font-family:' Poppins',Helvetica,sans-serif;
 }
 .contentBussinesData{
     border: none;
