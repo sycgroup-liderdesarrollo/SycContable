@@ -27,13 +27,16 @@ export class EmployeesComponent implements OnInit {
 
   getEmployees(){
     this.serviceEmployees.getEmployed().subscribe(res =>{
-      this.users = res;
-      console.log(res);
+      this.users = res.data;
+     console.log(this.users);
+     
     })
   }
 
   verProfile(userId:number){
     this.router.navigate(["/administrative/info-user",userId])
   }
+
+  
 
 }

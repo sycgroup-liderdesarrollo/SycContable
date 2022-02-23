@@ -1,5 +1,6 @@
 .cardimg{
     width: 100%;
+    height: 60%;
 }
 
 .Profileimg{
@@ -8,13 +9,51 @@
     box-sizing: border-box;
     flex-shrink: 0;
     border-radius: 0.475rem;
-    margin: 10px;
+    margin: 0px;
+    box-shadow: 5px 5px 10px #7e7676;
+}
+.fw-bolder{
+    font-size: 2rem;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .Profilename{
     font-size: 19.5px;
     color: rgb(46, 46, 46);
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
 }
+.Emailstyles{
+    display: flex;
+    opacity: 50%;
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(46, 46, 46);
+    font-size: 15px;
+}
+.businessData{
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
+.businessDataname{
+    font-size: 15px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
+.detailsData{
+    font-size: 19px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
+.contentBussinesData{
+    border: none;
+    margin-block-end: 4px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    border-radius: 5px;
+}
+
+
+
 
 
 

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeInterface } from '../../../interfaces/employee-interface';
 import { ServiceEmployeesService } from '../../services/service-employees.service';
@@ -11,8 +12,8 @@ import { ServiceEmployeesService } from '../../services/service-employees.servic
 })
 export class InfoUserComponent implements OnInit {
 
- 
-  users:EmployeeInterface;
+  form!: FormGroup;
+  users:EmployeeInterface[];
   
   constructor(
     private router:Router,
@@ -25,7 +26,9 @@ export class InfoUserComponent implements OnInit {
       const userId = params.has("id") ? params.get("id") : '';
       if(params.has("id")){
         this.serviceEmployees.getEmployee(userId).subscribe(res => {
+          this.users = res.data
           console.log(res);
+          
         })
       }
     })

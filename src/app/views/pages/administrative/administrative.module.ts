@@ -10,6 +10,7 @@ import { AdminCovenantComponent } from './covenants/admin-covenant/admin-covenan
 import { AssingCovenantComponent } from './covenants/assing-covenant/assing-covenant.component';
 import { SliderComponent } from './covenants/slider/slider.component';
 import { SwiperModule } from 'swiper/angular';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -29,6 +30,8 @@ import { SwiperModule } from 'swiper/angular';
     SwiperModule,
     NgbPaginationModule,
     NgbAlertModule,
+    FormsModule,
+    ReactiveFormsModule
     
   ]
 })
