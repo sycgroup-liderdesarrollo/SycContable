@@ -1,12 +1,4 @@
-#btn-add{
-  text-align: center;
-  font-size: medium;
-  font-weight: 800;
-  background-color: rgb(174,29,33);
-  border-color: rgb(174,29,33);
-  border-radius: 10px;
-}
-.table-title{
+#table-title{
   color:#9b9a9a;
 }
 .table-body{
@@ -14,11 +6,15 @@
 }
 .card{
   padding: 1rem;
-  width: 50%;
+  width: 100%;
 }
-.row{
-  width: 75%;
-  flex-wrap: nowrap;
+#div-table-principal{
+  margin-top: 30px;
+  height: auto;
+  width: auto;
+}
+#title-covenant{
+  font-weight: 500;
 }
 @media (max-width: 400px){
   #btn-add{
@@ -34,7 +30,8 @@
     margin-bottom: 30px;
   }
   #div-head-buttons{
-    flex-wrap: nowrap;
+    display: flex;
+    width: 100%;
   }
   .table-title{
     padding: 5px;
@@ -47,10 +44,19 @@
   .card{
     width: 100%;
     padding: 1rem;
+    margin-top: 40px;
   }
-  .row{
-    width: 60%;
-    flex-wrap: nowrap;
+  #title-covenant{
+    font-size: medium;
+    font-weight: 500;
+  }
+  .div-table{
+    padding: 0px;
+  }
+  #div-table-principal{
+    margin-top: 30px;
+    height: auto;
+    width: 17rem;
   }
 }
 @media (max-width: 1400px) {
@@ -71,9 +77,5 @@
   }
   .div-table::-webkit-scrollbar-button {
     display: none;
-  }
-  .row{
-    width: 60%;
-    flex-wrap: nowrap;
   }
 }

@@ -1,0 +1,84 @@
+h4{
+  color: #727171;
+  font-weight: 700;
+}
+#text-cont{
+  font-weight: 700;
+  color: black;
+}
+.item-card-covenant{
+  display: flex;
+  justify-content:space-between;
+  height: 40px;
+}
+.title-item-covenant{
+  display: block;
+  margin: auto;
+  margin-bottom: 15px;
+  margin-top: 0px;
+}
+#card-covenant{
+  width: 47%;
+  padding: 15px;
+}
+#card-provider{
+  width: 47%;
+  padding: 15px;
+}
+.btn-edit{
+  background-color: transparent;
+  border-color: transparent;
+}
+.div-center{
+  display: flex;
+  justify-content: center;
+}
+.btn-delete{
+  background-color: #727171;
+  font-weight: 500;
+  color: white;
+  margin-right: 15px;
+}
+#btn-exit{
+  text-align: center;
+  font-size: medium;
+  font-weight: 300;
+  background-color: #383838;
+  border-color: #6e6e6e;
+  border-radius: 10px;
+}
+.div-space-around{
+  display: flex;
+  justify-content: space-around;
+}
+#btn-add-modal{
+  background-color: rgb(174,29,33);
+  border-color: rgb(174,29,33);
+  font-weight: 400;
+}
+@media (max-width: 450px) {
+  #div-prinicpal{
+    display: block;
+    flex-direction: column;
+    margin-bottom: 40px;
+  }
+  #card-covenant{
+    width: 17rem;
+    padding: 0px;
+    height: auto;
+  }
+  #card-provider{
+    width: 17rem;
+    height: auto;
+    padding: 0px;
+  }
+  h4{
+    color: #727171;
+    font-weight: 700;
+    font-size: small;
+  }
+  .title-item-covenant{
+    margin-bottom: 30px;
+    margin-left: 15px;
+  }
+}
