@@ -29,7 +29,7 @@ const routes: Routes = [
         loadChildren: () => import('./views/pages/security/security.module').then(m => m.SecurityModule)
       },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }, 
-      // { path: '**', redirectTo: 'dashboard', pathMatch: 'full' }
+      { path: '**', redirectTo: 'dashboard', pathMatch: 'full' }
     ]
   },
   { 

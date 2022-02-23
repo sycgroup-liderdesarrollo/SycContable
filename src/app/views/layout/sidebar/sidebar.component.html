@@ -25,9 +25,14 @@
       <img src="/assets/images/michael.jpg" alt="avatar">
     </div>
     <div class="information">
-      <h6 class="profile-name">Michael Moncada</h6>
+      <h4 class="profile-name">Michael Moncada</h4>
       <p class="profile-position">Lider de Desarrollo</p>
     </div>
+  </div>
+  <div class="sidebar-log-out">
+    <a href="#" (click)="logout()" [ngStyle]="isLogined ? {color: '#50cd89'} : {color: '#B0191F'} ">
+      <i class="link-icon" [attr.data-feather]="'power'" appFeatherIcon></i>
+    </a>
   </div>
   <div class="divide-bar">
     <hr size="3">
@@ -85,7 +90,11 @@
         </li>
       </ng-container>
     </ul>
-
+    <ul class="sidebar-nav">
+      <li>
+        
+      </li>
+    </ul>
     <!--- Sidemenu end -->
 
   </div>

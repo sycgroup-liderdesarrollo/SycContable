@@ -25,8 +25,15 @@
                   Recordar
                 </label>
               </div>
-              <div>
-                <button type="submit" class="btn btn-primary me-2 mb-2 mb-md-0">Iniciar</button>
+              <div class="row">
+                <div class="col-6 col-sm-4 col-xl-3 content-button">
+                  <button type="button" class="btn btn-primary me-2 mb-2 mb-md-0" (click)="login()" [disabled]="isLoading">
+                    <span *ngIf="!isLoading">Ingresar</span>
+                    <div *ngIf="isLoading" class="spinner-border text-light spinner-border-sm" role="status">
+                      <span class="sr-only"></span>
+                    </div>
+                  </button>
+                </div>
               </div>
             </form>
           </div>
