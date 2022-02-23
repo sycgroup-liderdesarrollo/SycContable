@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgbNavConfig } from '@ng-bootstrap/ng-bootstrap';
 import { EmployeeInterface } from '../../../interfaces/employee-interface';
 import { ServiceEmployeesService } from '../../services/service-employees.service';
 
@@ -19,7 +20,9 @@ export class InfoUserComponent implements OnInit {
     private router:Router,
     private serviceEmployees:ServiceEmployeesService,
     private route: ActivatedRoute,
-  ) { }
+    config: NgbNavConfig
+  ) { config.destroyOnHide = false;
+    config.roles = false; }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params=>{
