@@ -1,0 +1,61 @@
+<div class="modal-header"><h1>{{modalTitle}}</h1></div>
+<div class="d-flex justify-content-center" *ngIf="isLoading">
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+<form [formGroup]="form" *ngIf="!isLoading">
+  <div class="modal-body">
+    <div class="div-space-around">
+      <div class="div-form-modal">
+        <label id="covenant-name-label">Nombre del convenio</label>
+        <input class="form-control" type="text" name="name" id="" formControlName="name" autocomplete="off">
+          <label *ngIf="form.get('name')?.hasError('required') && form.get('name')?.touched" style="color: rgb(172,29,33); font-weight: 100;">*El nombre es requerido</label>
+      </div>
+      <div class="div-form-modal">
+        <label>Tipo de convenio</label>
+        <select class="form-select" name="covenant_type_id" formControlName="covenant_type_id">
+          <option *ngFor="let covenantType of covenantTypes" [value]="covenantType.id">{{covenantType.name}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="div-space-around">
+      <div class="div-form-modal">
+        <label id="covenant-name-label">Nombre del concepto</label>
+        <input class="form-control" type="text" name="concept_name" id="" formControlName="concept_name" autocomplete="off">
+        <label *ngIf="form.get('concept_name')?.hasError('required') && form.get('concept_name')?.touched" style="color: rgb(172,29,33); font-weight: 100;">*El nombre del concepto es requerido</label>
+      </div>
+      <div class="div-form-modal"  *ngIf="form.value.covenant_type_id == 2">
+        <label>Valor</label>
+        <input class="form-control" type="number" name="value" id="" formControlName="value" autocomplete="off">
+      </div>
+    </div>
+    <div class="div-space-around">
+      <div class="div-form-modal">
+        <label>Tipo de periodicidad</label>
+        <select class="form-select" name="periodicity_type_id" formControlName="periodicity_type_id">
+          <option *ngFor="let periodicityType of periodicityTypes" [value]="periodicityType.id">{{periodicityType.name}}</option>
+        </select>
+      </div>
+      <div class="div-form-modal">
+        <label>Proveedor</label>
+        <select class="form-select" name="provider_id" formControlName="provider_id">
+          <option *ngFor="let provider of providers" [value]="provider.id">{{provider.name}}</option>
+        </select>
+      </div>
+    </div>
+    <label>Cargar imagen de convenio</label>
+    <div class="div-space-around">
+      <input type="file" class="form-control" (change)="cacthImage($event)" formControlName="image">
+      <img *ngIf="actualImage" [src]="actualImage" id="img-form">
+    </div>
+  </div>
+  <div class="alert alert-success" role="alert" *ngIf="alertSuccess">
+    El convenio ha sido {{messageAlert}}!
+  </div>
+</form>
+<div class="modal-footer">
+  <button class="btn btn-danger" id="btn-exit" (click)="modal.dismissAll()">Cerrar</button>
+  <button *ngIf="!isEdit" class="btn btn-danger" id="btn-add-modal" (click)="postCovenant(form.value)" [disabled]="form.invalid">Agregar</button>
+  <button *ngIf="isEdit" class="btn btn-danger" id="btn-add-modal" (click)="putCovenant(form.value)" [disabled]="form.invalid">Actualizar</button>
+</div>

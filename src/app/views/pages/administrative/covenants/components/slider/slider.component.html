@@ -1,12 +1,12 @@
 <div class="div-space-around col-sm-12 col-md-12" id="div-head">
   <h1 id="title-head"><strong>Nuestros convenios</strong></h1>
-  <button class="btn btn-danger" id="btn-add" (click)="modal.open(contenido)">+ Nuevo convenio</button>
+  <button class="btn btn-danger" id="btn-add" (click)="openAddModal()">+ Nuevo convenio</button>
 </div>
 <!-- Slider grande -->
 <swiper #swiper [config]="config" class="d-md-block d-none">
 
   <ng-template swiperSlide *ngFor="let covenant of covenants">
-    <button class="btn-card" (click)="getValuesSlider(covenant)">
+    <button class="btn-card" (click)="getValuesSlider(covenant.id)">
       <div class="card" style="margin-top: 15px;">
         <img src="{{covenant.image}}" class="card-img-top">
       </div>
@@ -20,7 +20,7 @@
 <!-- Slider pequeño -->
 <swiper #swiper [config]="configSmall" class="d-block d-sm-none">
   <ng-template swiperSlide *ngFor="let covenant of covenants">
-    <button class="btn-card" (click)="getValuesSlider(covenant)">
+    <button class="btn-card" (click)="getValuesSlider(covenant.id)">
       <div class="card" style="margin-top: 15px;">
         <img src="{{covenant.image}}" class="card-img-top">
       </div>
@@ -32,63 +32,6 @@
 </swiper>
 <br>
 <!-- Tarjetas -->
-<app-admin-covenant *ngIf="isactive" [covenantData]="covenant"></app-admin-covenant>
+<app-admin-covenant *ngIf="isactive" [covenantId]="covenantSlideId"></app-admin-covenant>
 <br>
-<!-- Modal -->
-<ng-template #contenido let modal>
-  <div class="modal-header"><h1>Agregar un nuevo convenio</h1></div>
-  <form [formGroup]="form">
-    <div class="modal-body">
-      <div class="div-space-around">
-        <div class="div-form-modal">
-          <label id="covenant-name-label">Nombre del convenio</label>
-          <input class="form-control" type="text" name="name" id="" formControlName="name" autocomplete="off">
-            <label *ngIf="form.get('name')?.hasError('required') && form.get('name')?.touched" style="color: rgb(172,29,33); font-weight: 100;">*El nombre es requerido</label>
-        </div>
-        <div class="div-form-modal">
-          <label>Tipo de convenio</label>
-          <select class="form-select" name="covenant_type_id" formControlName="covenant_type_id">
-            <option *ngFor="let covenantType of covenantTypes" [value]="covenantType.id">{{covenantType.name}}</option>
-          </select>
-        </div>
-      </div>
-      <div class="div-space-around">
-        <div class="div-form-modal">
-          <label id="covenant-name-label">Nombre del concepto</label>
-          <input class="form-control" type="text" name="concept_name" id="" formControlName="concept_name" autocomplete="off">
-          <label *ngIf="form.get('concept_name')?.hasError('required') && form.get('concept_name')?.touched" style="color: rgb(172,29,33); font-weight: 100;">*El nombre del concepto es requerido</label>
-        </div>
-        <div class="div-form-modal"  *ngIf="form.value.covenant_type_id == 2">
-          <label>Valor</label>
-          <input class="form-control" type="number" name="value" id="" formControlName="value" autocomplete="off">
-        </div>
-      </div>
-      <div class="div-space-around">
-        <div class="div-form-modal">
-          <label>Tipo de periodicidad</label>
-          <select class="form-select" name="periodicity_type_id" formControlName="periodicity_type_id">
-            <option *ngFor="let periodicityType of periodicityTypes" [value]="periodicityType.id">{{periodicityType.name}}</option>
-          </select>
-        </div>
-        <div class="div-form-modal">
-          <label>Proveedor</label>
-          <select class="form-select" name="provider_id" formControlName="provider_id">
-            <option *ngFor="let provider of providers" [value]="provider.id">{{provider.name}}</option>
-          </select>
-        </div>
-      </div>
-      <label>Cargar imagen de convenio</label>
-      <div class="div-space-around">
-        <input type="file" class="form-control" (change)="cacthImage($event)" formControlName="image">
-        <img *ngIf="actualImage" [src]="actualImage" id="img-form">
-      </div>
-    </div>
-    <div class="alert alert-success" role="alert" *ngIf="alertSuccess">
-      El convenio ha sido creado!
-    </div>
-  </form>
-  <div class="modal-footer">
-    <button class="btn btn-danger" id="btn-exit" (click)="modal.dismissAll()">Cerrar</button>
-    <button class="btn btn-danger" id="btn-add-modal" (click)="postCovenant(form.value)" [disabled]="form.invalid">Agregar</button>
-    </div>
-</ng-template>
+

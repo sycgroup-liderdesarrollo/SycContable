@@ -38,7 +38,7 @@ export const MENU: MenuItem[] = [
       },
       {
         label: 'Asignar Convenio',
-        link: '/',
+        link: '/administrative/assing-covenant',
       }
     ]
   },

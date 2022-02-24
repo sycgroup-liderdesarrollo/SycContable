@@ -1,10 +1,9 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Observable, Subscriber } from 'rxjs';
 import { CovenantsService } from '../../services/covenants.service';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { CovenantModalsComponent } from '../covenant-modals/covenant-modals.component';
 
 @Component({
   selector: 'app-admin-covenant',
@@ -14,71 +13,23 @@ import { environment } from 'src/environments/environment';
 
 export class AdminCovenantComponent implements OnChanges, OnInit {
 
-  @Input() covenantData:any;
-  form:FormGroup
+  @Input() covenantId:number;
+
   covenant:any
-  providers:any
-  covenantTypes:any
-  periodicityTypes:any
   alertSuccess:boolean = false;
-  actualImage:any;
 
   constructor(
     private serviceCovenant: CovenantsService,
-    private fb:FormBuilder,
     public modal:NgbModal,
-  ) {
-    this.getProviders();
-    this.getCovenantTypes();
-    this.getPeriodicityTypes();
-  }
+  ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.covenantData) {
-      this.getCovenant(this.covenantData.id);
+    if (this.covenantId) {
+      this.getCovenant(this.covenantId);
     }
   }
-
   ngOnInit(): void {
-    this.getCovenant(this.covenantData.id);
-  }
-
-  makeForm(covenantData:any){
-    this.form = this.fb.group({
-      name:                 [covenantData.name ?? '',Validators.minLength(3)],
-      value:                [covenantData.value?? ''],
-      active:               [covenantData.active ?? ''],
-      covenant_type_id:     [covenantData.covenantType.id ?? '', Validators.required],
-      periodicity_type_id:  [covenantData.periodicityType.id ?? '', Validators.required],
-      provider_id:          [covenantData.provider.id ?? '', Validators.required],
-      concept_name:         [covenantData.concept.name ?? '', Validators.required],
-      image:                ['']
-    });
-  }
-  putCovenant(formData:any){
-    formData.image = this.actualImage
-    console.log(formData);
-
-    this.serviceCovenant.putCovenant(this.covenant.id, formData).subscribe(resp =>{
-      this.alertSuccess = true;
-      this.getCovenant(this.covenant.id);
-      setTimeout(()=>{this.alertSuccess = false; window.location.reload();}, 3000);
-    })
-  }
-  getCovenantTypes(){
-    this.serviceCovenant.getCovenantTypes().subscribe(resp =>{
-      this.covenantTypes = resp.data;
-    })
-  }
-  getPeriodicityTypes(){
-    this.serviceCovenant.getPeriodicityTypes().subscribe(resp =>{
-      this.periodicityTypes = resp.data;
-    })
-  }
-  getProviders(){
-    this.serviceCovenant.getProviders().subscribe(resp =>{
-      this.providers = resp.data;
-    })
+    this.getCovenant(this.covenantId);
   }
   getCovenant(id:number){
     this.serviceCovenant.getCovenant(id).pipe(
@@ -88,7 +39,6 @@ export class AdminCovenantComponent implements OnChanges, OnInit {
       }),
     ).subscribe(resp =>{
       this.covenant = resp;
-      this.makeForm(this.covenant);
     })
   }
   deleteCovenant(){
@@ -98,31 +48,8 @@ export class AdminCovenantComponent implements OnChanges, OnInit {
       window.location.reload();
     })
   }
-  cacthImage(event:any){
-    const covenantImage = event.target.files[0]
-    this.convertToBase64(covenantImage)
-  }
-  convertToBase64(file:File){
-    const observable = new Observable((suscriber:Subscriber<any>)=>{
-      this.readFile(file, suscriber);
-    });
-    observable.subscribe((d)=>{
-      this.actualImage = d;
-      this.covenant.image = d;
-    })
-  }
-  readFile(file:File, suscriber:Subscriber<any>){
-    const fileReader = new FileReader();
-
-    fileReader.readAsDataURL(file)
-
-    fileReader.onload = ()=>{
-      suscriber.next(fileReader.result)
-      suscriber.complete();
-    }
-    fileReader.onerror = (error)=>{
-      suscriber.error(error)
-      suscriber.complete();
-    }
+  openModal(){
+    const modalRef = this.modal.open(CovenantModalsComponent);
+    modalRef.componentInstance.covenantData = this.covenant;
   }
 }

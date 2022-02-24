@@ -4,7 +4,7 @@
     <div class="div-space-around">
       <h2 class="title-item-covenant"><strong>{{covenant.name}}</strong></h2>
       <button class="btn-edit" (click)="modal.open(confirmation)"><img src="/assets/images/others/icon-trash.png" alt=""></button>
-      <button class="btn-edit" (click)="modal.open(contenido)"><img src="/assets/images/others/icon-edit.png" alt=""></button>
+      <button class="btn-edit" (click)="openModal()"><img src="/assets/images/others/icon-edit.png" alt=""></button>
     </div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item">
@@ -16,22 +16,22 @@
       </li>
       <li class="list-group-item" *ngIf="covenant.value">
         <div class="item-card-covenant">
-          <h4>Valor <img src="/assets/images/others/icon-dollar.png" alt=""> </h4><h4 id="text-cont">{{covenant.value}}</h4>
+          <h4><img src="/assets/images/others/icon-dollar.png" alt=""> Valor</h4><h4 id="text-cont">{{covenant.value}}</h4>
         </div>
       </li>
       <li class="list-group-item">
         <div class="item-card-covenant">
-          <h4>Tipo de convenio <img src="/assets/images/others/icon-type.png" alt=""> </h4><h4 id="text-cont">{{covenant.covenantType.name}}</h4>
+          <h4><img src="/assets/images/others/icon-type.png" alt=""> Tipo de convenio</h4><h4 id="text-cont">{{covenant.covenantType.name}}</h4>
         </div>
       </li>
       <li class="list-group-item">
         <div class="item-card-covenant">
-          <h4>Periodicidad <img src="/assets/images/others/icon-period.png" alt=""> </h4><h4 id="text-cont">{{covenant.periodicityType.name}}</h4>
+          <h4><img src="/assets/images/others/icon-period.png" alt=""> Periodicidad</h4><h4 id="text-cont">{{covenant.periodicityType.name}}</h4>
         </div>
       </li>
       <li class="list-group-item">
         <div class="item-card-covenant">
-          <h4>Concepto <img src="/assets/images/others/icon-concept.png" alt=""> </h4><h4 id="text-cont">{{covenant.concept.name}}</h4>
+          <h4><img src="/assets/images/others/icon-concept.png" alt=""> Concepto</h4><h4 id="text-cont">{{covenant.concept.name}}</h4>
         </div>
       </li>
     </ul>
@@ -43,100 +43,29 @@
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
           <div class="item-card-covenant">
-            <h4>Nombre comercial <img src="/assets/images/others/icon-provider.png" alt=""></h4><h4 id="text-cont"> {{covenant.provider.trade_name}}</h4>
+            <h4><img src="/assets/images/others/icon-provider.png" alt=""> Nombre comercial</h4><h4 id="text-cont"> {{covenant.provider.trade_name}}</h4>
           </div>
         </li>
         <li class="list-group-item">
           <div class="item-card-covenant">
-            <h4>Correo <img src="/assets/images/others/icon-email.png" alt=""></h4><h4 id="text-cont"> {{covenant.provider.email}}</h4>
+            <h4><img src="/assets/images/others/icon-email.png" alt=""> Correo</h4><h4 id="text-cont"> {{covenant.provider.email}}</h4>
           </div>
         </li>
         <li class="list-group-item">
           <div class="item-card-covenant">
-            <h4>Telefono <img src="/assets/images/others/icon-phone.png" alt=""></h4><h4 id="text-cont"> {{covenant.provider.phone}}</h4>
+            <h4><img src="/assets/images/others/icon-phone.png" alt=""> Telefono</h4><h4 id="text-cont"> {{covenant.provider.phone}}</h4>
           </div>
         </li>
         <li class="list-group-item">
           <div class="item-card-covenant">
-            <h4>Direccion <img src="/assets/images/others/icon-address.png" alt=""></h4><h4 id="text-cont"> {{covenant.provider.address}} {{covenant.provider.city.name}}</h4>
+            <h4><img src="/assets/images/others/icon-address.png" alt=""> Direccion</h4><h4 id="text-cont"> {{covenant.provider.address}} {{covenant.provider.city.name}}</h4>
           </div>
         </li>
       </ul>
   </div>
 </div>
-<app-covenant-users-table [covenant]="covenant"></app-covenant-users-table>
 
-<!-- Modal -->
-<ng-template #contenido let modal>
-  <div class="modal-header"><h1>Agregar un nuevo convenio</h1></div>
-  <form [formGroup]="form">
-    <div class="modal-body">
-      <div class="div-space-around">
-        <div class="div-form-modal">
-          <label id="covenant-name-label">Nombre del convenio</label>
-          <input class="form-control" type="text" name="name" id="" formControlName="name" autocomplete="off">
-        </div>
-        <div class="div-form-modal">
-          <label>Tipo de convenio</label>
-          <select class="form-select" name="covenant_type_id" formControlName="covenant_type_id">
-            <option *ngFor="let covenantType of covenantTypes" [value]="covenantType.id">
-              {{covenantType.name}}
-            </option>
-          </select>
-        </div>
-      </div>
-      <div class="div-space-around">
-        <div class="div-form-modal">
-          <label id="covenant-name-label">Nombre del concepto</label>
-          <input class="form-control" type="text" name="concept_name" id="" formControlName="concept_name" autocomplete="off">
-        </div>
-        <div class="div-form-modal" *ngIf="form.value.covenant_type_id == 2">
-          <label>Valor</label>
-          <input class="form-control" type="number" name="value" id="" formControlName="value" autocomplete="off">
-        </div>
-      </div>
-      <div class="div-space-around">
-        <div class="div-form-modal">
-          <label id="covenant-name-label">Tipo de periodicidad</label>
-          <select class="form-select" name="periodicity_type_id" formControlName="periodicity_type_id">
-            <option *ngFor="let periodicityType of periodicityTypes" [value]="periodicityType.id">
-              {{periodicityType.name}}
-            </option>
-          </select>
-        </div>
-        <div class="div-form-modal">
-          <label>Proveedor</label>
-          <select class="form-select" name="provider_id" formControlName="provider_id">
-            <option *ngFor="let provider of providers" [value]="provider.id">
-              {{provider.trade_name}}
-            </option>
-          </select>
-        </div>
-      </div>
-      <div class="div-space-around">
-        <div class="div-form-modal">
-          <label>Estado</label>
-          <select class="form-select" name="active" formControlName="active">
-            <option [value]="1">Activo</option>
-            <option [value]="0">Inactivo</option>
-          </select>
-        </div>
-      </div>
-      <label>Actualizar imagen de convenio</label>
-      <div class="div-space-around">
-        <input type="file" class="form-control" id="input-file" (change)="cacthImage($event)" formControlName="image">
-        <img src="{{covenant.image}}" id="img-form">
-      </div>
-    </div>
-    <div class="alert alert-success" role="alert" *ngIf="alertSuccess">
-      El convenio ha sido actualizado!
-    </div>
-  </form>
-  <div class="modal-footer" style="display: flex; justify-content: flex-end;">
-    <button class="btn btn-danger" id="btn-exit" (click)="modal.dismissAll()">Cerrar</button>
-    <button class="btn btn-danger" id="btn-add-modal" (click)="putCovenant(form.value)">Actualizar</button>
-  </div>
-</ng-template>
+<app-covenant-users-table [covenant]="covenant"></app-covenant-users-table>
 
 <!-- Modal de confirmacion -->
 <ng-template #confirmation let modal>
