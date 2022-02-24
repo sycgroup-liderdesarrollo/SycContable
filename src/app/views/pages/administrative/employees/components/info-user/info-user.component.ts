@@ -14,7 +14,7 @@ import { ServiceEmployeesService } from '../../services/service-employees.servic
 export class InfoUserComponent implements OnInit {
 
   form!: FormGroup;
-  users:EmployeeInterface[];
+  user:any;
   
   constructor(
     private router:Router,
@@ -29,7 +29,7 @@ export class InfoUserComponent implements OnInit {
       const userId = params.has("id") ? params.get("id") : '';
       if(params.has("id")){
         this.serviceEmployees.getEmployee(userId).subscribe(res => {
-          this.users = res.data
+          this.user = res.data
           console.log(res);
           
         })
