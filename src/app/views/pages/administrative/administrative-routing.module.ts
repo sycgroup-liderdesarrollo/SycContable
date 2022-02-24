@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { EmployeesComponent } from './employees/employees.component';
 import { InfoUserComponent } from './employees/components/info-user/info-user.component';
 import { ManageVacationsComponent } from './manage-vacations/manage-vacations.component';
-import { SliderComponent } from './covenants/slider/slider.component';
+import { SliderComponent } from './covenants/components/slider/slider.component';
 
 const routes: Routes = [
   {

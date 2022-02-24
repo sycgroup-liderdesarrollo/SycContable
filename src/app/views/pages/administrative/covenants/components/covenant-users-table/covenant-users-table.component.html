@@ -1,0 +1,29 @@
+<div class="card" *ngIf="covenant" id="div-table-principal">
+  <form>
+    <div id="div-head-buttons">
+      <h3 id="title-covenant">Empleados con convenio</h3>
+    </div>
+    <div class="div-table">
+      <table class="table table-striped" style="margin-top: 30px;">
+        <thead>
+          <tr>
+            <th class="table-title">Nombre</th>
+            <th class="table-title">Cedula</th>
+            <th class="table-title">Deudas</th>
+            <th class="table-title">Deudas pagadas</th>
+            <th class="table-title">Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr  *ngFor="let user of covenant.users">
+            <td class="table-body">{{user.name}}</td>
+            <td class="table-body">{{user.identification_number}}</td>
+            <td class="table-body">{{user.pivot.dues}}</td>
+            <td class="table-body">{{user.pivot.paid_dues}}</td>
+            <td class="table-body">{{user.pivot.value}}</td>
+          </tr>
+        </tbody>
+    </table>
+    </div>
+  </form>
+</div>

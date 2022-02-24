@@ -1,0 +1,114 @@
+.swiper {
+  width: 100%;
+  height: 320px;
+}
+.swiper-slide{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.btn-card{
+  background-color: rgb(255, 255, 255);
+  border-color: transparent;
+  border-radius: 30px;
+}
+.btn-card:hover{
+  background: linear-gradient(rgb(255, 255, 255), rgb(235, 235, 235));
+  border-color: transparent;
+  border-radius: 30px;
+  padding: 10px;
+}
+.card-img-top{
+  width: auto;
+  height: 200px;
+  border-radius: 15px;
+}
+.card{
+  width: 18rem;
+  border-color: transparent;
+  border-radius: 15px;
+  box-shadow: 2px 2px rgba(58, 58, 58, 0.11);
+}
+#btn-add{
+  text-align: center;
+  font-size: medium;
+  font-weight: 800;
+  background-color: rgb(174,29,33);
+  border-color: rgb(174,29,33);
+  border-radius: 10px;
+  margin-left: 50%;
+}
+.div-form-modal{
+  width: 40%;
+  margin-bottom: 15px;
+}
+label{
+  font-weight: 500;
+  color:#686868;
+}
+.div-space-around{
+  display: flex;
+  justify-content: space-around;
+}
+#img-form{
+  width: 100px;
+  height: 100px;
+  border-radius: 15px;
+  margin-left: 10px;
+}
+.modal.footer{
+  display: flex;
+  justify-content: flex-end;
+}
+#btn-exit{
+  background-color: #383838;
+  border-color: #6e6e6e;
+}
+#btn-add-modal{
+  background-color: rgb(174,29,33);
+  border-color: rgb(174,29,33);
+  font-weight: 400;
+}
+
+@media (max-width: 450px) {
+  .card-img-top{
+    width: auto;
+    height: 100%;
+  }
+  .swiper {
+    width: 100%;
+    height: 400px;
+  }
+  .btn-card{
+    background: linear-gradient(rgb(255, 255, 255), rgb(235, 235, 235));
+    border-color: transparent;
+    border-radius: 30px;
+  }
+  .main-wrapper .page-wrapper .page-content {
+    flex-grow: 1;
+    padding: 25px;
+    margin-top: -80px;
+  }
+  .card{
+    width: 10rem;
+    height: 10rem;
+    margin-bottom: 15px;
+  }
+  #div-head{
+    margin-top: 60px;
+    width: 75%;
+    margin-left: 30px;
+  }
+  #covenant-name-label{
+    font-size: small;
+  }
+  #btn-add{
+    font-size: smaller;
+    font-weight: 400;
+    background-color: rgb(174,29,33);
+    border-color: rgb(174,29,33);
+    border-radius: 10px;
+    height: 50px;
+  }
+}
