@@ -31,16 +31,7 @@ export const MENU: MenuItem[] = [
   {
     label: 'Convenios',
     icon: 'slack',
-    subItems: [
-      {
-        label: 'Gestionar convenios',
-        link: '/administrative/admin-covenant',
-      },
-      {
-        label: 'Asignar Convenio',
-        link: '/administrative/assing-covenant',
-      }
-    ]
+    link: '/administrative/admin-covenant'
   },
   {
     label: 'Proveedores',

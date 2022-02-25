@@ -11,6 +11,8 @@ import { SwiperModule } from 'swiper/angular';
 import { CovenantUsersTableComponent } from './covenants/components/covenant-users-table/covenant-users-table.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CovenantModalsComponent } from './covenants/components/covenant-modals/covenant-modals.component';
+import { UserAssigCovenantModalComponent } from './covenants/components/user-assig-covenant-modal/user-assig-covenant-modal.component';
+import { ConfirmationModalComponent } from './covenants/components/confirmation-modal/confirmation-modal.component';
 
 
 @NgModule({
@@ -22,6 +24,8 @@ import { CovenantModalsComponent } from './covenants/components/covenant-modals/
     SliderComponent,
     CovenantUsersTableComponent,
     CovenantModalsComponent,
+    UserAssigCovenantModalComponent,
+    ConfirmationModalComponent,
   ],
   imports: [
     FormsModule,

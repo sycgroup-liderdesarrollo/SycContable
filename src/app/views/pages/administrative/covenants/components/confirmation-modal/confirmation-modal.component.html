@@ -1,0 +1,17 @@
+<div class="modal-header div-center">
+  <h3>¿Estas seguro que deseas eliminar?</h3>
+</div>
+<div class="modal-body">
+  <div class="div-center">
+    <div *ngIf="!alertSuccess" >
+      <button class="btn btn-delete" (click)="modal.dismissAll()">Cancelar</button>
+      <button class="btn btn-primary" (click)="deleteCovenant()" *ngIf="!isUser">Eliminar</button>
+      <button class="btn btn-primary" (click)="deleteUser()" *ngIf="isUser">Eliminar</button>
+    </div>
+    <div class="alert alert-success" role="alert" *ngIf="alertSuccess">
+      Se ha sido eliminado!
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+</div>

@@ -13,25 +13,34 @@
   height: auto;
   width: auto;
 }
+#div-head-buttons{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
 #title-covenant{
   font-weight: 500;
 }
+.btn-delete{
+  background-color: transparent;
+  border-color: transparent;
+}
 @media (max-width: 400px){
   #btn-add{
-    text-align: center;
-    font-size: smaller;
+    font-size: x-small;
     font-weight: 600;
     background-color: rgb(174,29,33);
     border-color: rgb(174,29,33);
     border-radius: 10px;
-  }
-  #div-add{
-    width: 85%;
-    margin-bottom: 30px;
+    height: auto;
+    text-align:start;
+    width: auto;
   }
   #div-head-buttons{
     display: flex;
-    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   .table-title{
     padding: 5px;
@@ -47,7 +56,7 @@
     margin-top: 40px;
   }
   #title-covenant{
-    font-size: medium;
+    font-size: small;
     font-weight: 500;
   }
   .div-table{

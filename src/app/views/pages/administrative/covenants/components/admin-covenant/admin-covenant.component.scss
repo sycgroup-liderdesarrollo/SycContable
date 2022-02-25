@@ -33,12 +33,6 @@ h4{
   display: flex;
   justify-content: center;
 }
-.btn-delete{
-  background-color: #727171;
-  font-weight: 500;
-  color: white;
-  margin-right: 15px;
-}
 #btn-exit{
   text-align: center;
   font-size: medium;
@@ -47,15 +41,12 @@ h4{
   border-color: #6e6e6e;
   border-radius: 10px;
 }
+
 .div-space-around{
   display: flex;
   justify-content: space-around;
 }
-#btn-add-modal{
-  background-color: rgb(174,29,33);
-  border-color: rgb(174,29,33);
-  font-weight: 400;
-}
+
 @media (max-width: 450px) {
   #div-prinicpal{
     display: block;

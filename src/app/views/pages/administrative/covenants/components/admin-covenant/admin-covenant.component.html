@@ -3,7 +3,7 @@
   <div class="card" id="card-covenant" *ngIf="covenant">
     <div class="div-space-around">
       <h2 class="title-item-covenant"><strong>{{covenant.name}}</strong></h2>
-      <button class="btn-edit" (click)="modal.open(confirmation)"><img src="/assets/images/others/icon-trash.png" alt=""></button>
+      <button class="btn-edit" (click)="openDeleteCovenantModal()"><img src="/assets/images/others/icon-trash.png" alt=""></button>
       <button class="btn-edit" (click)="openModal()"><img src="/assets/images/others/icon-edit.png" alt=""></button>
     </div>
     <ul class="list-group list-group-flush">
@@ -67,20 +67,3 @@
 
 <app-covenant-users-table [covenant]="covenant"></app-covenant-users-table>
 
-<!-- Modal de confirmacion -->
-<ng-template #confirmation let modal>
-  <div class="modal-header div-center">
-    <h3>¿Estas seguro que deseas eliminar el convenio?</h3>
-  </div>
-  <div class="modal-body">
-    <div class="div-center">
-      <button class="btn btn-delete" *ngIf="!alertSuccess" (click)="modal.dismissAll()">Cancelar</button>
-      <button class="btn btn-primary" (click)="deleteCovenant()" *ngIf="!alertSuccess" >Eliminar</button>
-      <div class="alert alert-success" role="alert" *ngIf="alertSuccess">
-        El convenio ha sido eliminado!
-      </div>
-    </div>
-  </div>
-  <div class="modal-footer">
-  </div>
-</ng-template>

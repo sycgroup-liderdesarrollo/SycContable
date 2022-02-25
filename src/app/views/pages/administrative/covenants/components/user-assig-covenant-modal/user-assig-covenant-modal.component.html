@@ -1,0 +1,53 @@
+<div class="card" id="div-principal">
+  <div class="div-title">
+    <h1 id="title">Buscar usuarios</h1>
+    <h3 id="sub-title">Asigna el convenio seleccionado a usuarios</h3>
+  </div>
+  <div>
+    <div class="div-content" *ngIf="!isSelected">
+      <input class="form-control" type="text" placeholder="Buscar por nombre..." (keyup)="userFilter($event)">
+    </div>
+    <label style="display: flex; justify-content: center;" *ngIf="!isSelected">Selecciona un usuario</label>
+    <br>
+    <div class="modal-body">
+      <div *ngIf="!isSelected">
+        <div class="div-content" *ngFor="let employee of employees">
+          <div class="items-card">
+            <img width="40px" height="40px" style="border-radius: 40px;" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt="">
+          </div>
+          <div class="user-card">
+            <button class="select-btn" (click)="selectUser(employee.id)">
+              <h5 id="title"><strong>{{employee.name}} {{employee.last_name}}</strong></h5>
+              <h5 id="sub-title">{{employee.email}}</h5>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="isSelected">
+        <div class="div-content">
+          <div style="margin-right: 60px; flex-direction: column; display: flex; align-items: center;" *ngIf="!alertSuccess">
+            <button class="select-btn" (click)="back()"><img src="https://img.icons8.com/ios-glyphs/15/000000/back.png"/></button>
+            <h4 style="margin-top: 30px;">{{employe_name}}</h4>
+            <img width="40px" height="40px" style="border-radius: 40px;" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt="">
+          </div>
+          <div class="user_card" >
+            <form [formGroup]="form" *ngIf="!alertSuccess">
+              <label>Ingrese el numero de cuotas</label>
+              <input type="number" class="input-group-text" formControlName="dues">
+              <br>
+              <label>Ingrese el valor de la cuota</label>
+              <input type="number" class="input-group-text" formControlName="value">
+            </form>
+            <div class="alert alert-success" role="alert" *ngIf="alertSuccess">
+              {{message.data}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="div-content">
+    <button class="btn btn-danger" id="cancel-btn" (click)="modal.dismissAll()">Cerrar</button>
+    <button class="btn btn-primary" id="asig-btn" (click)="assignCovenant(form.value)" [disabled]="form.invalid" *ngIf="!isPermanent">Asignar</button>
+  </div>
+</div>

@@ -4,6 +4,7 @@ import { CovenantsService } from '../../services/covenants.service';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { CovenantModalsComponent } from '../covenant-modals/covenant-modals.component';
+import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
 
 @Component({
   selector: 'app-admin-covenant',
@@ -41,15 +42,15 @@ export class AdminCovenantComponent implements OnChanges, OnInit {
       this.covenant = resp;
     })
   }
-  deleteCovenant(){
-    this.serviceCovenant.deleteCovenant(this.covenant.id).subscribe(resp =>{
-      this.alertSuccess = true;
-      setTimeout(()=>{this.alertSuccess = false; this.modal.dismissAll()}, 1500);
-      window.location.reload();
-    })
-  }
+
   openModal(){
     const modalRef = this.modal.open(CovenantModalsComponent);
     modalRef.componentInstance.covenantData = this.covenant;
+  }
+
+  openDeleteCovenantModal(){
+    const modalRef = this.modal.open(ConfirmationModalComponent)
+    modalRef.componentInstance.covenant_id = this.covenant.id;
+
   }
 }

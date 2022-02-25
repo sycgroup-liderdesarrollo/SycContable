@@ -20,7 +20,7 @@ import { ToastContainerComponent } from './views/layout/toast-container/toast-co
   declarations: [
     AppComponent,
     ErrorPageComponent,
-    ToastContainerComponent
+    ToastContainerComponent,
   ],
   imports: [
     BrowserModule,

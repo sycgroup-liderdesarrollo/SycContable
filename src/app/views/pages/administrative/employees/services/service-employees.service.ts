@@ -28,4 +28,12 @@ export class ServiceEmployeesService {
   getEmployee(id:string | null): Observable<JsonResponseInterfaces<EmployeeInterface[]>>{
     return this.http.get<JsonResponseInterfaces<EmployeeInterface[]>>(`${environment.API_Url}user/${id}`);
   }
+
+  assignCovenant(user_id:number, formData:any): Observable<EmployeeInterface[]>{
+    return this.http.post<EmployeeInterface[]>(`${environment.API_Url}user/asignarConvenio/`+ user_id, formData);
+  }
+  deleteUserCovenant(user_id:number, pivot_id:any): Observable<any>{
+
+    return this.http.delete<any>(`${environment.API_Url}user/eliminarConvenio/`+ user_id, {params:{'covenant_pivot_id':  pivot_id }});
+  }
 }
