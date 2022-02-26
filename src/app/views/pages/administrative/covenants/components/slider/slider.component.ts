@@ -69,6 +69,15 @@ export class SliderComponent implements OnInit, AfterContentChecked {
     this.isactive = true;
   }
   openAddModal(){
-    this.modal.open(CovenantModalsComponent);
+    const modalRef = this.modal.open(CovenantModalsComponent);
+    modalRef.componentInstance.covenant_data_refresh.subscribe(() => {
+      setTimeout(()=>{this.getCovenants()}, 500);})
+  }
+  refreshCovenant(){
+    console.log('entró');
+
+    this.isactive = false;
+    setTimeout(()=>{this.getCovenants()}, 1500);
+
   }
 }

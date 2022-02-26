@@ -65,5 +65,5 @@
   </div>
 </div>
 
-<app-covenant-users-table [covenant]="covenant"></app-covenant-users-table>
+<app-covenant-users-table [covenant]="covenant" (covenantId)="refreshCovenant($event)"></app-covenant-users-table>
 

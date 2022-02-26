@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ServiceEmployeesService } from '../../../employees/services/service-employees.service';
@@ -11,6 +11,7 @@ import { ServiceEmployeesService } from '../../../employees/services/service-emp
 export class UserAssigCovenantModalComponent implements OnInit {
 
   @Input() covenantData:any;
+  @Output() user_covenant = new EventEmitter();
 
   employees:any;
   form:FormGroup;
@@ -20,6 +21,7 @@ export class UserAssigCovenantModalComponent implements OnInit {
   alertSuccess:boolean = false;
   message:any = "";
   isPermanent:boolean = false;
+  alertType:string="";
 
   constructor(
     private serviceUser: ServiceEmployeesService,
@@ -30,7 +32,7 @@ export class UserAssigCovenantModalComponent implements OnInit {
   ngOnInit(): void {
     this.makeForm();
     this.getEmployees();
-    this.covenantData.covenantType.id == 2 ? this.isPermanent = true : 0;
+    this.covenantData.covenantType.id == 2 ? this.isPermanent = true : this.isPermanent = false;
   }
   makeForm(){
     this.form = this.fb.group({
@@ -52,8 +54,6 @@ export class UserAssigCovenantModalComponent implements OnInit {
   selectUser(user_id:number){
     this.user_id = user_id;
     this.employe_name = this.employees[user_id - 1].name;
-    console.log(this.form.value);
-
     if (this.covenantData.covenantType.id == 2) {
       this.isSelected = true;
       this.alertSuccess = true;
@@ -65,14 +65,14 @@ export class UserAssigCovenantModalComponent implements OnInit {
   assignCovenant(formData:any){
     this.serviceUser.assignCovenant(this.user_id, formData).subscribe(resp => {
       this.message = resp;
+      this.message.warning == 1 ? this.alertType = "warning" : this.alertType = "success"
       this.alertSuccess = true
-      setTimeout(()=>{window.location.reload();}, 3000);
+      setTimeout(()=>{this.modal.dismissAll()}, 5000);
+      this.user_covenant.emit();
     });
   }
   back(){
     this.isSelected = false;
-    this.employe_name = "";
-    this.user_id = 0;
     this.form.reset();
     this.makeForm();
   }

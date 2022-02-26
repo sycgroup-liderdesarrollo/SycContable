@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CovenantsService } from '../../services/covenants.service';
 import { map } from 'rxjs/operators';
@@ -15,6 +15,7 @@ import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-m
 export class AdminCovenantComponent implements OnChanges, OnInit {
 
   @Input() covenantId:number;
+  @Output() covenant_refresh = new EventEmitter();
 
   covenant:any
   alertSuccess:boolean = false;
@@ -42,15 +43,21 @@ export class AdminCovenantComponent implements OnChanges, OnInit {
       this.covenant = resp;
     })
   }
-
   openModal(){
     const modalRef = this.modal.open(CovenantModalsComponent);
     modalRef.componentInstance.covenantData = this.covenant;
+    modalRef.componentInstance.covenant_data_refresh.subscribe(($e:any) => {
+      this.covenant_refresh.emit();
+    })
   }
-
   openDeleteCovenantModal(){
     const modalRef = this.modal.open(ConfirmationModalComponent)
     modalRef.componentInstance.covenant_id = this.covenant.id;
-
+    modalRef.componentInstance.change_covenant.subscribe(($e:any) => {
+      this.covenant_refresh.emit();
+    })
+  }
+  refreshCovenant(e:any){
+    this.getCovenant(e);
   }
 }

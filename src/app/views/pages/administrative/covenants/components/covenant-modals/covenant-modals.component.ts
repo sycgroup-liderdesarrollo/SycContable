@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, Subscriber } from 'rxjs';
@@ -18,6 +18,7 @@ export class CovenantModalsComponent implements OnInit {
   ) { }
 
   @Input() covenantData:any;
+  @Output() covenant_data_refresh = new EventEmitter();
 
   providers:any;
   form:FormGroup
@@ -86,7 +87,8 @@ export class CovenantModalsComponent implements OnInit {
       this.alertSuccess = true;
       this.form.reset();
       this.makeForm();
-      setTimeout(()=>{this.alertSuccess = false; window.location.reload();}, 3000);
+      setTimeout(()=>{this.alertSuccess = false;}, 3000);
+      this.covenant_data_refresh.emit()
     })
   }
   putCovenant(formData:any){
@@ -95,7 +97,8 @@ export class CovenantModalsComponent implements OnInit {
 
     this.serviceCovenant.putCovenant(this.covenantData.id, formData).subscribe(resp =>{
       this.alertSuccess = true;
-      setTimeout(()=>{this.alertSuccess = false; window.location.reload();}, 3000);
+      setTimeout(()=>{this.alertSuccess = false;}, 3000);
+      this.covenant_data_refresh.emit()
     })
   }
   cacthImage(event:any){

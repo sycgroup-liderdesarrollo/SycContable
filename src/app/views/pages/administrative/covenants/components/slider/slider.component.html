@@ -33,6 +33,6 @@
 </swiper>
 <br>
 <!-- Tarjetas -->
-<app-admin-covenant *ngIf="isactive" [covenantId]="covenantSlideId"></app-admin-covenant>
+<app-admin-covenant *ngIf="isactive" [covenantId]="covenantSlideId" (covenant_refresh)="refreshCovenant()"></app-admin-covenant>
 <br>
 
