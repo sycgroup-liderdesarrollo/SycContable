@@ -30,10 +30,10 @@ export class ServiceEmployeesService {
   }
 
   assignCovenant(user_id:number, formData:any): Observable<EmployeeInterface[]>{
-    return this.http.post<EmployeeInterface[]>(`${environment.API_Url}user/asignarConvenio/`+ user_id, formData);
+    return this.http.post<EmployeeInterface[]>(`${environment.API_Url}user/assignCovenant/`+ user_id, formData);
   }
   deleteUserCovenant(user_id:number, pivot_id:any): Observable<any>{
 
-    return this.http.delete<any>(`${environment.API_Url}user/eliminarConvenio/`+ user_id, {params:{'covenant_pivot_id':  pivot_id }});
+    return this.http.delete<any>(`${environment.API_Url}user/deleteCovenant/`+ user_id, {params:{'covenant_pivot_id':  pivot_id }});
   }
 }

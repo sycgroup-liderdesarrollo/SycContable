@@ -88,7 +88,9 @@ export class CovenantModalsComponent implements OnInit {
       this.alertSuccess = true;
       this.form.reset();
       this.makeForm();
-      setTimeout(()=>{this.alertSuccess = false; this.modal.dismissAll()}, 3000);
+      this.isLoading = true;
+      setTimeout(() => {this.isLoading = false;}, 3000);
+      setTimeout(()=>{this.alertSuccess = false; this.modal.dismissAll()}, 4500);
       this.covenant_data_refresh.emit()
     })
   }
@@ -106,7 +108,6 @@ export class CovenantModalsComponent implements OnInit {
     const covenantImage = event.target.files[0]
     this.convertToBase64(covenantImage)
     this.changeImage = true;
-
   }
   convertToBase64(file:File){
     const observable = new Observable((suscriber:Subscriber<any>)=>{
