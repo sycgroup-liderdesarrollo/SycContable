@@ -59,11 +59,11 @@
       <img *ngIf="actualImage" [src]="actualImage" id="img-form">
     </div>
   </div>
-  <div class="alert alert-success" role="alert" *ngIf="alertSuccess">
-    El convenio ha sido {{messageAlert}}!
-  </div>
 </form>
-<div class="modal-footer">
+<div class="alert alert-success" role="alert" *ngIf="alertSuccess">
+  El convenio se esta {{messageAlert}}...
+</div>
+<div class="modal-footer" *ngIf="!isLoading">
   <button class="btn btn-danger" id="btn-exit" (click)="modal.dismissAll()">Cerrar</button>
   <button *ngIf="!isEdit" class="btn btn-danger" id="btn-add-modal" (click)="postCovenant(form.value)" [disabled]="form.invalid">Agregar</button>
   <button *ngIf="isEdit" class="btn btn-danger" id="btn-add-modal" (click)="putCovenant(form.value)" [disabled]="form.invalid">Actualizar</button>

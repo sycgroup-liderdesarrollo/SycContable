@@ -42,11 +42,11 @@ export class CovenantModalsComponent implements OnInit {
       this.isEdit       = true,
       this.modalTitle   = "Editar convenio",
       this.actualImage  = this.covenantData.image,
-      this.messageAlert = "actualizado"
+      this.messageAlert = "actualizando"
     }
     else{
       this.makeForm();
-      this.messageAlert = "creado"
+      this.messageAlert = "creando"
       this.modalTitle = "Agregar un convenio"
     }
   }
@@ -86,13 +86,12 @@ export class CovenantModalsComponent implements OnInit {
 
     this.serviceCovenant.postCovenant(formData).subscribe(resp =>{
       this.alertSuccess = true;
-      this.form.reset();
-      this.makeForm();
       this.isLoading = true;
-      setTimeout(() => {this.isLoading = false;}, 3000);
-      setTimeout(()=>{this.alertSuccess = false; this.modal.dismissAll()}, 4500);
+      setTimeout(() => { this.form.reset() }, 3000);
+      setTimeout(() =>{ this.modal.dismissAll(), this.makeForm() }, 6000);
       this.covenant_data_refresh.emit()
     })
+
   }
   putCovenant(formData:any){
 
@@ -100,7 +99,8 @@ export class CovenantModalsComponent implements OnInit {
 
     this.serviceCovenant.putCovenant(this.covenantData.id, formData).subscribe(resp =>{
       this.alertSuccess = true;
-      setTimeout(()=>{this.alertSuccess = false; this.modal.dismissAll()}, 3000);
+      this.isLoading = true;
+      setTimeout(() =>{ this.alertSuccess = false, this.modal.dismissAll() }, 6000);
       this.covenant_data_refresh.emit(this.changeImage)
     })
   }
@@ -119,9 +119,7 @@ export class CovenantModalsComponent implements OnInit {
   }
   readFile(file:File, suscriber:Subscriber<any>){
     const fileReader = new FileReader();
-
     fileReader.readAsDataURL(file)
-
     fileReader.onload = ()=>{
       suscriber.next(fileReader.result)
       suscriber.complete();
