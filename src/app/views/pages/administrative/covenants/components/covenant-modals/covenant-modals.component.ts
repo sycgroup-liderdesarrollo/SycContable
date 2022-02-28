@@ -30,6 +30,7 @@ export class CovenantModalsComponent implements OnInit {
   messageAlert:string = "";
   alertSuccess:boolean = false;
   isLoading:boolean = true;
+  changeImage:boolean = false;
 
   ngOnInit(): void {
     this.getCovenantTypes();
@@ -87,7 +88,7 @@ export class CovenantModalsComponent implements OnInit {
       this.alertSuccess = true;
       this.form.reset();
       this.makeForm();
-      setTimeout(()=>{this.alertSuccess = false;}, 3000);
+      setTimeout(()=>{this.alertSuccess = false; this.modal.dismissAll()}, 3000);
       this.covenant_data_refresh.emit()
     })
   }
@@ -97,13 +98,15 @@ export class CovenantModalsComponent implements OnInit {
 
     this.serviceCovenant.putCovenant(this.covenantData.id, formData).subscribe(resp =>{
       this.alertSuccess = true;
-      setTimeout(()=>{this.alertSuccess = false;}, 3000);
-      this.covenant_data_refresh.emit()
+      setTimeout(()=>{this.alertSuccess = false; this.modal.dismissAll()}, 3000);
+      this.covenant_data_refresh.emit(this.changeImage)
     })
   }
   cacthImage(event:any){
     const covenantImage = event.target.files[0]
     this.convertToBase64(covenantImage)
+    this.changeImage = true;
+
   }
   convertToBase64(file:File){
     const observable = new Observable((suscriber:Subscriber<any>)=>{

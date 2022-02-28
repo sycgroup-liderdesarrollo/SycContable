@@ -15,7 +15,7 @@ export class CovenantUsersTableComponent implements OnInit, OnChanges {
 
   isPermanent:boolean = false;
   isActive:boolean = true;
-
+  isEmpty:boolean;
   constructor(
     public modal:NgbModal,
   ) { }
@@ -27,6 +27,7 @@ export class CovenantUsersTableComponent implements OnInit, OnChanges {
     if (changes.covenant.currentValue) {
       this.covenant.covenantType.id == 2 ? this.isPermanent = true : this.isPermanent = false;
       this.covenant.active == 1 ? this.isActive = true : this.isActive = false;
+      this.covenant.users.length == 0 ? this.isEmpty = true : this.isEmpty = false;
     }
   }
 

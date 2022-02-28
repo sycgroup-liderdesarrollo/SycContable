@@ -47,7 +47,7 @@ export class AdminCovenantComponent implements OnChanges, OnInit {
     const modalRef = this.modal.open(CovenantModalsComponent);
     modalRef.componentInstance.covenantData = this.covenant;
     modalRef.componentInstance.covenant_data_refresh.subscribe(($e:any) => {
-      this.covenant_refresh.emit();
+      $e == true ? this.covenant_refresh.emit() : this.getCovenant(this.covenantId);
     })
   }
   openDeleteCovenantModal(){

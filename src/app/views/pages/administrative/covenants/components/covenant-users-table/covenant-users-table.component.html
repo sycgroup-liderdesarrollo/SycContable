@@ -27,6 +27,9 @@
           </tr>
         </tbody>
     </table>
+    <div class="alert alert-warning" role="alert" id="empty-alert" *ngIf="isEmpty">
+      <strong>Este convenio no tiene ningun empleado asociado</strong>
+    </div>
     </div>
   </form>
 </div>

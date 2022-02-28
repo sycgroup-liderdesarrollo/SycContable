@@ -15,7 +15,7 @@ export class InfoUserComponent implements OnInit {
 
   form!: FormGroup;
   user:any;
-  
+
   constructor(
     private router:Router,
     private serviceEmployees:ServiceEmployeesService,
@@ -30,12 +30,10 @@ export class InfoUserComponent implements OnInit {
       if(params.has("id")){
         this.serviceEmployees.getEmployee(userId).subscribe(res => {
           this.user = res.data
-          console.log(res);
-          
         })
       }
     })
-    
+
   }
 }
 

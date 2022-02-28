@@ -9,7 +9,7 @@ import { ServiceEmployeesService } from './services/service-employees.service';
   styleUrls: ['./employees.component.scss']
 })
 export class EmployeesComponent implements OnInit {
-  
+
 
   users:EmployeeInterface[];
   page = 1;
@@ -28,8 +28,6 @@ export class EmployeesComponent implements OnInit {
   getEmployees(){
     this.serviceEmployees.getEmployed().subscribe(res =>{
       this.users = res.data;
-     console.log(this.users);
-     
     })
   }
 
@@ -37,6 +35,6 @@ export class EmployeesComponent implements OnInit {
     this.router.navigate(["/administrative/info-user",userId])
   }
 
-  
+
 
 }

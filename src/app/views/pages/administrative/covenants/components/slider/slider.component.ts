@@ -1,4 +1,4 @@
-import { AfterContentChecked, Component, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { AfterContentChecked, Component, HostListener, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { SwiperOptions } from 'swiper';
 import { SwiperComponent } from 'swiper/angular';
 import SwiperCore, {Pagination} from 'swiper';
@@ -21,11 +21,21 @@ export class SliderComponent implements OnInit, AfterContentChecked {
 
   @ViewChild('swiper') swiper: SwiperComponent;
   covenants:any
+  bigSwiper:boolean;
+  smallSwiper:boolean;
+  size:number;
+  isEmpty:boolean
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event:any) {
+    this.size = event.target.innerWidth;
+    this.size > 1000 ? (this.bigSwiper = true, this.smallSwiper = false) : (this.bigSwiper = false, this.smallSwiper = true);
+  }
 
   config: SwiperOptions = {
     slidesPerView: 3,
     spaceBetween: 20,
-    pagination: true
+    pagination: true,
   }
 
   configSmall: SwiperOptions = {
@@ -44,7 +54,8 @@ export class SliderComponent implements OnInit, AfterContentChecked {
 
   ngOnInit(): void {
     this.getCovenants();
-
+    this.size = window.innerWidth;
+    this.size > 1000 ? (this.bigSwiper = true, this.smallSwiper = false) : (this.bigSwiper = false, this.smallSwiper = true);
   }
   ngAfterContentChecked(): void {
     if (this.swiper) {
@@ -61,7 +72,8 @@ export class SliderComponent implements OnInit, AfterContentChecked {
         return element.data;
       }),
     ).subscribe(resp =>{
-       this.covenants = resp;
+      this.covenants = resp;
+      this.covenants.length == 0 ? this.isEmpty = true : this.isEmpty = false;
     })
   }
   getValuesSlider(id:number){
@@ -71,13 +83,10 @@ export class SliderComponent implements OnInit, AfterContentChecked {
   openAddModal(){
     const modalRef = this.modal.open(CovenantModalsComponent);
     modalRef.componentInstance.covenant_data_refresh.subscribe(() => {
-      setTimeout(()=>{this.getCovenants()}, 500);})
+    setTimeout(()=>{this.getCovenants()}, 1000);})
   }
   refreshCovenant(){
-    console.log('entró');
-
     this.isactive = false;
-    setTimeout(()=>{this.getCovenants()}, 1500);
-
+    setTimeout(()=>{this.getCovenants()}, 500);
   }
 }

@@ -3,34 +3,41 @@
   <button class="btn btn-danger" id="btn-add" (click)="openAddModal()">+ Nuevo convenio</button>
 </div>
 <br>
-<!-- Slider grande -->
-<swiper #swiper [config]="config" class="d-md-block d-none">
+<div *ngIf="isEmpty">
+  <div class="alert alert-warning" role="alert" id="empty-alert">
+    <strong>No hay convenios creados por el momento</strong>
+  </div>
+</div>
+<div *ngIf="!isEmpty" >
+  <!-- Slider grande -->
+  <swiper #swiper [config]="config" *ngIf="bigSwiper">
 
-  <ng-template swiperSlide *ngFor="let covenant of covenants">
-    <button class="btn-card" (click)="getValuesSlider(covenant.id)">
-      <div class="card" style="margin-top: 15px;">
-        <img src="{{covenant.image}}" class="card-img-top">
-      </div>
-      <div class="card-body">
-        <h3 class="card-title"><strong>{{covenant.name}}</strong></h3>
-      </div>
-    </button>
-  </ng-template>
+    <ng-template swiperSlide *ngFor="let covenant of covenants">
+      <button class="btn-card" (click)="getValuesSlider(covenant.id)">
+        <div class="card" style="margin-top: 15px;">
+          <img src="{{covenant.image}}" class="card-img-top">
+        </div>
+        <div class="card-body">
+          <h3 class="card-title"><strong>{{covenant.name}}</strong></h3>
+        </div>
+      </button>
+    </ng-template>
 
-</swiper>
-<!-- Slider pequeño -->
-<swiper #swiper [config]="configSmall" class="d-block d-sm-none">
-  <ng-template swiperSlide *ngFor="let covenant of covenants">
-    <button class="btn-card" (click)="getValuesSlider(covenant.id)">
-      <div class="card" style="margin-top: 15px;">
-        <img src="{{covenant.image}}" class="card-img-top">
-      </div>
-      <div class="card-body">
-        <h3 class="card-title"><strong>{{covenant.name}}</strong></h3>
-      </div>
-    </button>
-  </ng-template>
-</swiper>
+  </swiper>
+  <!-- Slider pequeño -->
+  <swiper #swiper [config]="configSmall" *ngIf="smallSwiper">
+    <ng-template swiperSlide *ngFor="let covenant of covenants">
+      <button class="btn-card" (click)="getValuesSlider(covenant.id)">
+        <div class="card" style="margin-top: 15px;">
+          <img src="{{covenant.image}}" class="card-img-top">
+        </div>
+        <div class="card-body">
+          <h3 class="card-title"><strong>{{covenant.name}}</strong></h3>
+        </div>
+      </button>
+    </ng-template>
+  </swiper>
+</div>
 <br>
 <!-- Tarjetas -->
 <app-admin-covenant *ngIf="isactive" [covenantId]="covenantSlideId" (covenant_refresh)="refreshCovenant()"></app-admin-covenant>
