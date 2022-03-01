@@ -15,6 +15,11 @@ import { UserAssigCovenantModalComponent } from './covenants/components/user-ass
 import { ConfirmationModalComponent } from './covenants/components/confirmation-modal/confirmation-modal.component';
 import { InfoPayrollComponent } from '../payroll/components/info-payroll/info-payroll.component';
 
+import { PipefilterPipe } from './pipes/pipefilter.pipe';
+import { ModalAddEmployeesComponent } from './employees/modal-add-employees/modal-add-employees.component';
+// modulos material
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -28,6 +33,9 @@ import { InfoPayrollComponent } from '../payroll/components/info-payroll/info-pa
     UserAssigCovenantModalComponent,
     ConfirmationModalComponent,
     InfoPayrollComponent,
+    PipefilterPipe,
+    ModalAddEmployeesComponent,
+
   ],
   imports: [
     FormsModule,
@@ -40,6 +48,8 @@ import { InfoPayrollComponent } from '../payroll/components/info-payroll/info-pa
     FormsModule,
     ReactiveFormsModule,
     NgbNavModule,
+    MatDialogModule,
+    MatInputModule,
   ]
 })
 export class AdministrativeModule { }

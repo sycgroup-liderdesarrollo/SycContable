@@ -1,0 +1,28 @@
+<div id="modal-content">
+    <div class="modal-header">
+      <h4 class="ModalTitle" id="modal-basic-title">Agregar Usuario</h4>
+    </div>
+    
+    <div class="modal-body">
+        <form [formGroup]="form" >
+          
+                <div class="div-space-around">
+                    <div class="div-form-modal">
+                    <label id="userName">Nombre</label>
+                    <input class="form-control" type="text" name="name" id="" formControlName="name" autocomplete="off">
+                        <div *ngIf="form.get('name')?.hasError('required') && form.get('name')?.touched" style="color: rgb(172,29,33); font-weight: 100;">*El nombre es requerido</div>
+                    </div>
+                </div>
+                <div class="div-space-around">
+                    <div class="div-form-modal">
+                    <label id="userlastName">Apellido</label>
+                    <input class="form-control" type="text" name="last_name" id="" formControlName="last_name" autocomplete="off">
+                    <label *ngIf="form.get('last_name')?.hasError('required') && form.get('last_name')?.touched" style="color: rgb(172,29,33); font-weight: 100;">*El apellido es requerido</label>
+                    </div>
+                </div>
+        </form>
+    </div>
+
+</div>
+
+    

@@ -3,6 +3,7 @@ import { GenderInterfaces } from "./gender-interfaces";
 import { PositionInterfaces } from "./position-interfaces";
 
 export interface EmployeeInterface {
+    toLowerCase: any;
     id: number;
     name: string;
     last_name: string;
