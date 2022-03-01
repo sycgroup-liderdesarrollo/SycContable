@@ -38,7 +38,7 @@
               <label>Ingrese el valor de la cuota</label>
               <input type="number" class="input-group-text" formControlName="value">
             </form>
-            <div class="alert alert-success" role="alert" *ngIf="alertSuccess">
+            <div class="alert alert-{{alertType}}" role="alert" *ngIf="alertSuccess">
               {{message.data}}
             </div>
           </div>

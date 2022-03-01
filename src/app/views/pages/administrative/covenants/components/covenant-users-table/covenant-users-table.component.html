@@ -2,7 +2,7 @@
   <form>
     <div id="div-head-buttons">
       <h3 id="title-covenant">Empleados con convenio</h3>
-      <button class="btn btn-primary" id="btn-add" (click)="openModal()">+ Agregar usuario</button>
+      <button class="btn btn-primary" id="btn-add" (click)="openModal()" *ngIf="isActive">+ Agregar usuario</button>
     </div>
     <div class="div-table">
       <table class="table table-striped" style="margin-top: 30px;">
@@ -10,8 +10,8 @@
           <tr>
             <th class="table-title">Nombre</th>
             <th class="table-title">Cedula</th>
-            <th class="table-title">Deudas</th>
-            <th class="table-title">Deudas pagadas</th>
+            <th class="table-title" *ngIf="!isPermanent">Deudas</th>
+            <th class="table-title" *ngIf="!isPermanent">Deudas pagadas</th>
             <th class="table-title">Valor</th>
             <th class="table-title"></th>
           </tr>
@@ -20,13 +20,16 @@
           <tr  *ngFor="let user of covenant.users">
             <td class="table-body">{{user.name}}</td>
             <td class="table-body">{{user.identification_number}}</td>
-            <td class="table-body">{{user.pivot.dues}}</td>
-            <td class="table-body">{{user.pivot.paid_dues}}</td>
+            <td class="table-body" *ngIf="!isPermanent">{{user.pivot.dues}}</td>
+            <td class="table-body" *ngIf="!isPermanent">{{user.pivot.paid_dues}}</td>
             <td class="table-body">{{user.pivot.value}}</td>
             <td class="table-body"><button class="btn-delete"><img src="/assets/images/others/icon-trash.png" alt="" (click)="openDeleteModal(user)"></button></td>
           </tr>
         </tbody>
     </table>
+    <div class="alert alert-warning" role="alert" id="empty-alert" *ngIf="isEmpty">
+      <strong>Este convenio no tiene ningun empleado asociado</strong>
+    </div>
     </div>
   </form>
 </div>

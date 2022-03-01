@@ -1,6 +1,6 @@
 <div class="modal-header"><h1>{{modalTitle}}</h1></div>
 <div class="d-flex justify-content-center" *ngIf="isLoading">
-  <div class="spinner-border" role="status">
+  <div class="spinner-border" role="status" style="margin: 15px;">
     <span class="visually-hidden">Loading...</span>
   </div>
 </div>
@@ -44,17 +44,26 @@
         </select>
       </div>
     </div>
+    <div class="div-space-around" *ngIf="isEdit">
+      <div class="div-form-modal">
+        <label>Estado</label>
+        <select class="form-select" formControlName="active">
+          <option [value]="1">Activo</option>
+          <option [value]="0">Inactivo</option>
+        </select>
+      </div>
+    </div>
     <label>Cargar imagen de convenio</label>
     <div class="div-space-around">
       <input type="file" class="form-control" (change)="cacthImage($event)" formControlName="image">
       <img *ngIf="actualImage" [src]="actualImage" id="img-form">
     </div>
   </div>
-  <div class="alert alert-success" role="alert" *ngIf="alertSuccess">
-    El convenio ha sido {{messageAlert}}!
-  </div>
 </form>
-<div class="modal-footer">
+<div class="alert alert-success" role="alert" *ngIf="alertSuccess">
+  El convenio se esta {{messageAlert}}...
+</div>
+<div class="modal-footer" *ngIf="!isLoading">
   <button class="btn btn-danger" id="btn-exit" (click)="modal.dismissAll()">Cerrar</button>
   <button *ngIf="!isEdit" class="btn btn-danger" id="btn-add-modal" (click)="postCovenant(form.value)" [disabled]="form.invalid">Agregar</button>
   <button *ngIf="isEdit" class="btn btn-danger" id="btn-add-modal" (click)="putCovenant(form.value)" [disabled]="form.invalid">Actualizar</button>

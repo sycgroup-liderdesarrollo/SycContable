@@ -9,6 +9,7 @@ import {
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, filter, switchMap, take } from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
+import { LocalStorageService } from '../services/local-storage.service';
 
 @Injectable()
 export class RefreshTokenInterceptor implements HttpInterceptor {
@@ -16,7 +17,10 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
   refreshTokenInProgress = false;
   accessTokenSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    private localStorage : LocalStorageService
+    ) { }
   
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
@@ -28,6 +32,7 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
 
             return this.authService.refreshToken().pipe(
               switchMap(authResponse => {
+                this.localStorage.setToken(authResponse);
                 this.refreshTokenInProgress = false;
                 this.accessTokenSubject.next(authResponse.access_token);
                 request = request.clone({

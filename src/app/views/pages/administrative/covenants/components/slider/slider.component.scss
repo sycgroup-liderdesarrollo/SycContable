@@ -70,6 +70,12 @@ label{
   border-color: rgb(174,29,33);
   font-weight: 400;
 }
+#empty-alert{
+  display: block;
+  margin: auto;
+  width: 50%;
+  text-align: center;
+}
 
 @media (max-width: 450px) {
   .card-img-top{

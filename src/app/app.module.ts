@@ -13,8 +13,10 @@ import { ErrorPageComponent } from './views/pages/error-page/error-page.componen
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule, NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { ToastContainerComponent } from './views/layout/toast-container/toast-container.component';
+import { AddTokenInterceptor } from './core/interceptors/add-token.interceptor';
+import { RefreshTokenInterceptor } from './core/interceptors/refresh-token.interceptor';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,16 @@ import { ToastContainerComponent } from './views/layout/toast-container/toast-co
           scss: () => import('highlight.js/lib/languages/scss'),
         }
       }
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AddTokenInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RefreshTokenInterceptor,
+      multi: true
     }
   ],
   bootstrap: [AppComponent]

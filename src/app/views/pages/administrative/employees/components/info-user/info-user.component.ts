@@ -17,7 +17,7 @@ export class InfoUserComponent implements OnInit {
   form!: FormGroup;
   select:FormGroup;
   user:any;
-  
+
   constructor(
     private router:Router,
     private serviceEmployees:ServiceEmployeesService,

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, Subscriber } from 'rxjs';
@@ -18,6 +18,7 @@ export class CovenantModalsComponent implements OnInit {
   ) { }
 
   @Input() covenantData:any;
+  @Output() covenant_data_refresh = new EventEmitter();
 
   providers:any;
   form:FormGroup
@@ -29,6 +30,7 @@ export class CovenantModalsComponent implements OnInit {
   messageAlert:string = "";
   alertSuccess:boolean = false;
   isLoading:boolean = true;
+  changeImage:boolean = false;
 
   ngOnInit(): void {
     this.getCovenantTypes();
@@ -40,11 +42,11 @@ export class CovenantModalsComponent implements OnInit {
       this.isEdit       = true,
       this.modalTitle   = "Editar convenio",
       this.actualImage  = this.covenantData.image,
-      this.messageAlert = "actualizado"
+      this.messageAlert = "actualizando"
     }
     else{
       this.makeForm();
-      this.messageAlert = "creado"
+      this.messageAlert = "creando"
       this.modalTitle = "Agregar un convenio"
     }
   }
@@ -84,10 +86,12 @@ export class CovenantModalsComponent implements OnInit {
 
     this.serviceCovenant.postCovenant(formData).subscribe(resp =>{
       this.alertSuccess = true;
-      this.form.reset();
-      this.makeForm();
-      setTimeout(()=>{this.alertSuccess = false; window.location.reload();}, 3000);
+      this.isLoading = true;
+      setTimeout(() => { this.form.reset() }, 3000);
+      setTimeout(() =>{ this.modal.dismissAll(), this.makeForm() }, 6000);
+      this.covenant_data_refresh.emit()
     })
+
   }
   putCovenant(formData:any){
 
@@ -95,12 +99,15 @@ export class CovenantModalsComponent implements OnInit {
 
     this.serviceCovenant.putCovenant(this.covenantData.id, formData).subscribe(resp =>{
       this.alertSuccess = true;
-      setTimeout(()=>{this.alertSuccess = false; window.location.reload();}, 3000);
+      this.isLoading = true;
+      setTimeout(() =>{ this.alertSuccess = false, this.modal.dismissAll() }, 6000);
+      this.covenant_data_refresh.emit(this.changeImage)
     })
   }
   cacthImage(event:any){
     const covenantImage = event.target.files[0]
     this.convertToBase64(covenantImage)
+    this.changeImage = true;
   }
   convertToBase64(file:File){
     const observable = new Observable((suscriber:Subscriber<any>)=>{
@@ -112,9 +119,7 @@ export class CovenantModalsComponent implements OnInit {
   }
   readFile(file:File, suscriber:Subscriber<any>){
     const fileReader = new FileReader();
-
     fileReader.readAsDataURL(file)
-
     fileReader.onload = ()=>{
       suscriber.next(fileReader.result)
       suscriber.complete();
