@@ -9,9 +9,9 @@
             <span class="input-group-text" id="basic-addon1" style="background-color:#c3c3c3; color: black;" >
               <i class="bi bi-search"></i>
             </span>
-            <input  type="text" class="form-control" style="background-color: #c3c3c3;" placeholder="EJ:Victor">
+            <input  type="text" class="form-control" name="filterUsers"  style="background-color: #c3c3c3;" placeholder="EJ:Victor" [(ngModel)]="filterUsers" (keyup)="search">
           </div>
-        <button type="button" class="btn col-2" style="background-color: #aa1b1b;"><b><i class="bi bi-plus-lg"></i>NUEVO INGRESO</b></button>
+        <button type="button" class="btn col-2" style="background-color: #aa1b1b;" (click)="open()"><b><i class="bi bi-plus-lg"></i>NUEVO INGRESO</b></button>
     </div>
 
     
@@ -28,7 +28,7 @@
                 </tr>
             </thead>
             <tbody >
-                <tr *ngFor="let user of users">
+                <tr *ngFor="let user of users | pipefilter:filterUsers">
                     <th class="dates_header" scope="row">{{user.id}}</th>
                     <td class="dates_body">{{user.identification_number}}</td>
                     <td class="dates_body">{{user.name}} {{user.last_name}}</td>

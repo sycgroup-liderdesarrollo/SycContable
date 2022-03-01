@@ -13,7 +13,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CovenantModalsComponent } from './covenants/components/covenant-modals/covenant-modals.component';
 import { UserAssigCovenantModalComponent } from './covenants/components/user-assig-covenant-modal/user-assig-covenant-modal.component';
 import { ConfirmationModalComponent } from './covenants/components/confirmation-modal/confirmation-modal.component';
-
+import { PipefilterPipe } from './pipes/pipefilter.pipe';
+import { ModalAddEmployeesComponent } from './employees/modal-add-employees/modal-add-employees.component';
+// modulos material
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -26,6 +30,9 @@ import { ConfirmationModalComponent } from './covenants/components/confirmation-
     CovenantModalsComponent,
     UserAssigCovenantModalComponent,
     ConfirmationModalComponent,
+    PipefilterPipe,
+    ModalAddEmployeesComponent,
+    
   ],
   imports: [
     FormsModule,
@@ -38,6 +45,8 @@ import { ConfirmationModalComponent } from './covenants/components/confirmation-
     FormsModule,
     ReactiveFormsModule,
     NgbNavModule,
+    MatDialogModule,
+    MatInputModule,
   ]
 })
 export class AdministrativeModule { }
