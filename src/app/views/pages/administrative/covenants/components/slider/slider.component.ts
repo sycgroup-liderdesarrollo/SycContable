@@ -7,6 +7,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { CovenantModalsComponent } from '../covenant-modals/covenant-modals.component';
+import { CovenantInterface } from '../../../interfaces/covenants-interface';
 
 SwiperCore.use([Pagination]);
 
@@ -20,7 +21,7 @@ SwiperCore.use([Pagination]);
 export class SliderComponent implements OnInit, AfterContentChecked {
 
   @ViewChild('swiper') swiper: SwiperComponent;
-  covenants:any
+  covenants:CovenantInterface[];
   bigSwiper:boolean;
   smallSwiper:boolean;
   size:number;

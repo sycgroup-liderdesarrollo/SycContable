@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CovenantModalsComponent } from './covenants/components/covenant-modals/covenant-modals.component';
 import { UserAssigCovenantModalComponent } from './covenants/components/user-assig-covenant-modal/user-assig-covenant-modal.component';
 import { ConfirmationModalComponent } from './covenants/components/confirmation-modal/confirmation-modal.component';
+import { InfoPayrollComponent } from '../payroll/components/info-payroll/info-payroll.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { ConfirmationModalComponent } from './covenants/components/confirmation-
     CovenantModalsComponent,
     UserAssigCovenantModalComponent,
     ConfirmationModalComponent,
+    InfoPayrollComponent,
   ],
   imports: [
     FormsModule,

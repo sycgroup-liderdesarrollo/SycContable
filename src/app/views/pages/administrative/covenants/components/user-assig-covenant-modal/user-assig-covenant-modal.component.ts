@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ServiceEmployeesService } from '../../../employees/services/service-employees.service';
+import { EmployeeInterface } from '../../../interfaces/employee-interface';
 
 @Component({
   selector: 'app-user-assig-covenant-modal',
@@ -13,7 +14,7 @@ export class UserAssigCovenantModalComponent implements OnInit {
   @Input() covenantData:any;
   @Output() user_covenant = new EventEmitter();
 
-  employees:any;
+  employees:EmployeeInterface[];
   form:FormGroup;
   user_id:number;
   isSelected:boolean = false;

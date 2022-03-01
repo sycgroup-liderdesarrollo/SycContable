@@ -2,6 +2,10 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, Subscriber } from 'rxjs';
+import { CovenantTypeInterface } from '../../../interfaces/covenant-type-interface';
+import { CovenantInterface } from '../../../interfaces/covenants-interface';
+import { PeriodicityTypeInterface } from '../../../interfaces/periodicity-type-interface';
+import { ProviderInterface } from '../../../interfaces/provider-interface';
 import { CovenantsService } from '../../services/covenants.service';
 
 @Component({
@@ -17,14 +21,14 @@ export class CovenantModalsComponent implements OnInit {
     public modal:NgbModal,
   ) { }
 
-  @Input() covenantData:any;
+  @Input() covenantData:CovenantInterface;
   @Output() covenant_data_refresh = new EventEmitter();
 
-  providers:any;
+  providers:ProviderInterface[];
   form:FormGroup
   actualImage:any;
-  covenantTypes:any;
-  periodicityTypes:any;
+  covenantTypes:CovenantTypeInterface[];
+  periodicityTypes:PeriodicityTypeInterface[];
   modalTitle:string="";
   isEdit:boolean = false;
   messageAlert:string = "";
@@ -67,17 +71,17 @@ export class CovenantModalsComponent implements OnInit {
 
   getCovenantTypes(){
     this.serviceCovenant.getCovenantTypes().subscribe(resp =>{
-      this.covenantTypes = resp.data;
+      this.covenantTypes = resp;
     })
   }
   getPeriodicityTypes(){
     this.serviceCovenant.getPeriodicityTypes().subscribe(resp =>{
-      this.periodicityTypes = resp.data;
+      this.periodicityTypes = resp;
     })
   }
   getProviders(){
     this.serviceCovenant.getProviders().subscribe(resp =>{
-      this.providers = resp.data;
+      this.providers = resp;
     })
   }
   postCovenant(formData:any){

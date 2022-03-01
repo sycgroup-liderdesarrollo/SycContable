@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { CovenantModalsComponent } from '../covenant-modals/covenant-modals.component';
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
+import { CovenantInterface } from '../../../interfaces/covenants-interface';
 
 @Component({
   selector: 'app-admin-covenant',
@@ -17,7 +18,7 @@ export class AdminCovenantComponent implements OnChanges, OnInit {
   @Input() covenantId:number;
   @Output() covenant_refresh = new EventEmitter();
 
-  covenant:any
+  covenant:CovenantInterface;
   alertSuccess:boolean = false;
 
   constructor(

@@ -39,5 +39,7 @@ export interface EmployeeInterface {
     gender:GenderInterfaces;
     position:PositionInterfaces;
     business_line:BusinessLineInterfaces;
+    pivot: any,
+    length: number,
 }
 

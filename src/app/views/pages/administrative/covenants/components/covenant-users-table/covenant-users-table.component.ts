@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, OnInit, Output, SimpleChanges, EventEmitter } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CovenantInterface } from '../../../interfaces/covenants-interface';
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
 import { UserAssigCovenantModalComponent } from '../user-assig-covenant-modal/user-assig-covenant-modal.component';
 
@@ -10,7 +11,7 @@ import { UserAssigCovenantModalComponent } from '../user-assig-covenant-modal/us
 })
 export class CovenantUsersTableComponent implements OnInit, OnChanges {
 
-  @Input() covenant:any;
+  @Input() covenant:CovenantInterface;
   @Output() covenantId = new EventEmitter<number>();
 
   isPermanent:boolean = false;

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ServiceEmployeesService } from '../../../employees/services/service-employees.service';
+import { EmployeeInterface } from '../../../interfaces/employee-interface';
 import { CovenantsService } from '../../services/covenants.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { CovenantsService } from '../../services/covenants.service';
 export class ConfirmationModalComponent implements OnInit {
 
   @Input() covenant_id:number
-  @Input() user_data:any;
+  @Input() user_data:EmployeeInterface;
 
   @Output() change_covenant = new EventEmitter();
 
