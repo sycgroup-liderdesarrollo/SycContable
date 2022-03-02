@@ -1,0 +1,65 @@
+.spacen-around{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#form-concept{
+  width: 15rem;
+  margin-bottom: 20px;
+}
+label{
+  font-weight: 700;
+  color: rgb(125, 125, 125);
+}
+.concept-btn{
+  background-color: transparent;
+  border-color: transparent;
+  width: 12rem;
+  height: 3rem;
+  text-align: start;
+  border-radius: 5px;
+}
+.concept-btn:hover{
+  background-color: rgb(226, 226, 226);
+}
+#sub-text{
+  color: rgb(123, 123, 123);
+}
+.div-concepts{
+  overflow: scroll;
+  height: 10rem;
+  width: 15rem;
+}
+.div-concepts::-webkit-scrollbar {
+  background-color: #fff;
+  width: 16px;
+}
+.div-concepts::-webkit-scrollbar-thumb {
+  background-color: rgb(219, 126, 129);
+  border-radius: 16px;
+  border: 4px solid #fff;
+}
+#input-concept-name{
+  width: 100%;
+  margin-bottom: 15px;
+  border-collapse: 0px;
+  background-image: url('/assets/images/others/icon-search.png');
+  background-position: 6px 6px;
+  background-repeat: no-repeat;
+  background-color: rgb(250, 250, 250);
+  padding-left: 40px;
+
+}
+.select-btn{
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  border-color: transparent;
+  border-radius: 5px;
+}
+.space-between{
+  display: flex;
+  justify-content: flex-start
+}

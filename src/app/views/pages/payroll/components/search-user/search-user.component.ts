@@ -48,4 +48,12 @@ export class SearchUserComponent implements OnInit {
       }
     })
   }
+  refreshPayroll(user_id:number){
+
+    this.servicePayroll.getUserPayroll(user_id).subscribe(resp => {
+      this.payroll_data = resp.data
+      console.log(this.payroll_data);
+
+    })
+  }
 }

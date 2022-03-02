@@ -27,4 +27,4 @@
 <div class="alert alert-warning" role="alert" *ngIf="isEmpty" style="width: 70%; margin: auto; display: block; text-align: center; margin-bottom: 15px; margin-top: 15px;">
   <strong>Este usuario {{employee_name}} no tiene una nomina disponible actualmente</strong>
 </div>
-<app-info-payroll [payroll_data]="payroll_data" *ngIf="isSelected"></app-info-payroll>
+<app-info-payroll [payroll_data]="payroll_data" *ngIf="isSelected" (refresh_payroll)="refreshPayroll($event)"></app-info-payroll>

@@ -71,17 +71,17 @@ export class CovenantModalsComponent implements OnInit {
 
   getCovenantTypes(){
     this.serviceCovenant.getCovenantTypes().subscribe(resp =>{
-      this.covenantTypes = resp;
+      this.covenantTypes = resp.data;
     })
   }
   getPeriodicityTypes(){
     this.serviceCovenant.getPeriodicityTypes().subscribe(resp =>{
-      this.periodicityTypes = resp;
+      this.periodicityTypes = resp.data;
     })
   }
   getProviders(){
     this.serviceCovenant.getProviders().subscribe(resp =>{
-      this.providers = resp;
+      this.providers = resp.data;
     })
   }
   postCovenant(formData:any){
@@ -95,7 +95,6 @@ export class CovenantModalsComponent implements OnInit {
       setTimeout(() =>{ this.modal.dismissAll(), this.makeForm() }, 6000);
       this.covenant_data_refresh.emit()
     })
-
   }
   putCovenant(formData:any){
 
