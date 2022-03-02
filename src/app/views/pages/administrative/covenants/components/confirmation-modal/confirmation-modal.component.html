@@ -5,8 +5,9 @@
   <div class="div-center">
     <div *ngIf="!alertSuccess" >
       <button class="btn btn-delete" (click)="modal.dismissAll()">Cancelar</button>
-      <button class="btn btn-primary" (click)="deleteCovenant()" *ngIf="!isUser">Eliminar</button>
+      <button class="btn btn-primary" (click)="deleteCovenant()" *ngIf="isCovenant">Eliminar</button>
       <button class="btn btn-primary" (click)="deleteUser()" *ngIf="isUser">Eliminar</button>
+      <button class="btn btn-primary" (click)="deleteConcept()" *ngIf="isConcept">Eliminaddr</button>
     </div>
     <div class="alert alert-success" role="alert" *ngIf="alertSuccess">
       Se ha eliminado!

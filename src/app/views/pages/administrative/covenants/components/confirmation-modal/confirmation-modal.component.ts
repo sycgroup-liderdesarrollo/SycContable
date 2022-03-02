@@ -13,11 +13,15 @@ export class ConfirmationModalComponent implements OnInit {
 
   @Input() covenant_id:number
   @Input() user_data:EmployeeInterface;
+  @Input() concept_pivot_id:number;
+  @Input() payroll_id:number;
 
   @Output() change_covenant = new EventEmitter();
 
   alertSuccess:boolean = false;
-  isUser:boolean=false;
+  isUser:boolean = false;
+  isCovenant:boolean = false;
+  isConcept:boolean = false;
 
   constructor(
     public modal:NgbModal,
@@ -26,11 +30,12 @@ export class ConfirmationModalComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.user_data ? this.isUser = true : 0;
+    this.user_data ? this.isUser = true : this.isUser = false;
+    this.concept_pivot_id ? this.isConcept = true : this.isConcept = false;
+    this.covenant_id ? this.isCovenant = true : this.isCovenant = false;
   }
 
   deleteCovenant(){
-
     this.serviceCovenant.deleteCovenant(this.covenant_id).subscribe(resp =>{
       this.alertSuccess = true;
       setTimeout(()=>{this.alertSuccess = false; this.modal.dismissAll()}, 3000);
@@ -44,5 +49,8 @@ export class ConfirmationModalComponent implements OnInit {
       setTimeout(()=>{this.alertSuccess = false; this.modal.dismissAll()}, 3000);
       this.change_covenant.emit(this.user_data.pivot.covenant_id);
     })
+  }
+  deleteConcept(){
+    
   }
 }

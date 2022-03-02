@@ -41,6 +41,10 @@
   flex-direction: column;
   align-items: center;
 }
+.btn-table{
+  background-color: transparent;
+  border-color: transparent;
+}
 @media (max-width: 600px) {
   .space-between{
     display: flex;

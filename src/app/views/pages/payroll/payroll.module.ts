@@ -13,7 +13,7 @@ import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
   declarations: [
     SearchUserComponent,
     InfoPayrollComponent,
-    AddConceptModalComponent
+    AddConceptModalComponent,
   ],
   imports: [
     CommonModule,

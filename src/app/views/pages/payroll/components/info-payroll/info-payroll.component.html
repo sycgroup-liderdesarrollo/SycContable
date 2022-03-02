@@ -7,6 +7,7 @@
         <br>
         <span id="period-text"><strong>ID # </strong><strong id="sub-text">{{payroll_data.id}}</strong></span>
       </div>
+      <br>
       <!-- Tabla de devengados -->
       <div class="div-content">
         <div style="margin-top: 15px; margin-bottom: 20px;" class="space-between">
@@ -31,7 +32,7 @@
                 <td *ngIf="concept.concept_type_id == 1" class="table-body">{{concept.pivot.count}}</td>
                 <td *ngIf="concept.concept_type_id == 1" class="table-body">{{concept.pivot.unit_value}}</td>
                 <td *ngIf="concept.concept_type_id == 1" class="table-body">{{concept.pivot.total_value}}</td>
-                <td *ngIf="concept.concept_type_id == 1" class="table-body"><button>a</button></td>
+                <td *ngIf="concept.concept_type_id == 1" class="table-body"><button class="btn-table" (click)="openDeleteModal(concept)" ><img src="/assets/images/others/icon-trash.png" alt=""></button></td>
               </tr>
             </tbody>
           </table>
@@ -68,7 +69,7 @@
                 <td *ngIf="concept.concept_type_id == 2" class="table-body">{{concept.pivot.count}}</td>
                 <td *ngIf="concept.concept_type_id == 2" class="table-body">{{concept.pivot.unit_value}}</td>
                 <td *ngIf="concept.concept_type_id == 2" class="table-body">{{concept.pivot.total_value}}</td>
-                <td *ngIf="concept.concept_type_id == 2" class="table-body"><button>a</button></td>
+                <td *ngIf="concept.concept_type_id == 2" class="table-body"><button class="btn-table" (click)="openDeleteModal(concept)"><img src="/assets/images/others/icon-trash.png" alt=""></button></td>
               </tr>
             </tbody>
           </table>

@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, OnInit, Output, SimpleChanges, EventEmitter } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ConfirmationModalComponent } from '../../../administrative/covenants/components/confirmation-modal/confirmation-modal.component';
 import { AddConceptModalComponent } from '../add-concept-modal/add-concept-modal.component';
 
 @Component({
@@ -68,5 +69,12 @@ export class InfoPayrollComponent implements OnInit, OnChanges {
     modalRef.componentInstance.payroll_refresh.subscribe(()=>{
       this.refresh_payroll.emit(this.payroll_data.user.id);
     })
+  }
+  openDeleteModal(concept_data:any){
+    console.log(concept_data);
+    console.log('id nomina', this.payroll_data.id);
+    const modalRef = this.modal.open(ConfirmationModalComponent)
+    modalRef.componentInstance.concept_pivot_id = concept_data.pivot.id
+    modalRef.componentInstance.payroll_id = this.payroll_data.id
   }
 }
