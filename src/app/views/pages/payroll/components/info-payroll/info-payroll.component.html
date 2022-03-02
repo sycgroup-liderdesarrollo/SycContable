@@ -1,1 +1,102 @@
-<p>info-payroll works!</p>
+<div class="principal-div" >
+  <div class="card" id="principal-card" >
+    <div class="card-body">
+      <div>
+        <h3 id="date-text"><strong>Fecha: </strong> <strong id="sub-text"> {{payroll_data.created_at | date:"mediumDate" }}</strong></h3>
+        <span id="period-text"><strong>Periodo: </strong><strong id="sub-text">{{payroll_data.period.id}}</strong></span>
+        <br>
+        <span id="period-text"><strong>ID # </strong><strong id="sub-text">{{payroll_data.id}}</strong></span>
+      </div>
+      <!-- Tabla de devengados -->
+      <div class="div-content">
+        <div style="margin-top: 15px; margin-bottom: 20px;" class="space-between">
+          <label id="sub-text"><strong>Devengados</strong></label>
+          <button class="btn btn-primary"><strong>+ Agregar</strong></button>
+        </div>
+        <div class="div-table">
+          <table class="table table-striped" style="margin-top: 30px;">
+            <thead>
+              <tr>
+                <th class="table-title">Id</th>
+                <th class="table-title">Concepto</th>
+                <th class="table-title">Cantidad</th>
+                <th class="table-title">Valor unitario</th>
+                <th class="table-title">Total</th>
+              </tr>
+            </thead>
+            <tbody *ngIf="!isEmpty">
+              <tr *ngFor="let concept of payroll_data.concepts">
+                <td *ngIf="concept.concept_type_id == 1" class="table-body">{{concept.id}}</td>
+                <td *ngIf="concept.concept_type_id == 1" class="table-body">{{concept.name}}</td>
+                <td *ngIf="concept.concept_type_id == 1" class="table-body">{{concept.pivot.count}}</td>
+                <td *ngIf="concept.concept_type_id == 1" class="table-body">{{concept.pivot.unit_value}}</td>
+                <td *ngIf="concept.concept_type_id == 1" class="table-body">{{concept.pivot.total_value}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="alert alert-warning" role="alert" *ngIf="isEmpty" style="width: 100%; text-align: center; margin-bottom: 15px; margin-top: 15px;">
+            <strong>Este usuario conceptos cargados</strong>
+          </div>
+      </div>
+      <div style="display: flex; justify-content: flex-start;">
+        <h4><img src="/assets/images/others/icon-alta.png" alt=""><strong> Total devengados: {{totalAccrued}}</strong> </h4>
+      </div>
+      </div>
+      <!-- Tabla de deducciones -->
+      <div class="div-content">
+        <div style="margin-top: 15px; margin-bottom: 20px;" class="space-between">
+          <label id="sub-text"><strong>Deducciones</strong></label>
+          <button class="btn btn-primary"><strong>+ Agregar</strong></button>
+        </div>
+        <div class="div-table">
+          <table class="table table-striped" style="margin-top: 30px;">
+            <thead>
+              <tr>
+                <th class="table-title">Id</th>
+                <th class="table-title">Concepto</th>
+                <th class="table-title">Cantidad</th>
+                <th class="table-title">Valor unitario</th>
+                <th class="table-title">Total</th>
+              </tr>
+            </thead>
+            <tbody *ngIf="!isEmpty">
+              <tr *ngFor="let concept of payroll_data.concepts">
+                <td *ngIf="concept.concept_type_id == 2" class="table-body">{{concept.id}}</td>
+                <td *ngIf="concept.concept_type_id == 2" class="table-body">{{concept.name}}</td>
+                <td *ngIf="concept.concept_type_id == 2" class="table-body">{{concept.pivot.count}}</td>
+                <td *ngIf="concept.concept_type_id == 2" class="table-body">{{concept.pivot.unit_value}}</td>
+                <td *ngIf="concept.concept_type_id == 2" class="table-body">{{concept.pivot.total_value}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="alert alert-warning" role="alert" *ngIf="isEmpty" style="width: 100%; text-align: center; margin-bottom: 15px; margin-top: 15px;">
+            <strong>Este usuario conceptos cargados</strong>
+          </div>
+      </div>
+      <div style="display: flex; justify-content: flex-start;">
+        <h4><img src="/assets/images/others/icon-baja.png" alt=""><strong> Total deducidos: {{totalDeducted}}</strong> </h4>
+      </div>
+      </div>
+      <div class="div-content">
+        <br>
+        <div class="space-between">
+          <h4><img src="/assets/images/others/icon-paid.png" alt=""><strong> Total a pagar: {{totalPaid}}</strong> </h4>
+          <button type="button" class="btn btn-outline-success">Descargar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carta de empleado -->
+  <div class="card" id="user-card">
+    <div class="card-body">
+      <div class="porfile">
+        <h3><strong>{{payroll_data.user.name}} {{payroll_data.user.last_name}}</strong></h3>
+        <img width="80px" height="80px" style="border-radius: 40px;" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt="">
+        <br>
+        <span><strong>C.C: </strong>{{payroll_data.user.identification_number}}</span> <span> <strong>email: </strong>{{payroll_data.user.email}}</span>
+      </div>
+    </div>
+  </div>
+
+</div>

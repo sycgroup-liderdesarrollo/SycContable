@@ -1,0 +1,83 @@
+#principal-card{
+  width: 65%;
+  height: 100%;
+  border-radius: 15px;
+}
+.principal-div{
+  justify-content: space-between;
+  display: flex;
+  height: auto;
+}
+#user-card{
+  width: 33%;
+  height: 100%;
+  border-radius: 15px;
+}
+.space-between{
+  justify-content: space-between;
+  display: flex;
+}
+#date-text{
+  font-size: larger;
+}
+#period-text{
+  font-size: medium;
+}
+#sub-text{
+  color: rgb(123, 123, 123);
+  font-size: large;
+}
+.div-table{
+  height: 20rem;
+}
+.div-content{
+  border-top: 1px dashed rgba(123, 123, 123, 0.57);
+}
+.table-body{
+  font-weight: 500;
+}
+.porfile{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media (max-width: 600px) {
+  .space-between{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #principal-card{
+    width: 100%;
+  }
+  .principal-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+  }
+  #user-card{
+    margin-top: 10px;
+    width: 100%;
+  }
+}
+@media (max-width: 1400px) {
+  .div-table{
+    overflow: scroll;
+  }
+  .div-table::-webkit-scrollbar {
+    background-color: #fff;
+    width: 16px;
+  }
+  .div-table::-webkit-scrollbar-track {
+    background-color: #fff;
+  }
+  .div-table::-webkit-scrollbar-thumb {
+    background-color: rgb(219, 126, 129);
+    border-radius: 16px;
+    border: 4px solid #fff;
+  }
+  .div-table::-webkit-scrollbar-button {
+    display: none;
+  }
+}

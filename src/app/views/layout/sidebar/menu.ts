@@ -45,7 +45,7 @@ export const MENU: MenuItem[] = [
   {
     label: 'Cargar Conceptos',
     icon: 'credit-card',
-    link: '/'
+    link: '/payroll/info-payrolls'
   },
   {
     label: 'Deducciones por Convenios',
