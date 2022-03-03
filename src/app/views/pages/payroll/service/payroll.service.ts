@@ -32,6 +32,6 @@ export class PayrollService {
     return this.http.post<any>(`${environment.API_Url}addConcept/`+payroll_id, formData);
   }
   deleteConcept(payroll_id:number, concept_pivot_id:number){
-    return this.http.get<JsonResponseInterfaces<ConceptInterface[]>>(`${environment.API_Url}deleteConcept/`+payroll_id, {params: {'conceptPivotId': concept_pivot_id}});
+    return this.http.delete<JsonResponseInterfaces<ConceptInterface[]>>(`${environment.API_Url}deleteConcept/`+payroll_id, {params: {'conceptPivotId': concept_pivot_id}});
   }
 }

@@ -12,14 +12,14 @@ export class SearchUserComponent implements OnInit {
 
   constructor(
     private serviceUser: ServiceEmployeesService,
-    private servicePayroll: PayrollService
+    private servicePayroll: PayrollService,
   ) { }
-
   employees:EmployeeInterface[];
   payroll_data:any;
   isSelected:boolean = false;
   isEmpty:boolean = false;
   employee_name:string;
+
 
   ngOnInit(): void {
     this.getEmployees()
@@ -49,11 +49,8 @@ export class SearchUserComponent implements OnInit {
     })
   }
   refreshPayroll(user_id:number){
-
     this.servicePayroll.getUserPayroll(user_id).subscribe(resp => {
       this.payroll_data = resp.data
-      console.log(this.payroll_data);
-
     })
   }
 }

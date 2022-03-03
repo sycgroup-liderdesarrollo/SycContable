@@ -11,11 +11,11 @@
       <!-- Tabla de devengados -->
       <div class="div-content">
         <div style="margin-top: 15px; margin-bottom: 20px;" class="space-between">
-          <label id="sub-text"><strong>Devengados</strong></label>
+          <h3><strong>Devengados</strong></h3>
           <button class="btn btn-primary" (click)="openAddAccruedModal()"><strong>+ Agregar</strong></button>
         </div>
         <div class="div-table">
-          <table class="table table-striped" style="margin-top: 30px;">
+          <table class="table table-hover" style="margin-top: 30px;">
             <thead>
               <tr>
                 <th class="table-title">Id</th>
@@ -30,28 +30,30 @@
                 <td *ngIf="concept.concept_type_id == 1" class="table-body">{{concept.id}}</td>
                 <td *ngIf="concept.concept_type_id == 1" class="table-body">{{concept.name}}</td>
                 <td *ngIf="concept.concept_type_id == 1" class="table-body">{{concept.pivot.count}}</td>
-                <td *ngIf="concept.concept_type_id == 1" class="table-body">{{concept.pivot.unit_value}}</td>
-                <td *ngIf="concept.concept_type_id == 1" class="table-body">{{concept.pivot.total_value}}</td>
+                <td *ngIf="concept.concept_type_id == 1" class="table-body">{{concept.pivot.unit_value | currency: ' ' }}</td>
+                <td *ngIf="concept.concept_type_id == 1" class="table-body">{{concept.pivot.total_value | currency: ' ' }}</td>
                 <td *ngIf="concept.concept_type_id == 1" class="table-body"><button class="btn-table" (click)="openDeleteModal(concept)" ><img src="/assets/images/others/icon-trash.png" alt=""></button></td>
               </tr>
             </tbody>
           </table>
-          <div class="alert alert-warning" role="alert" *ngIf="isEmpty" style="width: 100%; text-align: center; margin-bottom: 15px; margin-top: 15px;">
+          <div class="alert alert-warning" role="alert" *ngIf="isEmpty" id="warning-alert">
             <strong>Este usuario no tiene conceptos cargados</strong>
           </div>
       </div>
+      <br>
       <div style="display: flex; justify-content: flex-start;">
-        <h4><img src="/assets/images/others/icon-alta.png" alt=""><strong> Total devengados: {{totalAccrued}}</strong> </h4>
+        <h4><img src="/assets/images/others/icon-alta.png" alt=""><strong> Total devengados: {{totalAccrued | currency: ' ' }}<strong id="COP"> COP</strong></strong> </h4>
       </div>
       </div>
+      <br>
       <!-- Tabla de deducciones -->
       <div class="div-content">
         <div style="margin-top: 15px; margin-bottom: 20px;" class="space-between">
-          <label id="sub-text"><strong>Deducciones</strong></label>
+          <h3><strong>Deducciones</strong></h3>
           <button class="btn btn-primary" (click)="openAddDeductionModal()"><strong>+ Agregar</strong></button>
         </div>
         <div class="div-table">
-          <table class="table table-striped" style="margin-top: 30px;">
+          <table class="table table-hover" style="margin-top: 30px;">
             <thead>
               <tr>
                 <th class="table-title">Id</th>
@@ -67,30 +69,31 @@
                 <td *ngIf="concept.concept_type_id == 2" class="table-body">{{concept.id}}</td>
                 <td *ngIf="concept.concept_type_id == 2" class="table-body">{{concept.name}}</td>
                 <td *ngIf="concept.concept_type_id == 2" class="table-body">{{concept.pivot.count}}</td>
-                <td *ngIf="concept.concept_type_id == 2" class="table-body">{{concept.pivot.unit_value}}</td>
-                <td *ngIf="concept.concept_type_id == 2" class="table-body">{{concept.pivot.total_value}}</td>
+                <td *ngIf="concept.concept_type_id == 2" class="table-body">{{concept.pivot.unit_value | currency: ' ' }}</td>
+                <td *ngIf="concept.concept_type_id == 2" class="table-body">{{concept.pivot.total_value | currency: ' ' }}</td>
                 <td *ngIf="concept.concept_type_id == 2" class="table-body"><button class="btn-table" (click)="openDeleteModal(concept)"><img src="/assets/images/others/icon-trash.png" alt=""></button></td>
               </tr>
             </tbody>
           </table>
-          <div class="alert alert-warning" role="alert" *ngIf="isEmpty" style="width: 100%; text-align: center; margin-bottom: 15px; margin-top: 15px;">
+          <div class="alert alert-warning" role="alert" *ngIf="isEmpty" id="warning-alert">
             <strong>Este usuario no tiene conceptos cargados</strong>
           </div>
       </div>
+      <br>
       <div style="display: flex; justify-content: flex-start;">
-        <h4><img src="/assets/images/others/icon-baja.png" alt=""><strong> Total deducidos: {{totalDeducted}}</strong> </h4>
+        <h4><img src="/assets/images/others/icon-baja.png" alt=""><strong> Total deducidos: {{totalDeducted | currency: ' '}}<strong id="COP"> COP</strong></strong> </h4>
       </div>
       </div>
+      <br>
       <div class="div-content">
         <br>
         <div class="space-between">
-          <h4><img src="/assets/images/others/icon-paid.png" alt=""><strong> Total a pagar: {{totalPaid}}</strong> </h4>
-          <button type="button" class="btn btn-outline-success">Descargar</button>
+          <h4><img src="/assets/images/others/icon-paid.png" alt=""><strong> Total a pagar: {{totalPaid | currency: ' '}}<strong id="COP"> COP</strong></strong> </h4>
+          <button type="button" class="btn btn-outline-success" (click)="print()">Imprimir</button>
         </div>
       </div>
     </div>
   </div>
-
   <!-- Carta de empleado -->
   <div class="card" id="user-card">
     <div class="card-body">
@@ -102,5 +105,4 @@
       </div>
     </div>
   </div>
-
 </div>

@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, OnInit, Output, SimpleChanges, EventEmitter } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { environment } from 'src/environments/environment';
 import { ConfirmationModalComponent } from '../../../administrative/covenants/components/confirmation-modal/confirmation-modal.component';
 import { AddConceptModalComponent } from '../add-concept-modal/add-concept-modal.component';
 
@@ -27,8 +28,6 @@ export class InfoPayrollComponent implements OnInit, OnChanges {
   }
   ngOnChanges(changes: SimpleChanges): void {
      if (changes.payroll_data.currentValue) {
-       console.log(this.payroll_data);
-
       if (this.payroll_data.concepts == 0) {
         this.isEmpty = true,
         this.totalAccrued = 0,
@@ -71,10 +70,15 @@ export class InfoPayrollComponent implements OnInit, OnChanges {
     })
   }
   openDeleteModal(concept_data:any){
-    console.log(concept_data);
-    console.log('id nomina', this.payroll_data.id);
     const modalRef = this.modal.open(ConfirmationModalComponent)
-    modalRef.componentInstance.concept_pivot_id = concept_data.pivot.id
-    modalRef.componentInstance.payroll_id = this.payroll_data.id
+    modalRef.componentInstance.concept_pivot_id = concept_data.pivot.id;
+    modalRef.componentInstance.payroll_id = this.payroll_data.id;
+    modalRef.componentInstance.change_payroll.subscribe(()=>{
+      this.refresh_payroll.emit(this.payroll_data.user.id);
+    })
   }
+  print(){
+    window.open(`${environment.base_API_url}payroll/`+this.payroll_data.id);
+  }
+
 }

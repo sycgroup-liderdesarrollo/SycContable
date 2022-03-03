@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PayrollService } from 'src/app/views/pages/payroll/service/payroll.service';
 import { ServiceEmployeesService } from '../../../employees/services/service-employees.service';
 import { EmployeeInterface } from '../../../interfaces/employee-interface';
 import { CovenantsService } from '../../services/covenants.service';
@@ -17,6 +18,7 @@ export class ConfirmationModalComponent implements OnInit {
   @Input() payroll_id:number;
 
   @Output() change_covenant = new EventEmitter();
+  @Output() change_payroll = new EventEmitter();
 
   alertSuccess:boolean = false;
   isUser:boolean = false;
@@ -26,7 +28,8 @@ export class ConfirmationModalComponent implements OnInit {
   constructor(
     public modal:NgbModal,
     private serviceCovenant: CovenantsService,
-    private serviceUser:ServiceEmployeesService
+    private serviceUser:ServiceEmployeesService,
+    private servicePayroll: PayrollService,
   ) { }
 
   ngOnInit(): void {
@@ -51,6 +54,10 @@ export class ConfirmationModalComponent implements OnInit {
     })
   }
   deleteConcept(){
-    
+    this.servicePayroll.deleteConcept(this.payroll_id, this.concept_pivot_id).subscribe(resp =>{
+      this.alertSuccess = true;
+      setTimeout(()=>{this.alertSuccess = false; this.modal.dismissAll()}, 3000);
+      this.change_payroll.emit();
+    })
   }
 }
