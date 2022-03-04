@@ -2,7 +2,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PayrollService } from 'src/app/views/pages/payroll/service/payroll.service';
 import { EmployeeInterface } from '../../../employees/interfaces/employee-interface';
-import { ServiceEmployeesService } from '../../../employees/services/service-employees.service';
+import { EmployeesService } from '../../../employees/services/service-employees.service';
 import { CovenantsService } from '../../services/covenants.service';
 
 @Component({
@@ -28,7 +28,7 @@ export class ConfirmationModalComponent implements OnInit {
   constructor(
     public modal:NgbModal,
     private serviceCovenant: CovenantsService,
-    private serviceUser:ServiceEmployeesService,
+    private serviceUser:EmployeesService,
     private servicePayroll: PayrollService,
   ) { }
 

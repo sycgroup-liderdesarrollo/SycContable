@@ -8,7 +8,7 @@ import { EmployeeInterface } from '../interfaces/employee-interface';
 @Injectable({
   providedIn: 'root'
 })
-export class ServiceEmployeesService {
+export class EmployeesService {
 
   constructor(
     private http: HttpClient
@@ -25,8 +25,8 @@ export class ServiceEmployeesService {
     return this.http.post<JsonResponseInterfaces<EmployeeInterface[]>>(`${environment.API_Url}user`,formdata);
   }
 
-  getEmployee(id:string | null): Observable<JsonResponseInterfaces<EmployeeInterface[]>>{
-    return this.http.get<JsonResponseInterfaces<EmployeeInterface[]>>(`${environment.API_Url}user/${id}`);
+  getEmployee(id:number): Observable<JsonResponseInterfaces<EmployeeInterface>>{
+    return this.http.get<JsonResponseInterfaces<EmployeeInterface>>(`${environment.API_Url}user/${id}`);
   }
 
   assignCovenant(user_id:number, formData:any): Observable<EmployeeInterface[]>{

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeInterface } from '../../../administrative/employees/interfaces/employee-interface';
-import { ServiceEmployeesService } from '../../../administrative/employees/services/service-employees.service';
+import { EmployeesService } from '../../../administrative/employees/services/service-employees.service';
 import { PayrollInterface } from '../../interfaces/payroll-interface';
 import { PayrollService } from '../../service/payroll.service';
 
@@ -12,7 +12,7 @@ import { PayrollService } from '../../service/payroll.service';
 export class SearchUserComponent implements OnInit {
 
   constructor(
-    private serviceUser: ServiceEmployeesService,
+    private serviceUser: EmployeesService,
     private servicePayroll: PayrollService,
   ) { }
   employees:EmployeeInterface[];

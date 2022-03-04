@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EmployeeInterface } from '../../../employees/interfaces/employee-interface';
-import { ServiceEmployeesService } from '../../../employees/services/service-employees.service';
+import { EmployeesService } from '../../../employees/services/service-employees.service';
 import { CovenantInterface } from '../../interfaces/covenants-interface';
 
 @Component({
@@ -26,7 +26,7 @@ export class UserAssigCovenantModalComponent implements OnInit {
   alertType:string="";
 
   constructor(
-    private serviceUser: ServiceEmployeesService,
+    private serviceUser: EmployeesService,
     public modal:NgbModal,
     private fb:FormBuilder
   ) { }

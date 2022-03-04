@@ -1,4 +1,6 @@
 import { BusinessLineInterfaces } from "./business-line-interfaces";
+import { CityInterface } from "./city-interface";
+import { ContractTypeInterface } from "./contract-type-interface";
 import { GenderInterfaces } from "./gender-interfaces";
 import { PositionInterfaces } from "./position-interfaces";
 
@@ -42,5 +44,7 @@ export interface EmployeeInterface {
     business_line:BusinessLineInterfaces;
     pivot: any,
     length: number,
+    residenceCity: CityInterface
+    contractType: ContractTypeInterface
 }
 

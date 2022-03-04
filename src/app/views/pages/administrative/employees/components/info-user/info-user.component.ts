@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { EmployeeInterface } from '../../interfaces/employee-interface';
+import { EmployeesService } from '../../services/service-employees.service';
 
 @Component({
   selector: 'app-info-user',
@@ -7,9 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InfoUserComponent implements OnInit {
 
-  constructor() {}
+  user_id:number;
+  user_data:EmployeeInterface;
+
+  constructor(
+    private _route:ActivatedRoute,
+    private serviceUser: EmployeesService
+    ) {}
 
   ngOnInit(): void {
+    this.user_id = +this._route.snapshot.paramMap.get('id')!
+    this.getUser();
+  }
+
+  getUser(){
+    this.serviceUser.getEmployee(this.user_id).subscribe(resp => {
+      this.user_data = resp.data
+      console.log(this.user_data);
+
+    })
   }
 
 }
