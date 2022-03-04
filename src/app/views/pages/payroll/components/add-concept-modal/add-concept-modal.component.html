@@ -15,6 +15,9 @@
             {{concept.id}}#  {{concept.name}}
           </button>
         </div>
+        <div class="alert alert-warning" role="alert" *ngIf="notResults">
+          <strong>Sin resultados</strong>
+        </div>
       </div>
       <div class="alert alert-warning" role="alert" *ngIf="isAgain">
         Puedes agregar mas conceptos o salir!

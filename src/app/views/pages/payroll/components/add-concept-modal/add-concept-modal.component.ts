@@ -21,6 +21,7 @@ export class AddConceptModalComponent implements OnInit {
   concept_id:number;
   isAdd:boolean = false;
   isAgain:boolean = false;
+  notResults:boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -47,6 +48,9 @@ export class AddConceptModalComponent implements OnInit {
     if (concept_name) {
       this.servicePayroll.getConcetps(concept_type_id, concept_name.target.value).subscribe(resp =>{
         this.concepts = resp.data;
+        console.log(resp.data.length);
+
+        resp.data.length == 0 ? this.notResults = true : this.notResults = false;
       })
     }else{
       this.servicePayroll.getConcetps(concept_type_id).subscribe(resp =>{
