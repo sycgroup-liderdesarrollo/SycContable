@@ -1,8 +1,8 @@
 import { Component, Input, OnChanges, OnInit, Output, SimpleChanges, EventEmitter } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { PayrollInterface } from 'src/app/interfaces/payroll-interface';
 import { environment } from 'src/environments/environment';
 import { ConfirmationModalComponent } from '../../../administrative/covenants/components/confirmation-modal/confirmation-modal.component';
+import { PayrollInterface } from '../../interfaces/payroll-interface';
 import { AddConceptModalComponent } from '../add-concept-modal/add-concept-modal.component';
 
 @Component({

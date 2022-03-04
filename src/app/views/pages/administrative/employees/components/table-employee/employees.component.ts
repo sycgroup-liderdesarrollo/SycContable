@@ -1,12 +1,11 @@
-import { Component, Input, OnInit, PipeTransform } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalConfig, NgbTypeaheadConfig } from '@ng-bootstrap/ng-bootstrap';
 import { debounceTime, distinctUntilChanged, map, Observable } from 'rxjs';
-import { EmployeeInterface } from 'src/app/interfaces/employee-interface';
-import { ModalAddEmployeesComponent } from './modal-add-employees/modal-add-employees.component';
-import { ServiceEmployeesService } from './services/service-employees.service';
+import { EmployeeInterface } from '../../interfaces/employee-interface';
+import { ServiceEmployeesService } from '../../services/service-employees.service';
+import { ModalAddEmployeesComponent } from '../modal-add-employees/modal-add-employees.component';
 
 @Component({
   selector: 'app-employees',

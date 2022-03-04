@@ -1,7 +1,7 @@
-import { ConceptInterface } from "./concept-interface";
+import { ConceptInterface } from "../../../payroll/interfaces/concept-interface";
+import { PeriodicityTypeInterface } from "../../../payroll/interfaces/periodicity-type-interface";
+import { EmployeeInterface } from "../../employees/interfaces/employee-interface";
 import { CovenantTypeInterface } from "./covenant-type-interface";
-import { EmployeeInterface } from "./employee-interface";
-import { PeriodicityTypeInterface } from "./periodicity-type-interface";
 import { ProviderInterface } from "./provider-interface";
 
 export interface CovenantInterface{

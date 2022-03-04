@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeeInterface } from 'src/app/interfaces/employee-interface';
-import { PayrollInterface } from 'src/app/interfaces/payroll-interface';
+import { EmployeeInterface } from '../../../administrative/employees/interfaces/employee-interface';
 import { ServiceEmployeesService } from '../../../administrative/employees/services/service-employees.service';
+import { PayrollInterface } from '../../interfaces/payroll-interface';
 import { PayrollService } from '../../service/payroll.service';
 
 @Component({

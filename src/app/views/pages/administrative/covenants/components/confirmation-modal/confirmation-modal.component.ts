@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { EmployeeInterface } from 'src/app/interfaces/employee-interface';
 import { PayrollService } from 'src/app/views/pages/payroll/service/payroll.service';
+import { EmployeeInterface } from '../../../employees/interfaces/employee-interface';
 import { ServiceEmployeesService } from '../../../employees/services/service-employees.service';
 import { CovenantsService } from '../../services/covenants.service';
 

@@ -1,4 +1,4 @@
-import { CityInterface } from "./city-interface";
+import { CityInterface } from "../../employees/interfaces/city-interface";
 
 export interface ProviderInterface{
   id: number,
