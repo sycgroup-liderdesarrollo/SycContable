@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CovenantInterface } from 'src/app/interfaces/covenants-interface';
 import { EmployeeInterface } from 'src/app/interfaces/employee-interface';
 import { ServiceEmployeesService } from '../../../employees/services/service-employees.service';
 
@@ -11,7 +12,7 @@ import { ServiceEmployeesService } from '../../../employees/services/service-emp
 })
 export class UserAssigCovenantModalComponent implements OnInit {
 
-  @Input() covenantData:any;
+  @Input() covenantData:CovenantInterface;
   @Output() user_covenant = new EventEmitter();
 
   employees:EmployeeInterface[];
@@ -68,7 +69,7 @@ export class UserAssigCovenantModalComponent implements OnInit {
       this.message = resp;
       this.message.warning == 1 ? this.alertType = "warning" : this.alertType = "success"
       this.alertSuccess = true
-      setTimeout(()=>{this.modal.dismissAll()}, 5000);
+      setTimeout(()=>{this.modal.dismissAll()}, 3500);
       this.user_covenant.emit();
     });
   }
