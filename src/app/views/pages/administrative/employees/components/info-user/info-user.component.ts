@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbNavConfig } from '@ng-bootstrap/ng-bootstrap';
-import { EmployeeInterface } from '../../../interfaces/employee-interface';
 import { ServiceEmployeesService } from '../../services/service-employees.service';
 
 
@@ -24,16 +23,16 @@ export class InfoUserComponent implements OnInit {
     private route: ActivatedRoute,
     config: NgbNavConfig,
     private fb:FormBuilder,
-  ) { 
+  ) {
     config.destroyOnHide = false;
-    config.roles = false; 
+    config.roles = false;
     this.getUsuario();
   }
 
   ngOnInit(): void {
     this.crearform();
   }
-  
+
   getUsuario(){
     this.route.paramMap.subscribe(params=>{
       const userId = params.has("id") ? params.get("id") : '';
@@ -41,14 +40,14 @@ export class InfoUserComponent implements OnInit {
         this.serviceEmployees.getEmployee(userId).subscribe(res => {
           this.user = res.data
           console.log(this.user);
-          
+
         })
       }
     })
   }
 
   crearform(dataProvider?:any){
-   
+
     this.form = this.fb.group({
       name:                     [dataProvider?.name ?? '', Validators.required],
       last_name:                [dataProvider?.last_name ?? '', Validators.required],

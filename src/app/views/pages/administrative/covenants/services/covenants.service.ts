@@ -1,12 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { CovenantInterface } from 'src/app/interfaces/covenants-interface';
 import { JsonResponseInterfaces } from 'src/app/interfaces/json-response-interfaces';
+import { PeriodicityTypeInterface } from 'src/app/interfaces/periodicity-type-interface';
+import { ProviderInterface } from 'src/app/interfaces/provider-interface';
 import { environment } from 'src/environments/environment';
-import { CovenantTypeInterface } from '../../interfaces/covenant-type-interface';
-import { CovenantInterface } from '../../interfaces/covenants-interface';
-import { PeriodicityTypeInterface } from '../../interfaces/periodicity-type-interface';
-import { ProviderInterface } from '../../interfaces/provider-interface';
 
 @Injectable({
   providedIn: 'root'

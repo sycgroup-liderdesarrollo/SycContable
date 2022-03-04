@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { EmployeeInterface } from 'src/app/interfaces/employee-interface';
+import { PayrollInterface } from 'src/app/interfaces/payroll-interface';
 import { ServiceEmployeesService } from '../../../administrative/employees/services/service-employees.service';
-import { EmployeeInterface } from '../../../administrative/interfaces/employee-interface';
 import { PayrollService } from '../../service/payroll.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class SearchUserComponent implements OnInit {
     private servicePayroll: PayrollService,
   ) { }
   employees:EmployeeInterface[];
-  payroll_data:any;
+  payroll_data:PayrollInterface;
   isSelected:boolean = false;
   isEmpty:boolean = false;
   employee_name:string;
@@ -38,7 +39,7 @@ export class SearchUserComponent implements OnInit {
   selectUser(user_data:EmployeeInterface){
     this.employee_name = user_data.name;
     this.servicePayroll.getUserPayroll(user_data.id).subscribe(resp =>{
-      if (resp == 0) {
+      if (!resp.data) {
         this.isEmpty = true;
         this.isSelected = false;
       }else{

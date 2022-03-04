@@ -2,10 +2,10 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, Subscriber } from 'rxjs';
-import { CovenantTypeInterface } from '../../../interfaces/covenant-type-interface';
-import { CovenantInterface } from '../../../interfaces/covenants-interface';
-import { PeriodicityTypeInterface } from '../../../interfaces/periodicity-type-interface';
-import { ProviderInterface } from '../../../interfaces/provider-interface';
+import { CovenantTypeInterface } from 'src/app/interfaces/covenant-type-interface';
+import { CovenantInterface } from 'src/app/interfaces/covenants-interface';
+import { PeriodicityTypeInterface } from 'src/app/interfaces/periodicity-type-interface';
+import { ProviderInterface } from 'src/app/interfaces/provider-interface';
 import { CovenantsService } from '../../services/covenants.service';
 
 @Component({

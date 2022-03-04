@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { EmployeeInterface } from '../../interfaces/employee-interface';
 import { JsonResponseInterfaces } from 'src/app/interfaces/json-response-interfaces';
+import { EmployeeInterface } from 'src/app/interfaces/employee-interface';
 
 @Injectable({
   providedIn: 'root'

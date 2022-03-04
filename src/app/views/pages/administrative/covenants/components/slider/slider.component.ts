@@ -7,7 +7,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { CovenantModalsComponent } from '../covenant-modals/covenant-modals.component';
-import { CovenantInterface } from '../../../interfaces/covenants-interface';
+import { CovenantInterface } from 'src/app/interfaces/covenants-interface';
 
 SwiperCore.use([Pagination]);
 

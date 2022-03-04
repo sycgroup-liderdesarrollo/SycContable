@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, OnInit, Output, SimpleChanges, EventEmitter } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PayrollInterface } from 'src/app/interfaces/payroll-interface';
 import { environment } from 'src/environments/environment';
 import { ConfirmationModalComponent } from '../../../administrative/covenants/components/confirmation-modal/confirmation-modal.component';
 import { AddConceptModalComponent } from '../add-concept-modal/add-concept-modal.component';
@@ -11,11 +12,10 @@ import { AddConceptModalComponent } from '../add-concept-modal/add-concept-modal
 })
 export class InfoPayrollComponent implements OnInit, OnChanges {
 
-  @Input() payroll_data:any;
+  @Input() payroll_data:PayrollInterface;
   @Output() refresh_payroll = new EventEmitter();
 
 
-  isEmpty:boolean = false;
   totalAccrued:number;
   totalDeducted:number;
   totalPaid:number;
@@ -25,16 +25,15 @@ export class InfoPayrollComponent implements OnInit, OnChanges {
   ) { }
 
   ngOnInit(): void {
+    console.log(this.payroll_data);
   }
   ngOnChanges(changes: SimpleChanges): void {
      if (changes.payroll_data.currentValue) {
-      if (this.payroll_data.concepts == 0) {
-        this.isEmpty = true,
+      if (this.payroll_data.concepts.length == 0) {
         this.totalAccrued = 0,
         this.totalDeducted = 0,
         this.totalPaid = 0
       }else{
-        this.isEmpty = false
         this.calcOfPayroll();
       }
     }
@@ -80,5 +79,4 @@ export class InfoPayrollComponent implements OnInit, OnChanges {
   print(){
     window.open(`${environment.base_API_url}payroll/`+this.payroll_data.id);
   }
-
 }

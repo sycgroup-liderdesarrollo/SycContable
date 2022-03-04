@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { EmployeeInterface } from 'src/app/interfaces/employee-interface';
 import { ServiceEmployeesService } from '../../../employees/services/service-employees.service';
-import { EmployeeInterface } from '../../../interfaces/employee-interface';
 
 @Component({
   selector: 'app-user-assig-covenant-modal',

@@ -25,7 +25,7 @@
                 <th class="table-title">Total</th>
               </tr>
             </thead>
-            <tbody *ngIf="!isEmpty">
+            <tbody>
               <tr *ngFor="let concept of payroll_data.concepts">
                 <td *ngIf="concept.concept_type_id == 1" class="table-body">{{concept.id}}</td>
                 <td *ngIf="concept.concept_type_id == 1" class="table-body">{{concept.name}}</td>
@@ -36,7 +36,7 @@
               </tr>
             </tbody>
           </table>
-          <div class="alert alert-warning" role="alert" *ngIf="isEmpty" id="warning-alert">
+          <div class="alert alert-warning" role="alert" *ngIf="totalAccrued == 0" id="warning-alert">
             <strong>Este usuario no tiene conceptos cargados</strong>
           </div>
       </div>
@@ -64,7 +64,7 @@
                 <th></th>
               </tr>
             </thead>
-            <tbody *ngIf="!isEmpty">
+            <tbody>
               <tr *ngFor="let concept of payroll_data.concepts">
                 <td *ngIf="concept.concept_type_id == 2" class="table-body">{{concept.id}}</td>
                 <td *ngIf="concept.concept_type_id == 2" class="table-body">{{concept.name}}</td>
@@ -75,7 +75,7 @@
               </tr>
             </tbody>
           </table>
-          <div class="alert alert-warning" role="alert" *ngIf="isEmpty" id="warning-alert">
+          <div class="alert alert-warning" role="alert" *ngIf="totalDeducted == 0" id="warning-alert">
             <strong>Este usuario no tiene conceptos cargados</strong>
           </div>
       </div>

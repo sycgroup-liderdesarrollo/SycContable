@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalConfig, NgbTypeaheadConfig } from '@ng-bootstrap/ng-bootstrap';
 import { debounceTime, distinctUntilChanged, map, Observable } from 'rxjs';
-import { EmployeeInterface } from '../interfaces/employee-interface';
+import { EmployeeInterface } from 'src/app/interfaces/employee-interface';
 import { ModalAddEmployeesComponent } from './modal-add-employees/modal-add-employees.component';
 import { ServiceEmployeesService } from './services/service-employees.service';
 
@@ -28,15 +28,15 @@ export class EmployeesComponent implements OnInit {
   pageSize = 4;
   total:number;
   user:any;
-  
+
   constructor(
     config: NgbTypeaheadConfig,
-    
+
     private router:Router,
     private serviceEmployees:ServiceEmployeesService,
     private fb:FormBuilder,
     public modal:NgbModal,
-  ) { 
+  ) {
     config.showHint = true;}
 
   ngOnInit(): void {
@@ -45,7 +45,7 @@ export class EmployeesComponent implements OnInit {
   }
 
   crearform(dataEmployees?:any){
-   
+
     this.form = this.fb.group({
       name:                     [dataEmployees?.name ?? '', Validators.required],
       last_name:                [dataEmployees?.last_name ?? '', Validators.required],

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ConceptInterface } from '../../../administrative/interfaces/concept-interface';
+import { ConceptInterface } from 'src/app/interfaces/concept-interface';
 import { PayrollService } from '../../service/payroll.service';
 
 @Component({
