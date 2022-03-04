@@ -25,8 +25,8 @@ export class InfoPayrollComponent implements OnInit, OnChanges {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.payroll_data);
   }
+
   ngOnChanges(changes: SimpleChanges): void {
      if (changes.payroll_data.currentValue) {
       if (this.payroll_data.concepts.length == 0) {
@@ -51,7 +51,6 @@ export class InfoPayrollComponent implements OnInit, OnChanges {
     });
     this.totalPaid = this.totalAccrued - this.totalDeducted;
   }
-
   openAddAccruedModal(){
     const modalRef = this.modal.open(AddConceptModalComponent);
     modalRef.componentInstance.concept_type_id = 1

@@ -32,7 +32,6 @@ export class AddConceptModalComponent implements OnInit {
     this.makeForm();
     this.concept_type_id == 1 ? this.getConcepts(1) : this.getConcepts(2);
   }
-
   makeForm(){
     this.form = this.fb.group({
       concept_id: ['', Validators.required],
@@ -40,12 +39,10 @@ export class AddConceptModalComponent implements OnInit {
       unit_value: ['', Validators.required]
     })
   }
-
   conceptSelected(concept_id:number){
     this.isSelected = true;
     this.concept_id = concept_id;
   }
-
   getConcepts(concept_type_id?:number, concept_name?:any){
     if (concept_name) {
       this.servicePayroll.getConcetps(concept_type_id, concept_name.target.value).subscribe(resp =>{
@@ -72,7 +69,6 @@ export class AddConceptModalComponent implements OnInit {
       }, 8000);
     })
   }
-
   back(){
     this.isSelected = false;
     this.form.reset();

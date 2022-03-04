@@ -20,7 +20,7 @@ export class PayrollService {
   }
   getConcetps(type_filter?:number, concept_name?:string): Observable<JsonResponseInterfaces<ConceptInterface[]>>{
     if(type_filter && concept_name){
-      return this.http.get<JsonResponseInterfaces<ConceptInterface[]>>(`${environment.API_Url}concept`, {params:{'type': type_filter, 'name': concept_name, 'paginate': 20}});
+      return this.http.get<JsonResponseInterfaces<ConceptInterface[]>>(`${environment.API_Url}concept`, {params:{'type': type_filter, 'filter': concept_name, 'paginate': 20}});
     }
     else if (type_filter){
       return this.http.get<JsonResponseInterfaces<ConceptInterface[]>>(`${environment.API_Url}concept`, {params:{'type': type_filter, 'paginate': 20}});

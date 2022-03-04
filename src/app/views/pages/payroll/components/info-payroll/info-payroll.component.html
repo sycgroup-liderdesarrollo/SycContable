@@ -10,7 +10,7 @@
       <br>
       <!-- Tabla de devengados -->
       <div class="div-content">
-        <div style="margin-top: 15px; margin-bottom: 20px;" class="space-between">
+        <div id="div-head" class="space-between">
           <h3><strong>Devengados</strong></h3>
           <button class="btn btn-primary" (click)="openAddAccruedModal()"><strong>+ Agregar</strong></button>
         </div>
@@ -41,19 +41,19 @@
           </div>
       </div>
       <br>
-      <div style="display: flex; justify-content: flex-start;">
+      <div class="space-between">
         <h4><img src="/assets/images/others/icon-alta.png" alt=""><strong> Total devengados: {{totalAccrued | currency: ' ' }}<strong id="COP"> COP</strong></strong> </h4>
       </div>
       </div>
       <br>
       <!-- Tabla de deducciones -->
-      <div class="div-content">
-        <div style="margin-top: 15px; margin-bottom: 20px;" class="space-between">
+      <div class="div-content" id="deduction-div">
+        <div id="div-head" class="space-between">
           <h3><strong>Deducciones</strong></h3>
           <button class="btn btn-primary" (click)="openAddDeductionModal()"><strong>+ Agregar</strong></button>
         </div>
         <div class="div-table">
-          <table class="table table-hover" style="margin-top: 30px;">
+          <table class="table table-hover">
             <thead>
               <tr>
                 <th class="table-title">Id</th>
@@ -80,7 +80,7 @@
           </div>
       </div>
       <br>
-      <div style="display: flex; justify-content: flex-start;">
+      <div class="space-between">
         <h4><img src="/assets/images/others/icon-baja.png" alt=""><strong> Total deducidos: {{totalDeducted | currency: ' '}}<strong id="COP"> COP</strong></strong> </h4>
       </div>
       </div>
@@ -99,7 +99,7 @@
     <div class="card-body">
       <div class="porfile">
         <h3><strong>{{payroll_data.user.name}} {{payroll_data.user.last_name}}</strong></h3>
-        <img width="80px" height="80px" style="border-radius: 40px;" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt="">
+        <img id="user-img" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt="">
         <br>
         <span><strong>C.C: </strong>{{payroll_data.user.identification_number}}</span> <span> <strong>email: </strong>{{payroll_data.user.email}}</span>
       </div>
