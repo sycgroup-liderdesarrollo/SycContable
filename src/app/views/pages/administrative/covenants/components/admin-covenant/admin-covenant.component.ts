@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { CovenantModalsComponent } from '../covenant-modals/covenant-modals.component';
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
-import { CovenantInterface } from 'src/app/interfaces/covenants-interface';
+import { CovenantInterface } from '../../interfaces/covenants-interface';
 
 @Component({
   selector: 'app-admin-covenant',

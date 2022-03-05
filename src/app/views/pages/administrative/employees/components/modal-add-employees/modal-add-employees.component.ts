@@ -1,9 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
-import { EmployeeInterface } from 'src/app/interfaces/employee-interface';
-import { ServiceEmployeesService } from '../services/service-employees.service';
+import { EmployeeInterface } from '../../interfaces/employee-interface';
+import { EmployeesService } from '../../services/service-employees.service';
 
 @Component({
   selector: 'app-modal-add-employees',
@@ -16,19 +15,17 @@ export class ModalAddEmployeesComponent implements OnInit {
   @Input() id:any;
   @Input() isEdit: boolean = false;
   users:EmployeeInterface[];
-  form!: FormGroup;
+  form: FormGroup;
   user:any;
 
   constructor( private router:Router,
-    private serviceEmployees:ServiceEmployeesService,
+    private serviceEmployees:EmployeesService,
     private route: ActivatedRoute,
     private fb:FormBuilder,
-    config: NgbModalConfig,
     ) { }
 
   ngOnInit(): void {
     this.getEmployees();
-    // this.crearform();
   }
 
   crearform(dataEmployees?:any){

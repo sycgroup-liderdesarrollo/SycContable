@@ -1,5 +1,5 @@
+import { EmployeeInterface } from "../../administrative/employees/interfaces/employee-interface";
 import { ConceptInterface } from "./concept-interface";
-import { EmployeeInterface } from "./employee-interface";
 import { PeriodInterface } from "./period-interface";
 import { ProvisionInterface } from "./provision-interface";
 

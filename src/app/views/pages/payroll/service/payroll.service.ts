@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ConceptInterface } from 'src/app/interfaces/concept-interface';
 import { JsonResponseInterfaces } from 'src/app/interfaces/json-response-interfaces';
-import { PayrollInterface } from 'src/app/interfaces/payroll-interface';
 import { environment } from 'src/environments/environment';
+import { ConceptInterface } from '../interfaces/concept-interface';
+import { PayrollInterface } from '../interfaces/payroll-interface';
 
 @Injectable({
   providedIn: 'root'
