@@ -38,7 +38,7 @@ export class AuthService {
 
   logout(){
     this.localService.deleteToken();
-    this.router.navigate(['/']);
+    this.router.navigate(['/auth/login']);
   }
 
   refreshToken() : Observable<TokenResponseInterface>{
