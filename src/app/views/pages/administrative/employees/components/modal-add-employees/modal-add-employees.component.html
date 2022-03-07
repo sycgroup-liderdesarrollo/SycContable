@@ -1,4 +1,4 @@
-<div class="modal-content">
+<div class="modalContent">
   <div class="modal-header">
     <h2 class="modal-title">Agregar Usuario</h2>
   </div>
@@ -18,21 +18,21 @@
         </div>
         <div class="space-around">
           <div>
-            <label>Numero de identificacion</label>
-            <input class="form-control" type="text" id="input-user-form">
+            <label>Tipo de identificacion</label>
+            <select class="form-select" id="select-user-form">
+              <option *ngFor="let identificationType of identificationTypes" [value]="identificationType.id">{{ identificationType.name }}</option>
+            </select>
           </div>
           <div>
-            <label>Lugar de expedicion</label>
-            <select class="form-select" id="select-user-form">
-              <option *ngFor="let city of cities" [value]="city.id">{{ city.name }}</option>
-            </select>
+            <label>Numero de identificacion</label>
+            <input class="form-control" type="text" id="input-user-form">
           </div>
         </div>
         <div class="space-around">
           <div>
-            <label>Tipo de identificacion</label>
+            <label>Lugar de expedicion</label>
             <select class="form-select" id="select-user-form">
-              <option *ngFor="let identificationType of identificationTypes" [value]="identificationType.id">{{ identificationType.name }}</option>
+              <option *ngFor="let city of cities" [value]="city.id">{{ city.name }}</option>
             </select>
           </div>
           <div>
