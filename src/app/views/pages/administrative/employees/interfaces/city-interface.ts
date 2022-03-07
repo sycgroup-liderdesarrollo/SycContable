@@ -1,7 +1,9 @@
+import { ProvinceInterface } from "./province-interface";
+
 export interface CityInterface{
   id: number,
-  danecode:number,
   name: string,
   province_id: number,
-  active: number,
+  danecode: number,
+  province: ProvinceInterface
 }

@@ -16,9 +16,9 @@ import { CovenantsService } from '../../services/covenants.service';
 export class CovenantModalsComponent implements OnInit {
 
   constructor(
-    private serviceCovenant: CovenantsService,
-    private fb:FormBuilder,
     public modal:NgbModal,
+    private fb:FormBuilder,
+    private serviceCovenant: CovenantsService,
   ) { }
 
   @Input() covenantData:CovenantInterface;
