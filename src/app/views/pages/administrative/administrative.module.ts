@@ -42,6 +42,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     NgbPaginationModule,
     NgbAlertModule,
     NgbNavModule,
+    MatPaginatorModule
   ]
 })
 export class AdministrativeModule { }
