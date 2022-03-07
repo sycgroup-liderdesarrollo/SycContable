@@ -1,4 +1,4 @@
-<div class="modal-content">
+<div class="modalContent">
   <div class="modal-header">
     <h2 class="modal-title">Agregar Usuario</h2>
   </div>
@@ -25,23 +25,21 @@
         </div>
         <div class="space-around">
           <div>
-            <label>Numero de identificacion</label>
-            <input formControlName="identification_number" class="form-control" type="text" id="input-user-form" autocomplete="off">
-            <label id="required-alert" *ngIf="form.get('identification_number')?.hasError('required') && form.get('identification_number')?.touched">*El campo es requerido</label>
-          </div>
-          <div>
             <label>Tipo de identificacion</label>
-            <select class="form-select" id="select-user-form" formControlName="identification_type_id">
+            <select class="form-select" id="select-user-form">
               <option *ngFor="let identificationType of identificationTypes" [value]="identificationType.id">{{ identificationType.name }}</option>
             </select>
-            <label id="required-alert" *ngIf="form.get('identification_type_id')?.hasError('required') && form.get('identification_type_id')?.touched">*El campo es requerido</label>
+          </div>
+          <div>
+            <label>Numero de identificacion</label>
+            <input class="form-control" type="text" id="input-user-form">
           </div>
         </div>
         <div class="space-around">
           <div>
-            <label>Departamento de expedicion</label>
-            <select class="form-select" id="select-user-form" (click)="filterCities($event)">
-              <option *ngFor="let province of provinces" [value]="province.id">{{ province.name }}</option>
+            <label>Lugar de expedicion</label>
+            <select class="form-select" id="select-user-form">
+              <option *ngFor="let city of cities" [value]="city.id">{{ city.name }}</option>
             </select>
           </div>
           <div>

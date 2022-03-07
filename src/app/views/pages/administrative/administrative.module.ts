@@ -16,8 +16,6 @@ import { ConfirmationModalComponent } from './covenants/components/confirmation-
 import { PipefilterPipe } from './pipes/pipefilter.pipe';
 import { ModalAddEmployeesComponent } from './employees/components/modal-add-employees/modal-add-employees.component';
 // modulos material
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatInputModule} from '@angular/material/input';
 import { EmployeesComponent } from './employees/components/table-employee/employees.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 
@@ -44,9 +42,6 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     NgbPaginationModule,
     NgbAlertModule,
     NgbNavModule,
-    MatDialogModule,
-    MatInputModule,
-    MatPaginatorModule
   ]
 })
 export class AdministrativeModule { }
