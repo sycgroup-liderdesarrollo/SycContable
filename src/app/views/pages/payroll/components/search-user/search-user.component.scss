@@ -35,7 +35,7 @@
 }
 #card-search{
   height: 12rem;
-  width: 70%;
+  width: 100%;
   overflow: scroll;
 }
 #card-search::-webkit-scrollbar {
@@ -46,5 +46,26 @@
   background-color: rgb(219, 126, 129);
   border-radius: 16px;
   border: 4px solid #fff;
+}
+
+@media (max-width: 550px) {
+  #div-search{
+    height: auto;
+    width: auto;
+  }
+  #card-search{
+    height: 12rem;
+    width: auto;
+    overflow: scroll;
+  }
+  .select-btn{
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    border-color: transparent;
+    border-radius: 5px;
+  }
 }
 

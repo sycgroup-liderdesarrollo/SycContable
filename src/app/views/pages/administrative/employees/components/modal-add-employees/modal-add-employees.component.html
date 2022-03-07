@@ -1,0 +1,215 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h2 class="modal-title">Agregar Usuario</h2>
+  </div>
+  <div class="modal-body">
+    <form action="">
+      <!-- Primera pagina -->
+      <div *ngIf="pagine == 1">
+        <div class="space-around">
+          <div>
+            <label>Nombre</label>
+            <input class="form-control" type="text" id="input-user-form">
+          </div>
+          <div>
+            <label>Apellido</label>
+            <input class="form-control" type="text" id="input-user-form">
+          </div>
+        </div>
+        <div class="space-around">
+          <div>
+            <label>Numero de identificacion</label>
+            <input class="form-control" type="text" id="input-user-form">
+          </div>
+          <div>
+            <label>Lugar de expedicion</label>
+            <select class="form-select" id="select-user-form">
+              <option *ngFor="let city of cities" [value]="city.id">{{ city.name }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="space-around">
+          <div>
+            <label>Tipo de identificacion</label>
+            <select class="form-select" id="select-user-form">
+              <option *ngFor="let identificationType of identificationTypes" [value]="identificationType.id">{{ identificationType.name }}</option>
+            </select>
+          </div>
+          <div>
+            <label>Fecha de nacimiento</label>
+            <input class="form-control" type="date" id="input-user-form">
+          </div>
+        </div>
+        <div class="space-around">
+          <div>
+            <label>Telefono</label>
+            <input class="form-control" type="number" id="input-user-form">
+          </div>
+          <div>
+            <label>Hijos</label>
+            <input class="form-control" type="number" id="input-user-form">
+          </div>
+        </div>
+        <div class="div-buttons-first">
+          <div>
+            <button class="btn btn-dark">Cerrar</button>
+            <button class="btn btn-primary" (click)="changePagine()">Siguiente</button>
+          </div>
+        </div>
+      </div>
+      <!-- Segunda pagina -->
+      <div *ngIf="pagine == 2">
+        <div class="space-around">
+          <div>
+            <label>Direccion de residencia</label>
+            <input class="form-control" type="text" id="input-user-form">
+          </div>
+          <div>
+            <label>Barrio</label>
+            <input class="form-control" type="text" id="input-user-form">
+          </div>
+        </div>
+        <div class="space-around">
+          <div>
+            <label>Estrato</label>
+            <select class="form-select" id="select-user-form">
+              <option *ngFor="let stratum of strata" [value]="stratum.id">{{ stratum.name }}</option>
+            </select>
+          </div>
+          <div>
+            <label>Ciudad de residencia</label>
+            <select class="form-select" id="select-user-form">
+              <option *ngFor="let city of cities" [value]="city.id">{{ city.name }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="space-around">
+          <div>
+            <label>Genero</label>
+            <select class="form-select" id="select-user-form">
+              <option *ngFor="let gender of genders" [value]="gender.id">{{ gender.name }}</option>
+            </select>
+          </div>
+          <div>
+            <label>Estado civil</label>
+            <select class="form-select" id="select-user-form">
+              <option *ngFor="let civilStatu of civilStatus" [value]="civilStatu.id">{{ civilStatu.name }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="space-around">
+          <div>
+            <label>Nivel de educacion</label>
+            <select class="form-select" id="select-user-form">
+              <option *ngFor="let educationLevel of educationLevels" [value]="educationLevel.id">{{ educationLevel.name }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="div-buttons">
+          <div>
+            <button class="btn btn-primary" (click)="back()">Atras</button>
+          </div>
+          <div>
+            <button class="btn btn-dark">Cerrar</button>
+            <button class="btn btn-primary" (click)="changePagine()">Siguiente</button>
+          </div>
+        </div>
+      </div>
+      <!-- Tercera pagina  -->
+      <div *ngIf="pagine == 3">
+        <div class="space-around">
+          <div>
+            <label>Sede</label>
+            <select class="form-select" id="select-user-form">
+              <option *ngFor="let headquarter of headquarters" [value]="headquarter.id">{{ headquarter.name }}</option>
+            </select>
+          </div>
+          <div>
+            <label>Ciudad de trabajo</label>
+            <select class="form-select" id="select-user-form">
+              <option *ngFor="let city of cities" [value]="city.id">{{ city.name }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="space-around">
+          <div>
+            <label>Fondo de pensiones</label>
+            <select class="form-select" id="select-user-form">
+              <option *ngFor="let pensionFund of pensionFunds" [value]="pensionFund.id">{{ pensionFund.name }}</option>
+            </select>
+          </div>
+          <div>
+            <label>EPS</label>
+            <select class="form-select" id="select-user-form">
+              <option *ngFor="let healthProvider of healthProviders" [value]="healthProvider.id">{{ healthProvider.name }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="space-around">
+          <div>
+            <label>Tipo de contrato</label>
+            <select class="form-select" id="select-user-form">
+              <option *ngFor="let contractType of contractTypes"[value]="contractType.id">{{ contractType.name}}</option>
+            </select>
+          </div>
+          <div>
+            <label>Salario base</label>
+            <input class="form-control" type="number" id="input-user-form">
+          </div>
+        </div>
+        <div class="space-around">
+          <div>
+            <label>Tipo de salario</label>
+            <select class="form-select" id="select-user-form">
+              <option *ngFor="let contractType of contractTypes"[value]="contractType.id">{{ contractType.name}}</option>
+            </select>
+          </div>
+          <div>
+            <label>Cargo</label>
+            <select class="form-select" id="select-user-form">
+              <option *ngFor="let position of positions" [value]="position.id">{{ position.name}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="div-buttons">
+          <div>
+            <button class="btn btn-primary" (click)="back()">Atras</button>
+          </div>
+          <div>
+            <button class="btn btn-dark">Cerrar</button>
+            <button class="btn btn-primary" (click)="changePagine()">Siguiente</button>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="pagine == 4">
+        <div class="space-around">
+          <div>
+            <label>Nombre de contacto</label>
+            <input class="form-control" type="text" id="input-user-form">
+          </div>
+          <div>
+            <label>Telefono</label>
+            <input class="form-control" type="number" id="input-user-form">
+          </div>
+        </div>
+        <div class="space-around">
+          <div>
+            <label>Parentezco</label>
+            <select class="form-select" id="select-user-form">
+              <option *ngFor="let kinkship of kinkships" [value]="kinkship.id">{{ kinkship.name }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="div-buttons">
+          <div>
+            <button class="btn btn-primary" (click)="back()">Atras</button>
+          </div>
+          <div>
+            <button class="btn btn-dark">Cerrar</button>
+            <button class="btn btn-primary">Finalizar</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ServiceEmployeesService } from '../../../administrative/employees/services/service-employees.service';
-import { EmployeeInterface } from '../../../administrative/interfaces/employee-interface';
+import { EmployeeInterface } from '../../../administrative/employees/interfaces/employee-interface';
+import { EmployeesService } from '../../../administrative/employees/services/service-employees.service';
+import { PayrollInterface } from '../../interfaces/payroll-interface';
 import { PayrollService } from '../../service/payroll.service';
 
 @Component({
@@ -11,15 +12,15 @@ import { PayrollService } from '../../service/payroll.service';
 export class SearchUserComponent implements OnInit {
 
   constructor(
-    private serviceUser: ServiceEmployeesService,
-    private servicePayroll: PayrollService
+    private serviceUser: EmployeesService,
+    private servicePayroll: PayrollService,
   ) { }
-
   employees:EmployeeInterface[];
-  payroll_data:any;
+  payroll_data:PayrollInterface;
   isSelected:boolean = false;
   isEmpty:boolean = false;
   employee_name:string;
+
 
   ngOnInit(): void {
     this.getEmployees()
@@ -38,7 +39,7 @@ export class SearchUserComponent implements OnInit {
   selectUser(user_data:EmployeeInterface){
     this.employee_name = user_data.name;
     this.servicePayroll.getUserPayroll(user_data.id).subscribe(resp =>{
-      if (resp == 0) {
+      if (!resp.data) {
         this.isEmpty = true;
         this.isSelected = false;
       }else{
@@ -49,11 +50,8 @@ export class SearchUserComponent implements OnInit {
     })
   }
   refreshPayroll(user_id:number){
-
     this.servicePayroll.getUserPayroll(user_id).subscribe(resp => {
       this.payroll_data = resp.data
-      console.log(this.payroll_data);
-
     })
   }
 }

@@ -7,13 +7,13 @@
     <div class="div-content" *ngIf="!isSelected">
       <input class="form-control" type="text" placeholder="Buscar por nombre..." (keyup)="userFilter($event)">
     </div>
-    <label style="display: flex; justify-content: center;" *ngIf="!isSelected">Selecciona un usuario</label>
+    <label id="text-select-user" *ngIf="!isSelected">Selecciona un usuario</label>
     <br>
     <div class="modal-body">
       <div *ngIf="!isSelected">
         <div class="div-content" *ngFor="let employee of employees">
           <div class="items-card">
-            <img width="40px" height="40px" style="border-radius: 40px;" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt="">
+            <img id="user-img" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt="">
           </div>
           <div class="user-card">
             <button class="select-btn" (click)="selectUser(employee.id)">
@@ -25,10 +25,10 @@
       </div>
       <div *ngIf="isSelected">
         <div class="div-content">
-          <div style="margin-right: 60px; flex-direction: column; display: flex; align-items: center;" *ngIf="!alertSuccess">
+          <div id="div-form-covenant" *ngIf="!alertSuccess">
             <button class="select-btn" (click)="back()"><img src="https://img.icons8.com/ios-glyphs/15/000000/back.png"/></button>
             <h4 style="margin-top: 30px;">{{employe_name}}</h4>
-            <img width="40px" height="40px" style="border-radius: 40px;" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt="">
+            <img id="user-img" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt="">
           </div>
           <div class="user_card" >
             <form [formGroup]="form" *ngIf="!alertSuccess">
@@ -38,15 +38,20 @@
               <label>Ingrese el valor de la cuota</label>
               <input type="number" class="input-group-text" formControlName="value">
             </form>
-            <div class="alert alert-{{alertType}}" role="alert" *ngIf="alertSuccess">
-              {{message.data}}
-            </div>
+              <div id="text-select-user" class="alert alert-{{alertType}}" role="alert" *ngIf="alertSuccess">
+                {{message.data}}
+              </div>
+              <div class="d-flex justify-content-center" style="margin: 15px;">
+                <div class="spinner-border" role="status" *ngIf="alertSuccess">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="div-content">
+  <div class="div-content" *ngIf="!alertSuccess">
     <button class="btn btn-danger" id="cancel-btn" (click)="modal.dismissAll()">Cerrar</button>
     <button class="btn btn-primary" id="asig-btn" (click)="assignCovenant(form.value)" [disabled]="form.invalid" *ngIf="!isPermanent">Asignar</button>
   </div>

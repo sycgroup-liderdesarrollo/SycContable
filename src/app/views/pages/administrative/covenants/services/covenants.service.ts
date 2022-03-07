@@ -3,10 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { JsonResponseInterfaces } from 'src/app/interfaces/json-response-interfaces';
 import { environment } from 'src/environments/environment';
-import { CovenantTypeInterface } from '../../interfaces/covenant-type-interface';
-import { CovenantInterface } from '../../interfaces/covenants-interface';
-import { PeriodicityTypeInterface } from '../../interfaces/periodicity-type-interface';
-import { ProviderInterface } from '../../interfaces/provider-interface';
+import { PeriodicityTypeInterface } from '../../../payroll/interfaces/periodicity-type-interface';
+import { CovenantInterface } from '../interfaces/covenants-interface';
+import { ProviderInterface } from '../interfaces/provider-interface';
 
 @Injectable({
   providedIn: 'root'

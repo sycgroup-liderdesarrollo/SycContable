@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdministrativeRoutingModule } from './administrative-routing.module';
-import { EmployeesComponent } from './employees/employees.component';
 import { ManageVacationsComponent } from './manage-vacations/manage-vacations.component';
 import { NgbPaginationModule, NgbAlertModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { InfoUserComponent } from './employees/components/info-user/info-user.component';
@@ -15,14 +14,11 @@ import { UserAssigCovenantModalComponent } from './covenants/components/user-ass
 import { ConfirmationModalComponent } from './covenants/components/confirmation-modal/confirmation-modal.component';
 
 import { PipefilterPipe } from './pipes/pipefilter.pipe';
-import { ModalAddEmployeesComponent } from './employees/modal-add-employees/modal-add-employees.component';
+import { ModalAddEmployeesComponent } from './employees/components/modal-add-employees/modal-add-employees.component';
 // modulos material
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
-import {MatStepperModule} from '@angular/material/stepper';
-import {MatButtonModule} from '@angular/material/button';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatCardModule} from '@angular/material/card';
+import { EmployeesComponent } from './employees/components/table-employee/employees.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +33,6 @@ import {MatCardModule} from '@angular/material/card';
     ConfirmationModalComponent,
     PipefilterPipe,
     ModalAddEmployeesComponent,
-
   ],
   imports: [
     FormsModule,
@@ -47,8 +42,6 @@ import {MatCardModule} from '@angular/material/card';
     SwiperModule,
     NgbPaginationModule,
     NgbAlertModule,
-    FormsModule,
-    ReactiveFormsModule,
     NgbNavModule,
     MatDialogModule,
     MatInputModule,

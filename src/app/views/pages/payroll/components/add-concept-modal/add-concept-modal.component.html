@@ -3,8 +3,8 @@
     <h2><Strong>Agregar concepto</Strong></h2>
   </div>
   <div class="modal-body">
-    <div class="spacen-around">
-      <div *ngIf="!isSelected" class="spacen-around">
+    <div class="column">
+      <div *ngIf="!isSelected" class="column">
         <h4><strong>Buscar por nombre</strong></h4>
         <input type="text" placeholder="Nombre..." class="form-control" id="input-concept-name" (keyup)="getConcepts(concept_type_id, $event)">
         <h4 id="sub-text"><strong>Selecciona el concepto</strong></h4>
@@ -12,8 +12,11 @@
       <div class="div-concepts" *ngIf="!isSelected">
         <div *ngFor="let concept of concepts" >
           <button class="concept-btn" (click)="conceptSelected(concept.id)">
-            {{concept.name}}
+            {{concept.id}}#  {{concept.name}}
           </button>
+        </div>
+        <div class="alert alert-warning" role="alert" *ngIf="notResults">
+          <strong>Sin resultados</strong>
         </div>
       </div>
       <div class="alert alert-warning" role="alert" *ngIf="isAgain">
@@ -42,7 +45,7 @@
   </div>
   <div class="modal-footer">
     <div>
-      <button class="btn" (click)="modal.dismissAll()">Cerrar</button>
+      <button class="btn btn-dark" (click)="modal.dismissAll()">Cerrar</button>
       <button class="btn btn-primary" (click)="addConcept(form.value)">Agregar</button>
     </div>
   </div>

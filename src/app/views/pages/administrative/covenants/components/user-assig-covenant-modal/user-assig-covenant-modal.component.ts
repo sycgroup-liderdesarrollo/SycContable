@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ServiceEmployeesService } from '../../../employees/services/service-employees.service';
-import { EmployeeInterface } from '../../../interfaces/employee-interface';
+import { EmployeeInterface } from '../../../employees/interfaces/employee-interface';
+import { EmployeesService } from '../../../employees/services/service-employees.service';
+import { CovenantInterface } from '../../interfaces/covenants-interface';
 
 @Component({
   selector: 'app-user-assig-covenant-modal',
@@ -11,7 +12,7 @@ import { EmployeeInterface } from '../../../interfaces/employee-interface';
 })
 export class UserAssigCovenantModalComponent implements OnInit {
 
-  @Input() covenantData:any;
+  @Input() covenantData:CovenantInterface;
   @Output() user_covenant = new EventEmitter();
 
   employees:EmployeeInterface[];
@@ -25,7 +26,7 @@ export class UserAssigCovenantModalComponent implements OnInit {
   alertType:string="";
 
   constructor(
-    private serviceUser: ServiceEmployeesService,
+    private serviceUser: EmployeesService,
     public modal:NgbModal,
     private fb:FormBuilder
   ) { }
@@ -68,7 +69,7 @@ export class UserAssigCovenantModalComponent implements OnInit {
       this.message = resp;
       this.message.warning == 1 ? this.alertType = "warning" : this.alertType = "success"
       this.alertSuccess = true
-      setTimeout(()=>{this.modal.dismissAll()}, 5000);
+      setTimeout(()=>{this.modal.dismissAll()}, 3500);
       this.user_covenant.emit();
     });
   }

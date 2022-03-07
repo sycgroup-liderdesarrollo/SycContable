@@ -10,7 +10,7 @@
       <div class="div-form-modal">
         <label id="covenant-name-label">Nombre del convenio</label>
         <input class="form-control" type="text" name="name" id="" formControlName="name" autocomplete="off">
-          <label *ngIf="form.get('name')?.hasError('required') && form.get('name')?.touched" style="color: rgb(172,29,33); font-weight: 100;">*El nombre es requerido</label>
+          <label id="required-alert" *ngIf="form.get('name')?.hasError('required') && form.get('name')?.touched">*El nombre es requerido</label>
       </div>
       <div class="div-form-modal">
         <label>Tipo de convenio</label>
@@ -23,7 +23,7 @@
       <div class="div-form-modal">
         <label id="covenant-name-label">Nombre del concepto</label>
         <input class="form-control" type="text" name="concept_name" id="" formControlName="concept_name" autocomplete="off">
-        <label *ngIf="form.get('concept_name')?.hasError('required') && form.get('concept_name')?.touched" style="color: rgb(172,29,33); font-weight: 100;">*El nombre del concepto es requerido</label>
+        <label id="required-alert" *ngIf="form.get('concept_name')?.hasError('required') && form.get('concept_name')?.touched">*El nombre del concepto es requerido</label>
       </div>
       <div class="div-form-modal"  *ngIf="form.value.covenant_type_id == 2">
         <label>Valor</label>

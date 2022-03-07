@@ -2,10 +2,10 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, Subscriber } from 'rxjs';
-import { CovenantTypeInterface } from '../../../interfaces/covenant-type-interface';
-import { CovenantInterface } from '../../../interfaces/covenants-interface';
-import { PeriodicityTypeInterface } from '../../../interfaces/periodicity-type-interface';
-import { ProviderInterface } from '../../../interfaces/provider-interface';
+import { PeriodicityTypeInterface } from 'src/app/views/pages/payroll/interfaces/periodicity-type-interface';
+import { CovenantTypeInterface } from '../../interfaces/covenant-type-interface';
+import { CovenantInterface } from '../../interfaces/covenants-interface';
+import { ProviderInterface } from '../../interfaces/provider-interface';
 import { CovenantsService } from '../../services/covenants.service';
 
 @Component({
@@ -16,9 +16,9 @@ import { CovenantsService } from '../../services/covenants.service';
 export class CovenantModalsComponent implements OnInit {
 
   constructor(
-    private serviceCovenant: CovenantsService,
-    private fb:FormBuilder,
     public modal:NgbModal,
+    private fb:FormBuilder,
+    private serviceCovenant: CovenantsService,
   ) { }
 
   @Input() covenantData:CovenantInterface;

@@ -1,5 +1,7 @@
 import { BusinessLineInterfaces } from "./business-line-interfaces";
-import { GenderInterfaces } from "./gender-interfaces";
+import { CityInterface } from "./city-interface";
+import { ContractTypeInterface } from "./contract-type-interface";
+import { GenderInterface } from "./gender-interface";
 import { PositionInterfaces } from "./position-interfaces";
 
 export interface EmployeeInterface {
@@ -34,13 +36,13 @@ export interface EmployeeInterface {
     education_level_id: number;
     emergency_contact_id: number;
     occupational_risk_manager_id: number;
-    created_at: Date;
-    updated_at: Date;
-    deleted_at: null;
-    gender:GenderInterfaces;
+    gender:GenderInterface;
     position:PositionInterfaces;
     business_line:BusinessLineInterfaces;
     pivot: any,
     length: number,
+    residenceCity: CityInterface
+    contractType: ContractTypeInterface,
+    password: string,
 }
 

@@ -14,7 +14,7 @@
 
     <ng-template swiperSlide *ngFor="let covenant of covenants">
       <button class="btn-card" (click)="getValuesSlider(covenant.id)">
-        <div class="card" style="margin-top: 15px;">
+        <div class="card">
           <img src="{{covenant.image}}" class="card-img-top">
         </div>
         <div class="card-body">
@@ -28,7 +28,7 @@
   <swiper #swiper [config]="configSmall" *ngIf="smallSwiper">
     <ng-template swiperSlide *ngFor="let covenant of covenants">
       <button class="btn-card" (click)="getValuesSlider(covenant.id)">
-        <div class="card" style="margin-top: 15px;">
+        <div class="card">
           <img src="{{covenant.image}}" class="card-img-top">
         </div>
         <div class="card-body">
