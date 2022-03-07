@@ -27,12 +27,12 @@ export class SearchUserComponent implements OnInit {
   }
 
   userFilter(event:any){
-    this.serviceUser.getEmployed(event.target.value).subscribe(resp => {
+    this.serviceUser.getUsers(event.target.value).subscribe(resp => {
       this.employees = resp.data
     })
   }
   getEmployees(){
-    this.serviceUser.getEmployed().subscribe(resp => {
+    this.serviceUser.getUsers().subscribe(resp => {
       this.employees = resp.data;
     })
   }

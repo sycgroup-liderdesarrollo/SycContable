@@ -1,7 +1,7 @@
-import { BusinessLineInterfaces } from "./business-line-interfaces";
+import { BusinessLineInterface } from "./business-line-interfaces";
 
 export interface PositionInterfaces {
-    id: number;
-    name: string;
-    business_line: BusinessLineInterfaces;
+  id: number;
+  name: string;
+  business_line: BusinessLineInterface;
 }

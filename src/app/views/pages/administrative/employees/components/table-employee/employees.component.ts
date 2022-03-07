@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { EmployeeInterface } from '../../interfaces/employee-interface';
 import { EmployeesService } from '../../services/service-employees.service';
@@ -14,24 +15,41 @@ import { ModalAddEmployeesComponent } from '../modal-add-employees/modal-add-emp
 export class EmployeesComponent implements OnInit {
 
   users:EmployeeInterface[];
-  page = 1;
-  pageSize = 4;
+
+  length = 10;
+  pageSize = 10;
+  pageNumber = 1;
+  pageSizeOptions: number[] = [5, 10];
 
   constructor(
-    private serviceEmployees:EmployeesService,
+    private serviceUser:EmployeesService,
     public modal:NgbModal,
   ) {}
 
   ngOnInit(): void {
     this.getEmployees();
   }
-  getEmployees(){
-    this.serviceEmployees.getEmployed().subscribe(res =>{
+
+  getEmployees(pageSize?:number, pageNumber?:number){
+    this.serviceUser.getUsers('', pageSize, pageNumber).subscribe(res =>{
       this.users = res.data;
+      this.length = res.meta?.total ?? 10;
     })
   }
-  open() {
+  userFilter(event:any){
+    this.serviceUser.getUsers(event.target.value).subscribe(resp => {
+      this.users = resp.data
+    })
+  }
+  openAddModal() {
     const openmodalRef = this.modal.open(ModalAddEmployeesComponent);
-    openmodalRef.componentInstance.dataEmployees = this.users;
+    openmodalRef.componentInstance.refresh_users.subscribe(($e:any)=>{
+      this.getEmployees();
+    })
+  }
+  handlePage(event: PageEvent){
+    this.pageSize = event.pageSize;
+    this.pageNumber = event.pageIndex + 1;
+    this.getEmployees(this.pageSize, this.pageNumber);
   }
 }

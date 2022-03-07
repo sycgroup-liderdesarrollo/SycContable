@@ -14,26 +14,19 @@ export class EmployeesService {
     private http: HttpClient
   ) { }
 
-  getEmployed(filterValue?:any) :Observable<JsonResponseInterfaces<EmployeeInterface[]>> {
-    if( filterValue){
-      return this.http.get<JsonResponseInterfaces<EmployeeInterface[]>>(`${environment.API_Url}user`,{params:{'filter':  filterValue }});
-    }
-    return this.http.get<JsonResponseInterfaces<EmployeeInterface[]>>(`${environment.API_Url}user`);
+  getUsers(filterValue?:string, pageSize?:number, pageNumber?:number) :Observable<JsonResponseInterfaces<EmployeeInterface[]>> {
+    return this.http.get<JsonResponseInterfaces<EmployeeInterface[]>>(`${environment.API_Url}user`,{params:{'filter':  filterValue ?? '', 'page': pageNumber ?? '', 'paginate': pageSize ?? ''}});
   }
-
-  postEmployed(formdata : any) :Observable<JsonResponseInterfaces<EmployeeInterface[]>> {
+  postUser(formdata : any) :Observable<JsonResponseInterfaces<EmployeeInterface[]>> {
     return this.http.post<JsonResponseInterfaces<EmployeeInterface[]>>(`${environment.API_Url}user`,formdata);
   }
-
-  getEmployee(id:number): Observable<JsonResponseInterfaces<EmployeeInterface>>{
+  getUser(id:number): Observable<JsonResponseInterfaces<EmployeeInterface>>{
     return this.http.get<JsonResponseInterfaces<EmployeeInterface>>(`${environment.API_Url}user/${id}`);
   }
-
   assignCovenant(user_id:number, formData:any): Observable<EmployeeInterface[]>{
     return this.http.post<EmployeeInterface[]>(`${environment.API_Url}user/assignCovenant/`+ user_id, formData);
   }
   deleteUserCovenant(user_id:number, pivot_id:any): Observable<any>{
-
     return this.http.delete<any>(`${environment.API_Url}user/deleteCovenant/`+ user_id, {params:{'covenant_pivot_id':  pivot_id }});
   }
 }

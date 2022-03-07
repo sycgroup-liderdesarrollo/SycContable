@@ -1,4 +1,4 @@
-export interface BusinessLineInterfaces {
-    id: number,
-    name: string,
+export interface BusinessLineInterface{
+  id: number,
+  name: string,
 }

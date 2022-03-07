@@ -19,6 +19,7 @@ import { ModalAddEmployeesComponent } from './employees/components/modal-add-emp
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import { EmployeesComponent } from './employees/components/table-employee/employees.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { EmployeesComponent } from './employees/components/table-employee/employ
     NgbNavModule,
     MatDialogModule,
     MatInputModule,
+    MatPaginatorModule
   ]
 })
 export class AdministrativeModule { }

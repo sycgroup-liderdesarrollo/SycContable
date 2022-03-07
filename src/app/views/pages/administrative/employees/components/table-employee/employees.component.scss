@@ -1,35 +1,27 @@
 .cardTable{
     width: auto;
 }
-
 .form-control{
-    border-left: none;
+  width: 70%;
+  border-collapse: 0px;
+  background-image: url('/assets/images/others/icon-search.png');
+  background-position: 6px 6px;
+  background-repeat: no-repeat;
+  background-color: rgb(250, 250, 250);
+  font-weight: 500;
+  padding-left: 40px;
 }
 .input-group{
     width: 30%;
 }
-.btn{
-color: white;
-border-radius: 10px;
-height: 40px;
-}
-.dates_header{
-    color: rgb(104, 104, 104);
-    opacity: 70%;
-}
-
-.dates_body{
-    font-family:' Poppins',Helvetica,sans-serif;
-}
-
-.Profileimg{
-    width: 160px;
-    height:160px;
-    box-sizing: border-box;
-    flex-shrink: 0;
-    border-radius: 0.475rem;
-  
+#btn-table{
+  background-color: transparent;
+  border-color: transparent;
 }
 
 
-    
+
+
+
+
+

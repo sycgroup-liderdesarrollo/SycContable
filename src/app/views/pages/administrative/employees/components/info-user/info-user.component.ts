@@ -24,7 +24,7 @@ export class InfoUserComponent implements OnInit {
   }
 
   getUser(){
-    this.serviceUser.getEmployee(this.user_id).subscribe(resp => {
+    this.serviceUser.getUser(this.user_id).subscribe(resp => {
       this.user_data = resp.data
       console.log(this.user_data);
 

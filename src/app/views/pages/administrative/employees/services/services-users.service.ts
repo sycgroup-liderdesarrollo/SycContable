@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { JsonResponseInterfaces } from 'src/app/interfaces/json-response-interfaces';
 import { environment } from 'src/environments/environment';
+import { BusinessLineInterface } from '../interfaces/business-line-interfaces';
 import { CityInterface } from '../interfaces/city-interface';
 import { CivilStatusInterface } from '../interfaces/civil-status-interface';
 import { ContractTypeInterface } from '../interfaces/contract-type-interface';
@@ -12,8 +13,10 @@ import { HeadquarterInterface } from '../interfaces/headquarter-interface';
 import { HealthProviderInterface } from '../interfaces/health-provider-interface';
 import { IdentificationTypeInterface } from '../interfaces/identification-type-interface';
 import { KinkshipInterface } from '../interfaces/kinkship-interface';
+import { ocupationalRiskManagerInterface } from '../interfaces/ocupational-risk-manager-interface';
 import { PensionFundInterface } from '../interfaces/pension-fund-interface';
 import { PositionInterfaces } from '../interfaces/position-interfaces';
+import { ProvinceInterface } from '../interfaces/province-interface';
 import { SalaryTypeInterface } from '../interfaces/salary-type-interface';
 import { StrataInterface } from '../interfaces/strata-interface';
 
@@ -27,8 +30,12 @@ export class UsersService {
   getIdentificationTypes() :Observable<JsonResponseInterfaces<IdentificationTypeInterface[]>> {
     return this.http.get<JsonResponseInterfaces<IdentificationTypeInterface[]>>(`${environment.API_Url}identificationType`);
   }
-  getCities() : Observable<JsonResponseInterfaces<CityInterface[]>>{
-    return this.http.get<JsonResponseInterfaces<CityInterface[]>>(`${environment.API_Url}city`);
+  getCities(province_id?: number) : Observable<JsonResponseInterfaces<CityInterface[]>>{
+    if (province_id) {
+      return this.http.get<JsonResponseInterfaces<CityInterface[]>>(`${environment.API_Url}city`, {params:{'province_id':  province_id }});
+    }else{
+      return this.http.get<JsonResponseInterfaces<CityInterface[]>>(`${environment.API_Url}city`);
+    }
   }
   getStrata() : Observable<JsonResponseInterfaces<StrataInterface[]>>{
     return this.http.get<JsonResponseInterfaces<StrataInterface[]>>(`${environment.API_Url}strata`);
@@ -60,7 +67,16 @@ export class UsersService {
   getKinkships() : Observable<JsonResponseInterfaces<KinkshipInterface[]>>{
     return this.http.get<JsonResponseInterfaces<KinkshipInterface[]>>(`${environment.API_Url}kinship`);
   }
-  getSalaryType(): Observable<JsonResponseInterfaces<SalaryTypeInterface[]>>{
+  getSalaryTypes(): Observable<JsonResponseInterfaces<SalaryTypeInterface[]>>{
     return this.http.get<JsonResponseInterfaces<SalaryTypeInterface[]>>(`${environment.API_Url}salaryType`);
+  }
+  getBusinessLines(): Observable<JsonResponseInterfaces<BusinessLineInterface[]>>{
+    return this.http.get<JsonResponseInterfaces<BusinessLineInterface[]>>(`${environment.API_Url}businessLine`);
+  }
+  getOcupationalRiskManager() : Observable<JsonResponseInterfaces<ocupationalRiskManagerInterface[]>>{
+    return this.http.get<JsonResponseInterfaces<ocupationalRiskManagerInterface[]>>(`${environment.API_Url}ocupationalRiskManager`);
+  }
+  getProvinces() : Observable<JsonResponseInterfaces<ProvinceInterface[]>>{
+    return this.http.get<JsonResponseInterfaces<ProvinceInterface[]>>(`${environment.API_Url}province`);
   }
 }
