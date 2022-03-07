@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+import { ConfirmationModalComponent } from '../../../covenants/components/confirmation-modal/confirmation-modal.component';
 import { EmployeeInterface } from '../../interfaces/employee-interface';
 import { EmployeesService } from '../../services/service-employees.service';
 import { ModalAddEmployeesComponent } from '../modal-add-employees/modal-add-employees.component';
@@ -51,5 +52,12 @@ export class EmployeesComponent implements OnInit {
     this.pageSize = event.pageSize;
     this.pageNumber = event.pageIndex + 1;
     this.getEmployees(this.pageSize, this.pageNumber);
+  }
+  openDeleteModal(user_id: number){
+    const modalRef = this.modal.open(ConfirmationModalComponent);
+    modalRef.componentInstance.user_table_id = user_id;
+    modalRef.componentInstance.change_users.subscribe(() =>{
+      this.getEmployees();
+    })
   }
 }

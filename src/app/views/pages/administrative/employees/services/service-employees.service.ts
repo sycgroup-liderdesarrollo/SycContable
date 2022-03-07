@@ -29,4 +29,7 @@ export class EmployeesService {
   deleteUserCovenant(user_id:number, pivot_id:any): Observable<any>{
     return this.http.delete<any>(`${environment.API_Url}user/deleteCovenant/`+ user_id, {params:{'covenant_pivot_id':  pivot_id }});
   }
+  deleteUser(user_id: number){
+    return this.http.delete<JsonResponseInterfaces<EmployeeInterface[]>>(`${environment.API_Url}user/`+ user_id);
+  }
 }

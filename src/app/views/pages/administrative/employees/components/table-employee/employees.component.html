@@ -32,7 +32,7 @@
         <td *ngIf="user.active == true" ><img width="30px" src="/assets/images/others/status-on.png" alt=""></td>
         <td *ngIf="user.active == false"><img width="30px" src="/assets/images/others/status-on.png" alt=""></td>
         <td ><button id="btn-table" [routerLink]="['/administrative/info-user', user.id]"><img width="20px" src="/assets/images/others/icon-edit.png" alt=""></button></td>
-        <td ><button id="btn-table"><img width="20px" src="/assets/images/others/icon-trash.png" alt=""></button></td>
+        <td ><button id="btn-table" (click)="openDeleteModal(user.id)"><img width="20px" src="/assets/images/others/icon-trash.png" alt=""></button></td>
       </tr>
     </tbody>
   </table>
