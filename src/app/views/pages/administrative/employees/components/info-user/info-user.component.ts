@@ -47,41 +47,41 @@ export class InfoUserComponent implements OnInit {
     })
   }
 
-  crearform(dataProvider?:any){
+  crearform(DataUsers?:any){
    
     this.form = this.fb.group({
-      name:                     [dataProvider?.name ?? '', Validators.required],
-      last_name:                [dataProvider?.last_name ?? '', Validators.required],
-      identificationType:       [dataProvider?.identificationType ?? '', Validators.required],
-      identification_number:    [dataProvider?.identification_number ?? '', Validators.compose([
+      name:                     [DataUsers?.name ?? '', Validators.required],
+      last_name:                [DataUsers?.last_name ?? '', Validators.required],
+      identificationType:       [DataUsers?.identificationType ?? '', Validators.required],
+      identification_number:    [DataUsers?.identification_number ?? '', Validators.compose([
                                   Validators.required,
                                 ])],
-      occupationalRiskManager:  [dataProvider?.occupationalRiskManager ?? '',Validators.compose([
+      occupationalRiskManager:  [DataUsers?.occupationalRiskManager ?? '',Validators.compose([
                                   Validators.required,
                                 ])],
-      kinship:                  [dataProvider?.kinship ?? '', Validators.required],
-      address:                  [dataProvider?.address ?? '', Validators.required],
-      neighborhood:             [dataProvider?.neighborhood ?? '',Validators.compose([
+      kinship:                  [DataUsers?.kinship ?? '', Validators.required],
+      address:                  [DataUsers?.address ?? '', Validators.required],
+      neighborhood:             [DataUsers?.neighborhood ?? '',Validators.compose([
                                   Validators.required,
                                 ])],
-      strata:                   [dataProvider?.strata ?? '',Validators.compose([
+      strata:                   [DataUsers?.strata ?? '',Validators.compose([
                                   Validators.required,
                                 ])],
-      contractType:             [dataProvider?.contractType ?? '', Validators.required],
-      salaryType:               [dataProvider?.salaryType ?? ''],
-      healthProvider:           [dataProvider?.healthProvider ?? '', Validators.compose([
+      contractType:             [DataUsers?.contractType ?? '', Validators.required],
+      salaryType:               [DataUsers?.salaryType ?? ''],
+      healthProvider:           [DataUsers?.healthProvider ?? '', Validators.compose([
                                   Validators.required,
                                 ])],
-      pensionFund:              [dataProvider?.pensionFund ?? '', Validators.required],
-      email:                    [dataProvider?.email ?? '',Validators.compose([
+      pensionFund:              [DataUsers?.pensionFund ?? '', Validators.required],
+      email:                    [DataUsers?.email ?? '',Validators.compose([
                                   Validators.required,Validators.email,
                                 ])],
-      phone:                    [dataProvider?.phone ?? '', Validators.required],
-      base_salary:              [dataProvider?.base_salary ?? '', Validators.required],
-      headquarter:              [dataProvider?.headquarter ?? '', Validators.required],
-      position:                 [dataProvider?.position ?? '', Validators.required],
-      gender:                   [dataProvider?.gender ?? '', Validators.required],
-      emergencyContact:         [dataProvider?.emergencyContact ?? '', Validators.required],
+      phone:                    [DataUsers?.phone ?? '', Validators.required],
+      base_salary:              [DataUsers?.base_salary ?? '', Validators.required],
+      headquarter:              [DataUsers?.headquarter ?? '', Validators.required],
+      position:                 [DataUsers?.position ?? '', Validators.required],
+      gender:                   [DataUsers?.gender ?? '', Validators.required],
+      emergencyContact:         [DataUsers?.emergencyContact ?? '', Validators.required],
     });
   }
 

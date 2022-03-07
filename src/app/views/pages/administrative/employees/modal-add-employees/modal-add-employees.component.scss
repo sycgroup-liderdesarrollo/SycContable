@@ -3,3 +3,33 @@
     font-family:' Poppins',Helvetica,sans-serif;
     font-weight: 600;
 }
+.form-control{
+    font-size: 15px;
+    margin-right: 10px;
+}
+
+.Botones{
+    display: flex;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content:flex-end;
+    padding: 0.75rem;
+    border-top: 1px solid #e9ecef;
+    margin-top: 10px;
+    
+}
+.btn{
+    height: 40px;
+}
+#UserLabel{
+    font-size: 1rem;
+    font-family:' Poppins',Helvetica,sans-serif;
+    font-weight: 600;
+}
+.estiloInputs{
+    margin-right: 10px;
+}
+
+
+

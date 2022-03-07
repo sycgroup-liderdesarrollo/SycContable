@@ -19,6 +19,10 @@ import { ModalAddEmployeesComponent } from './employees/modal-add-employees/moda
 // modulos material
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatButtonModule} from '@angular/material/button';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -48,6 +52,10 @@ import {MatInputModule} from '@angular/material/input';
     NgbNavModule,
     MatDialogModule,
     MatInputModule,
+    MatStepperModule,
+    MatButtonModule,
+    MatProgressSpinnerModule,
+    MatCardModule
   ]
 })
 export class AdministrativeModule { }
