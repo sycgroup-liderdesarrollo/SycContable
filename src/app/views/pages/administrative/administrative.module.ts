@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AdministrativeRoutingModule } from './administrative-routing.module';
 import { ManageVacationsComponent } from './manage-vacations/manage-vacations.component';
 import { NgbPaginationModule, NgbAlertModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
-import { InfoUserComponent } from './employees/components/info-user/info-user.component';
+import { InfoUserComponent } from './employees/components/profile-user/info-user/info-user.component';
 import { AdminCovenantComponent } from './covenants/components/admin-covenant/admin-covenant.component';
 import { SliderComponent } from './covenants/components/slider/slider.component';
 import { SwiperModule } from 'swiper/angular';
@@ -18,6 +18,10 @@ import { ModalAddEmployeesComponent } from './employees/components/modal-add-emp
 // modulos material
 import { EmployeesComponent } from './employees/components/table-employee/employees.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { GeneralBusinessComponent } from './employees/components/profile-user/general-business/general-business.component';
+import { GeneralUserComponent } from './employees/components/profile-user/general-user/general-user.component';
+import { GeneralContactComponent } from './employees/components/profile-user/general-contact/general-contact.component';
+import { GeneralSegurityComponent } from './employees/components/profile-user/general-segurity/general-segurity.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +36,10 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     ConfirmationModalComponent,
     PipefilterPipe,
     ModalAddEmployeesComponent,
+    GeneralBusinessComponent,
+    GeneralUserComponent,
+    GeneralContactComponent,
+    GeneralSegurityComponent,
   ],
   imports: [
     FormsModule,

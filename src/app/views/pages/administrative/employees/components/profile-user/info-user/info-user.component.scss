@@ -1,0 +1,64 @@
+.card{
+  width: auto;
+}
+#user-img{
+  width: 170px;
+  height: auto;
+  border-radius: 15px;
+  border: 1px solid rgb(150, 150, 150);
+}
+.div-head{
+  display: flex;
+  justify-content: flex-start;
+  width: 70%;
+}
+.div-user-info{
+  margin-left: 20px;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 50%;
+}
+#head-span{
+  margin-right: 10px;
+  font-size: small;
+  font-weight: 500;
+  color: rgb(150, 150, 150);
+}
+#div-cube-info{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px dashed rgb(190, 190, 190);
+  width: 150px;
+  height: 60px;
+  border-radius: 7px;
+  padding: 8px;
+}
+.space-between{
+  display: flex;
+  justify-content: space-between;
+  width: 500px;
+}
+.div-head-end{
+  display: flex;
+  justify-content: end;
+  width: 30%;
+}
+.card-body{
+  display: flex;
+  justify-content: center;
+}
+.btn-group{
+  width: 40%;
+}
+.card-footer{
+  display: flex;
+  justify-content: center;
+}
+.hola{
+  background-color: aqua;
+}
+.btn-outline-primary{
+  font-weight: 500;
+}

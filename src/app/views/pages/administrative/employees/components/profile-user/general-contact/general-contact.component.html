@@ -1,0 +1,30 @@
+<div class="card">
+  <div class="card-header">
+    <h2>Detalles del contacto de emergencia</h2>
+    <button id="edit-contact-btn" class="btn btn-primary {{btnEdit}}" (click)="edit()"><img src="/assets/images/others/icon-edit.png" alt=""></button>
+  </div>
+  <div class="card-body">
+    <div class="div-info">
+      <h3>Informacion del contacto</h3>
+      <div class="space-between">
+        <span><strong>Nombre</strong></span>
+        <input type="text" id="inp-info" [disabled]="!isEdit" [value]="name">
+      </div>
+      <br>
+      <div class="space-between">
+        <span><strong>Telefono</strong></span>
+        <input type="number" id="inp-info" [disabled]="!isEdit" [value]="number">
+      </div>
+      <br>
+      <div class="space-between">
+        <span><strong>Parentezco</strong></span>
+        <select id="select-info" [disabled]="!isEdit">
+          <option [value]="">{{name}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer" *ngIf="isEdit">
+    <button class="btn btn-success">Guardar</button>
+  </div>
+</div>

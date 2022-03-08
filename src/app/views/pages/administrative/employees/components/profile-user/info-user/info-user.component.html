@@ -1,0 +1,59 @@
+<div *ngIf="user_data">
+  <div class="card">
+    <div class="card-body">
+      <div class="div-head">
+        <img id="user-img" src={{user_data.image}} alt="">
+        <div class="div-user-info">
+          <h1><strong>{{ user_data.name }} {{ user_data.last_name }}</strong></h1>
+          <span id="head-span"><img src="/assets/images/others/icon-provider.png"> {{user_data.position.name}}</span>
+          <span id="head-span"><img src="/assets/images/others/icon-address.png"> {{user_data.residenceCity.name}}</span>
+          <span id="head-span"><img src="/assets/images/others/icon-email.png"> {{user_data.email}}</span>
+          <div class="space-between">
+            <div id="div-cube-info">
+              <strong>{{user_data.base_salary | currency: ' '}} COP</strong>
+              <span id="head-span"><img width="20px;" src="/assets/images/others/icon-dollar.png"> Salario base</span>
+            </div>
+            <div id="div-cube-info">
+              <strong>{{user_data.contractType.name}}</strong>
+              <span id="head-span"><img width="20px;" src="/assets/images/others/icon-concept.png"> Contrato</span>
+            </div>
+            <div id="div-cube-info">
+              <strong>{{user_data.position.business_line.name}}</strong>
+              <span id="head-span"><img width="20px;" src="/assets/images/others/icon-empleo.png"> Cargo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="div-head-end">
+        <div>
+          <span id="head-span"><strong>Fecha de contratacion:</strong></span>
+          <span><strong>{{user_data.admission_date}}</strong> </span>
+          <br>
+          <span id="head-span"><strong>Cumpleaños:</strong></span>
+          <span><strong>{{user_data.birthday | date}}</strong> </span>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
+        <label class="btn btn-outline-primary" for="btnradio1" (click)="open('user')">Usuario</label>
+
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+        <label class="btn btn-outline-primary" for="btnradio2" (click)="open('business')">Empresa</label>
+
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+        <label class="btn btn-outline-primary" for="btnradio3" (click)="open('security')">Seguridad</label>
+
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
+        <label class="btn btn-outline-primary" for="btnradio4" (click)="open('contact')">Contacto</label>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<app-general-user *ngIf="isUser"></app-general-user>
+<app-general-contact *ngIf="isContact"></app-general-contact>
+<app-general-business *ngIf="isBusiness"></app-general-business>
+<app-general-segurity *ngIf="isSecurity"></app-general-segurity>

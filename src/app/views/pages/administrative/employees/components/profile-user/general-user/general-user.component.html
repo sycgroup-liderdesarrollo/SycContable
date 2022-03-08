@@ -1,0 +1,115 @@
+<div class="card">
+  <div class="card-header">
+    <h2>Detalles del empleado</h2>
+    <button id="edit-user-btn" class="btn btn-primary {{btnEdit}}" (click)="edit()"><img src="/assets/images/others/icon-edit.png" alt=""></button>
+  </div>
+  <div class="card-body">
+    <div class="div-info">
+      <h3>Informacion general del empleado</h3>
+      <div class="space-between">
+          <span><strong>Nombre completo:</strong></span>
+          <div style="display: flex; justify-content: flex-end;">
+            <input type="text" id="inp-info-name" [disabled]="!isEdit" [value]="name">
+            <input type="text" id="inp-info-name" [disabled]="!isEdit" [value]="name">
+          </div>
+      </div>
+      <br>
+      <div class="space-between">
+        <span><strong>Numero de identificacion</strong></span>
+        <input type="text"id="inp-info" [disabled]="!isEdit" [value]="name">
+      </div>
+      <br>
+      <div class="space-between">
+        <span><strong>Tipo de identificacion</strong></span>
+        <select id="select-info" [disabled]="!isEdit">
+          <option [value]="">{{name}}</option>
+        </select>
+      </div>
+      <br>
+      <div class="space-between">
+        <span><strong>Departamento de expedicion</strong></span>
+        <select id="select-info" [disabled]="!isEdit">
+          <option [value]="">{{name}}</option>
+        </select>
+      </div>
+      <br>
+      <div class="space-between">
+        <span><strong>Ciudad de expedicion</strong></span>
+        <select id="select-info" [disabled]="!isEdit">
+          <option [value]="">{{name}}</option>
+        </select>
+      </div>
+      <br>
+      <div class="space-between">
+        <span><strong>Genero</strong></span>
+        <select id="select-info" [disabled]="!isEdit">
+          <option [value]="">{{name}}</option>
+        </select>
+      </div>
+      <br>
+      <div class="space-between">
+        <span><strong>Estado civul</strong></span>
+        <select id="select-info" [disabled]="!isEdit">
+          <option [value]="">{{name}}</option>
+        </select>
+      </div>
+      <br>
+      <div class="space-between">
+        <span><strong>Nivel de educacion</strong></span>
+        <select id="select-info" [disabled]="!isEdit">
+          <option [value]="">{{name}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="div-info">
+      <div class="space-between" style="margin-top: 50px">
+        <span><strong>Cumpleaños</strong></span>
+        <input type="date" id="inp-info" [disabled]="!isEdit" [value]="cumple">
+      </div>
+      <br>
+      <div class="space-between">
+        <span><strong>Hijos</strong></span>
+        <input type="number" id="inp-info" [disabled]="!isEdit" [value]="number">
+      </div>
+      <br>
+      <div class="space-between">
+        <span><strong>Telefono</strong></span>
+        <input type="number" id="inp-info" [disabled]="!isEdit" [value]="number">
+      </div>
+      <br>
+      <div class="space-between">
+        <span><strong>Departamento</strong></span>
+        <select id="select-info" [disabled]="!isEdit">
+          <option [value]="">{{name}}</option>
+        </select>
+      </div>
+      <br>
+      <div class="space-between">
+        <span><strong>Ciudad</strong></span>
+        <select id="select-info" [disabled]="!isEdit">
+          <option [value]="">{{name}}</option>
+        </select>
+      </div>
+      <br>
+      <div class="space-between">
+        <span><strong>Barrio</strong></span>
+        <input type="text" id="inp-info" [disabled]="!isEdit" [value]="name">
+      </div>
+      <br>
+      <div class="space-between">
+        <span><strong>Direccion</strong></span>
+        <input type="text" id="inp-info" [disabled]="!isEdit" [value]="name">
+      </div>
+      <br>
+      <div class="space-between">
+        <span><strong>Estrato</strong></span>
+        <select id="select-info" [disabled]="!isEdit">
+          <option [value]="">{{name}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer" *ngIf="isEdit">
+    <button class="btn btn-success">Guardar</button>
+  </div>
+</div>

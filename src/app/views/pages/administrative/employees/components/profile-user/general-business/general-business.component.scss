@@ -1,0 +1,62 @@
+.card-header{
+  display: flex;
+  justify-content: space-between;
+}
+#edit-business-btn{
+  width: auto;
+  height: auto;
+  background-color: transparent;
+  border-color: transparent;
+}
+.space-between{
+  display: flex;
+  justify-content: space-between;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.div-info{
+  width: 50%;
+  border-right: 3px dashed rgb(235, 235, 235);
+}
+#inp-info:disabled{
+  font-weight: 600;
+  color: rgb(124, 124, 124);
+  background-color: white;
+  border-color: transparent;
+  width: 200px;
+}
+#inp-info{
+  padding-left: 5px;
+  width: 200px;
+  height: 30px;
+  border-radius: 5px;
+  border-color: transparent;
+  background-color: rgb(235, 235, 235);
+}
+#select-info:disabled{
+  font-weight: 600;
+  color: rgb(124, 124, 124);
+  background-color: white;
+  border-color: transparent;
+  width: 195px;
+  appearance:none;
+}
+#select-info{
+  width: 200px;
+  height: 30px;
+  border-color: transparent;
+  border-radius: 5px;
+  background-color: rgb(235, 235, 235);
+}
+.card-body{
+  display: flex;
+  justify-content: space-around;
+}
+.card-footer{
+  display: flex;
+  justify-content: center;
+}
+.btn.btn-primary.active{
+  background-color: rgb(202, 230, 210) !important;
+  border-radius: 30px;
+}
