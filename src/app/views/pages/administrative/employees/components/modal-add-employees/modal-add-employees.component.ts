@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Observable, Subscriber } from 'rxjs';
 import { BusinessLineInterface } from '../../interfaces/business-line-interfaces';
 import { CityInterface } from '../../interfaces/city-interface';
 import { CivilStatusInterface } from '../../interfaces/civil-status-interface';
@@ -33,6 +34,7 @@ export class ModalAddEmployeesComponent implements OnInit {
   @Output() refresh_users = new EventEmitter();
 
   form: FormGroup;
+  actualImage:any;
   message:any = "";
   isLoading: boolean;
   pagine: number = 1;
@@ -42,6 +44,7 @@ export class ModalAddEmployeesComponent implements OnInit {
   isEdit: boolean = false;
   strata: StrataInterface[];
   genders: GenderInterface[];
+  changeImage:boolean = false;
   emergency_contact_id: number;
   messaggeAlert:boolean = false;
   provinces: ProvinceInterface[];
@@ -122,6 +125,7 @@ export class ModalAddEmployeesComponent implements OnInit {
       business_line_id:               [userData?.business_line.id ?? '', Validators.required],
       email:                          [userData?.email ?? '', Validators.required],
       password:                       [userData?.password ?? '', Validators.required],
+      image:                          [''],
       emergency_contact_id:           [userData?.emergency_contact_id ?? ''],
     })
     this.isLoading = false;
@@ -136,7 +140,10 @@ export class ModalAddEmployeesComponent implements OnInit {
   postUser(form:any){
     this.messaggeAlert = true;
     setTimeout(() => {
+      form.image = this.actualImage;
       form.emergency_contact_id = this.emergency_contact_id;
+      console.log(form);
+
       this.serviceEmployees.postUser(form).subscribe()
       this.modal.dismissAll();
       this.refresh_users.emit();
@@ -235,5 +242,30 @@ export class ModalAddEmployeesComponent implements OnInit {
   }
   filterCities(e: any){
     this.getCities(e.target.value)
+  }
+  cacthImage(event:any){
+    const covenantImage = event.target.files[0]
+    this.convertToBase64(covenantImage)
+    this.changeImage = true;
+  }
+  convertToBase64(file:File){
+    const observable = new Observable((suscriber:Subscriber<any>)=>{
+      this.readFile(file, suscriber);
+    });
+    observable.subscribe((d)=>{
+      this.actualImage = d;
+    })
+  }
+  readFile(file:File, suscriber:Subscriber<any>){
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file)
+    fileReader.onload = ()=>{
+      suscriber.next(fileReader.result)
+      suscriber.complete();
+    }
+    fileReader.onerror = (error)=>{
+      suscriber.error(error)
+      suscriber.complete();
+    }
   }
 }

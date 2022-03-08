@@ -13,7 +13,7 @@
       <div *ngIf="!isSelected">
         <div class="div-content" *ngFor="let employee of employees">
           <div class="items-card">
-            <img id="user-img" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt="">
+            <img id="user-img" src={{employee.image}} alt="">
           </div>
           <div class="user-card">
             <button class="select-btn" (click)="selectUser(employee.id)">
@@ -28,7 +28,7 @@
           <div id="div-form-covenant" *ngIf="!alertSuccess">
             <button class="select-btn" (click)="back()"><img src="https://img.icons8.com/ios-glyphs/15/000000/back.png"/></button>
             <h4 style="margin-top: 30px;">{{employe_name}}</h4>
-            <img id="user-img" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt="">
+            <img id="user-img" src={{employeeImage}} alt="">
           </div>
           <div class="user_card" >
             <form [formGroup]="form" *ngIf="!alertSuccess">

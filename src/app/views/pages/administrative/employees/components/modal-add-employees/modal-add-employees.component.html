@@ -26,20 +26,20 @@
         <div class="space-around">
           <div>
             <label>Tipo de identificacion</label>
-            <select class="form-select" id="select-user-form">
+            <select class="form-select" id="select-user-form" formControlName="identification_type_id">
               <option *ngFor="let identificationType of identificationTypes" [value]="identificationType.id">{{ identificationType.name }}</option>
             </select>
           </div>
           <div>
             <label>Numero de identificacion</label>
-            <input class="form-control" type="text" id="input-user-form">
+            <input formControlName="identification_number" class="form-control" type="text" id="input-user-form">
           </div>
         </div>
         <div class="space-around">
-          <div>
-            <label>Lugar de expedicion</label>
-            <select class="form-select" id="select-user-form">
-              <option *ngFor="let city of cities" [value]="city.id">{{ city.name }}</option>
+          <div id="select-province">
+            <label>Departamento de expedicion</label>
+            <select class="form-select" (click)="filterCities($event)">
+              <option *ngFor="let province of provinces" [value]="province.id">{{ province.name }}</option>
             </select>
           </div>
           <div>
@@ -80,9 +80,9 @@
       <!-- Segunda pagina -->
       <div *ngIf="pagine == 2">
         <div class="space-around">
-          <div>
+          <div id="select-province">
             <label>Departamento de residencia</label>
-            <select class="form-select" id="select-user-form" (click)="filterCities($event)">
+            <select class="form-select" (click)="filterCities($event)">
               <option *ngFor="let province of provinces" [value]="province.id">{{ province.name }}</option>
             </select>
           </div>
@@ -109,18 +109,18 @@
         </div>
         <div class="space-around">
           <div>
-            <label>Genero</label>
-            <select formControlName="gender_id" class="form-select" id="select-user-form">
-              <option *ngFor="let gender of genders" [value]="gender.id">{{ gender.name }}</option>
-            </select>
-            <label id="required-alert" *ngIf="form.get('gender_id')?.hasError('required') && form.get('gender_id')?.touched">*El campo es requerido</label>
-          </div>
-          <div>
             <label>Estrato</label>
             <select formControlName="strata_id" class="form-select" id="select-user-form">
               <option *ngFor="let stratum of strata" [value]="stratum.id">{{ stratum.name }}</option>
             </select>
             <label id="required-alert" *ngIf="form.get('strata_id')?.hasError('required') && form.get('strata_id')?.touched">*El campo es requerido</label>
+          </div>
+          <div>
+            <label>Genero</label>
+            <select formControlName="gender_id" class="form-select" id="select-user-form">
+              <option *ngFor="let gender of genders" [value]="gender.id">{{ gender.name }}</option>
+            </select>
+            <label id="required-alert" *ngIf="form.get('gender_id')?.hasError('required') && form.get('gender_id')?.touched">*El campo es requerido</label>
           </div>
         </div>
         <div class="space-around">
@@ -152,9 +152,9 @@
       <!-- Tercera pagina  -->
       <div *ngIf="pagine == 3">
         <div class="space-around">
-          <div>
+          <div id="select-province">
             <label>Departamento de trabajo</label>
-            <select class="form-select" id="select-user-form" (click)="filterCities($event)">
+            <select class="form-select"(click)="filterCities($event)">
               <option *ngFor="let province of provinces" [value]="province.id">{{ province.name }}</option>
             </select>
           </div>
@@ -292,6 +292,15 @@
             <label>Contraseña</label>
             <input formControlName="password" class="form-control" type="text" id="input-user-form" autocomplete="off">
             <label id="required-alert" *ngIf="form.get('password')?.hasError('required') && form.get('password')?.touched">*El campo es requerido</label>
+          </div>
+        </div>
+        <div class="space-around">
+          <div>
+            <label>Cargar foto de perfil</label>
+            <div class="space-around">
+              <input type="file" class="form-control" (change)="cacthImage($event)" formControlName="image">
+              <img *ngIf="actualImage" [src]="actualImage" id="img-form">
+            </div>
           </div>
         </div>
         <div class="div-buttons">

@@ -4,6 +4,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EmployeeInterface } from '../../../employees/interfaces/employee-interface';
 import { EmployeesService } from '../../../employees/services/service-employees.service';
 import { CovenantInterface } from '../../interfaces/covenants-interface';
+import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-user-assig-covenant-modal',
@@ -24,6 +26,7 @@ export class UserAssigCovenantModalComponent implements OnInit {
   message:any = "";
   isPermanent:boolean = false;
   alertType:string="";
+  employeeImage:string;
 
   constructor(
     private serviceUser: EmployeesService,
@@ -44,8 +47,15 @@ export class UserAssigCovenantModalComponent implements OnInit {
     })
   }
   getEmployees(){
-    this.serviceUser.getUsers().subscribe(resp => {
-      this.employees = resp.data;
+    this.serviceUser.getUsers().pipe(
+      map( (element:any) =>{
+        element.data.forEach((user:any) => {
+          user.image = `${environment.base_API_url}${user.image}`;
+        });
+        return element.data;
+      }),
+    ).subscribe(resp => {
+      this.employees = resp;
     })
   }
   userFilter(event:any){
@@ -53,9 +63,14 @@ export class UserAssigCovenantModalComponent implements OnInit {
       this.employees = resp.data
     })
   }
-  selectUser(user_id:number){
-    this.user_id = user_id;
-    this.employe_name = this.employees[user_id - 1].name;
+  selectUser(user_selected:number){
+    this.employees.forEach((user:any) => {
+      if (user_selected == user.id) {
+        this.user_id = user_selected;
+        this.employe_name = user.name;
+        this.employeeImage = user.image
+      }
+    });
     if (this.covenantData.covenantType.id == 2) {
       this.isSelected = true;
       this.alertSuccess = true;

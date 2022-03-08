@@ -15,11 +15,10 @@ import { ModalAddEmployeesComponent } from '../modal-add-employees/modal-add-emp
 
 export class EmployeesComponent implements OnInit {
 
-  users:EmployeeInterface[];
-
   length = 10;
   pageSize = 10;
   pageNumber = 1;
+  users:EmployeeInterface[];
   pageSizeOptions: number[] = [5, 10];
 
   constructor(
@@ -30,7 +29,6 @@ export class EmployeesComponent implements OnInit {
   ngOnInit(): void {
     this.getEmployees();
   }
-
   getEmployees(pageSize?:number, pageNumber?:number){
     this.serviceUser.getUsers('', pageSize, pageNumber).subscribe(res =>{
       this.users = res.data;

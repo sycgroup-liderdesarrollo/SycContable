@@ -1,7 +1,6 @@
 .modalContent{
   width: 100%;
 }
-
 .space-around{
   display: flex;
   justify-content: space-around;
@@ -35,4 +34,31 @@
 #required-alert{
   color: rgb(172,29,33);
   font-weight: 100;
+}
+#img-form{
+  border-radius: 10px;
+  width: 100px;
+  height: auto;
+}
+#select-province{
+  width: 190px;
+}
+
+@media (max-width: 500px){
+  #input-user-form{
+    width: 100%px;
+  }
+  #select-user-form{
+    width: 189px;
+  }
+  .space-around{
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5px;
+  }
+  #select-province{
+    display:block;
+    width: 189px;
+    margin: auto;
+  }
 }

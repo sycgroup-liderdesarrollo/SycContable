@@ -1,42 +1,42 @@
 <div class="card cardTable p-3 shadow-lg" id="cardTable">
   <div>
-    <h3>Nuestros Colaboradores</h3>
-    <h6 class="opacity-50">Mas de 50 colaboradores</h6>
+    <h3><strong>Nuestros Colaboradores</strong></h3>
+    <h3 class="opacity-50">Mas de 50 colaboradores</h3>
   </div>
-  <div class="mb-3 row col-12 d-flex justify-content-end">
-    <div class="input-group" >
-      <input class="form-control" type="text" placeholder="Buscar por nombre..." (keyup)="userFilter($event)">
-    </div>
-    <button type="button" class="btn btn-primary col-2" (click)="openAddModal()"><b><i class="bi bi-plus-lg"></i>NUEVO INGRESO</b></button>
+  <div class="div-head">
+    <input class="form-control" type="text" placeholder="Buscar por nombre..." (keyup)="userFilter($event)">
+    <button type="button" class="btn btn-primary" (click)="openAddModal()"><b>+ Nuevo ingreso</b></button>
   </div>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th class="dates_header" scope="col">UserId</th>
-        <th class="dates_header" scope="col">#ID</th>
-        <th class="dates_header" scope="col">Nombre y Apellido</th>
-        <th class="dates_header" scope="col">Cargo</th>
-        <th class="dates_header" scope="col">Salario</th>
-        <th class="dates_header" scope="col">Email</th>
-        <th class="dates_header" scope="col">Estado</th>
-      </tr>
-    </thead>
-    <tbody >
-      <tr *ngFor="let user of users">
-        <th class="dates_header" scope="row">{{user.id}}</th>
-        <td class="dates_body">{{user.identification_number}}</td>
-        <td class="dates_body">{{user.name}} {{user.last_name}}</td>
-        <td class="dates_body">{{user.position.name}}</td>
-        <td class="dates_body">{{user.base_salary}}</td>
-        <td class="dates_body">{{user.email}}</td>
-        <td *ngIf="user.active == true" ><img width="30px" src="/assets/images/others/status-on.png" alt=""></td>
-        <td *ngIf="user.active == false"><img width="30px" src="/assets/images/others/status-on.png" alt=""></td>
-        <td ><button id="btn-table" [routerLink]="['/administrative/info-user', user.id]"><img width="20px" src="/assets/images/others/icon-edit.png" alt=""></button></td>
-        <td ><button id="btn-table" (click)="openDeleteModal(user.id)"><img width="20px" src="/assets/images/others/icon-trash.png" alt=""></button></td>
-      </tr>
-    </tbody>
-  </table>
-  <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
-    (page)="handlePage($event)" aria-label="Select page">
-  </mat-paginator>
+  <div class="div-table">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th class="dates_header" scope="col">UserId</th>
+          <th class="dates_header" scope="col">#ID</th>
+          <th class="dates_header" scope="col">Nombre y Apellido</th>
+          <th class="dates_header" scope="col">Cargo</th>
+          <th class="dates_header" scope="col">Salario</th>
+          <th class="dates_header" scope="col">Email</th>
+          <th class="dates_header" scope="col">Estado</th>
+        </tr>
+      </thead>
+      <tbody >
+        <tr *ngFor="let user of users">
+          <th class="dates_header" scope="row">{{user.id}}</th>
+          <td class="dates_body">{{user.identification_number}}</td>
+          <td class="dates_body">{{user.name}} {{user.last_name}}</td>
+          <td class="dates_body">{{user.position.name}}</td>
+          <td class="dates_body">{{user.base_salary}}</td>
+          <td class="dates_body">{{user.email}}</td>
+          <td *ngIf="user.active == true" ><img width="30px" src="/assets/images/others/status-on.png" alt=""></td>
+          <td *ngIf="user.active == false"><img width="30px" src="/assets/images/others/status-off.png" alt=""></td>
+          <td ><button id="btn-table" [routerLink]="['/administrative/info-user', user.id]"><img width="20px" src="/assets/images/others/icon-edit.png" alt=""></button></td>
+          <td ><button id="btn-table" (click)="openDeleteModal(user.id)"><img width="20px" src="/assets/images/others/icon-trash.png" alt=""></button></td>
+        </tr>
+      </tbody>
+    </table>
+    <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+      (page)="handlePage($event)" aria-label="Select page">
+    </mat-paginator>
+  </div>
 </div>

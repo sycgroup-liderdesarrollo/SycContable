@@ -12,9 +12,9 @@ import { AddConceptModalComponent } from '../add-concept-modal/add-concept-modal
 })
 export class InfoPayrollComponent implements OnInit, OnChanges {
 
+  @Input() user_image:string;
   @Input() payroll_data:PayrollInterface;
   @Output() refresh_payroll = new EventEmitter();
-
 
   totalAccrued:number;
   totalDeducted:number;

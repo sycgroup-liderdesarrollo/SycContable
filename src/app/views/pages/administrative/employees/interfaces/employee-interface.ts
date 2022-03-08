@@ -45,5 +45,6 @@ export interface EmployeeInterface {
     residenceCity:                  CityInterface
     contractType:                   ContractTypeInterface,
     password:                       string,
+    image:                          string,
 }
 

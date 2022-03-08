@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { EmployeeInterface } from '../../../administrative/employees/interfaces/employee-interface';
 import { EmployeesService } from '../../../administrative/employees/services/service-employees.service';
 import { PayrollInterface } from '../../interfaces/payroll-interface';
 import { PayrollService } from '../../service/payroll.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search-user',
@@ -20,7 +22,7 @@ export class SearchUserComponent implements OnInit {
   isSelected:boolean = false;
   isEmpty:boolean = false;
   employee_name:string;
-
+  user_data_image:string;
 
   ngOnInit(): void {
     this.getEmployees()
@@ -32,12 +34,20 @@ export class SearchUserComponent implements OnInit {
     })
   }
   getEmployees(){
-    this.serviceUser.getUsers().subscribe(resp => {
-      this.employees = resp.data;
+    this.serviceUser.getUsers().pipe(
+      map( (element:any) =>{
+        element.data.forEach((user:any) => {
+          user.image = `${environment.base_API_url}${user.image}`;
+        });
+        return element.data;
+      }),
+    ).subscribe(resp => {
+      this.employees = resp;
     })
   }
   selectUser(user_data:EmployeeInterface){
     this.employee_name = user_data.name;
+    this.user_data_image = user_data.image;
     this.servicePayroll.getUserPayroll(user_data.id).subscribe(resp =>{
       if (!resp.data) {
         this.isEmpty = true;

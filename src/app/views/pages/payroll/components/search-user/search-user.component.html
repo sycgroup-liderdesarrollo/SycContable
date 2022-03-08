@@ -14,7 +14,7 @@
         <div class="card-body">
           <div class="div-content" *ngFor="let employee of employees">
             <div class="items-card">
-              <img width="40px" height="40px" style="border-radius: 40px;" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt="">
+              <img width="40px" height="40px" style="border-radius: 40px;" src={{employee.image}} alt="">
             </div>
             <div class="user-card">
               <button class="select-btn" (click)="selectUser(employee)" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="true">
@@ -32,5 +32,5 @@
 <div class="alert alert-warning" role="alert" *ngIf="isEmpty" style="width: 70%; margin: auto; display: block; text-align: center; margin-bottom: 15px; margin-top: 15px;">
   <strong>El usuario {{employee_name}} no tiene una nomina disponible actualmente</strong>
 </div>
-<app-info-payroll [payroll_data]="payroll_data" *ngIf="isSelected" (refresh_payroll)="refreshPayroll($event)"></app-info-payroll>
+<app-info-payroll [user_image]="user_data_image" [payroll_data]="payroll_data" *ngIf="isSelected" (refresh_payroll)="refreshPayroll($event)"></app-info-payroll>
 
