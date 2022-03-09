@@ -21,7 +21,9 @@ export class GeneralUserComponent implements OnInit {
   @Input() user_id: number;
 
   form: FormGroup
+  btnEdit: string;
   isLoading: boolean;
+  isEdit: boolean = false;
   strata: StrataInterface[];
   genders: GenderInterface[];
   user_data:EmployeeInterface;
@@ -32,11 +34,6 @@ export class GeneralUserComponent implements OnInit {
   educationLevels: EducationLevelInterface[];
   identificationTypes: IdentificationTypeInterface[];
 
-  isEdit:boolean = false;
-  name:string = "Jhonata gamboa";
-  cumple:Date = new Date("16-02-2022");
-  number:number = 3
-  btnEdit:string;
 
   constructor(
     private serviceUser: EmployeesService,
