@@ -36,20 +36,26 @@
   border-color: transparent;
   background-color: rgb(235, 235, 235);
 }
-#select-info:disabled{
+.select-info:optional{
   font-weight: 600;
   color: rgb(124, 124, 124);
   background-color: white;
   border-color: transparent;
   width: 195px;
   appearance:none;
+  padding-left: 5px;
 }
-#select-info{
+.select-info.active{
   width: 200px;
   height: 30px;
   border-color: transparent;
   border-radius: 5px;
   background-color: rgb(235, 235, 235);
+  color: black;
+  padding-left: 5px;
+  appearance: button;
+  font-weight: 400;
+
 }
 #inp-info-name{
   margin-left: 2px;
