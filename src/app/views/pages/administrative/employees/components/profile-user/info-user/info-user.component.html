@@ -53,7 +53,7 @@
   </div>
 </div>
 <br>
-<app-general-user [user_id]="user_id" *ngIf="isUser"></app-general-user>
+<app-general-user [user_id]="user_id" *ngIf="isUser" (refresh_page)="getUser()"></app-general-user>
 <app-general-contact *ngIf="isContact"></app-general-contact>
 <app-general-business *ngIf="isBusiness"></app-general-business>
 <app-general-segurity *ngIf="isSecurity"></app-general-segurity>

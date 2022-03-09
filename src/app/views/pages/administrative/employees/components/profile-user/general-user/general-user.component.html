@@ -115,8 +115,13 @@
         </div>
       </div>
     </div>
+    <div class="center">
+      <div id="alert-success" class="alert alert-success" role="alert" *ngIf="messaggeAlert">
+        Se ha actualizado el usuario!
+      </div>
+    </div>
   </form>
   <div class="card-footer" *ngIf="isEdit">
-    <button class="btn btn-success">Guardar</button>
+    <button class="btn btn-success" (click)="putUser(form.value)">Guardar</button>
   </div>
 </div>

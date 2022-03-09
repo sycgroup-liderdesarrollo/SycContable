@@ -17,11 +17,14 @@ export class EmployeesService {
   getUsers(filterValue?:string, pageSize?:number, pageNumber?:number) :Observable<JsonResponseInterfaces<EmployeeInterface[]>> {
     return this.http.get<JsonResponseInterfaces<EmployeeInterface[]>>(`${environment.API_Url}user`,{params:{'filter':  filterValue ?? '', 'page': pageNumber ?? '', 'paginate': pageSize ?? ''}});
   }
+  getUser(id:number): Observable<JsonResponseInterfaces<EmployeeInterface>>{
+    return this.http.get<JsonResponseInterfaces<EmployeeInterface>>(`${environment.API_Url}user/${id}`);
+  }
   postUser(formdata : any) :Observable<JsonResponseInterfaces<EmployeeInterface[]>> {
     return this.http.post<JsonResponseInterfaces<EmployeeInterface[]>>(`${environment.API_Url}user`,formdata);
   }
-  getUser(id:number): Observable<JsonResponseInterfaces<EmployeeInterface>>{
-    return this.http.get<JsonResponseInterfaces<EmployeeInterface>>(`${environment.API_Url}user/${id}`);
+  putUser(user_id: number, formData:any): Observable<JsonResponseInterfaces<EmployeeInterface>>{
+    return this.http.put<JsonResponseInterfaces<EmployeeInterface>>(`${environment.API_Url}user/`+user_id, formData);
   }
   assignCovenant(user_id:number, formData:any): Observable<EmployeeInterface[]>{
     return this.http.post<EmployeeInterface[]>(`${environment.API_Url}user/assignCovenant/`+ user_id, formData);

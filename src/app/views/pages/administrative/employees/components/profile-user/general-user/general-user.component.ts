@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { CityInterface } from '../../../interfaces/city-interface';
 import { CivilStatusInterface } from '../../../interfaces/civil-status-interface';
@@ -19,6 +19,7 @@ import { UsersService } from '../../../services/services-users.service';
 export class GeneralUserComponent implements OnInit {
 
   @Input() user_id: number;
+  @Output() refresh_page = new EventEmitter();
 
   form: FormGroup
   btnEdit: string;
@@ -28,6 +29,7 @@ export class GeneralUserComponent implements OnInit {
   genders: GenderInterface[];
   user_data:EmployeeInterface;
   provinces: ProvinceInterface[];
+  messaggeAlert: boolean = false;
   citiesResidence: CityInterface[];
   citiesExpedition: CityInterface[];
   civilStatus: CivilStatusInterface[];
@@ -137,6 +139,15 @@ export class GeneralUserComponent implements OnInit {
   getStrata(){
     this.serviceUserData.getStrata().subscribe(resp => {
       this.strata = resp.data
+    })
+  }
+  putUser(form: any){
+    console.log(form);
+    this.messaggeAlert = true;
+    this.serviceUser.putUser(this.user_id, form).subscribe(()=>{
+      this.edit()
+      this.refresh_page.emit();
+      setTimeout(() => {this.messaggeAlert = false;}, 2000);
     })
   }
 }
