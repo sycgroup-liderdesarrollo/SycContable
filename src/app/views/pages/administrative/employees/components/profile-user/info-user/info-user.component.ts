@@ -46,11 +46,7 @@ export class InfoUserComponent implements OnInit {
     option == "business" ? this.isBusiness = true : this.isBusiness = false;
     option == "security" ? this.isSecurity = true : this.isSecurity = false;
     option == "contact" ? this.isContact = true : this.isContact = false;
-
-    console.log(this.isUser);
-
   }
-
 }
 
 

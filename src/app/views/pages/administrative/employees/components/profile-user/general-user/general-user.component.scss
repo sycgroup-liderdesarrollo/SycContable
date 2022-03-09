@@ -1,3 +1,6 @@
+.card{
+  width: auto;
+}
 .card-header{
   display: flex;
   justify-content: space-between;
@@ -18,7 +21,7 @@
   width: 50%;
   border-right: 3px dashed rgb(235, 235, 235);
 }
-#inp-info:disabled{
+#inp-info:read-only{
   font-weight: 600;
   color: rgb(124, 124, 124);
   background-color: white;
@@ -57,7 +60,7 @@
   border-color: transparent;
   background-color: rgb(235, 235, 235);
 }
-#inp-info-name:disabled{
+#inp-info-name:read-only{
   font-weight: 600;
   color: rgb(124, 124, 124);
   background-color: white;
