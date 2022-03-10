@@ -4,7 +4,7 @@
 #user-img{
   width: 170px;
   height: auto;
-  border-radius: 15px;
+  border-radius: 100%;
   border: 1px solid rgb(150, 150, 150);
 }
 .div-head{
@@ -60,5 +60,9 @@
   background-color: aqua;
 }
 .btn-outline-primary{
+  font-weight: 500;
+}
+#contact-text{
+  font-size: smaller;
   font-weight: 500;
 }

@@ -11,6 +11,7 @@
     <form [formGroup]="form" *ngIf="!isLoading">
       <!-- Primera pagina -->
       <div *ngIf="pagine == 1">
+        <h3 style="margin-top: -35px">Datos personales</h3>
         <div class="space-around">
           <div>
             <label>Nombre</label>
@@ -79,6 +80,7 @@
       </div>
       <!-- Segunda pagina -->
       <div *ngIf="pagine == 2">
+        <h3 style="margin-top: -35px">Datos personales</h3>
         <div class="space-around">
           <div id="select-province">
             <label>Departamento de residencia</label>
@@ -151,6 +153,7 @@
       </div>
       <!-- Tercera pagina  -->
       <div *ngIf="pagine == 3">
+        <h3 style="margin-top: -35px">Datos de la empresa</h3>
         <div class="space-around">
           <div id="select-province">
             <label>Departamento de trabajo</label>
@@ -218,6 +221,7 @@
       </div>
       <!-- Cuarta pagina  -->
       <div *ngIf="pagine == 4">
+        <h3 style="margin-top: -35px">Datos de la empresa</h3>
         <div class="space-around">
           <div>
             <label>Tipo de salario</label>
@@ -282,6 +286,7 @@
       </div>
       <!-- Quinta pagina -->
       <div *ngIf="pagine == 5">
+        <h3 style="margin-top: -35px">Datos de la cuenta</h3>
         <div class="space-around">
           <div>
             <label>Correo</label>
@@ -290,7 +295,7 @@
           </div>
           <div>
             <label>Contraseña</label>
-            <input formControlName="password" class="form-control" type="text" id="input-user-form" autocomplete="off">
+            <input formControlName="password" class="form-control" type="password" id="input-user-form" autocomplete="off">
             <label id="required-alert" *ngIf="form.get('password')?.hasError('required') && form.get('password')?.touched">*El campo es requerido</label>
           </div>
         </div>
@@ -317,6 +322,7 @@
     <form [formGroup]="formContact" *ngIf="!isLoading">
       <!-- Sexta pagina  -->
       <div *ngIf="pagine == 6">
+        <h3 style="margin-top: -35px">Datos de contacto de emergencia</h3>
         <div class="space-around">
           <div>
             <label>Nombre de contacto</label>
@@ -331,7 +337,7 @@
         </div>
         <div class="space-around">
           <div>
-            <label>Parentezco</label>
+            <label>Parentesco</label>
             <select formControlName="kinship_id" class="form-select" id="select-user-form">
               <option *ngFor="let kinkship of kinkships" [value]="kinkship.id">{{ kinkship.name }}</option>
             </select>

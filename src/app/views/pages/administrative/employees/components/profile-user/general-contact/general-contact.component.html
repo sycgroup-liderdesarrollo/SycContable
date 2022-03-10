@@ -3,28 +3,40 @@
     <h2>Detalles del contacto de emergencia</h2>
     <button id="edit-contact-btn" class="btn btn-primary {{btnEdit}}" (click)="edit()"><img src="/assets/images/others/icon-edit.png" alt=""></button>
   </div>
-  <div class="card-body">
-    <div class="div-info">
-      <h3>Informacion del contacto</h3>
-      <div class="space-between">
-        <span><strong>Nombre</strong></span>
-        <input type="text" id="inp-info" [disabled]="!isEdit" [value]="name">
-      </div>
-      <br>
-      <div class="space-between">
-        <span><strong>Telefono</strong></span>
-        <input type="number" id="inp-info" [disabled]="!isEdit" [value]="number">
-      </div>
-      <br>
-      <div class="space-between">
-        <span><strong>Parentezco</strong></span>
-        <select id="select-info" [disabled]="!isEdit">
-          <option [value]="">{{name}}</option>
-        </select>
-      </div>
+  <div class="d-flex justify-content-center" style="margin: 15px;" *ngIf="isLoading">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
     </div>
   </div>
+  <form [formGroup]="form" *ngIf="!isLoading">
+    <div class="card-body">
+      <div class="div-info">
+        <h3>Informacion del contacto</h3>
+        <div class="space-between">
+          <span><strong>Nombre:</strong></span>
+          <input type="text" id="inp-info" [readonly]="!isEdit" formControlName="name">
+        </div>
+        <br>
+        <div class="space-between">
+          <span><strong>Telefono:</strong></span>
+          <input type="number" id="inp-info" [readonly]="!isEdit" formControlName="phone">
+        </div>
+        <br>
+        <div class="space-between">
+          <span><strong>Parentesco:</strong></span>
+          <select class="select-info {{btnEdit}}" formControlName="kinship_id">
+            <option [disabled]="!isEdit" *ngFor="let kinship of kinships" [value]="kinship.id">{{ kinship.name }}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="center">
+      <div id="alert-success" class="alert alert-success" role="alert" *ngIf="messaggeAlert">
+        Se han actualizado los datos!
+      </div>
+    </div>
+  </form>
   <div class="card-footer" *ngIf="isEdit">
-    <button class="btn btn-success">Guardar</button>
+    <button class="btn btn-success" (click)="putContact(form.value)">Guardar</button>
   </div>
 </div>

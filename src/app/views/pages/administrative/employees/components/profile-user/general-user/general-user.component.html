@@ -21,47 +21,47 @@
         </div>
         <br>
         <div class="space-between">
-          <span><strong>Numero de identificacion</strong></span>
+          <span><strong>Numero de identificacion:</strong></span>
           <input type="text" id="inp-info" [readonly]="!isEdit" formControlName="identification_number">
         </div>
         <br>
         <div class="space-between">
-          <span><strong>Tipo de identificacion</strong></span>
+          <span><strong>Tipo de identificacion:</strong></span>
           <select class="select-info {{btnEdit}}" formControlName="identification_type_id">
-            <option [disabled]="!isEdit" [disabled]="!isEdit" *ngFor="let identificationType of identificationTypes" [value]="identificationType.id">{{identificationType.name}}</option>
+            <option [disabled]="!isEdit" *ngFor="let identificationType of identificationTypes" [value]="identificationType.id">{{identificationType.name}}</option>
           </select>
         </div>
         <br>
         <div class="space-between" *ngIf="isEdit">
-          <span><strong>Departamento de expedicion</strong></span>
+          <span><strong>Departamento de expedicion:</strong></span>
           <select class="select-info {{btnEdit}}" (click)="filterCitiesExpedition($event)" formControlName="province_expedition">
             <option [disabled]="!isEdit"  *ngFor="let province of provinces" [value]="province.id">{{ province.name }}</option>
           </select>
         </div>
         <br *ngIf="isEdit">
         <div class="space-between">
-          <span><strong>Ciudad de expedicion</strong></span>
+          <span><strong>Ciudad de expedicion:</strong></span>
           <select class="select-info {{btnEdit}}" formControlName="expedition_place_id">
             <option [disabled]="!isEdit" *ngFor="let city of citiesExpedition" [value]="city.id">{{city.name}}</option>
           </select>
         </div>
         <br>
         <div class="space-between">
-          <span><strong>Genero</strong></span>
+          <span><strong>Genero:</strong></span>
           <select class="select-info {{btnEdit}}" formControlName="gender_id">
             <option [disabled]="!isEdit" *ngFor="let gender of genders" [value]="gender.id">{{ gender.name }}</option>
           </select>
         </div>
         <br>
         <div class="space-between">
-          <span><strong>Estado civil</strong></span>
+          <span><strong>Estado civil:</strong></span>
           <select class="select-info {{btnEdit}}" formControlName="civil_status_id">
             <option [disabled]="!isEdit" *ngFor="let civilStatu of civilStatus" [value]="civilStatu.id">{{ civilStatu.name }}</option>
           </select>
         </div>
         <br>
         <div class="space-between">
-          <span><strong>Nivel de educacion</strong></span>
+          <span><strong>Nivel de educacion:</strong></span>
           <select class="select-info {{btnEdit}}" formControlName="education_level_id">
             <option [disabled]="!isEdit" *ngFor="let educationLevel of educationLevels" [value]="educationLevel.id">{{ educationLevel.name }}</option>
           </select>
@@ -69,46 +69,46 @@
       </div>
       <div class="div-info">
         <div class="space-between" style="margin-top: 50px">
-          <span><strong>Cumpleaños</strong></span>
+          <span><strong>Cumpleaños:</strong></span>
           <input type="date" id="inp-info" [readonly]="!isEdit" formControlName="birthday">
         </div>
         <br>
         <div class="space-between">
-          <span><strong>Hijos</strong></span>
+          <span><strong>Hijos:</strong></span>
           <input type="number" id="inp-info" [readonly]="!isEdit" formControlName="children">
         </div>
         <br>
         <div class="space-between">
-          <span><strong>Telefono</strong></span>
+          <span><strong>Telefono:</strong></span>
           <input type="number" id="inp-info" [readonly]="!isEdit" formControlName="phone">
         </div>
         <br>
         <div class="space-between" *ngIf="isEdit">
-          <span><strong>Departamento de expedicion</strong></span>
+          <span><strong>Departamento de expedicion:</strong></span>
           <select class="select-info {{btnEdit}}" (click)="filterCitiesRecidence($event)" formControlName="province_address">
             <option [disabled]="!isEdit"  *ngFor="let province of provinces" [value]="province.id">{{ province.name }}</option>
           </select>
         </div>
         <br *ngIf="isEdit">
         <div class="space-between">
-          <span><strong>Ciudad</strong></span>
+          <span><strong>Ciudad:</strong></span>
           <select class="select-info {{btnEdit}}" formControlName="residence_city_id">
             <option [disabled]="!isEdit" *ngFor="let city of citiesResidence" [value]="city.id">{{ city.name }}</option>
           </select>
         </div>
         <br>
         <div class="space-between">
-          <span><strong>Barrio</strong></span>
+          <span><strong>Barrio:</strong></span>
           <input type="text" id="inp-info" [readonly]="!isEdit" formControlName="neighborhood">
         </div>
         <br>
         <div class="space-between">
-          <span><strong>Direccion</strong></span>
+          <span><strong>Direccion:</strong></span>
           <input type="text" id="inp-info" [readonly]="!isEdit" formControlName="address">
         </div>
         <br>
         <div class="space-between">
-          <span><strong>Estrato</strong></span>
+          <span><strong>Estrato:</strong></span>
           <select class="select-info {{btnEdit}}" formControlName="strata_id">
             <option [disabled]="!isEdit" *ngFor="let stratum of strata" [value]="stratum.id">{{ stratum.name }}</option>
           </select>
@@ -117,7 +117,7 @@
     </div>
     <div class="center">
       <div id="alert-success" class="alert alert-success" role="alert" *ngIf="messaggeAlert">
-        Se ha actualizado el usuario!
+        Se han actualizado los datos!
       </div>
     </div>
   </form>

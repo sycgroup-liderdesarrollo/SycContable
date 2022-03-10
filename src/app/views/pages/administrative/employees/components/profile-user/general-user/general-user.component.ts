@@ -89,12 +89,11 @@ export class GeneralUserComponent implements OnInit {
     this.serviceUser.getUser(this.user_id).subscribe(resp => {
       this.user_data = resp.data;
       this.makeForm(this.user_data)
-      console.log(this.user_data);
       this.getCitiesExpedition(this.user_data.expeditionPlace.province.id);
       this.getCitiesRecidence(this.user_data.residenceCity.province.id);
     })
-
   }
+
   getIndentificationTypes(){
     this.serviceUserData.getIdentificationTypes().subscribe(resp => {
       this.identificationTypes = resp.data;

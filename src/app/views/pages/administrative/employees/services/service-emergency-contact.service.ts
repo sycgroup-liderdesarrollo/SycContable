@@ -17,4 +17,7 @@ export class EmergencyContactService {
   postEmergencyContact(form:any) :Observable<JsonResponseInterfaces<EmergencyContactInterface>>{
     return this.http.post<JsonResponseInterfaces<EmergencyContactInterface>>(`${environment.API_Url}emergencyContact`,form);
   }
+  putEmergencyContact(contact_id: number, form:any):Observable<JsonResponseInterfaces<EmergencyContactInterface>>{
+    return this.http.put<JsonResponseInterfaces<EmergencyContactInterface>>(`${environment.API_Url}emergencyContact/`+contact_id,form);
+  }
 }

@@ -14,13 +14,11 @@
 .space-between{
   display: flex;
   justify-content: space-between;
-  margin-right: 10px;
-  margin-left: 10px;
 }
 .div-info{
-  width: 50%;
+  width: 60%;
 }
-#inp-info:disabled{
+#inp-info:read-only{
   font-weight: 600;
   color: rgb(124, 124, 124);
   background-color: white;
@@ -52,7 +50,7 @@
 }
 .card-body{
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
 }
 .card-footer{
   display: flex;
@@ -61,4 +59,14 @@
 .btn.btn-primary.active{
   background-color: rgb(202, 230, 210) !important;
   border-radius: 30px;
+}
+.center{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.column{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

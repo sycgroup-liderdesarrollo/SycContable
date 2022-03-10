@@ -14,13 +14,11 @@
 .space-between{
   display: flex;
   justify-content: space-between;
-  margin-right: 10px;
-  margin-left: 10px;
 }
 .div-info{
   width: 50%;
 }
-#inp-info:disabled{
+#inp-info:read-only{
   font-weight: 600;
   color: rgb(124, 124, 124);
   background-color: white;
@@ -35,24 +33,30 @@
   border-color: transparent;
   background-color: rgb(235, 235, 235);
 }
-#select-info:disabled{
+.select-info:optional{
   font-weight: 600;
   color: rgb(124, 124, 124);
   background-color: white;
   border-color: transparent;
-  width: 195px;
+  width: 200px;
+  height: 30px;
   appearance:none;
+  padding-left: 5px;
 }
-#select-info{
+.select-info.active{
   width: 200px;
   height: 30px;
   border-color: transparent;
   border-radius: 5px;
   background-color: rgb(235, 235, 235);
+  color: black;
+  padding-left: 5px;
+  appearance: button;
+  font-weight: 400;
 }
 .card-body{
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
 }
 .card-footer{
   display: flex;

@@ -19,7 +19,7 @@
             </div>
             <div id="div-cube-info">
               <strong>{{user_data.position.business_line.name}}</strong>
-              <span id="head-span"><img width="20px;" src="/assets/images/others/icon-empleo.png"> Cargo</span>
+              <span id="head-span"><img width="20px;" src="/assets/images/others/icon-empleo.png"> Empresa</span>
             </div>
           </div>
         </div>
@@ -47,13 +47,13 @@
         <label class="btn btn-outline-primary" for="btnradio3" (click)="open('security')">Seguridad</label>
 
         <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
-        <label class="btn btn-outline-primary" for="btnradio4" (click)="open('contact')">Contacto</label>
+        <label class="btn btn-outline-primary" for="btnradio4" (click)="open('contact')"><span id="contact-text">Contacto de emergencia</span></label>
       </div>
     </div>
   </div>
 </div>
 <br>
 <app-general-user [user_id]="user_id" *ngIf="isUser" (refresh_page)="getUser()"></app-general-user>
-<app-general-contact *ngIf="isContact"></app-general-contact>
-<app-general-business *ngIf="isBusiness"></app-general-business>
-<app-general-segurity *ngIf="isSecurity"></app-general-segurity>
+<app-general-business [user_id]="user_id" *ngIf="isBusiness" (refresh_page)="getUser()"></app-general-business>
+<app-general-segurity [user_id]="user_id" *ngIf="isSecurity" (refresh_page)="getUser()"></app-general-segurity>
+<app-general-contact [user_id]="user_id" *ngIf="isContact" (refresh_page)="getUser()"></app-general-contact>

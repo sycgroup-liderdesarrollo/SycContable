@@ -3,88 +3,120 @@
     <h2>Detalles de la linea de negocios</h2>
     <button id="edit-business-btn" class="btn btn-primary {{btnEdit}}" (click)="edit()"><img src="/assets/images/others/icon-edit.png" alt=""></button>
   </div>
-  <div class="card-body">
-    <div class="div-info">
-      <h3>Informacion de trabajo</h3>
-      <div class="space-between">
-        <span><strong>Departamento de trabajo</strong></span>
-        <select id="select-info" [disabled]="!isEdit">
-          <option [value]="">{{name}}</option>
-        </select>
-      </div>
-      <br>
-      <div class="space-between">
-        <span><strong>Ciudad de trabajo</strong></span>
-        <select id="select-info" [disabled]="!isEdit">
-          <option [value]="">{{name}}</option>
-        </select>
-      </div>
-      <br>
-      <div class="space-between">
-        <span><strong>Sucursal</strong></span>
-        <select id="select-info" [disabled]="!isEdit">
-          <option [value]="">{{name}}</option>
-        </select>
-      </div>
-      <br>
-      <div class="space-between">
-        <span><strong>Cargo</strong></span>
-        <select id="select-info" [disabled]="!isEdit">
-          <option [value]="">{{name}}</option>
-        </select>
-      </div>
-      <br>
-      <div class="space-between">
-        <span><strong>Salario base</strong></span>
-        <input type="number" id="inp-info" [disabled]="!isEdit" [value]="number">
-      </div>
-      <br>
-      <div class="space-between">
-        <span><strong>Tipo de salario</strong></span>
-        <select id="select-info" [disabled]="!isEdit">
-          <option [value]="">{{name}}</option>
-        </select>
-      </div>
-    </div>
-    <div class="div-info">
-      <div class="space-between" style="margin-top: 50px">
-        <span><strong>Fecha de admision</strong></span>
-        <input type="date" id="inp-info" [disabled]="!isEdit" [value]="cumple">
-      </div>
-      <br>
-      <div class="space-between">
-        <span><strong>Fecha de termino de contrato</strong></span>
-        <input type="date" id="inp-info" [disabled]="!isEdit" [value]="cumple">
-      </div>
-      <br>
-      <div class="space-between">
-        <span><strong>Tipo de contrato</strong></span>
-        <select id="select-info" [disabled]="!isEdit">
-          <option [value]="">{{name}}</option>
-        </select>
-      </div>
-      <br>
-      <div class="space-between">
-        <span><strong>EPS</strong></span>
-        <select id="select-info" [disabled]="!isEdit">
-          <option [value]="">{{name}}</option>
-        </select>
-      </div>
-      <br>
-      <div class="space-between">
-        <span><strong>Fondo de pensiones</strong></span>
-        <select id="select-info" [disabled]="!isEdit">
-          <option [value]="">{{name}}</option>
-        </select>
-      </div>
-      <br>
-      <div class="space-between">
-        <span><strong>Nivel de riesgo laboral</strong></span>
-        <input type="text" id="inp-info" [disabled]="!isEdit" [value]="name">
-      </div>
+  <div class="d-flex justify-content-center" style="margin: 15px;" *ngIf="isLoading">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
     </div>
   </div>
+  <form [formGroup]="form" *ngIf="!isLoading">
+    <div class="card-body">
+      <div class="div-info">
+        <h3>Informacion de trabajo:</h3>
+        <div class="space-between" *ngIf="isEdit">
+          <span><strong>Departamento de trabajo</strong></span>
+          <select class="select-info {{btnEdit}}" (click)="filterCitiesWork($event)" formControlName="province_work">
+            <option [disabled]="!isEdit" *ngFor="let province of provicesWork" [value]="province.id">
+              {{province.name}}
+            </option>
+          </select>
+        </div>
+        <br *ngIf="isEdit">
+        <div class="space-between">
+          <span><strong>Ciudad de trabajo:</strong></span>
+          <select class="select-info {{btnEdit}}" formControlName="work_city_id">
+            <option [disabled]="!isEdit" *ngFor="let city of citiesWork" [value]="city.id">
+              {{ city.name }}
+            </option>
+          </select>
+        </div>
+        <br>
+        <div class="space-between">
+          <span><strong>Sucursal:</strong></span>
+          <select class="select-info {{btnEdit}}">
+            <option [disabled]="!isEdit" *ngFor="let headquarter of headquarters" [value]="headquarter.id">
+              {{headquarter.name}}
+            </option>
+          </select>
+        </div>
+        <br>
+        <div class="space-between">
+          <span><strong>Cargo:</strong></span>
+          <select class="select-info {{btnEdit}}" formControlName="position_id">
+            <option [disabled]="!isEdit" *ngFor="let position of positions" [value]="position.id">
+              {{ position.name }}
+            </option>
+          </select>
+        </div>
+        <br>
+        <div class="space-between">
+          <span><strong>Salario base:</strong></span>
+          <input type="number" id="inp-info" [readonly]="!isEdit" formControlName="base_salary">
+        </div>
+        <br>
+        <div class="space-between">
+          <span><strong>Tipo de salario:</strong></span>
+          <select class="select-info {{btnEdit}}" formControlName="salary_type_id">
+            <option [disabled]="!isEdit" *ngFor="let salaryType of salaryTypes" [value]="salaryType.id">
+              {{ salaryType.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="div-info">
+        <div class="space-between" style="margin-top: 50px">
+          <span><strong>Fecha de admision:</strong></span>
+          <input type="date" id="inp-info" [readonly]="!isEdit" formControlName="admission_date">
+        </div>
+        <br>
+        <div class="space-between" *ngIf="user_data.active == false">
+          <span><strong>Fecha de termino de contrato:</strong></span>
+          <input type="date" id="inp-info" [readonly]="!isEdit" formControlName="out_date">
+        </div>
+        <br *ngIf="user_data.active == false">
+        <div class="space-between">
+          <span><strong>Tipo de contrato:</strong></span>
+          <select class="select-info {{btnEdit}}" formControlName="contract_type_id">
+            <option [disabled]="!isEdit" *ngFor="let contractType of contractTypes" [value]="contractType.id">
+              {{ contractType.name }}
+            </option>
+          </select>
+        </div>
+        <br>
+        <div class="space-between">
+          <span><strong>EPS:</strong></span>
+          <select class="select-info {{btnEdit}}" formControlName="health_provider_id">
+            <option [disabled]="!isEdit" *ngFor="let healthProvider of healthProviders" [value]="healthProvider.id">
+              {{ healthProvider.name }}
+            </option>
+          </select>
+        </div>
+        <br>
+        <div class="space-between">
+          <span><strong>Fondo de pensiones:</strong></span>
+          <select class="select-info {{btnEdit}}" formControlName="pension_fund_id">
+            <option [disabled]="!isEdit" *ngFor="let pensionFund of pensionFunds" [value]="pensionFund.id">
+              {{ pensionFund.name }}
+            </option>
+          </select>
+        </div>
+        <br>
+        <div class="space-between">
+          <span><strong>Nivel de riesgo laboral:</strong></span>
+          <select class="select-info {{btnEdit}}" formControlName="occupational_risk_manager_id">
+            <option [disabled]="!isEdit" *ngFor="let ocupationalRiskManagers of ocupationalRiskManagers" [value]="ocupationalRiskManagers.id">
+              {{ ocupationalRiskManagers.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="center">
+      <div id="alert-success" class="alert alert-success" role="alert" *ngIf="messaggeAlert">
+        Se han actualizado los datos!
+      </div>
+    </div>
+  </form>
   <div class="card-footer" *ngIf="isEdit">
-    <button class="btn btn-success">Guardar</button>
+    <button class="btn btn-success" (click)="putBusinessUser(form.value)">Guardar</button>
   </div>
 </div>

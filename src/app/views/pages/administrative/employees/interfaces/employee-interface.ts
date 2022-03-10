@@ -1,6 +1,7 @@
 import { BusinessLineInterface } from "./business-line-interfaces";
 import { CityInterface } from "./city-interface";
 import { ContractTypeInterface } from "./contract-type-interface";
+import { EmergencyContactInterface } from "./emergency-contact-interface";
 import { GenderInterface } from "./gender-interface";
 import { PositionInterfaces } from "./position-interfaces";
 
@@ -46,6 +47,8 @@ export interface EmployeeInterface {
     contractType:                   ContractTypeInterface,
     password:                       string,
     image:                          string,
-    expeditionPlace:                CityInterface
+    expeditionPlace:                CityInterface,
+    work_city:                      CityInterface
+    emergencyContact:               EmergencyContactInterface
 }
 
