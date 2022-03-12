@@ -50,7 +50,10 @@
         <br>
         <div class="space-between">
           <span><strong>Salario base:</strong></span>
-          <input type="number" id="inp-info" [readonly]="!isEdit" formControlName="base_salary">
+          <div class="div-column">
+            <input type="number" id="inp-info" [readonly]="!isEdit" formControlName="base_salary">
+            <label *ngIf="form.get('base_salary')?.hasError('required') && form.get('base_salary')?.touched"><small>*El campo es requerido</small></label>
+          </div>
         </div>
         <br>
         <div class="space-between">
@@ -65,7 +68,10 @@
       <div class="div-info">
         <div class="space-between" style="margin-top: 50px">
           <span><strong>Fecha de admision:</strong></span>
-          <input type="date" id="inp-info" [readonly]="!isEdit" formControlName="admission_date">
+          <div class="div-column">
+            <input type="date" id="inp-info" [readonly]="!isEdit" formControlName="admission_date">
+            <label *ngIf="form.get('admission_date')?.hasError('required') && form.get('admission_date')?.touched"><small>*El campo es requerido</small></label>
+          </div>
         </div>
         <br>
         <div class="space-between" *ngIf="user_data.active == false">
@@ -108,6 +114,14 @@
             </option>
           </select>
         </div>
+        <br>
+        <div class="space-between">
+          <span><strong>Estado del empleado:</strong></span>
+          <select class="select-info {{btnEdit}}" formControlName="active">
+            <option [disabled]="!isEdit" [value]="1">Activo</option>
+            <option [disabled]="!isEdit" [value]="0">Inactivo</option>
+          </select>
+        </div>
       </div>
     </div>
     <div class="center">
@@ -117,6 +131,6 @@
     </div>
   </form>
   <div class="card-footer" *ngIf="isEdit">
-    <button class="btn btn-success" (click)="putBusinessUser(form.value)">Guardar</button>
+    <button class="btn btn-success" [disabled]="form.invalid" (click)="putBusinessUser(form.value)">Guardar</button>
   </div>
 </div>

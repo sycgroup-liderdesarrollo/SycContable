@@ -14,15 +14,26 @@
         <h3>Informacion general del empleado</h3>
         <div class="space-between">
             <span><strong>Nombre completo:</strong></span>
-            <div style="display: flex; justify-content: flex-end;">
-              <input type="text" id="inp-info-name" [readonly]="!isEdit" formControlName="name">
-              <input type="text" id="inp-info-name" [readonly]="!isEdit" formControlName="last_name">
+            <div id="div-full-name-input">
+              <div class="div-column">
+                <input type="text" id="inp-info-name" [readonly]="!isEdit" formControlName="name">
+                <label *ngIf="form.get('name')?.hasError('required') && form.get('name')?.touched"><small>*El campo es requerido</small></label>
+                <label *ngIf="form.get('name')?.hasError('minlength')"><small>*Minimo 3 letras</small></label>
+              </div>
+              <div class="div-column">
+                <input type="text" id="inp-info-name" [readonly]="!isEdit" formControlName="last_name">
+                <label *ngIf="form.get('last_name')?.hasError('required') && form.get('last_name')?.touched"><small>*El campo es requerido</small></label>
+                <label *ngIf="form.get('last_name')?.hasError('minlength')"><small>*Minimo 3 letras</small></label>
+              </div>
             </div>
         </div>
         <br>
         <div class="space-between">
           <span><strong>Numero de identificacion:</strong></span>
-          <input type="text" id="inp-info" [readonly]="!isEdit" formControlName="identification_number">
+          <div class="div-column">
+            <input type="text" id="inp-info" [readonly]="!isEdit" formControlName="identification_number">
+            <label *ngIf="form.get('identification_number')?.hasError('required') && form.get('identification_number')?.touched"><small>*El campo es requerido</small></label>
+          </div>
         </div>
         <br>
         <div class="space-between">
@@ -70,17 +81,27 @@
       <div class="div-info">
         <div class="space-between" style="margin-top: 50px">
           <span><strong>Cumpleaños:</strong></span>
-          <input type="date" id="inp-info" [readonly]="!isEdit" formControlName="birthday">
+          <div class="div-column">
+            <input type="date" id="inp-info" [readonly]="!isEdit" formControlName="birthday">
+            <label *ngIf="form.get('birthday')?.hasError('required') && form.get('birthday')?.touched"><small>*El campo es requerido</small></label>
+          </div>
         </div>
         <br>
         <div class="space-between">
           <span><strong>Hijos:</strong></span>
-          <input type="number" id="inp-info" [readonly]="!isEdit" formControlName="children">
+          <div class="div-column">
+            <input type="number" id="inp-info" [readonly]="!isEdit" formControlName="children">
+            <label *ngIf="form.get('children')?.hasError('required') && form.get('children')?.touched"><small>*El campo es requerido</small></label>
+          </div>
         </div>
         <br>
         <div class="space-between">
           <span><strong>Telefono:</strong></span>
-          <input type="number" id="inp-info" [readonly]="!isEdit" formControlName="phone">
+          <div class="div-column">
+            <input type="number" id="inp-info" [readonly]="!isEdit" formControlName="phone">
+            <label *ngIf="form.get('phone')?.hasError('required') && form.get('phone')?.touched"><small>*El campo es requerido</small></label>
+            <label *ngIf="form.get('phone')?.hasError('pattern')"><small>*No es un telefono valido</small></label>
+          </div>
         </div>
         <br>
         <div class="space-between" *ngIf="isEdit">
@@ -99,12 +120,18 @@
         <br>
         <div class="space-between">
           <span><strong>Barrio:</strong></span>
-          <input type="text" id="inp-info" [readonly]="!isEdit" formControlName="neighborhood">
+          <div class="div-column">
+            <input type="text" id="inp-info" [readonly]="!isEdit" formControlName="neighborhood">
+            <label *ngIf="form.get('neighborhood')?.hasError('required') && form.get('neighborhood')?.touched"><small>*El campo es requerido</small></label>
+          </div>
         </div>
         <br>
         <div class="space-between">
           <span><strong>Direccion:</strong></span>
-          <input type="text" id="inp-info" [readonly]="!isEdit" formControlName="address">
+          <div class="div-column">
+            <input type="text" id="inp-info" [readonly]="!isEdit" formControlName="address">
+            <label *ngIf="form.get('address')?.hasError('required') && form.get('address')?.touched"><small>*El campo es requerido</small></label>
+          </div>
         </div>
         <br>
         <div class="space-between">
@@ -122,6 +149,6 @@
     </div>
   </form>
   <div class="card-footer" *ngIf="isEdit">
-    <button class="btn btn-success" (click)="putUser(form.value)">Guardar</button>
+    <button class="btn btn-success" [disabled]="form.invalid" (click)="putUser(form.value)">Guardar</button>
   </div>
 </div>

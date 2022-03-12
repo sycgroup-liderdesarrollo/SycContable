@@ -1,6 +1,3 @@
-.modalContent{
-  width: 100%;
-}
 .space-around{
   display: flex;
   justify-content: space-around;
@@ -43,11 +40,24 @@
 #select-province{
   width: 190px;
 }
-
-@media (max-width: 500px){
-  #input-user-form{
-    width: 100%px;
+@media (max-width: 990px) {
+  #select-province{
+    width: 115px;
   }
+  #select-user-form{
+    width: 115px;
+  }
+  label{
+    font-size: smaller;
+  }
+  #input-user-form{
+    width: 115px
+  }
+  #long-label{
+    font-size: xx-small;
+  }
+}
+@media (max-width: 500px){
   #select-user-form{
     width: 189px;
   }
@@ -60,5 +70,11 @@
     display:block;
     width: 189px;
     margin: auto;
+  }
+  label{
+    font-size: small;
+  }
+  #input-user-form{
+    width: 100%
   }
 }

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CityInterface } from '../../../interfaces/city-interface';
 import { CivilStatusInterface } from '../../../interfaces/civil-status-interface';
 import { EducationLevelInterface } from '../../../interfaces/education-level-interface';
@@ -40,7 +40,6 @@ export class GeneralUserComponent implements OnInit {
   constructor(
     private serviceUser: EmployeesService,
     private serviceUserData: UsersService,
-
     private fb:FormBuilder
   ) { }
 
@@ -50,27 +49,25 @@ export class GeneralUserComponent implements OnInit {
     this.getUser();
     this.Init();
   }
-
   makeForm(user_data: any){
     this.form = this.fb.group({
-      name:                   [user_data?.name ?? ''],
-      last_name:              [user_data?.last_name ?? ''],
-      identification_number:  [user_data?.identification_number ??''],
-      identification_type_id: [user_data?.identificationType.id ??''],
-      expedition_place_id:    [user_data?.expeditionPlace.id ??''],
+      name:                   [user_data?.name ?? '', [Validators.required, Validators.minLength(3)]],
+      last_name:              [user_data?.last_name ?? '', [Validators.required, Validators.minLength(3)]],
+      identification_number:  [user_data?.identification_number ?? '', Validators.required],
+      identification_type_id: [user_data?.identificationType.id ?? '', Validators.required],
+      expedition_place_id:    [user_data?.expeditionPlace.id ?? '', Validators.required],
       province_expedition:    [user_data?.expeditionPlace.province.id ?? ''],
-      gender_id:              [user_data?.gender.id ??''],
-      civil_status_id:        [user_data?.civilStatus.id ??''],
-      birthday:               [user_data?.birthday ??''],
-      children:               [user_data?.children ??''],
-      phone:                  [user_data?.phone ??''],
-      image:                  [user_data?.image ??''],
+      gender_id:              [user_data?.gender.id ?? '', Validators.required],
+      civil_status_id:        [user_data?.civilStatus.id ?? '', Validators.required],
+      birthday:               [user_data?.birthday ?? '', Validators.required],
+      children:               [user_data?.children ?? '', Validators.required],
+      phone:                  [user_data?.phone ?? '', [Validators.required, Validators.pattern("[0-9]{10,10}")]],
       province_address:       [user_data?.residenceCity.province.id ?? ''],
-      address:                [user_data?.address ??''],
-      neighborhood:           [user_data?.neighborhood ??''],
-      strata_id:              [user_data?.strata.id ??''],
-      residence_city_id:      [user_data?.residenceCity.id ??''],
-      education_level_id:     [user_data?.educationLevel.id ??''],
+      address:                [user_data?.address ?? '', Validators.required],
+      neighborhood:           [user_data?.neighborhood ?? '', Validators.required],
+      strata_id:              [user_data?.strata.id ?? '', Validators.required],
+      residence_city_id:      [user_data?.residenceCity.id ?? '', Validators.required],
+      education_level_id:     [user_data?.educationLevel.id ?? '', Validators.required],
     })
   }
   async Init(){
@@ -93,7 +90,6 @@ export class GeneralUserComponent implements OnInit {
       this.getCitiesRecidence(this.user_data.residenceCity.province.id);
     })
   }
-
   getIndentificationTypes(){
     this.serviceUserData.getIdentificationTypes().subscribe(resp => {
       this.identificationTypes = resp.data;
@@ -141,7 +137,6 @@ export class GeneralUserComponent implements OnInit {
     })
   }
   putUser(form: any){
-    console.log(form);
     this.messaggeAlert = true;
     this.serviceUser.putUser(this.user_id, form).subscribe(()=>{
       this.edit()

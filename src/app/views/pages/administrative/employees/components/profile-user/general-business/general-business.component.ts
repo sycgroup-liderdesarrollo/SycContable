@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CityInterface } from '../../../interfaces/city-interface';
 import { ContractTypeInterface } from '../../../interfaces/contract-type-interface';
 import { EmployeeInterface } from '../../../interfaces/employee-interface';
@@ -54,18 +54,19 @@ export class GeneralBusinessComponent implements OnInit {
 
   makeForm(user_data: any){
     this.form = this.fb.group({
-      province_work:                [user_data?.work_city.province.id ?? '' ],
+      province_work:                [user_data?.work_city.province.id ?? ''],
       work_city_id:                 [user_data?.work_city.id ?? ''],
       headquarter_id:               [user_data?.headquarter.id ?? ''],
       position_id:                  [user_data?.position.id ?? ''],
-      base_salary:                  [user_data?.base_salary ?? ''],
+      base_salary:                  [user_data?.base_salary ?? '', Validators.required],
       salary_type_id:               [user_data?.salaryType.id ?? ''],
-      admission_date:               [user_data?.admission_date ?? ''],
+      admission_date:               [user_data?.admission_date ?? '', Validators.required],
       out_date:                     [user_data?.out_date ?? ''],
       contract_type_id:             [user_data?.contractType.id ?? ''],
       health_provider_id:           [user_data?.healthProvider.id ?? ''],
       pension_fund_id:              [user_data?.pensionFund.id ?? ''],
-      occupational_risk_manager_id: [user_data?.occupationalRiskManager.id ?? '']
+      occupational_risk_manager_id: [user_data?.occupationalRiskManager.id ?? ''],
+      active:                       [user_data?.active ?? '']
     })
   }
 

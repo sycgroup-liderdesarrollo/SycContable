@@ -41,7 +41,7 @@ export class EmployeesComponent implements OnInit {
     })
   }
   openAddModal() {
-    const openmodalRef = this.modal.open(ModalAddEmployeesComponent);
+    const openmodalRef = this.modal.open(ModalAddEmployeesComponent, {size: 'lg'});
     openmodalRef.componentInstance.refresh_users.subscribe(($e:any)=>{
       this.getEmployees();
     })

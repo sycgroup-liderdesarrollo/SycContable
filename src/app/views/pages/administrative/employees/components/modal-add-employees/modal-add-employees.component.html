@@ -1,4 +1,4 @@
-<div class="modalContent">
+<div class="myClass">
   <div class="modal-header">
     <h2 class="modal-title">Agregar Usuario</h2>
   </div>
@@ -13,33 +13,35 @@
       <div *ngIf="pagine == 1">
         <h3 style="margin-top: -35px">Datos personales</h3>
         <div class="space-around">
-          <div>
+          <div style="margin-right: 15px;">
             <label>Nombre</label>
             <input formControlName="name" class="form-control" type="text" id="input-user-form" autocomplete="off">
+            <label id="required-alert" *ngIf="form.get('name')?.hasError('minlength') && form.get('name')?.touched">*Minimo tres letras</label>
             <label id="required-alert" *ngIf="form.get('name')?.hasError('required') && form.get('name')?.touched">*El campo es requerido</label>
           </div>
-          <div>
+          <div style="margin-right: 15px;">
             <label>Apellido</label>
             <input formControlName="last_name" class="form-control" type="text" id="input-user-form" autocomplete="off">
+            <label id="required-alert" *ngIf="form.get('last_name')?.hasError('minlength') && form.get('last_name')?.touched">*Minimo tres letras</label>
             <label id="required-alert" *ngIf="form.get('last_name')?.hasError('required') && form.get('last_name')?.touched">*El campo es requerido</label>
           </div>
-        </div>
-        <div class="space-around">
-          <div>
+          <div style="margin-right: 15px;">
             <label>Tipo de identificacion</label>
             <select class="form-select" id="select-user-form" formControlName="identification_type_id">
               <option *ngFor="let identificationType of identificationTypes" [value]="identificationType.id">{{ identificationType.name }}</option>
+              <label id="required-alert" *ngIf="form.get('identification_type_id')?.hasError('required') && form.get('identification_type_id')?.touched">*El campo es requerido</label>
             </select>
-          </div>
-          <div>
-            <label>Numero de identificacion</label>
-            <input formControlName="identification_number" class="form-control" type="text" id="input-user-form">
           </div>
         </div>
         <div class="space-around">
+          <div>
+            <label>Numero de identificacion</label>
+            <input formControlName="identification_number" class="form-control" type="text" id="input-user-form">
+            <label id="required-alert" *ngIf="form.get('identification_number')?.hasError('required') && form.get('identification_number')?.touched">*El campo es requerido</label>
+          </div>
           <div id="select-province">
-            <label>Departamento de expedicion</label>
-            <select class="form-select" (click)="filterCities($event)">
+            <label id="long-label">Departamento de expedicion</label>
+            <select class="form-select" id="select-province" (click)="filterCities($event)">
               <option *ngFor="let province of provinces" [value]="province.id">{{ province.name }}</option>
             </select>
           </div>
@@ -56,6 +58,7 @@
           <div>
             <label>Telefono</label>
             <input formControlName="phone" class="form-control" type="number" id="input-user-form" autocomplete="off">
+            <label id="required-alert" *ngIf="form.get('phone')?.hasError('pattern')">*Debe ser un numero valido</label>
             <label id="required-alert" *ngIf="form.get('phone')?.hasError('required') && form.get('phone')?.touched">*El campo es requerido</label>
           </div>
           <div>
@@ -63,8 +66,6 @@
             <input formControlName="birthday" class="form-control" type="date" id="input-user-form" autocomplete="off">
             <label id="required-alert" *ngIf="form.get('birthday')?.hasError('required') && form.get('birthday')?.touched">*El campo es requerido</label>
           </div>
-        </div>
-        <div class="space-around">
           <div>
             <label>Hijos</label>
             <input formControlName="children" class="form-control" type="number" id="input-user-form" autocomplete="off">
@@ -83,7 +84,7 @@
         <h3 style="margin-top: -35px">Datos personales</h3>
         <div class="space-around">
           <div id="select-province">
-            <label>Departamento de residencia</label>
+            <label id="long-label">Departamento de residencia</label>
             <select class="form-select" (click)="filterCities($event)">
               <option *ngFor="let province of provinces" [value]="province.id">{{ province.name }}</option>
             </select>
@@ -96,20 +97,18 @@
             </select>
             <label id="required-alert" *ngIf="form.get('residence_city_id')?.hasError('required') && form.get('residence_city_id')?.touched">*El campo es requerido</label>
           </div>
-        </div>
-        <div class="space-around">
           <div>
             <label>Barrio</label>
             <input formControlName="neighborhood" class="form-control" type="text" id="input-user-form" autocomplete="off">
             <label id="required-alert" *ngIf="form.get('neighborhood')?.hasError('required') && form.get('neighborhood')?.touched">*El campo es requerido</label>
           </div>
+        </div>
+        <div class="space-around">
           <div>
             <label>Direccion de residencia</label>
             <input formControlName="address" class="form-control" type="text" id="input-user-form" autocomplete="off">
             <label id="required-alert" *ngIf="form.get('address')?.hasError('required') && form.get('address')?.touched">*El campo es requerido</label>
           </div>
-        </div>
-        <div class="space-around">
           <div>
             <label>Estrato</label>
             <select formControlName="strata_id" class="form-select" id="select-user-form">
@@ -156,7 +155,7 @@
         <h3 style="margin-top: -35px">Datos de la empresa</h3>
         <div class="space-around">
           <div id="select-province">
-            <label>Departamento de trabajo</label>
+            <label id="long-label">Departamento de trabajo</label>
             <select class="form-select"(click)="filterCities($event)">
               <option *ngFor="let province of provinces" [value]="province.id">{{ province.name }}</option>
             </select>
@@ -169,8 +168,6 @@
             </select>
             <label id="required-alert" *ngIf="form.get('work_city_id')?.hasError('required') && form.get('work_city_id')?.touched">*El campo es requerido</label>
           </div>
-        </div>
-        <div class="space-around">
           <div>
             <label>Sede</label>
             <select formControlName="headquarter_id" class="form-select" id="select-user-form">
@@ -178,6 +175,8 @@
             </select>
             <label id="required-alert" *ngIf="form.get('headquarter_id')?.hasError('required') && form.get('headquarter_id')?.touched">*El campo es requerido</label>
           </div>
+        </div>
+        <div class="space-around">
           <div>
             <label>Fondo de pensiones</label>
             <select formControlName="pension_fund_id" class="form-select" id="select-user-form">
@@ -185,8 +184,6 @@
             </select>
             <label id="required-alert" *ngIf="form.get('pension_fund_id')?.hasError('required') && form.get('pension_fund_id')?.touched">*El campo es requerido</label>
           </div>
-        </div>
-        <div class="space-around">
           <div>
             <label>EPS</label>
             <select formControlName="health_provider_id" class="form-select" id="select-user-form">
@@ -237,16 +234,10 @@
             </select>
             <label id="required-alert" *ngIf="form.get('position_id')?.hasError('required') && form.get('position_id')?.touched">*El campo es requerido</label>
           </div>
-        </div>
-        <div class="space-around">
           <div>
             <label>Fecha de admision</label>
             <input formControlName="admission_date" class="form-control" type="date" id="input-user-form" autocomplete="off">
             <label id="required-alert" *ngIf="form.get('admission_date')?.hasError('required') && form.get('admission_date')?.touched">*El campo es requerido</label>
-          </div>
-          <div *ngIf="isEdit">
-            <label>Fecha de salida</label>
-            <input formControlName="out_date" class="form-control" type="date" id="input-user-form" autocomplete="off">
           </div>
         </div>
         <div class="space-around">
@@ -263,15 +254,6 @@
               <option *ngFor="let businessLine of businessLines" [value]="businessLine.id">{{ businessLine.name }}</option>
             </select>
             <label id="required-alert" *ngIf="form.get('business_line_id')?.hasError('required') && form.get('business_line_id')?.touched">*El campo es requerido</label>
-          </div>
-        </div>
-        <div class="space-around">
-          <div *ngIf="isEdit">
-            <label>Estado del empleado</label>
-            <select formControlName="active" class="form-select" id="select-user-form">
-              <option [value]="1">Activo</option>
-              <option [value]="0">Inactivo</option>
-            </select>
           </div>
         </div>
         <div class="div-buttons">
@@ -291,11 +273,13 @@
           <div>
             <label>Correo</label>
             <input formControlName="email" class="form-control" type="text" id="input-user-form" autocomplete="off">
+            <label id="required-alert" *ngIf="form.get('email')?.hasError('pattern')">*El correo no es valido</label>
             <label id="required-alert" *ngIf="form.get('email')?.hasError('required') && form.get('email')?.touched">*El campo es requerido</label>
           </div>
           <div>
             <label>Contraseña</label>
             <input formControlName="password" class="form-control" type="password" id="input-user-form" autocomplete="off">
+            <label id="required-alert" *ngIf="form.get('password')?.hasError('minlength')">*Debe tener minimo 8 caracteres</label>
             <label id="required-alert" *ngIf="form.get('password')?.hasError('required') && form.get('password')?.touched">*El campo es requerido</label>
           </div>
         </div>
@@ -327,15 +311,15 @@
           <div>
             <label>Nombre de contacto</label>
             <input formControlName="name" class="form-control" type="text" id="input-user-form" autocomplete="off">
+            <label id="required-alert" *ngIf="formContact.get('name')?.hasError('minlength') && formContact.get('name')?.touched">*Minimo tres letras</label>
             <label id="required-alert" *ngIf="formContact.get('name')?.hasError('required') && formContact.get('name')?.touched">*El campo es requerido</label>
           </div>
           <div>
             <label>Telefono de contacto</label>
             <input formControlName="phone" class="form-control" type="number" id="input-user-form" autocomplete="off">
+            <label id="required-alert" *ngIf="formContact.get('phone')?.hasError('pattern')">*Debe ser un numero valido</label>
             <label id="required-alert" *ngIf="formContact.get('phone')?.hasError('required') && formContact.get('phone')?.touched">*El campo es requerido</label>
           </div>
-        </div>
-        <div class="space-around">
           <div>
             <label>Parentesco</label>
             <select formControlName="kinship_id" class="form-select" id="select-user-form">

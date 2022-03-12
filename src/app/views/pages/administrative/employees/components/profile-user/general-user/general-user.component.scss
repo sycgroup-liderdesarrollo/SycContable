@@ -6,8 +6,8 @@
   justify-content: space-between;
 }
 #edit-user-btn{
-  width: auto;
-  height: auto;
+  width: 50px;
+  height: 50px;
   background-color: transparent;
   border-color: transparent;
 }
@@ -16,6 +16,10 @@
   justify-content: space-between;
   margin-right: 10px;
   margin-left: 10px;
+}
+#div-full-name-input{
+  display: flex;
+  justify-content: flex-end;
 }
 .div-info{
   width: 50%;
@@ -41,7 +45,8 @@
   color: rgb(124, 124, 124);
   background-color: white;
   border-color: transparent;
-  width: 195px;
+  width: 200px;
+  height: 30px;
   appearance:none;
   padding-left: 5px;
 }
@@ -55,7 +60,6 @@
   padding-left: 5px;
   appearance: button;
   font-weight: 400;
-
 }
 #inp-info-name{
   margin-left: 2px;
@@ -72,6 +76,7 @@
   background-color: white;
   border-color: transparent;
   width: 100px;
+  height: 30px;
 }
 .card-body{
   display: flex;
@@ -85,11 +90,43 @@
   background-color: rgb(202, 230, 210) !important;
   border-radius: 30px;
 }
-#alert{
-  width: 50%;
-}
 .center{
   display: flex;
   justify-content: center;
   width: 100%;
+}
+small{
+  color: red;
+}
+.div-column{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+@media (max-width: 750px) {
+  .space-between{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+  .card-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .div-info{
+    width: 100%;
+    border-right: 0px;
+  }
+  #inp-info-name:read-only{
+    background-color: rgb(245, 245, 245);
+  }
+  #inp-info:read-only{
+    background-color: rgb(245, 245, 245);
+  }
+  .select-info:optional{
+    background-color: rgb(245, 245, 245);
+  }
 }

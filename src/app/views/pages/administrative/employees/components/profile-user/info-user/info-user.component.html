@@ -2,24 +2,52 @@
   <div class="card">
     <div class="card-body">
       <div class="div-head">
-        <img id="user-img" src={{user_data.image}} alt="">
+        <img id="user-img" src={{user_data.image}}>
         <div class="div-user-info">
-          <h1><strong>{{ user_data.name }} {{ user_data.last_name }}</strong></h1>
-          <span id="head-span"><img src="/assets/images/others/icon-provider.png"> {{user_data.position.name}}</span>
-          <span id="head-span"><img src="/assets/images/others/icon-address.png"> {{user_data.residenceCity.name}}</span>
-          <span id="head-span"><img src="/assets/images/others/icon-email.png"> {{user_data.email}}</span>
+          <div class="info-head">
+            <h1><strong>{{ user_data.name }} {{ user_data.last_name }}</strong></h1>
+            <span id="head-span"><img src="/assets/images/others/icon-provider.png"> {{user_data.position.name}}</span>
+            <span id="head-span"><img src="/assets/images/others/icon-address.png"> {{user_data.residenceCity.name}}</span>
+            <span id="head-span"><img src="/assets/images/others/icon-email.png"> {{user_data.email}}</span>
+          </div>
           <div class="space-between">
             <div id="div-cube-info">
               <strong>{{user_data.base_salary | currency: ' '}} COP</strong>
-              <span id="head-span"><img width="20px;" src="/assets/images/others/icon-dollar.png"> Salario base</span>
+              <span id="head-span"><img class="small-icon" src="/assets/images/others/icon-dollar.png"> Salario base</span>
             </div>
             <div id="div-cube-info">
               <strong>{{user_data.contractType.name}}</strong>
-              <span id="head-span"><img width="20px;" src="/assets/images/others/icon-concept.png"> Contrato</span>
+              <span id="head-span"><img class="small-icon" src="/assets/images/others/icon-concept.png"> Contrato</span>
             </div>
             <div id="div-cube-info">
               <strong>{{user_data.position.business_line.name}}</strong>
-              <span id="head-span"><img width="20px;" src="/assets/images/others/icon-empleo.png"> Empresa</span>
+              <span id="head-span"><img class="small-icon" src="/assets/images/others/icon-empleo.png"> Empresa</span>
+            </div>
+          </div>
+        </div>
+        <div class="movil-user-info">
+          <div class="div-name-text">
+            <h1><strong>{{ user_data.name }} {{ user_data.last_name }}</strong></h1>
+          </div>
+          <div class="div-business-line">
+            <span id="head-span">{{user_data.position.business_line.name}}</span>
+          </div>
+          <span id="head-span"><img src="/assets/images/others/icon-provider.png"> {{user_data.position.name}}</span>
+          <span id="head-span"><img src="/assets/images/others/icon-address.png"> {{user_data.residenceCity.name}}</span>
+          <span id="head-span"><img src="/assets/images/others/icon-email.png"> {{user_data.email}}</span>
+          <br>
+          <div class="space-between">
+            <div id="div-cube-info">
+              <strong class="cube-text">{{user_data.base_salary | currency: ' '}}</strong>
+              <img class="small-icon" src="/assets/images/others/icon-dollar.png">
+            </div>
+            <div id="div-cube-info">
+              <strong class="cube-text">{{user_data.contractType.name}}</strong>
+              <img class="small-icon" src="/assets/images/others/icon-concept.png">
+            </div>
+            <div id="div-cube-info">
+              <strong class="cube-text">{{user_data.position.business_line.name}}</strong>
+              <img class="small-icon" src="/assets/images/others/icon-empleo.png">
             </div>
           </div>
         </div>
@@ -35,7 +63,7 @@
       </div>
     </div>
     <div class="card-footer">
-      <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+      <div class="{{ classBtnGroup }}" role="group" aria-label="Basic radio toggle button group">
 
         <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
         <label class="btn btn-outline-primary" for="btnradio1" (click)="open('user')">Usuario</label>

@@ -28,9 +28,9 @@ export class SliderComponent implements OnInit, AfterContentChecked {
   isEmpty:boolean
 
   @HostListener('window:resize', ['$event'])
-  onResize(event:any) {
-    this.size = event.target.innerWidth;
-    this.size > 1000 ? (this.bigSwiper = true, this.smallSwiper = false) : (this.bigSwiper = false, this.smallSwiper = true);
+    onResize(event:any) {
+      this.size = event.target.innerWidth;
+      this.size > 1000 ? (this.bigSwiper = true, this.smallSwiper = false) : (this.bigSwiper = false, this.smallSwiper = true);
   }
 
   config: SwiperOptions = {

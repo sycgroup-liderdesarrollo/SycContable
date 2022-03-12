@@ -14,12 +14,20 @@
         <h3>Informacion del contacto</h3>
         <div class="space-between">
           <span><strong>Nombre:</strong></span>
-          <input type="text" id="inp-info" [readonly]="!isEdit" formControlName="name">
+          <div class="div-column">
+            <input type="text" id="inp-info" [readonly]="!isEdit" formControlName="name">
+            <label *ngIf="form.get('name')?.hasError('required') && form.get('name')?.touched"><small>*El campo es requerido</small></label>
+            <label *ngIf="form.get('name')?.hasError('minlength')"><small>*Minimo tres letras</small></label>
+          </div>
         </div>
         <br>
         <div class="space-between">
           <span><strong>Telefono:</strong></span>
-          <input type="number" id="inp-info" [readonly]="!isEdit" formControlName="phone">
+          <div class="div-column">
+            <input type="number" id="inp-info" [readonly]="!isEdit" formControlName="phone">
+            <label *ngIf="form.get('phone')?.hasError('required') && form.get('phone')?.touched"><small>*El campo es requerido</small></label>
+            <label *ngIf="form.get('phone')?.hasError('pattern')"><small>*No es un numero de telefono valido</small></label>
+          </div>
         </div>
         <br>
         <div class="space-between">
@@ -37,6 +45,6 @@
     </div>
   </form>
   <div class="card-footer" *ngIf="isEdit">
-    <button class="btn btn-success" (click)="putContact(form.value)">Guardar</button>
+    <button class="btn btn-success" [disabled]="form.invalid" (click)="putContact(form.value)">Guardar</button>
   </div>
 </div>

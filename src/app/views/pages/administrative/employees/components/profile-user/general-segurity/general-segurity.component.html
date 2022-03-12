@@ -8,32 +8,46 @@
       <span class="visually-hidden">Loading...</span>
     </div>
   </div>
-  <form [formGroup]="form" *ngIf="!isLoading">
-    <div class="card-body">
-      <div class="div-info">
+  <div class="card-body">
+    <div class="div-info">
+      <form [formGroup]="form" *ngIf="!isLoading">
         <h3>Informacion de cuenta</h3>
         <div class="space-between">
           <span><strong>Correo electronico:</strong></span>
-          <input type="text" id="inp-info" autocomplete="off" [readonly]="!isEdit" formControlName="email">
+          <div class="column">
+            <input type="text" class="inp-info" autocomplete="off" [readonly]="!isEdit" formControlName="email">
+            <label *ngIf="form.get('email')?.hasError('required') && form.get('email')?.touched"><small>*El campó es requerido</small></label>
+            <label *ngIf="form.get('email')?.hasError('pattern')"><small>*No es un correo valido</small></label>
+          </div>
         </div>
         <br>
         <div class="center">
           <button class="btn btn-success" data-bs-toggle="collapse" data-bs-target="#collapsePassword" aria-expanded="false" aria-controls="collapsePassword">Cambiar contraseña</button>
         </div>
+      </form>
         <br>
-        <div class="collapse" id="collapsePassword">
-          <div class="column">
-            <label>Contraseña antigua</label>
-            <input type="password" id="inp-info" autocomplete="off">
-
-            <label>Nueva contraseña</label>
-            <input type="password" id="inp-info" autocomplete="off">
-            
-            <label>Confirmar contraseña</label>
-            <input type="password" id="inp-info" autocomplete="off">
-            <br>
-            <button class="btn btn-success">Guardar</button>
+        <div class="center">
+          <div id="alert-success" class="alert alert-success" role="alert" *ngIf="messagePassword">
+            Se ha actualizado la contraseña!
           </div>
+        </div>
+        <div class="collapse" id="collapsePassword">
+          <form [formGroup]="formPassword">
+            <div class="column">
+              <label>Nueva contraseña</label>
+              <input type="password" class="inp-info" autocomplete="off" (keyup)="verifyPassword($event, 1)" formControlName="passwordNull">
+              <label *ngIf="formPassword.get('passwordNull')?.hasError('minlength')"><small>*Debe tener minimo 8 caracteres</small></label>
+              <label *ngIf="formPassword.get('passwordNull')?.hasError('required') && formPassword.get('passwordNull')?.touched"><small>*El campo es requerido</small></label>
+
+              <label>Confirmar contraseña</label>
+              <input type="password" class="inp-info" autocomplete="off" formControlName="password" (keyup)="verifyPassword($event, 2)">
+              <label *ngIf="!isValidPassword"><small>*no coinciden las contraseñas</small></label>
+              <label *ngIf="formPassword.get('password')?.hasError('required') && formPassword.get('password')?.touched"><small>*El campo es requerido</small></label>
+              <br>
+
+              <button class="btn btn-success" [disabled]="formPassword.invalid" (click)="savePassword(formPassword.value)" data-bs-toggle="collapse" data-bs-target="#collapsePassword" aria-expanded="false" aria-controls="collapsePassword">Guardar</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -42,8 +56,7 @@
         Se han actualizado los datos!
       </div>
     </div>
-  </form>
   <div class="card-footer" *ngIf="isEdit">
-    <button class="btn btn-success" (click)="putSegurityUser(form.value)">Guardar</button>
+    <button class="btn btn-success" [disabled]="form.invalid" (click)="putSegurityUser(form.value)">Guardar</button>
   </div>
 </div>

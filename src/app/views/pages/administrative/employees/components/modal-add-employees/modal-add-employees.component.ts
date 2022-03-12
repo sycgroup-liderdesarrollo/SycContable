@@ -93,48 +93,48 @@ export class ModalAddEmployeesComponent implements OnInit {
     this.makeForm();
     this.makeContactForm();
   }
-  makeForm(userData?: EmployeeInterface){
+  makeForm(){
     this.form = this.fb.group({
-      name:                           [userData?.name ?? '', Validators.required],
-      last_name:                      [userData?.last_name ?? '', Validators.required],
-      identification_number:          [userData?.identification_number ?? '', Validators.required],
-      expedition_place_id:            [userData?.expedition_place_id ?? '', Validators.required],
-      identification_type_id:         [userData?.identification_type_id ?? '', Validators.required],
-      birthday:                       [userData?.birthday ?? '', Validators.required],
-      phone:                          [userData?.phone ?? '', Validators.required],
-      children:                       [userData?.children ?? '', Validators.required],
-      address:                        [userData?.address ?? '', Validators.required],
-      neighborhood:                   [userData?.neighborhood ?? '', Validators.required],
-      strata_id:                      [userData?.strata_id ?? '', Validators.required],
-      residence_city_id:              [userData?.residence_city_id ?? '', Validators.required],
-      gender_id:                      [userData?.gender_id ?? '', Validators.required],
-      civil_status_id:                [userData?.civil_status_id ?? '', Validators.required],
-      education_level_id:             [userData?.education_level_id ?? '', Validators.required],
-      headquarter_id:                 [userData?.headquarter_id ?? '', Validators.required],
-      work_city_id:                   [userData?.work_city_id ?? '', Validators.required],
-      pension_fund_id:                [userData?.pension_fund_id ?? '', Validators.required],
-      health_provider_id:             [userData?.headquarter_id ?? '', Validators.required],
-      contract_type_id:               [userData?.contract_type_id ?? '', Validators.required],
-      base_salary:                    [userData?.base_salary ?? '', Validators.required],
-      salary_type_id:                 [userData?.salary_type_id ?? '', Validators.required],
-      position_id:                    [userData?.position_id ?? '', Validators.required],
-      admission_date:                 [userData?.admission_date ?? '', Validators.required],
-      out_date:                       [userData?.out_date ?? ''],
-      active:                         [userData?.active ?? '1', Validators.required],
-      occupational_risk_manager_id:   [userData?.occupational_risk_manager_id ?? '', Validators.required],
-      business_line_id:               [userData?.business_line.id ?? '', Validators.required],
-      email:                          [userData?.email ?? '', Validators.required],
-      password:                       [userData?.password ?? '', Validators.required],
-      image:                          [''],
-      emergency_contact_id:           [userData?.emergency_contact_id ?? ''],
+      name:                         ['', [Validators.required, Validators.minLength(3)]],
+      last_name:                    ['', [Validators.required, Validators.minLength(3)]],
+      identification_number:        ['', Validators.required],
+      expedition_place_id:          ['', Validators.required],
+      identification_type_id:       ['', Validators.required],
+      birthday:                     ['', Validators.required],
+      phone:                        ['', [Validators.required, Validators.pattern("[0-9]{10,10}")]],
+      children:                     ['', Validators.required],
+      address:                      ['', Validators.required],
+      neighborhood:                 ['', Validators.required],
+      strata_id:                    ['', Validators.required],
+      residence_city_id:            ['', Validators.required],
+      gender_id:                    ['', Validators.required],
+      civil_status_id:              ['', Validators.required],
+      education_level_id:           ['', Validators.required],
+      headquarter_id:               ['', Validators.required],
+      work_city_id:                 ['', Validators.required],
+      pension_fund_id:              ['', Validators.required],
+      health_provider_id:           ['', Validators.required],
+      contract_type_id:             ['', Validators.required],
+      base_salary:                  ['', Validators.required],
+      salary_type_id:               ['', Validators.required],
+      position_id:                  ['', Validators.required],
+      admission_date:               ['', Validators.required],
+      out_date:                     ['', Validators.required],
+      active:                       ['1'],
+      occupational_risk_manager_id: ['', Validators.required],
+      business_line_id:             ['', Validators.required],
+      email:                        ['', [Validators.required, Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}")]],
+      password:                     ['', [Validators.required, Validators.minLength(8)]],
+      image:                        ['', Validators.required],
+      emergency_contact_id:         ['', Validators.required],
     })
     this.isLoading = false;
   }
-  makeContactForm(contactData?: EmergencyContactInterface){
+  makeContactForm(){
     this.formContact = this.fb.group({
-      name:       [contactData?.name ?? '', Validators.required],
-      phone:      [contactData?.phone ?? '', Validators.required],
-      kinship_id: [contactData?.kinship_id ?? '', Validators.required]
+      name:       ['', [Validators.required, Validators.minLength(3)]],
+      phone:      ['', [Validators.required, Validators.pattern("[0-9]{10,10}")]],
+      kinship_id: ['', Validators.required]
     })
   }
   postUser(form:any){
