@@ -1,0 +1,28 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h1>Cambiar foto de perifl</h1>
+  </div>
+  <div class="modal-body">
+    <div class="d-flex justify-content-center" style="margin: 15px;" *ngIf="isLoading">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    <div class="column" *ngIf="!isLoading">
+      <label>Seleccionar imagen</label>
+      <div class="center">
+        <input class="form-control" type="file" id="inp-file" (change)="cacthImage($event)">
+        <img *ngIf="actualImage" [src]="actualImage" id="img-form">
+      </div>
+    </div>
+  </div>
+  <div class="center" *ngIf="messageAlert">
+    <div id="alert-success" class="alert alert-success" role="alert">
+      Se ha cambiado la foto de perfil!
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button (click)="modal.dismissAll()" class="btn btn-primary" id="exit-btn">Cerrar</button>
+    <button class="btn btn-primary" (click)="putImage()">Cambiar</button>
+  </div>
+</div>

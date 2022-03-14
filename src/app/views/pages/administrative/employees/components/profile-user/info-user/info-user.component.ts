@@ -4,6 +4,9 @@ import { EmployeeInterface } from '../../../interfaces/employee-interface';
 import { EmployeesService } from '../../../services/service-employees.service';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ChangeImgModalComponent } from '../change-img-modal/change-img-modal.component';
 
 @Component({
   selector: 'app-info-user',
@@ -21,6 +24,7 @@ export class InfoUserComponent implements OnInit {
   user_data:EmployeeInterface;
   pageSize:number;
   classBtnGroup:string;
+  form: FormGroup
 
   @HostListener('window:resize', ['$event'])
   onResize(event:any) {
@@ -30,19 +34,26 @@ export class InfoUserComponent implements OnInit {
 
   constructor(
     private _route:ActivatedRoute,
-    private serviceUser: EmployeesService
+    private serviceUser: EmployeesService,
+    private fb:FormBuilder,
+    public modal: NgbModal
     ) {}
 
-    ngOnInit(): void {
+  ngOnInit(): void {
     //El valor de la ruta se convierte en tipo number y lo iguala a la variable
     this.user_id = + this._route.snapshot.paramMap.get('id')!
     this.getUser();
     // Captura el tamaño de la pantalla
     this.pageSize = window.innerWidth;
     this.pageSize > 850 ? this.classBtnGroup = "btn-group" : this.classBtnGroup = "btn-group-vertical"
-
+    this.imgForm();
   }
 
+  imgForm(){
+    this.form = this.fb.group({
+      image: ['']
+    })
+  }
   getUser(){
     this.serviceUser.getUser(this.user_id).pipe(
       map((element:any) =>{
@@ -53,14 +64,19 @@ export class InfoUserComponent implements OnInit {
       this.user_data = resp;
     })
   }
-
   open(option:string){
     option == "user" ? this.isUser = true : this.isUser = false;
     option == "business" ? this.isBusiness = true : this.isBusiness = false;
     option == "security" ? this.isSecurity = true : this.isSecurity = false;
     option == "contact" ? this.isContact = true : this.isContact = false;
   }
-
+  openModal(){
+    const modalRef = this.modal.open(ChangeImgModalComponent);
+    modalRef.componentInstance.user_data = this.user_data
+    modalRef.componentInstance.refresh_image.subscribe(()=>{
+      this.getUser();
+    })
+  }
 }
 
 

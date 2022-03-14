@@ -22,6 +22,7 @@ import { GeneralBusinessComponent } from './employees/components/profile-user/ge
 import { GeneralUserComponent } from './employees/components/profile-user/general-user/general-user.component';
 import { GeneralContactComponent } from './employees/components/profile-user/general-contact/general-contact.component';
 import { GeneralSegurityComponent } from './employees/components/profile-user/general-segurity/general-segurity.component';
+import { ChangeImgModalComponent } from './employees/components/profile-user/change-img-modal/change-img-modal.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { GeneralSegurityComponent } from './employees/components/profile-user/ge
     GeneralUserComponent,
     GeneralContactComponent,
     GeneralSegurityComponent,
+    ChangeImgModalComponent,
   ],
   imports: [
     FormsModule,

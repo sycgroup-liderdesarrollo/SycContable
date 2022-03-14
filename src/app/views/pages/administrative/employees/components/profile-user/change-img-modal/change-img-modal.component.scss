@@ -1,0 +1,33 @@
+.modal-body{
+  display: flex;
+  justify-content: center;
+}
+.column{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+#inp-file{
+  margin-top: 10px;
+}
+#exit-btn{
+  background-color: rgb(50, 50, 50);
+  border-color: rgb(50, 50, 50);
+}
+#img-form{
+  border-radius: 10px;
+  width: 100px;
+}
+.center{
+  display: flex;
+  justify-content: center;
+  height: auto;
+}
+label{
+  font-weight: 500;
+  color: rgb(131, 131, 131);
+  font-size: medium;
+}
+h1{
+  font-weight: 400;
+}

@@ -2,11 +2,26 @@
   width: auto;
 }
 #user-img{
-  margin-right: 20px;
   width: 170px;
   height: 170px;
   border-radius: 100%;
   border: 1px solid rgb(150, 150, 150);
+}
+.div-img{
+  display: flex;
+  align-items: flex-end;
+  margin-right: 5%;
+}
+.btn-edit-img{
+  width: 35px;
+  height: 35px;
+  margin-left: -35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(150, 150, 150, 0.686);
+  border-color: transparent;
+  border-radius: 20px;
 }
 .div-head{
   display: flex;
