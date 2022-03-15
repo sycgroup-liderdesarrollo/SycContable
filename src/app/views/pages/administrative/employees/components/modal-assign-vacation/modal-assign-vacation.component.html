@@ -1,0 +1,30 @@
+<div class="modal-header">
+<h1 *ngIf="user_data">Asignar vacaciones</h1>
+<h1 *ngIf="vacation_data">Actualizar vacaciones</h1>
+<label class="strong-label" *ngIf="user_data">Para: {{user_data.name}} {{user_data.last_name}}</label>
+<label class="strong-label" *ngIf="vacation_data">Para: {{vacation_data.user.name}} {{vacation_data.user.last_name}}</label>
+</div>
+<div class="modal-body">
+  <div class="div-princiapl">
+    <form [formGroup]="form">
+      <div>
+        <label class="strong-label">Fecha de inicio</label>
+        <input class="form-control" type="date" formControlName="start_date">
+      </div>
+      <div>
+        <label class="strong-label">Fecha final</label>
+        <input class="form-control" type="date" formControlName="end_date">
+      </div>
+    </form>
+  </div>
+  <div class="space-around">
+    <div id="text-select-user" class="alert alert-warning" role="alert" *ngIf="messageAlert">
+      {{messageText}}
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-dark" (click)="modal.dismissAll()">Cerrar</button>
+  <button class="btn btn-primary" *ngIf="!vacation_data" [disabled]="form.invalid" (click)="assignVacation(form.value)">Asignar</button>
+  <button class="btn btn-primary" *ngIf="vacation_data" [disabled]="form.invalid" (click)="updateVacation(form.value)">Actualizar</button>
+</div>

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdministrativeRoutingModule } from './administrative-routing.module';
-import { ManageVacationsComponent } from './manage-vacations/manage-vacations.component';
+import { ManageVacationsComponent } from './employees/components/manage-vacations/manage-vacations.component';
 import { NgbPaginationModule, NgbAlertModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { InfoUserComponent } from './employees/components/profile-user/info-user/info-user.component';
 import { AdminCovenantComponent } from './covenants/components/admin-covenant/admin-covenant.component';
@@ -23,6 +23,7 @@ import { GeneralUserComponent } from './employees/components/profile-user/genera
 import { GeneralContactComponent } from './employees/components/profile-user/general-contact/general-contact.component';
 import { GeneralSegurityComponent } from './employees/components/profile-user/general-segurity/general-segurity.component';
 import { ChangeImgModalComponent } from './employees/components/profile-user/change-img-modal/change-img-modal.component';
+import { ModalAssignVacationComponent } from './employees/components/modal-assign-vacation/modal-assign-vacation.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ChangeImgModalComponent } from './employees/components/profile-user/cha
     GeneralContactComponent,
     GeneralSegurityComponent,
     ChangeImgModalComponent,
+    ModalAssignVacationComponent,
   ],
   imports: [
     FormsModule,

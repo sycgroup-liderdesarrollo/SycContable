@@ -1,0 +1,67 @@
+<div class="div-head">
+  <h1>Vacaciones</h1>
+  <input class="form-control" type="text" placeholder="Buscar por nombre..." (keyup)="filterUser($event)">
+</div>
+<br>
+<div class="card" id="principal-card">
+  <h2 id="user-label">Asignar vacaciones</h2>
+  <div class="div-grid">
+    <div class="card-body" *ngFor="let user of users">
+      <button class="card" id="user-card" (click)="openModalAssign(user)">
+        <div class="card-body" id="user-card-body">
+          <img id="user-img" src="{{user.image}}" alt="">
+          <h3>{{user.name}} {{user.last_name}}</h3>
+          <label id="user-label">C.C: {{user.identification_number}}</label>
+        </div>
+      </button>
+    </div>
+  </div>
+  <div class="center">
+    <div class="alert alert-warning" role="alert" *ngIf="isUsersEmpty">
+      <strong>No se encontró ningun empleado</strong>
+    </div>
+  </div>
+  <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+  (page)="handlePage($event)" aria-label="Select page">
+  </mat-paginator>
+</div>
+<br>
+<div class="card" id="principal-card">
+  <h2 id="user-label">Vacaciones actuales</h2>
+  <div class="card-body">
+    <div class="div-table">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="dates_header" scope="col">#ID vacaciones</th>
+            <th class="dates_header" scope="col">Cédula</th>
+            <th class="dates_header" scope="col">Nombre y Apellido</th>
+            <th class="dates_header" scope="col">Fecha de inicio</th>
+            <th class="dates_header" scope="col">Fecha final</th>
+            <th class="dates_header" scope="col">Dias de vacaciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let vacation of vacations">
+            <th class="dates_header" scope="row">{{vacation.id}}</th>
+            <td class="dates_body">{{vacation.user.identification_number}}</td>
+            <td class="dates_body">{{vacation.user.name}} {{vacation.user.last_name}}</td>
+            <td class="dates_body">{{vacation.start_date}}</td>
+            <td class="dates_body">{{vacation.end_date}}</td>
+            <td class="dates_body">{{vacation.total_days}} dias hábiles</td>
+            <td ><button id="btn-table" (click)="openModalUpdate(vacation)"><img width="20px" src="/assets/images/others/icon-edit.png" alt=""></button></td>
+            <td ><button id="btn-table" (click)="openDeleteVacationModal(vacation.id)"><img width="20px" src="/assets/images/others/icon-trash.png" alt=""></button></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="center">
+        <div class="alert alert-warning" role="alert" *ngIf="isVacationEmpty">
+          <strong>No hay vacaciones cargadas</strong>
+        </div>
+      </div>
+    </div>
+    <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+      (page)="handlePageVacation($event)" aria-label="Select page">
+    </mat-paginator>
+  </div>
+</div>

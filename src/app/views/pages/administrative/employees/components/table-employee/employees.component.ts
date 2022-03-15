@@ -19,6 +19,7 @@ export class EmployeesComponent implements OnInit {
   pageSize = 10;
   pageNumber = 1;
   users:EmployeeInterface[];
+  isUserEmpty: boolean = false;
   pageSizeOptions: number[] = [5, 10];
 
   constructor(
@@ -32,12 +33,14 @@ export class EmployeesComponent implements OnInit {
   getEmployees(pageSize?:number, pageNumber?:number){
     this.serviceUser.getUsers('', pageSize, pageNumber).subscribe(res =>{
       this.users = res.data;
+      this.users.length > 0 ? this.isUserEmpty = false : this.isUserEmpty = true;
       this.length = res.meta?.total ?? 10;
     })
   }
   userFilter(event:any){
     this.serviceUser.getUsers(event.target.value).subscribe(resp => {
       this.users = resp.data
+      this.users.length > 0 ? this.isUserEmpty = false : this.isUserEmpty = true;
     })
   }
   openAddModal() {

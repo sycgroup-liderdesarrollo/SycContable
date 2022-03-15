@@ -29,8 +29,8 @@ export class EmployeesService {
   assignCovenant(user_id:number, formData:any): Observable<EmployeeInterface[]>{
     return this.http.post<EmployeeInterface[]>(`${environment.API_Url}user/assignCovenant/`+ user_id, formData);
   }
-  deleteUserCovenant(user_id:number, pivot_id:any): Observable<any>{
-    return this.http.delete<any>(`${environment.API_Url}user/deleteCovenant/`+ user_id, {params:{'covenant_pivot_id':  pivot_id }});
+  deleteUserCovenant(user_id:number, pivot_id:any): Observable<EmployeeInterface>{
+    return this.http.delete<EmployeeInterface>(`${environment.API_Url}user/deleteCovenant/`+ user_id, {params:{'covenant_pivot_id':  pivot_id }});
   }
   deleteUser(user_id: number){
     return this.http.delete<JsonResponseInterfaces<EmployeeInterface[]>>(`${environment.API_Url}user/`+ user_id);

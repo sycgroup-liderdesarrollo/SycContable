@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ManageVacationsComponent } from './manage-vacations/manage-vacations.component';
+import { ManageVacationsComponent } from './employees/components/manage-vacations/manage-vacations.component';
 import { SliderComponent } from './covenants/components/slider/slider.component';
 import { EmployeesComponent } from './employees/components/table-employee/employees.component';
 import { InfoUserComponent } from './employees/components/profile-user/info-user/info-user.component';

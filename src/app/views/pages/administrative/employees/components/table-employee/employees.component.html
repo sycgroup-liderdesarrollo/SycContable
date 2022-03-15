@@ -35,6 +35,11 @@
         </tr>
       </tbody>
     </table>
+    <div class="center">
+      <div class="alert alert-warning" role="alert" *ngIf="isUserEmpty">
+        <strong>No se encontró ningun empleado</strong>
+      </div>
+    </div>
     <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
       (page)="handlePage($event)" aria-label="Select page">
     </mat-paginator>
