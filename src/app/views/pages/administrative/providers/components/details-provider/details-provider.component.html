@@ -1,0 +1,73 @@
+<div class="card" *ngIf="provider_data">
+  <div class="card-body" id="principal-card">
+    <div class="card col-5">
+      <div class="card-body" id="provider-info">
+        <h2 class="label-info-head">Detalles del proveedor</h2>
+        <br>
+        <div class="info-head">
+          <img id="img-provider-profile" src="/assets/images/others/avatar.jpg">
+          <div class="column">
+            <label id="title">{{ provider_data.trade_name }}</label>
+            <label class="label-info-head"><img class="icon-img" src="/assets/images/others/icon-provider.png">{{ provider_data.name }} {{ provider_data.last_name }}</label>
+            <label class="label-info-head"><img class="icon-img" src="/assets/images/others/icon-email.png"> {{ provider_data.email }}</label>
+            <label class="label-info-head"><img class="icon-img" src="/assets/images/others/icon-phone.png"> {{ provider_data.phone }}</label>
+          </div>
+        </div>
+        <br>
+        <div class="info-body">
+          <label><strong>Tipo de responsabilidad:</strong></label>
+          <label class="label-box">{{ provider_data.responsabilityType.name }}</label>
+          <label><strong>Tipo de identificacion:</strong></label>
+          <label class="label-box">{{ provider_data.identificationType.name }}</label>
+          <label><strong>Tipo de persona:</strong></label>
+          <label class="label-box">{{ provider_data.constitutionType.name }}</label>
+          <label><strong>Ciudad:</strong></label>
+          <label class="label-box">{{ provider_data.city.name }}</label>
+          <label><strong>Direccion:</strong></label>
+          <label class="label-box">{{ provider_data.address }}</label>
+        </div>
+      </div>
+    </div>
+    <div class="card col-3">
+      <div class="card-body" id="provider-contacts">
+        <h2 class="label-info-head">Contactos</h2>
+        <div class="contact-list">
+          <button class="contact-list-item" *ngFor="let contact of provider_data.contact">
+            <div>
+              <img id="img-contact-profile" src="/assets/images/others/avatar.jpg" alt="">
+            </div>
+            <div class="column">
+              <label>{{ contact.name }}</label>
+              <label>{{ contact.email }}</label>
+            </div>
+          </button>
+          <div class="center">
+            <div class="alert alert-warning" role="alert" *ngIf="isContactEmpty">
+              <strong>No se encontró ningun contacto</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card col-3">
+      <div class="card-body" id="provider-covenants">
+        <h2 class="label-info-head">Convenios</h2>
+        <div class="contact-list">
+          <div class="contact-list-item" *ngFor="let covenant of provider_data.covenants">
+            <div>
+              <img id="img-contact-profile" src="/assets/images/others/avatar.jpg" alt="">
+            </div>
+            <div class="column">
+              <label>{{ covenant.name }}</label>
+            </div>
+          </div>
+          <div class="center">
+            <div class="alert alert-warning" role="alert" *ngIf="isCovenantEmpty">
+              <strong>No se encontró ningun convenio</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

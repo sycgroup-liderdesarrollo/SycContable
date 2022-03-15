@@ -36,7 +36,7 @@ export const MENU: MenuItem[] = [
   {
     label: 'Proveedores',
     icon: 'truck',
-    link: '/'
+    link: '/administrative/info-provider'
   },
   {
     label: 'Nómina',

@@ -1,0 +1,29 @@
+<div class="div-head">
+  <h1>Proveedores</h1>
+  <input class="form-control" type="text" placeholder="Buscar por nombre..." (keyup)="providerFilter($event)">
+</div>
+<br>
+<div class="card" id="principal-card">
+  <h2 id="user-label">Nuestros proveedores</h2>
+  <div class="div-grid">
+    <div class="card-body" *ngFor="let provider of providers">
+      <button class="card" id="user-card" (click)="providerSelected(provider.id)">
+        <div class="card-body" id="user-card-body">
+          <img id="user-img" src="/assets/images/others/avatar.jpg"  onerror="this.src='/assets/images/others/avatar.jpg'">
+          <h3>{{provider.trade_name}}</h3>
+          <label id="user-label">C.C: {{provider.identification_number}}</label>
+        </div>
+      </button>
+    </div>
+  </div>
+  <div class="center">
+    <div class="alert alert-warning" role="alert" *ngIf="isProviderEmpty">
+      <strong>No se encontró ningun proveedor</strong>
+    </div>
+  </div>
+  <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+   aria-label="Select page">
+  </mat-paginator>
+</div>
+<br>
+<app-details-provider *ngIf="isSelected" [provider_id]="provider_id"></app-details-provider>

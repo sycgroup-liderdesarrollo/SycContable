@@ -9,7 +9,7 @@
     <div class="card-body" *ngFor="let user of users">
       <button class="card" id="user-card" (click)="openModalAssign(user)">
         <div class="card-body" id="user-card-body">
-          <img id="user-img" src="{{user.image}}" alt="">
+          <img id="user-img" src="{{user.image}}" onerror="this.src='/assets/images/others/avatar.jpg'">
           <h3>{{user.name}} {{user.last_name}}</h3>
           <label id="user-label">C.C: {{user.identification_number}}</label>
         </div>

@@ -5,7 +5,7 @@ import { Observable, Subscriber } from 'rxjs';
 import { PeriodicityTypeInterface } from 'src/app/views/pages/payroll/interfaces/periodicity-type-interface';
 import { CovenantTypeInterface } from '../../interfaces/covenant-type-interface';
 import { CovenantInterface } from '../../interfaces/covenants-interface';
-import { ProviderInterface } from '../../interfaces/provider-interface';
+import { ProviderInterface } from '../../../providers/interfaces/provider-interface';
 import { CovenantsService } from '../../services/covenants.service';
 
 @Component({

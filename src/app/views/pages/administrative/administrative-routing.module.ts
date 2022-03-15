@@ -4,6 +4,7 @@ import { ManageVacationsComponent } from './employees/components/manage-vacation
 import { SliderComponent } from './covenants/components/slider/slider.component';
 import { EmployeesComponent } from './employees/components/table-employee/employees.component';
 import { InfoUserComponent } from './employees/components/profile-user/info-user/info-user.component';
+import { InfoProviderComponent } from './providers/components/info-provider/info-provider.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,10 @@ const routes: Routes = [
     path:'admin-covenant',
     component: SliderComponent
   },
+  {
+    path: 'info-provider',
+    component: InfoProviderComponent
+  }
 ];
 
 @NgModule({

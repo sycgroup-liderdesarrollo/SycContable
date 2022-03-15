@@ -1,0 +1,85 @@
+.card{
+  width: auto;
+}
+#user-card{
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  box-shadow: 2px 2px rgba(58, 58, 58, 0.11);
+  align-items: center;
+}
+#user-card:hover{
+  background-color: rgb(240, 240, 240);
+}
+#user-card-body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#user-img{
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 1px solid rgb(150, 150, 150);
+  margin-bottom: 10px;
+}
+#user-label{
+  font-weight: 700;
+  color: rgb(125, 125, 125);
+}
+#user-btn-select{
+  background-color: transparent;
+  border-color: transparent;
+}
+#principal-card{
+  padding: 20px;
+}
+.div-grid{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+}
+.form-control{
+  width: 40%;
+  height: 40px;
+  border-collapse: 0px;
+  background-image: url('/assets/images/others/icon-search.png');
+  background-position: 6px 6px;
+  background-repeat: no-repeat;
+  background-color: white;
+  font-weight: 500;
+  padding-left: 40px;
+}
+.div-head{
+  display: flex;
+  justify-content: space-between;
+}
+#btn-table{
+  background-color: transparent;
+  border-color: transparent;
+}
+.center{
+  display: flex;
+  justify-content: center;
+}
+.div-table{
+  width: 100%;
+}
+@media (max-width: 1300px) {
+  .div-grid{
+    grid-template-columns: 20% 20% 20% 20%;
+    grid-column-gap: 5%;
+  }
+}
+@media (max-width: 1000px) {
+  .div-grid{
+    grid-template-columns: 20% 20%;
+    grid-column-gap: 25%;
+  }
+}
+@media (max-width: 550px) {
+  .div-grid{
+    grid-template-columns: 20%;
+  }
+}

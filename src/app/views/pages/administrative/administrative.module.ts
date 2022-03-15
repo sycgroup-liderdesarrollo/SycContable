@@ -24,6 +24,8 @@ import { GeneralContactComponent } from './employees/components/profile-user/gen
 import { GeneralSegurityComponent } from './employees/components/profile-user/general-segurity/general-segurity.component';
 import { ChangeImgModalComponent } from './employees/components/profile-user/change-img-modal/change-img-modal.component';
 import { ModalAssignVacationComponent } from './employees/components/modal-assign-vacation/modal-assign-vacation.component';
+import { InfoProviderComponent } from './providers/components/info-provider/info-provider.component';
+import { DetailsProviderComponent } from './providers/components/details-provider/details-provider.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { ModalAssignVacationComponent } from './employees/components/modal-assig
     GeneralSegurityComponent,
     ChangeImgModalComponent,
     ModalAssignVacationComponent,
+    InfoProviderComponent,
+    DetailsProviderComponent,
   ],
   imports: [
     FormsModule,

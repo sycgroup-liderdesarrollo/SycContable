@@ -2,7 +2,7 @@ import { ConceptInterface } from "../../../payroll/interfaces/concept-interface"
 import { PeriodicityTypeInterface } from "../../../payroll/interfaces/periodicity-type-interface";
 import { EmployeeInterface } from "../../employees/interfaces/employee-interface";
 import { CovenantTypeInterface } from "./covenant-type-interface";
-import { ProviderInterface } from "./provider-interface";
+import { ProviderInterface } from "../../providers/interfaces/provider-interface";
 
 export interface CovenantInterface{
   id: number,

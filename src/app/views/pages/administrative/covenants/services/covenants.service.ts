@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 import { JsonResponseInterfaces } from 'src/app/interfaces/json-response-interfaces';
 import { environment } from 'src/environments/environment';
 import { PeriodicityTypeInterface } from '../../../payroll/interfaces/periodicity-type-interface';
+import { ProviderInterface } from '../../providers/interfaces/provider-interface';
 import { CovenantInterface } from '../interfaces/covenants-interface';
-import { ProviderInterface } from '../interfaces/provider-interface';
 
 @Injectable({
   providedIn: 'root'

@@ -3,8 +3,8 @@
     <div class="card-body">
       <div class="div-head">
         <div class="div-img">
-          <img id="user-img" src={{user_data.image}}>
-          <button (click)="openModal()" class="btn-edit-img"><img width="20px" src="/assets/images/others/icon-camera.png" alt=""></button>
+          <img id="user-img" src={{user_data.image}}  onerror="this.src='/assets/images/others/avatar.jpg'">
+          <button (click)="openModal()" class="btn-edit-img"><img width="20px" src="/assets/images/others/icon-camera.png"></button>
         </div>
         <div class="div-user-info">
           <div class="info-head">
